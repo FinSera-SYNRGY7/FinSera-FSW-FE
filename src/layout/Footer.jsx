@@ -19,7 +19,7 @@ const Footer = () => {
   return (
     <div>
       <Navbar>
-        <Container flxuid>
+        <Container fluid>
           <Card.Footer style={{ borderRight: '1px solid white', borderTop: 'none', paddingRight: '50px' }}>
             <img src={logobcawhite} className="logo-footer" alt="bca logo" />
           </Card.Footer>

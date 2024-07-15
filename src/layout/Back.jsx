@@ -1,17 +1,16 @@
-import React from 'react'
 import Button from 'react-bootstrap/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
-const ButtonPrimary = () => {
+function Back() {
     return (
         <>
-            <Button className='button-beranda' variant='$0066AE'>
+            <Button variant="outline-primary">
                 <FontAwesomeIcon icon={faArrowLeft} className="icon" />
-                Beranda adaj
-            </Button>
+                Beranda
+            </Button>{' '}
         </>
     );
-};
+}
 
-export default ButtonPrimary;
+export default Back;

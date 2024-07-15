@@ -31,6 +31,22 @@
   background-color: #0A3967 !important;
 }
 
+.navbar-header {
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 7px -2px gray;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.button-beranda .icon {
+  margin-right: 0.5rem;
+  background-color: #0066AE;
+
+}
+
 
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);

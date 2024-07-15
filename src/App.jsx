@@ -1,30 +1,51 @@
 import { useState } from 'react'
 import Header from './layout/Header';
 import Footer from './layout/Footer';
+import SumberRekening from './components/SumberRekening';
+import Back from './layout/Back';
 import Button from './components/Button';
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Route, Routes } from 'react-router-dom';
+import Layout from './layout/Layout';
+import InfoSaldo from './pages/InfoSaldo';
 
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  // const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div className="App">
-        <Header />
-        <main>
-          <h2>Welcome to FinSera</h2>
-          <p>This is the content of the main page.</p>
-          <Button />
-        </main>
-        <div className="card footer-card" >
-          <Footer />
+    <Routes>
+      {/* <Route path="/"> */}
+      {/* <Route index Component={IndexPage} /> ini halaman dashboard */}
+      {/* <Route path="info-saldo" Component={<InfoSaldo />} /> */}
+      {/* <Route path="cars/rent/:id" Component={RentCarPage} /> */}
+      {/* </Route> */}
 
-        </div>
-      </div>
-    </>
+      <Route path="/info-saldo" Component={InfoSaldo} />
+
+      {/* <Route path="*" Component={NotFoundPage} /> */}
+    </Routes>
+
+    // <>
+    //   <div className="App">
+    //     <Header />
+    //     <main>
+    //       <h3>Informasi Saldo</h3>
+    //       <button>
+    //         Beranda
+    //       </button>
+    //       <p>This is the content of the main page.</p>
+    //       <Button />
+    //     </main>
+    //     <Back />
+    //     <SumberRekening />
+
+    //     <div className="card footer-card" >
+    //       <Footer />
+    //     </div>
+    //   </div>
+    // </>
   )
 }
 

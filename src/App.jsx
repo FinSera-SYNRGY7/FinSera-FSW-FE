@@ -1,13 +1,8 @@
 import { useState } from 'react'
-import Header from './layout/Header';
-import Footer from './layout/Footer';
-import SumberRekening from './components/SumberRekening';
-import Back from './layout/Back';
-import Button from './components/Button';
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
-import Layout from './layout/Layout';
+// import Layout from './layout/Layout';
 import InfoSaldo from './pages/InfoSaldo';
 
 
@@ -22,7 +17,7 @@ function App() {
       {/* <Route path="cars/rent/:id" Component={RentCarPage} /> */}
       {/* </Route> */}
 
-      <Route path="/info-saldo" Component={InfoSaldo} />
+      <Route path="/info-saldo" element={<InfoSaldo />} />
 
       {/* <Route path="*" Component={NotFoundPage} /> */}
     </Routes>

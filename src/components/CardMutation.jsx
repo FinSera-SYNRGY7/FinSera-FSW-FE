@@ -1,15 +1,8 @@
 import React from "react";
 
-interface CardMutationProps {
-  color: string;
-  dateTXN: string; //TXN Meaning Transaction
-  noTXN: string; 
-  typeTXN: string;
-  nominal: string;
-  time: string;
-}
 
-const CardMutation: React.FC<CardMutationProps> = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
+
+const CardMutation = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
   const cardMutationStyle = {
     containecard: {
       justifyContent: 'space-between',

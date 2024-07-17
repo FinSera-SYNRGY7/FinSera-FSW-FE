@@ -107,7 +107,6 @@ const Login = () => {
                             <div style={{ textAlign: 'right', marginBottom: '80px' }}>
                                 <a href="#" style={{ textDecoration: 'none', fontSize: '14px', color: '#0066AE', fontWeight: '700' }}>Lupa Password? </a>
                             </div>
-
                             <Button className="btn btn-primary" type="submit" style={{ width: '100%', height: '48px', marginBottom: '20px', backgroundColor: '#0066AE', borderRadius: '18px' }}>
                                 Login
                             </Button>

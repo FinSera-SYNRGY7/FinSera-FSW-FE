@@ -3,7 +3,6 @@ import React from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -20,7 +19,7 @@ import logoProfile from '../assets/logo/profile.png'
 
 const Header = () => {
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className="navbar-header">
             <Container fluid>
                 <Navbar.Brand href="#home"><img src={logobcablue} className="logo" alt="bca logo" /> </Navbar.Brand>
                 <Nav className="me-auto">

@@ -1,11 +1,11 @@
 import React from 'react'
 import Button from 'react-bootstrap/Button';
 
-const ButtonPrimary = () => {
+const ButtonPrimary = ({ children, style, ...props }) => {
     return (
         <>
-            <Button variant='primary'>
-                Primary button
+            <Button variant='primary' style={style} {...props}>
+                {children}
             </Button>
         </>
     );

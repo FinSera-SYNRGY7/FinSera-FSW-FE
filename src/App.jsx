@@ -5,7 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import InfoSaldo from './pages/InfoSaldo';
 import TestComponent from './pages/TestComponent';
 import MutasiRekening from './pages/MutasiRekening';
-import Login from './layout/Login.jsx'
+import Login from './pages/Login.jsx'
 
 function App() {
   return (

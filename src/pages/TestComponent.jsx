@@ -4,10 +4,10 @@ import ButtonIcon from "../components/ButtonIcon";
 import ButtonAlt from "../components/ButtonAlt";
 import CardMutation from "../components/CardMutation";
 
-const TestComponent: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
+const TestComponent = () => {
+  const [selectedOption, setSelectedOption] = useState("");
 
-  const handleOptionSelect = (value: string) => {
+  const handleOptionSelect = (value) => {
     setSelectedOption(value);
     console.log("Selected option:", value);
   };

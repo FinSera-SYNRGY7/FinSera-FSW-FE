@@ -1,15 +1,10 @@
 import React from "react";
 
 
-interface ButtonAltProps {
-  label: string,
-  onClick: () => void,
-  variant: "btnPrimary" | "btnSecondary" | "btnSecondaryIcon"
-}
 
-const ButtonAlt: React.FC<ButtonAltProps> = ({label, onClick, variant}) => {
+const ButtonAlt = ({label, onClick, variant}) => {
 
-  const ButtonAltStyle : { [key: string]: React.CSSProperties } = {
+  const ButtonAltStyle = {
     btnPrimary: {
       backgroundColor: "#0066AE",
       color: "white",

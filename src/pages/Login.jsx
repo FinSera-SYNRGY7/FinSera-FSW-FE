@@ -58,7 +58,7 @@ const Login = () => {
                             Login
                         </h2>
                         <Form>
-                            <Form.Group className="mb-5" aria-label="Username">
+                            <FormInput className="mb-5" aria-label="Username">
                                 <Form.Label htmlFor="username" style={{
                                     textAlign: 'left',
                                     display: 'block',
@@ -72,8 +72,9 @@ const Login = () => {
                                     placeholder="masukkan username"
                                     style={{ width: '100%', height: '48px', borderRadius: '18px' }}
                                 />
-                            </Form.Group>
-                            <Form.Group className="mb-3 position-relative" aria-label="Password">
+                            </FormInput>
+
+                            <FormInput className="mb-3 position-relative" aria-label="Password">
                                 <Form.Label htmlFor="password" style={{
                                     textAlign: 'left',
                                     display: 'block',
@@ -101,10 +102,12 @@ const Login = () => {
                                 >
                                     {passwordVisible ? <FaEyeSlash /> : <FaEye />}
                                 </span>
-                            </Form.Group>
+                            </FormInput>
+
                             <div style={{ textAlign: 'right', marginBottom: '80px' }}>
                                 <a href="#" style={{ textDecoration: 'none', fontSize: '14px', color: '#0066AE', fontWeight: '700' }}>Lupa Password? </a>
                             </div>
+
                             <Button className="btn btn-primary" type="submit" style={{ width: '100%', height: '48px', marginBottom: '20px', backgroundColor: '#0066AE', borderRadius: '18px' }}>
                                 Login
                             </Button>

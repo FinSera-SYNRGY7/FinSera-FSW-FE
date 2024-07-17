@@ -1,0 +1,16 @@
+.dropdown-toggle::after {
+  display: none !important; 
+}
+
+.dropdown-toggle:hover {
+  background-color: #0066AE !important;
+  color: white !important;
+}
+
+/* .dropdown-toggle {
+  width: 143px;
+} */
+
+.fa-chevron-down{
+  margin-left: 13px;
+}

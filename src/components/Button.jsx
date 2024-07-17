@@ -7,8 +7,7 @@ const ButtonPrimary = ({ children, style, ...props }) => {
     return (
         <>
             <Button className='button-beranda' variant='$0066AE'>
-                <FontAwesomeIcon icon={faArrowLeft} className="icon" />
-                Beranda adaj
+                { children}
             </Button>
         </>
     );

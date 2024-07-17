@@ -5,15 +5,15 @@ import { Route, Routes } from 'react-router-dom';
 import InfoSaldo from './pages/InfoSaldo';
 import TestComponent from './pages/TestComponent';
 import MutasiRekening from './pages/MutasiRekening';
+import Login from './layout/Login.jsx'
 
 function App() {
   return (
     <Routes>
+      <Route path="/login" element={<Login />} />
       <Route path="/info-saldo" element={<InfoSaldo />} />
       <Route path="/mutasi-rekening" element={<MutasiRekening />} />
-      {/* For Tesing Component */}
       <Route path="/test" element={<TestComponent />} /> 
-      
     </Routes>
   )
 }

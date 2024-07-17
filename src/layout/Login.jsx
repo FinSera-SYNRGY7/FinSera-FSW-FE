@@ -5,7 +5,7 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import logobcawhite from '../assets/img/logobcawhite.png'
 import login from '../assets/img/login.svg';
 import { FormInput } from '../components/FormInput.jsx'
-import ButtonPrimary from '../components/Button.jsx';
+import Button from 'react-bootstrap/Button';
 
 
 const Login = () => {
@@ -105,9 +105,9 @@ const Login = () => {
                             <div style={{ textAlign: 'right', marginBottom: '80px' }}>
                                 <a href="#" style={{ textDecoration: 'none', fontSize: '14px', color: '#0066AE', fontWeight: '700' }}>Lupa Password? </a>
                             </div>
-                            <ButtonPrimary type="submit" style={{ width: '100%', height: '48px', marginBottom: '20px', backgroundColor: '#0066AE', borderRadius: '18px' }}>
+                            <Button className="btn btn-primary" type="submit" style={{ width: '100%', height: '48px', marginBottom: '20px', backgroundColor: '#0066AE', borderRadius: '18px' }}>
                                 Login
-                            </ButtonPrimary>
+                            </Button>
                         </Form>
                     </div>
                 </Col>

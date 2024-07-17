@@ -13,6 +13,7 @@ const ButtonAlt: React.FC<ButtonAltProps> = ({label, onClick, variant}) => {
     btnPrimary: {
       backgroundColor: "#0066AE",
       color: "white",
+      width: "120px",
       borderRadius: "16px",
     },
     btnSecondary: {

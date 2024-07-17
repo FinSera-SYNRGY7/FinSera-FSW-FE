@@ -1,0 +1,32 @@
+.container {
+  margin: 0;
+}
+
+.containerMutation {
+  width: 100%;
+  margin: 92px 0 0 0;
+  padding: 0 80px;
+  align-items: flex-start;
+}
+.containerMutation h1 {
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-family: calibri;
+  font-weight: 700;
+}
+
+.btnSection {
+  justify-content: space-between;
+  width: 1190px;
+}
+
+.containerFilter {
+  margin: 47px 0 64px 0;
+  width: 1190px;
+  justify-content: space-between;
+}
+
+.section1 {
+  width: 50%;
+  justify-content: space-between;
+}

@@ -1,14 +1,9 @@
 import React from "react";
 
-interface ButtonIconProps {
-  label: string,
-  onClick: () => void,
-  variant: "btnDownload2nd" | "btnDownload1st" | "btnAdd" | "btnShare" | "btnBack"
-}
 
-const ButtonIcon: React.FC<ButtonIconProps> = ({label, onClick, variant}) => {
+const ButtonIcon = ({label, onClick, variant}) => {
 
-  const ButtonIconStyle: { [key: string]: React.CSSProperties }  = {
+  const ButtonIconStyle  = {
     btnDownload2nd: {
       padding: "12px 41px",
       backgroundColor: "white",
@@ -79,7 +74,7 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({label, onClick, variant}) => {
     }
   }
 
-  const getIconClass = (variant: string) => {
+  const getIconClass = (variant) => {
     switch (variant) {
       case "btnDownload2nd":
       case "btnDownload1st":

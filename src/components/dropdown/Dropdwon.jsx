@@ -2,18 +2,8 @@ import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import "./DropdownStyle.css"
 
-interface Option {
-  value: string;
-  label: string;
-}
 
-interface BtnDropdownProps {
-  options: Option[];
-  onOptionSelect: (value: string) => void;
-  title: string;
-}
-
-const BtnDropdown: React.FC<BtnDropdownProps> = ({
+const BtnDropdown = ({
   options,
   onOptionSelect,
   title,

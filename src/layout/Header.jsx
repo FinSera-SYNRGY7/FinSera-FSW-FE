@@ -10,9 +10,9 @@ import Button from "react-bootstrap/Button";
 
 
 
-import logobcablue from '../assets/img/logobcablue.png'
-import logoAlert from '../assets/logo/alert.png'
-import logoProfile from '../assets/logo/profile.png'
+import logobcablue from '@/assets/img/logobcablue.png'
+import logoAlert from '@/assets/logo/alert.png'
+import logoProfile from '@/assets/logo/profile.png'
 
 
 

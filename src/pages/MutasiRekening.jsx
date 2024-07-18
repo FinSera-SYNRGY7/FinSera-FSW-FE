@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import Layout from "../layout/Layout";
-import ButtonIcon from "../components/ButtonIcon";
-import ButtonAlt from "../components/ButtonAlt";
-import CardMutation from "../components/CardMutation";
-import BtnDropdown from "../components/dropdown/Dropdwon";
+import Layout from "@/layout/Layout";
+import ButtonIcon from "@/components/ButtonIcon";
+import ButtonAlt from "@/components/ButtonAlt";
+import CardMutation from "@/components/CardMutation";
+import BtnDropdown from "@/components/dropdown/Dropdwon";
 import "./MutasiRekening.css";
 
-const MutasiRekening: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
+const MutasiRekening = () => {
+  const [selectedOption, setSelectedOption] = useState("");
 
-  const handleOptionSelect = (value: string) => {
+  const handleOptionSelect = (value) => {
     setSelectedOption(value);
     console.log("Selected option:", value);
   };
@@ -26,7 +26,7 @@ const MutasiRekening: React.FC = () => {
         <h1>Mutasi Rekening</h1>
         <div className="d-flex flex-row btnSection">
           <ButtonIcon
-            label="Back Button"
+            label="Beranda"
             onClick={() => console.log("Outline Add Button Clicked")}
             variant="btnBack"
           />

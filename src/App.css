@@ -41,9 +41,9 @@
   z-index: 1000;
 }
 
-.button-beranda .icon {
+.button-beranda {
   margin-right: 0.5rem;
-  background-color: #0066AE;
+  /* background-color: #0066AE; */
 
 }
 
@@ -78,4 +78,9 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.card-img-info-saldo {
+  /* height: 100px; */
+  width: 10px;
 }

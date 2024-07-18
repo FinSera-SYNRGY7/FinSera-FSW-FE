@@ -1,0 +1,35 @@
+.containecard {
+    justify-content: space-between;
+    padding: 30px 84px;
+    width: 1190px;
+    border: 2px solid #F5F5F5;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.Container {
+    margin-bottom: "41px";
+}
+
+.title {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0 0 3px 0;
+}
+
+.txn {
+    font-weight: 700;
+    font-size: 20px;
+    margin: 0;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0;
+    color: color;
+}
+
+.text {
+    margin: "15px 0 0 0"
+}

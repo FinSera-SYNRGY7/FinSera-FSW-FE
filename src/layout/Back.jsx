@@ -6,7 +6,7 @@ function Back() {
     return (
         <>
             <Button variant="outline-primary">
-                <FontAwesomeIcon icon={faArrowLeft} className="icon" />
+                <FontAwesomeIcon icon={faArrowLeft} className="button-beranda" />
                 Beranda
             </Button>{' '}
         </>

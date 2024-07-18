@@ -2,11 +2,11 @@ import { useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
-import InfoSaldo from './pages/InfoSaldo';
-import TestComponent from './pages/TestComponent';
-import MutasiRekening from './pages/MutasiRekening';
-import Login from './pages/Login.jsx'
-import Relog from './pages/Relog.jsx'
+import InfoSaldo from '@/pages/InfoSaldo';
+import TestComponent from '@/pages/TestComponent';
+import MutasiRekening from '@/pages/MutasiRekening';
+import Login from '@/pages/Login.jsx'
+import Relog from '@/pages/Relog.jsx'
 
 function App() {
   return (

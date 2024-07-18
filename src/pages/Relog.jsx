@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 
-import logobcawhite from '../assets/img/logobcawhite.png'
-import login from '../assets/img/login.svg';
+import logobcawhite from '@/assets/img/logobcawhite.png'
+import login from '@/assets/img/login.svg';
 import Button from 'react-bootstrap/Button';
-import { PinInput } from '../components/PinInput';
+import { PinInput } from '@/components/PinInput';
 
 const Relog = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import BtnDropdown from "../components/dropdown/Dropdwon";
-import ButtonIcon from "../components/ButtonIcon";
-import ButtonAlt from "../components/ButtonAlt";
-import CardMutation from "../components/CardMutation";
+import BtnDropdown from "@/components/dropdown/Dropdwon";
+import ButtonIcon from "@/components/ButtonIcon";
+import ButtonAlt from "@/components/ButtonAlt";
+import CardMutation from "@/components/CardMutation";
 
 const TestComponent = () => {
   const [selectedOption, setSelectedOption] = useState("");

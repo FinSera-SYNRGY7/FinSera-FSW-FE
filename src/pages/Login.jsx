@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Container, Row, Col, Form } from 'react-bootstrap';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
-import logobcawhite from '../assets/img/logobcawhite.png'
-import login from '../assets/img/login.svg';
-import { FormInput } from '../components/FormInput.jsx'
+import logobcawhite from '@/assets/img/logobcawhite.png'
+import login from '@/assets/img/login.svg';
+import { FormInput } from '@/components/FormInput.jsx'
 import Button from 'react-bootstrap/Button';
 
 

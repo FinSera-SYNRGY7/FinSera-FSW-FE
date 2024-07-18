@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Layout from "../layout/Layout";
-import ButtonIcon from "../components/ButtonIcon";
-import ButtonAlt from "../components/ButtonAlt";
-import CardMutation from "../components/CardMutation";
-import BtnDropdown from "../components/dropdown/Dropdwon";
+import Layout from "@/layout/Layout";
+import ButtonIcon from "@/components/ButtonIcon";
+import ButtonAlt from "@/components/ButtonAlt";
+import CardMutation from "@/components/CardMutation";
+import BtnDropdown from "@/components/dropdown/Dropdwon";
 import "./MutasiRekening.css";
 
 const MutasiRekening = () => {

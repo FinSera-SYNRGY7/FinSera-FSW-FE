@@ -4,6 +4,9 @@ import React from "react";
 const ButtonIcon = ({label, onClick, variant}) => {
 
   const ButtonIconStyle  = {
+    containerButton: {
+      width: "100%",
+    },
     btnDownload2nd: {
       padding: "12px 41px",
       backgroundColor: "white",
@@ -49,7 +52,7 @@ const ButtonIcon = ({label, onClick, variant}) => {
       justifyContent: "flex-start",
       border: "none",
       borderRadius: "16px",
-      width: "888px"
+      width: "87.5%"
     },
     btnAdd: {
       padding: "12px 22px",
@@ -91,10 +94,12 @@ const ButtonIcon = ({label, onClick, variant}) => {
   }
 
   return (
-    <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick}>
+    <div className="d-flex" style={ButtonIconStyle.containerButton}>
+      <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick}>
       <i className={getIconClass(variant)} style={ButtonIconStyle.icon}></i>
       <p style={ButtonIconStyle.text}>{label}</p>
     </button>
+    </div>
   )
 }
 

@@ -1,9 +1,9 @@
 import React from "react";
 
 
-const ButtonIcon = ({label, onClick, variant}) => {
+const ButtonIcon = ({ label, onClick, variant }) => {
 
-  const ButtonIconStyle  = {
+  const ButtonIconStyle = {
     btnDownload2nd: {
       padding: "12px 41px",
       backgroundColor: "white",
@@ -70,7 +70,7 @@ const ButtonIcon = ({label, onClick, variant}) => {
       margin: "0 0 0 20px",
       fontWeight: 700,
       fontSize: "16px",
-      fontFamily:"calibri"
+      fontFamily: "calibri"
     }
   }
 

@@ -1,0 +1,33 @@
+.filterDate {
+  width: 143px;
+}
+
+.example-custom-input {
+  padding: 12px 20px;
+  border-radius: 16px;
+  color: #0066AE;
+  border: 2px solid #0066AE;
+  background-color: white;
+  margin-bottom: 8px;
+}
+
+.example-custom-input.selected {
+  color: white;
+  background-color: #0066AE;
+}
+
+.filterDate p {
+  font-family: calibri;
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
+.example-custom-input:hover {
+  color: White !important;
+  background-color: #0066AE !important;
+}
+
+.fa-chevron-up {
+  margin-left: 12.5px;
+}

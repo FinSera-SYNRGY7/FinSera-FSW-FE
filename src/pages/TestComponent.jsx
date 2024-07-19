@@ -3,6 +3,7 @@ import BtnDropdown from "@/components/dropdown/Dropdwon";
 import ButtonIcon from "@/components/ButtonIcon";
 import ButtonAlt from "@/components/ButtonAlt";
 import CardMutation from "@/components/CardMutation";
+import FilterDate from "@/components/filterDate/FilterDate";
 
 const TestComponent = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -21,6 +22,7 @@ const TestComponent = () => {
   return (
     <div style={{ marginLeft: "80px" }}>
       <h3>Variant ButtonIcon</h3>
+      <FilterDate />
       <ButtonIcon
         label="Download"
         onClick={() => console.log("Solid Download Clicked")}

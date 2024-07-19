@@ -58,7 +58,7 @@ const ButtonIcon = ({label, onClick, variant}) => {
       padding: "12px 22px",
       backgroundColor: "white",
       color: "#0066AE",
-      width: "235px",
+      width: "240px",
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
@@ -95,7 +95,7 @@ const ButtonIcon = ({label, onClick, variant}) => {
 
   return (
     <div className="d-flex" style={ButtonIconStyle.containerButton}>
-      <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick}>
+      <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick} aria-label={label}>
       <i className={getIconClass(variant)} style={ButtonIconStyle.icon}></i>
       <p style={ButtonIconStyle.text}>{label}</p>
     </button>

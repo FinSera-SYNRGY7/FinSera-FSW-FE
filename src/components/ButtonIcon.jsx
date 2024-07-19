@@ -91,7 +91,7 @@ const ButtonIcon = ({label, onClick, variant}) => {
   }
 
   return (
-    <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick}>
+    <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick} aria-label={label}>
       <i className={getIconClass(variant)} style={ButtonIconStyle.icon}></i>
       <p style={ButtonIconStyle.text}>{label}</p>
     </button>

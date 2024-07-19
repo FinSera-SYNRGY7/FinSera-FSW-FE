@@ -46,7 +46,7 @@ const CardMutation = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
         <p style={cardMutationStyle.text}>{typeTXN}</p>
       </div>
       <div className="content2 d-flex flex-column align-items-end">
-        <h2 style={cardMutationStyle.price}>{nominal}</h2>
+        <h2 style={cardMutationStyle.price} aria-label="seratus ribu">{nominal}</h2>
         <p style={cardMutationStyle.text}>{time}</p>
       </div>
     </div>

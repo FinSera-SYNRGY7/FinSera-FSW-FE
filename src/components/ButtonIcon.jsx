@@ -55,7 +55,7 @@ const ButtonIcon = ({label, onClick, variant}) => {
       padding: "12px 22px",
       backgroundColor: "white",
       color: "#0066AE",
-      width: "235px",
+      width: "240px",
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",

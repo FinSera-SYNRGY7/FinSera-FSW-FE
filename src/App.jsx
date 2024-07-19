@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes } from 'react-router-dom';
@@ -7,6 +6,7 @@ import TestComponent from '@/pages/TestComponent';
 import MutasiRekening from '@/pages/MutasiRekening';
 import Login from '@/pages/Login.jsx'
 import Relog from '@/pages/Relog.jsx'
+import TransferAntarBank from './pages/TransferAntarBank';
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
       <Route path="/relog" element={<Relog />} />
       <Route path="/info-saldo" element={<InfoSaldo />} />
       <Route path="/mutasi-rekening" element={<MutasiRekening />} />
+      <Route path="/transfer-antar-bank" element={<TransferAntarBank />} />
       <Route path="/test" element={<TestComponent />} /> 
     </Routes>
   )

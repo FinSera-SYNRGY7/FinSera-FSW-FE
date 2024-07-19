@@ -7,7 +7,7 @@ const CardMutation = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
     containecard: {
       justifyContent: 'space-between',
       padding: '30px 84px',
-      width: '1190px',
+      width: '100%',
       border: '2px solid #F5F5F5',
       boxShadow: "0 4px 5px rgba(0, 0, 0, 0.1)",
       borderRadius: "10px"
@@ -34,11 +34,15 @@ const CardMutation = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
     },
     text: {
       margin: "15px 0 0 0"
+    },
+    containerMutation: {
+      width: "100%",
     }  
   }
 
  return (
-  <div className="d-flex flex-column align-items-start" style={cardMutationStyle.Container}>
+  <div style={cardMutationStyle.containerMutation}>
+    <div className="d-flex flex-column align-items-start" style={cardMutationStyle.Container}>
     <h2 style={cardMutationStyle.title}>{dateTXN}</h2>
     <div className="containerCard d-flex flex-row" style={cardMutationStyle.containecard}>
       <div className="content1 d-flex flex-column align-items-start">
@@ -50,6 +54,7 @@ const CardMutation = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
         <p style={cardMutationStyle.text}>{time}</p>
       </div>
     </div>
+  </div>
   </div>
  )
 }

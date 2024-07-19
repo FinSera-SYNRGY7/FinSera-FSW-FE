@@ -4,14 +4,21 @@ import ButtonIcon from "@/components/ButtonIcon";
 import ButtonAlt from "@/components/ButtonAlt";
 import CardMutation from "@/components/CardMutation";
 import BtnDropdown from "@/components/dropdown/Dropdwon";
-import "./MutasiRekening.css";
+import FilterDate from "@/components/filterDate/FilterDate";
+import imgEmptyData from "@/assets/img/No data-pana 1.png";
+import "@/pages/MutasiRekening.css";
 
 const MutasiRekening = () => {
   const [selectedOption, setSelectedOption] = useState("");
+  const [emptyData, setEmptyData] = useState(false);
 
   const handleOptionSelect = (value) => {
     setSelectedOption(value);
     console.log("Selected option:", value);
+  };
+
+  const handleEmptyData = () => {
+    setEmptyData(true);
   };
 
   const options = [
@@ -31,16 +38,16 @@ const MutasiRekening = () => {
             variant="btnBack"
           />
           <BtnDropdown
-              options={options}
-              onOptionSelect={handleOptionSelect}
-              title="No Rekening"
-            />
+            options={options}
+            onOptionSelect={handleOptionSelect}
+            title="No Rekening"
+          />
         </div>
         <div className="d-flex flex-row containerFilter">
           <div className="section1 d-flex flex-row">
             <ButtonAlt
               label="Hari ini"
-              onClick={() => console.log("secondary Button")}
+              onClick={() => handleEmptyData()}
               variant="btnSecondary"
             />
             <ButtonAlt
@@ -53,45 +60,56 @@ const MutasiRekening = () => {
               onClick={() => console.log("secondary Button")}
               variant="btnSecondary"
             />
-            <BtnDropdown
-              options={options}
-              onOptionSelect={handleOptionSelect}
-              title="Tanggal"
-            />
+            <FilterDate />
           </div>
           <div className="section2">
-            <ButtonIcon
-              label="Download"
-              onClick={() => console.log("Solid Download Clicked")}
-              variant="btnDownload2nd"
-            />
+            {!emptyData ? (
+              <>
+                <ButtonIcon
+                  label="Download"
+                  onClick={() => console.log("Solid Download Clicked")}
+                  variant="btnDownload2nd"
+                />
+              </>
+            ) : (
+              ""
+            )}
           </div>
         </div>
-        <div className="d-flex flex-column">
-        <CardMutation
-          color="red"
-          dateTXN="7 juli 2024"
-          noTXN="121313112343111 DBT4"
-          nominal="- Rp. 200.000"
-          time="11:12:21 WIB"
-          typeTXN="Uang Keluar"
-        />
-        <CardMutation
-          color="red"
-          dateTXN="5 juli 2024"
-          noTXN="12142332343111 DBT4"
-          nominal="- Rp. 100.000"
-          time="11:12:21 WIB"
-          typeTXN="Uang Keluar"
-        />
-        <CardMutation
-          color="#12D79C"
-          dateTXN="1 juli 2024"
-          noTXN="531313112343111 DBT4"
-          nominal="+ Rp. 2.100.000"
-          time="11:12:21 WIB"
-          typeTXN="Uang Keluar"
-        />
+        <div className="d-flex flex-column containerCard">
+          {!emptyData ? (
+            <>
+              <CardMutation
+                color="red"
+                dateTXN="7 juli 2024"
+                noTXN="121313112343111 DBT4"
+                nominal="- Rp. 200.000"
+                time="11:12:21 WIB"
+                typeTXN="Uang Keluar"
+              />
+              <CardMutation
+                color="red"
+                dateTXN="5 juli 2024"
+                noTXN="12142332343111 DBT4"
+                nominal="- Rp. 100.000"
+                time="11:12:21 WIB"
+                typeTXN="Uang Keluar"
+              />
+              <CardMutation
+                color="#12D79C"
+                dateTXN="1 juli 2024"
+                noTXN="531313112343111 DBT4"
+                nominal="+ Rp. 2.100.000"
+                time="11:12:21 WIB"
+                typeTXN="Uang Keluar"
+              />
+            </>
+          ) : (
+            <div className="emptyData">
+              <img src={imgEmptyData} alt="Data Kosong"></img>
+              <p>Oops! Riwayat mutasi kosong</p>
+            </div>
+          )}
         </div>
       </div>
     </Layout>

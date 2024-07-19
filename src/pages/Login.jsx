@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container, Row, Col, Form } from 'react-bootstrap';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+// import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 import logobcawhite from '@/assets/img/logobcawhite.png'
 import login from '@/assets/img/login.svg';
@@ -100,7 +100,7 @@ const Login = () => {
                                     role="button"
                                     aria-label={passwordVisible ? 'Hide password' : 'Show password'}
                                 >
-                                    {passwordVisible ? <FaEyeSlash /> : <FaEye />}
+                                    {/* {passwordVisible ? <FaEyeSlash /> : <FaEye />} */}
                                 </span>
                             </FormInput>
 

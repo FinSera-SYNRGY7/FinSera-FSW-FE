@@ -1,8 +1,8 @@
 import React from 'react'
-import Layout from '../layout/Layout'
+import Layout from '@/layout/Layout'
 import { Button } from 'react-bootstrap'
-import Back from '../layout/Back'
-import SumberRekening from '../components/SumberRekening'
+import Back from '@/layout/Back'
+import SumberRekening from '@/components/SumberRekening'
 
 export default function InfoSaldo() {
     return (

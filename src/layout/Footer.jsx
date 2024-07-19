@@ -3,11 +3,11 @@ import Container from 'react-bootstrap/Container';
 import Navbar from "react-bootstrap/Navbar";
 import Card from 'react-bootstrap/Card';
 
-import logobcawhite from '../assets/img/logobcawhite.png';
-import logoInstagram from '../assets/logo/instagram.png';
-import logoGmail from '../assets/logo/gmail.png';
-import logoPhone from '../assets/logo/phone.png';
-import logoWhatsapp from '../assets/logo/whatsapp.png';
+import logobcawhite from '@/assets/img/logobcawhite.png';
+import logoInstagram from '@/assets/logo/instagram.png';
+import logoGmail from '@/assets/logo/gmail.png';
+import logoPhone from '@/assets/logo/phone.png';
+import logoWhatsapp from '@/assets/logo/whatsapp.png';
 
 
 

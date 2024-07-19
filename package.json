@@ -1,7 +1,7 @@
 {
   "name": "finsera-fsw",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -17,9 +17,12 @@
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.4",
     "react-dom": "^18.2.0",
+    "react-icon": "^1.0.0",
+    "react-icons": "^5.2.1",
     "react-router-dom": "^6.4.5"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.8",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@vitejs/plugin-react": "^4.2.1",
@@ -28,5 +31,9 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "vite.config.js",
+  "author": "",
+  "license": "ISC"
 }

@@ -1,25 +1,19 @@
 import React from "react";
 
-interface CardMutationProps {
-  color: string;
-  dateTXN: string; //TXN Meaning Transaction
-  noTXN: string; 
-  typeTXN: string;
-  nominal: string;
-  time: string;
-}
 
-const CardMutation: React.FC<CardMutationProps> = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
+
+const CardMutation = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
   const cardMutationStyle = {
     containecard: {
       justifyContent: 'space-between',
-      padding: '30px 36px',
-      width: '751px',
+      padding: '30px 84px',
+      width: '1190px',
       border: '2px solid #F5F5F5',
       boxShadow: "0 4px 5px rgba(0, 0, 0, 0.1)",
       borderRadius: "10px"
     },
     Container: {
+      margin: "0",
       marginBottom: "41px"
     },
     title:{
@@ -44,7 +38,7 @@ const CardMutation: React.FC<CardMutationProps> = ({color, dateTXN, noTXN, typeT
   }
 
  return (
-  <div className="container d-flex flex-column align-items-start" style={cardMutationStyle.Container}>
+  <div className="d-flex flex-column align-items-start" style={cardMutationStyle.Container}>
     <h2 style={cardMutationStyle.title}>{dateTXN}</h2>
     <div className="containerCard d-flex flex-row" style={cardMutationStyle.containecard}>
       <div className="content1 d-flex flex-column align-items-start">

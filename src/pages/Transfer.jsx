@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "./../layout/Layout";
-import InputForm from "../components/Input/index";
 import Button from "../components/Button/index";
+import Card from "./../components/Card/index";
 
 function Transfer() {
   return (
@@ -20,11 +20,23 @@ function Transfer() {
         </Button>
       </div>
       <h3 className="fw-bold mb-3">Transfer Terakhir</h3>
-      <div className="row"></div>
-
-      <Button className={"btn btn-primary col-md-12"} type="button">
-        Lanjutkan
-      </Button>
+      <div className="row mb-5">
+        <div className="col-md-3">
+          <Card className={"shadow p-0 border-0"}></Card>
+        </div>
+        <div className="col-md-3">
+          <Card className={"shadow p-0 border-0"}></Card>
+        </div>
+        <div className="col-md-3">
+          <Card className={"shadow p-0 border-0"}></Card>
+        </div>
+        <div className="col-md-3">
+          <Card className={"shadow p-0 border-0"}></Card>
+        </div>
+      </div>
+      <h3 className="fw-bold mb-3">Daftar Tersimpan</h3>
+      <Card className={"shadow p-0 border-0 mb-3"}></Card>
+      <Card className={"shadow p-0 border-0 mb-3"}></Card>
     </Layout>
   );
 }

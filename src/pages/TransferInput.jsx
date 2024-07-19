@@ -61,7 +61,7 @@ function Transfer() {
           required
         />
         <InputForm.Label to="remember">
-          <p className="form-check-label"> Catatan</p>
+          <p className="form-check-label"> Remember me</p>
         </InputForm.Label>
       </InputForm>
       <Button className={"btn btn-primary col-md-12"} type="button">

@@ -1,5 +1,5 @@
 .dropdown-toggle::after {
-  display: none !important; 
+  display: none !important;
 }
 
 .dropdown-toggle:hover {
@@ -11,6 +11,6 @@
   width: 143px;
 } */
 
-.fa-chevron-down{
+.fa-chevron-down {
   margin-left: 13px;
 }

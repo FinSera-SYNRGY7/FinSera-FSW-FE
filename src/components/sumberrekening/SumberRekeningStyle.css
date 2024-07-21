@@ -1,0 +1,20 @@
+.text-sumber-rekening {
+    font-family: Calibri;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0;
+    padding-right: 100px;
+}
+
+.txt-norek {
+    font-family: Calibri;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0;
+}
+
+.dropdown-sumberrekening {
+    margin-left: 630px;
+}

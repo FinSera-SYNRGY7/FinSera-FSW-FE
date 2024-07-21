@@ -1,8 +1,7 @@
 import React from "react";
 
 
-const ButtonIcon = ({label, onClick, variant}) => {
-
+const ButtonIcon = ({ label, onClick, variant }) => {
   const ButtonIconStyle  = {
     containerButton: {
       width: "100%",
@@ -73,7 +72,7 @@ const ButtonIcon = ({label, onClick, variant}) => {
       margin: "0 0 0 20px",
       fontWeight: 700,
       fontSize: "16px",
-      fontFamily:"calibri"
+      fontFamily: "calibri"
     }
   }
 

@@ -78,3 +78,10 @@
   background-color: #0066AE;
 
 }
+
+  .necktie {
+    width: 100vw;
+    height: 30vh;
+    background-color: #0A3967;
+    z-index: -999;
+  }

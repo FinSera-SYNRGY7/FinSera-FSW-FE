@@ -1,7 +1,7 @@
 import React from "react";
 import Layout from "./../layout/Layout";
 import Button from "../components/Button/index";
-import Card from "./../components/Card/index";
+import { CardHorizontal } from "./../components/Card/index";
 
 function Transfer() {
   return (
@@ -22,21 +22,21 @@ function Transfer() {
       <h3 className="fw-bold mb-3">Transfer Terakhir</h3>
       <div className="row mb-5">
         <div className="col-md-3">
-          <Card className={"shadow p-0 border-0"}></Card>
+          <CardHorizontal className={"shadow p-0 border-0"}></CardHorizontal>
         </div>
         <div className="col-md-3">
-          <Card className={"shadow p-0 border-0"}></Card>
+          <CardHorizontal className={"shadow p-0 border-0"}></CardHorizontal>
         </div>
         <div className="col-md-3">
-          <Card className={"shadow p-0 border-0"}></Card>
+          <CardHorizontal className={"shadow p-0 border-0"}></CardHorizontal>
         </div>
         <div className="col-md-3">
-          <Card className={"shadow p-0 border-0"}></Card>
+          <CardHorizontal className={"shadow p-0 border-0"}></CardHorizontal>
         </div>
       </div>
       <h3 className="fw-bold mb-3">Daftar Tersimpan</h3>
-      <Card className={"shadow p-0 border-0 mb-3"}></Card>
-      <Card className={"shadow p-0 border-0 mb-3"}></Card>
+      <CardHorizontal className={"shadow p-0 border-0 mb-3"}></CardHorizontal>
+      <CardHorizontal className={"shadow p-0 border-0 mb-3"}></CardHorizontal>
     </Layout>
   );
 }

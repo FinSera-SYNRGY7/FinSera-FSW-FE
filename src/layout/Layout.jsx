@@ -5,11 +5,13 @@ import Back from "./Back";
 import SumberRekening from "../components/SumberRekening";
 import Footer from "./Footer";
 
-export default function Layout({ children }) {
+export default function Layout({ children, type }) {
   return (
     <div className="App">
-      <Header />
-      <main className="mx-5 my-5">{children}</main>
+      <Header type={type} />
+      <main className={`mx-5 ${type === "necktie" ? "" : "my-5"}`}>
+        {children}
+      </main>
       <div className="card footer-card">
         <Footer />
       </div>

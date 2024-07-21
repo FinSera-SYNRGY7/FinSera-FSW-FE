@@ -37,6 +37,9 @@
 .card-saldo {
     border-radius: 20px;
     height: 283px;
+    margin-top: 8.5vh;
+    margin-bottom: 20vh;
+    font-family: Calibri;
 }
 
 .text-user {
@@ -44,6 +47,21 @@
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
+}
+
+.text-jumlah-saldo {
+    font-family: Calibri;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.text-no-rek {
+    font-family: Calibri;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    margin-left: 20px;
 }
 
 .bg-saldo {

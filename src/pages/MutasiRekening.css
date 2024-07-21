@@ -18,7 +18,7 @@
 
 .containerInfoSaldo {
   width: 100%;
-  margin: 92px 0 64px 0;
+  margin: 50px 0 64px 0;
   padding: 0 80px;
   align-items: flex-start;
 }
@@ -33,6 +33,10 @@
 .btnSection {
   justify-content: space-between;
   width: 100%;
+}
+
+.btnSection .dropdownMutasiRekening {
+  background-color: black;
 }
 
 .containerFilter {
@@ -59,7 +63,7 @@
   color: #0066AE;
 }
 
-.emptyData img{
+.emptyData img {
   width: 35%;
   margin-bottom: 30px;
 }
@@ -67,4 +71,3 @@
 .emptyData p {
   margin: 0;
 }
-

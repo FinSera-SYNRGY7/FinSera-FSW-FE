@@ -21,7 +21,7 @@ function TransferValid() {
       />
       <div className="row justify-content-between mb-5">
         <h4 className="col-auto">Nominal Transfer</h4>
-        <h4 className="fw-bold col-auto">Rp 2.000.000</h4>
+        <h4 className="fw-bold col-auto">Rp 100.000</h4>
       </div>
       <div className="row justify-content-between mb-5">
         <h4 className="col-auto">Jenis Transfer</h4>

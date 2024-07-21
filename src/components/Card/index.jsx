@@ -84,7 +84,7 @@ export function CardTransfer({ className, first, second }) {
     <div className={`card ${className}`}>
       <div className="row" style={{ height: "10rem" }}>
         <div
-          className={`col-md-2 d-flex align-items-center justify-content-center`}
+          className={`col-md-2 d-flex align-items-center justify-content-center me-auto`}
           style={{
             borderRadius: "5px 100px 100px 5px",
             backgroundColor: "#E4EDFFE5",
@@ -92,16 +92,17 @@ export function CardTransfer({ className, first, second }) {
         >
           <img className="logo" src={logobcablue} alt="" />
         </div>
-        <div className={`col-md-7 d-flex align-items-center`}>
+        <div className={`col-md-8 d-flex align-items-center me-0`}>
           <div className="card-body">
-            <h5 className="card-title">Putri Kusuma</h5>
-            <h6 class="card-subtitle text-body-secondary">Bank BCA</h6>
-            <p className="card-text">
-              <small className="text-body-secondary">
-                Last updated 3 mins ago
-              </small>
-            </p>
+            <h4 className="fw-bold">1234 567 897 890</h4>
+            <h5 class="card-subtitle text-body-secondary">RAMADHAN ADI</h5>
+            <h3 className="fw-bold text-primary">Rp 10.890.500,00</h3>
           </div>
+        </div>
+        <div className={`col-md-1 justify-content-end d-flex me-3 pt-2`}>
+          <a href="">
+            <h5>Ganti</h5>
+          </a>
         </div>
       </div>
     </div>

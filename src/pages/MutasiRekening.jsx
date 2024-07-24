@@ -1,16 +1,18 @@
 import React, { useState } from "react";
 import Layout from "@/layout/Layout";
 import ButtonIcon from "@/components/ButtonIcon";
-import ButtonAlt from "@/components/ButtonAlt";
 import CardMutation from "@/components/CardMutation";
-import BtnDropdown from "@/components/dropdown/Dropdwon";
 import FilterDate from "@/components/filterDate/FilterDate";
 import imgEmptyData from "@/assets/img/No data-pana 1.png";
 import "@/pages/MutasiRekening.css";
+import { ButtonAlt } from "@/components/ButtonAlt";
+import { useNavigate } from "react-router-dom";
+import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown";
 
 const MutasiRekening = () => {
   const [selectedOption, setSelectedOption] = useState("");
   const [emptyData, setEmptyData] = useState(false);
+  const navigate = useNavigate();
 
   const handleOptionSelect = (value) => {
     setSelectedOption(value);
@@ -19,6 +21,10 @@ const MutasiRekening = () => {
 
   const handleEmptyData = () => {
     setEmptyData(true);
+  };
+
+  const handleButtonBack = () => {
+    navigate("/home");
   };
 
   const options = [
@@ -34,13 +40,15 @@ const MutasiRekening = () => {
         <div className="d-flex flex-row btnSection">
           <ButtonIcon
             label="Beranda"
-            onClick={() => console.log("Outline Add Button Clicked")}
+            onClick={() => handleButtonBack()}
             variant="btnBack"
           />
-          <BtnDropdown
+          <DropdownSumberRekening
             options={options}
             onOptionSelect={handleOptionSelect}
-            title="No Rekening"
+            title="Sumber Rekening"
+            subtitle="1234 5678 8765 99"
+            className="dropdownSumberRekening"
           />
         </div>
         <div className="d-flex flex-row containerFilter">

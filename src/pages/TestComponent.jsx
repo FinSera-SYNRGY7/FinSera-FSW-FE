@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import BtnDropdown from "@/components/dropdown/Dropdwon";
 import ButtonIcon from "@/components/ButtonIcon";
-import ButtonAlt from "@/components/ButtonAlt";
+import {ButtonAlt} from "@/components/ButtonAlt";
 import CardMutation from "@/components/CardMutation";
 import FilterDate from "@/components/filterDate/FilterDate";
 

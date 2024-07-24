@@ -54,4 +54,7 @@ const ButtonAlt = ({label, onClick, variant}) => {
   )
 }
 
-export default ButtonAlt;
+
+export {
+  ButtonAlt,
+};

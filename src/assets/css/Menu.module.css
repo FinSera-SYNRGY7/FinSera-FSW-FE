@@ -1,0 +1,28 @@
+.containerServiceMenu {
+  font-family: calibri;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.logoMenu {
+  background-color: #0066AE;
+  border-radius: 50%;
+  height: 7rem;
+  width: 7rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .containerServiceMenu {
+    font-family: calibri;
+    font-weight: 700;
+    font-size: 20px;
+  }
+  .logoMenu{
+    height: 5rem;
+    width: 5rem;
+  }
+  .logoMenu img {
+    width: 40%;
+    height: 40%;
+  }
+}

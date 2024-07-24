@@ -7,11 +7,11 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-
 import logobcablue from "../assets/img/logobcablue.png";
 import logoAlert from "../assets/logo/alert.png";
 import logoProfile from "../assets/logo/profile.png";
 
+//ada perubahan di prop untuk melakukan pengkodisian
 const Header = ({ type }) => {
   return (
     <>

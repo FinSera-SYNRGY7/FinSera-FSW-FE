@@ -1,20 +1,13 @@
 import React from "react";
 
-interface CardMutationProps {
-  color: string;
-  dateTXN: string; //TXN Meaning Transaction
-  noTXN: string; 
-  typeTXN: string;
-  nominal: string;
-  time: string;
-}
 
-const CardMutation: React.FC<CardMutationProps> = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
+
+const CardMutation = ({color, dateTXN, noTXN, typeTXN, nominal, time }) => {
   const cardMutationStyle = {
     containecard: {
       justifyContent: 'space-between',
       padding: '30px 84px',
-      width: '1190px',
+      width: '100%',
       border: '2px solid #F5F5F5',
       boxShadow: "0 4px 5px rgba(0, 0, 0, 0.1)",
       borderRadius: "10px"
@@ -41,11 +34,15 @@ const CardMutation: React.FC<CardMutationProps> = ({color, dateTXN, noTXN, typeT
     },
     text: {
       margin: "15px 0 0 0"
+    },
+    containerMutation: {
+      width: "100%",
     }  
   }
 
  return (
-  <div className="d-flex flex-column align-items-start" style={cardMutationStyle.Container}>
+  <div style={cardMutationStyle.containerMutation}>
+    <div className="d-flex flex-column align-items-start" style={cardMutationStyle.Container}>
     <h2 style={cardMutationStyle.title}>{dateTXN}</h2>
     <div className="containerCard d-flex flex-row" style={cardMutationStyle.containecard}>
       <div className="content1 d-flex flex-column align-items-start">
@@ -53,10 +50,11 @@ const CardMutation: React.FC<CardMutationProps> = ({color, dateTXN, noTXN, typeT
         <p style={cardMutationStyle.text}>{typeTXN}</p>
       </div>
       <div className="content2 d-flex flex-column align-items-end">
-        <h2 style={cardMutationStyle.price}>{nominal}</h2>
+        <h2 style={cardMutationStyle.price} aria-label="seratus ribu">{nominal}</h2>
         <p style={cardMutationStyle.text}>{time}</p>
       </div>
     </div>
+  </div>
   </div>
  )
 }

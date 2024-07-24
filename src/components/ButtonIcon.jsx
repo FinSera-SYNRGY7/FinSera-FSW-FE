@@ -1,14 +1,11 @@
 import React from "react";
 
-interface ButtonIconProps {
-  label: string,
-  onClick: () => void,
-  variant: "btnDownload2nd" | "btnDownload1st" | "btnAdd" | "btnShare" | "btnBack"
-}
 
-const ButtonIcon: React.FC<ButtonIconProps> = ({label, onClick, variant}) => {
-
-  const ButtonIconStyle: { [key: string]: React.CSSProperties }  = {
+const ButtonIcon = ({ label, onClick, variant }) => {
+  const ButtonIconStyle  = {
+    containerButton: {
+      width: "100%",
+    },
     btnDownload2nd: {
       padding: "12px 41px",
       backgroundColor: "white",
@@ -54,13 +51,13 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({label, onClick, variant}) => {
       justifyContent: "flex-start",
       border: "none",
       borderRadius: "16px",
-      width: "888px"
+      width: "87.5%"
     },
     btnAdd: {
       padding: "12px 22px",
       backgroundColor: "white",
       color: "#0066AE",
-      width: "235px",
+      width: "240px",
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",
@@ -75,11 +72,11 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({label, onClick, variant}) => {
       margin: "0 0 0 20px",
       fontWeight: 700,
       fontSize: "16px",
-      fontFamily:"calibri"
+      fontFamily: "calibri"
     }
   }
 
-  const getIconClass = (variant: string) => {
+  const getIconClass = (variant) => {
     switch (variant) {
       case "btnDownload2nd":
       case "btnDownload1st":
@@ -96,10 +93,12 @@ const ButtonIcon: React.FC<ButtonIconProps> = ({label, onClick, variant}) => {
   }
 
   return (
-    <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick}>
+    <div className="d-flex" style={ButtonIconStyle.containerButton}>
+      <button className="btn" style={ButtonIconStyle[variant]} onClick={onClick} aria-label={label}>
       <i className={getIconClass(variant)} style={ButtonIconStyle.icon}></i>
       <p style={ButtonIconStyle.text}>{label}</p>
     </button>
+    </div>
   )
 }
 

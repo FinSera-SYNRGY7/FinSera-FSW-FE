@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import BtnDropdown from "../components/dropdown/Dropdwon";
-import ButtonIcon from "../components/ButtonIcon";
-import ButtonAlt from "../components/ButtonAlt";
-import CardMutation from "../components/CardMutation";
+import BtnDropdown from "@/components/dropdown/Dropdwon";
+import ButtonIcon from "@/components/ButtonIcon";
+import {ButtonAlt} from "@/components/ButtonAlt";
+import CardMutation from "@/components/CardMutation";
+import FilterDate from "@/components/filterDate/FilterDate";
 
-const TestComponent: React.FC = () => {
-  const [selectedOption, setSelectedOption] = useState<string>("");
+const TestComponent = () => {
+  const [selectedOption, setSelectedOption] = useState("");
 
-  const handleOptionSelect = (value: string) => {
+  const handleOptionSelect = (value) => {
     setSelectedOption(value);
     console.log("Selected option:", value);
   };
@@ -21,6 +22,7 @@ const TestComponent: React.FC = () => {
   return (
     <div style={{ marginLeft: "80px" }}>
       <h3>Variant ButtonIcon</h3>
+      <FilterDate />
       <ButtonIcon
         label="Download"
         onClick={() => console.log("Solid Download Clicked")}

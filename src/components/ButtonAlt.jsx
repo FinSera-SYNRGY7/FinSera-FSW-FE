@@ -1,19 +1,18 @@
 import React from "react";
 
 
-interface ButtonAltProps {
-  label: string,
-  onClick: () => void,
-  variant: "btnPrimary" | "btnSecondary" | "btnSecondaryIcon"
-}
 
-const ButtonAlt: React.FC<ButtonAltProps> = ({label, onClick, variant}) => {
+const ButtonAlt = ({label, onClick, variant}) => {
 
-  const ButtonAltStyle : { [key: string]: React.CSSProperties } = {
+  const ButtonAltStyle = {
+    containerButton : {
+      width: "100%",
+    },
     btnPrimary: {
       backgroundColor: "#0066AE",
       color: "white",
-      width: "120px",
+      width: "80%",
+      padding: "12px 0",
       borderRadius: "16px",
     },
     btnSecondary: {
@@ -22,7 +21,7 @@ const ButtonAlt: React.FC<ButtonAltProps> = ({label, onClick, variant}) => {
       color: "#0066AE",
       borderRadius: "16px",
       border: "2px solid #0066AE",
-      width: "120px",
+      width: "80%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -33,7 +32,7 @@ const ButtonAlt: React.FC<ButtonAltProps> = ({label, onClick, variant}) => {
       color: "#0066AE",
       borderRadius: "16px",
       border: "2px solid #0066AE",
-      width: "120px",
+      width: "80%",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -47,10 +46,15 @@ const ButtonAlt: React.FC<ButtonAltProps> = ({label, onClick, variant}) => {
   }
 
   return (
-    <button className="btn" style={ButtonAltStyle[variant]} onClick={onClick}>
+    <div style={ButtonAltStyle.containerButton}>
+      <button className="btn" style={ButtonAltStyle[variant]} onClick={onClick}>
       <p style={ButtonAltStyle.text}>{label}</p>
     </button>
+    </div>
   )
 }
 
-export default ButtonAlt;
+
+export {
+  ButtonAlt,
+};

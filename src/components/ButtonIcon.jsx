@@ -4,7 +4,9 @@ import React from "react";
 const ButtonIcon = ({ label, onClick, variant }) => {
   const ButtonIconStyle  = {
     containerButton: {
-      width: "100%",
+      width: variant === "btnAdd" ? "28%" : "100%",
+      display: "flex",
+      justifyContent: variant === "btnAdd" ? "flex-end" : "flex-start",
     },
     btnDownload2nd: {
       padding: "12px 41px",
@@ -57,7 +59,7 @@ const ButtonIcon = ({ label, onClick, variant }) => {
       padding: "12px 22px",
       backgroundColor: "white",
       color: "#0066AE",
-      width: "240px",
+      width: "100%",
       display: "flex",
       flexDirection: "row",
       justifyContent: "center",

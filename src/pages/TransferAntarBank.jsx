@@ -4,6 +4,7 @@ import ButtonIcon from "@/components/ButtonIcon";
 import CardTransfer from "@/components/CardTransfer";
 import profile from "@/assets/img/profile.png";
 import notransferdata from "@/assets/img/notransferdata.png";
+import { useNavigate } from "react-router-dom";
 
 // ini masih data dummy ngarang aja
 let dataLastTf = [
@@ -51,6 +52,12 @@ const dataSavedList = [
 ];
 
 const TransferAntarBank = () => {
+  const navigate = useNavigate();
+
+  const handleButtonBack = () => {
+    navigate("/home");
+  };
+
   return (
     <Layout>
       <>
@@ -77,7 +84,7 @@ const TransferAntarBank = () => {
             >
               <ButtonIcon
                 label="Beranda"
-                onClick={() => console.log("Outline Add Button Clicked")}
+                onClick={() => handleButtonBack()}
                 variant="btnBack"
               />
               <ButtonIcon

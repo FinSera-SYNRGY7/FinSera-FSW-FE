@@ -5,7 +5,7 @@ import { CardHorizontal } from "./../components/Card/index";
 
 function Transfer() {
   return (
-    <Layout>
+    <Layout className="haveStyle">
       <h3 className="fw-bold mb-3">Transfer Sesama Bank</h3>
       <div className="row justify-content-between mb-5">
         <Button

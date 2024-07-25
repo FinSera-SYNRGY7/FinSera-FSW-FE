@@ -5,7 +5,7 @@ import Button from "./../components/Button/index";
 
 function TransferValid() {
   return (
-    <Layout>
+    <Layout className={"haveStyle"}>
       <h3 className="fw-bold mb-3">Konfirmasi Transaksi</h3>
       <Button
         className={"col-md-12 btn-primary align-text-left mb-5"}

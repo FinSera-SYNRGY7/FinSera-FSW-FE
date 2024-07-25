@@ -6,7 +6,7 @@ import { BiBorderRadius } from "react-icons/bi";
 
 function TransferSuccess() {
   return (
-    <Layout type={"necktie"}>
+    <Layout type={"necktie"} className={"haveStyle"}>
       <div style={{ marginTop: "-20vh" }}></div>
       <CardVertical
         className={"shadow p-0 border-0 mb-5 p-5"}

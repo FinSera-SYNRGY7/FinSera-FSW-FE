@@ -31,6 +31,12 @@
   grid-gap: 4.25rem;
 }
 
+@media only screen and (max-width: 900px) {
+  .cardsTXN {
+    grid-gap: 2rem;
+  }
+}
+
 @media only screen and (max-width: 600px) {
   .containerHome {
     margin: 0 25px;
@@ -43,13 +49,18 @@
     font-size: 24px;
   }
 
+  .titleServiceMenu p {
+    margin: 0;
+    font-size: 20px;
+  }
+
   .cardsMenu {
     margin: 0 25px 87px 25px;
   }
 
   .containerCardsTXN {
     margin: 0 25px 88px 25px;
-    font-size: 24px;
+    font-size: 20px;
   }
 
   .containerCardsTXN a {
@@ -58,7 +69,7 @@
   }
 
   .cardsTXN {
-    grid-gap: 3rem;
+    grid-gap: 2rem;
   }
 }
 

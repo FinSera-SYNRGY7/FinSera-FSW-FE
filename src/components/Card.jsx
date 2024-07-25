@@ -6,7 +6,7 @@ import styles from "@/assets/css/Cards.module.css";
 const CardTransaction = ({titleTXN, typeTXN, priceTXN}) => {
   return (
     <Card
-      className={styles.cardHistory}
+      className={`${styles.cardHistory}`}
       role="listitem"
       aria-labelledby={`judul-transaksi-${titleTXN}`}
       aria-describedby={`detail-transaksi-${titleTXN}`}

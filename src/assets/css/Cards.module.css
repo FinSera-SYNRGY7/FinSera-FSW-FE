@@ -20,10 +20,17 @@
 }
 
 @media only screen and (max-width: 600px) {
+  .cardHistory img {
+    width: 14px;
+  }
   .cardHistory {
     padding: 12px 14px 6px 14px;
   }
   .cardTitle{
-    margin-bottom: 6px;
+    font-size: 14px;
+    margin: 0;
+  }
+  .cardPrice{
+    font-size: 12px;
   }
 }

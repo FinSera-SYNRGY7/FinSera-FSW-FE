@@ -4,6 +4,10 @@
   font-size: 24px;
 }
 
+.containerServiceMenu p{
+  text-align: center;
+}
+
 .logoMenu {
   background-color: #0066AE;
   border-radius: 50%;
@@ -11,7 +15,7 @@
   width: 7rem;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 900px) {
   .containerServiceMenu {
     font-family: calibri;
     font-weight: 700;
@@ -20,6 +24,22 @@
   .logoMenu{
     height: 5rem;
     width: 5rem;
+  }
+  .logoMenu img {
+    width: 40%;
+    height: 40%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .containerServiceMenu {
+    font-family: calibri;
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .logoMenu{
+    height: 3.5rem;
+    width: 3.5rem;
   }
   .logoMenu img {
     width: 40%;

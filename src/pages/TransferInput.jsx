@@ -11,7 +11,7 @@ function Transfer() {
   ];
 
   return (
-    <Layout>
+    <Layout className={"haveStyle"}>
       <h3 className="fw-bold mb-3">Transfer Sesama Bank</h3>
       <Button
         className={"col-md-12 btn-primary align-text-left"}

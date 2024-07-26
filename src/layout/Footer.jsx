@@ -8,6 +8,7 @@ import logoInstagram from '@/assets/logo/instagram.png';
 import logoGmail from '@/assets/logo/gmail.png';
 import logoPhone from '@/assets/logo/phone.png';
 import logoWhatsapp from '@/assets/logo/whatsapp.png';
+import styles from '@/assets/css/Footer.module.css';
 
 
 
@@ -15,22 +16,22 @@ const Footer = () => {
   return (
     <div>
       <Navbar>
-        <Container fluid>
-          <Card.Footer style={{ borderRight: '1px solid white', borderTop: 'none', paddingRight: '50px' }}>
+        <Container fluid className={styles.containerFluid}>
+          <Card.Footer className={styles.cardFooter} style={{ borderRight: '1px solid white', borderTop: 'none', paddingRight: '50px' }}>
             <img src={logobcawhite} className="logo-footer" alt="bca logo" />
           </Card.Footer>
-          <div className='d-flex justify-content-between' style={{ flex: '1' }}>
-            <div className='text-start text-white ms-4'>
+          <div className={` ${styles.bodyContent} d-flex justify-content-between`} style={{ flex: '1' }}>
+            <div className={` ${styles.textStart} text-start text-white ms-4`}>
               <div>
-                Need Help ?
+                Butuh Bantuan ?
               </div>
               <div>
                 <small>
-                  We are here to help you. Just contact us.
+                Kami di sini untuk membantu Anda. Cukup hubungi kami.
                 </small>
               </div>
             </div>
-            <div className='logo-list d-flex align-items-center' style={{ gap: '20px' }}>
+            <div className={` ${styles.logoList} logo-list d-flex align-items-center`} style={{ gap: '20px' }}>
               <img className="footer-icon-phone" src={logoPhone} alt="logo phone" />
               <img className="footer-icon" src={logoWhatsapp} alt="logo wa" />
               <img className="footer-icon" src={logoInstagram} alt="logo ig" />

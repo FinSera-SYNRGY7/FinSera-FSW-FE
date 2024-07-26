@@ -66,6 +66,7 @@
 .footer-card {
   padding: 2em;
   background-color: #0A3967 !important;
+  border-radius: 0 !important;
 }
 
 .navbar-header {
@@ -90,3 +91,22 @@
     background-color: #0A3967;
     z-index: -999;
   }
+
+  /* mediaquery tablet */
+  @media only screen and (max-width: 900px) {
+
+    /* set mediaquery for footer */
+    .footer-card {
+      padding: 20px;
+    }
+  }
+
+
+/* mediaquery android */
+@media only screen and (max-width: 600px) {
+
+  /* set mediaquery for footer */
+  .footer-card {
+    padding: 10px;
+  }
+}

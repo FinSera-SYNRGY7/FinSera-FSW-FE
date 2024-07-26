@@ -1,0 +1,64 @@
+@media only screen and (max-width: 900px) {
+  .containerFluid {
+    padding: 0;
+  }
+  .cardFooter {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    width: 100px;
+  }
+  .cardFooter img {
+    width: 70%;
+  }
+  .bodyContent {
+    font-size: 14px;
+  }
+  .bodyContent small {
+    font-size: 11px;
+    font-weight: normal;
+  }
+
+  .logoList {
+    gap: 15px !important;
+    justify-content: end;
+    width: 30%;
+  }
+
+  .logoList img {
+    width: 15% !important;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .bodyContent {
+    font-size: 9px;
+  }
+
+  .textStart{
+    margin-left: 16px !important;
+  }
+
+  .cardFooter {
+    padding: 0 !important;
+    width: 64px;
+  }
+  .cardFooter img {
+    width: 70%;
+  }
+  .bodyContent small {
+    font-size: 6px;
+    font-weight: normal;
+  }
+
+  .logoList {
+    gap: 15px !important;
+    justify-content: end;
+    width: 100px;
+  }
+
+  .logoList img {
+    width: 12% !important;
+    height: auto;
+  }
+}

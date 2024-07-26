@@ -1,0 +1,129 @@
+.leftColumn {
+    background-color: #0A3967;
+    height: 100vh;
+}
+
+.logoContainer {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logoWhite {
+    width: 100px;
+    height: auto;
+}
+
+.logoBlue {
+    display: none;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loginImage {
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+}
+
+.rightColumn {
+    background-color: #FFFFFF;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formContainer {
+    width: 452px;
+}
+
+.title {
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.subtitle {
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #4f4f4f;
+    text-align: center;
+}
+
+.pinInput {
+    margin-top: 40px;
+    margin-bottom: 50px;
+}
+
+.forgotPIN {
+    text-decoration: none;
+    margin-top: 60px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #4f4f4f;
+    display: block;
+    text-align: center;
+}
+
+.loginButton {
+    width: 100%;
+    height: 48px;
+    margin-top: 110px;
+    background-color: #0066AE;
+    border-radius: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+    .leftColumn {
+        display: none;
+    }
+    .logoBlue {
+        display: block;
+        position: absolute;
+        top: 38px;
+        left: 24px;
+        width: 100px;
+        height: auto;
+        z-index: 1000;
+    }
+    .rightColumn {
+        margin-top: -80px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .leftColumn {
+        display: none;
+    }
+    .rightColumn {
+        margin-top: -80px;
+        width: 100vh;
+    }
+    .formContainer {
+        width: 80%;
+    }
+    .logoBlue {
+        display: block;
+        position: absolute;
+        top: 40px; 
+        left: 40px; 
+        width: 150px;
+    }
+    .title {
+        font-size: 36px;
+    }
+    .subtitle {
+        font-size: 20px;
+    }
+    .forgotPIN {
+        font-size: 18px;
+    }
+}

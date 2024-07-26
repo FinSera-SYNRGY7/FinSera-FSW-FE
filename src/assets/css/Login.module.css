@@ -1,0 +1,129 @@
+.leftColumn {
+    background-color: #0A3967;
+    height: 100vh;
+}
+
+.logoContainer {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+}
+
+.logoWhite {
+    width: 100px;
+    height: auto;
+}
+
+.logoBlue {
+    display: none;
+}
+
+.imageContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.loginImage {
+    width: 500px;
+    height: 500px;
+    object-fit: contain;
+}
+
+.rightColumn {
+    background-color: #FFFFFF;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formContainer {
+    width: 452px;
+}
+
+.loginTitle {
+    font-size: 28px;
+    font-weight: 900;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.formLabel {
+    text-align: left;
+    display: block;
+    font-weight: 500;
+}
+
+.formControl {
+    width: 100%;
+    height: 48px;
+    border-radius: 18px;
+}
+
+.passwordToggle {
+    position: absolute;
+    right: 15px;
+    top: 70%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.forgotPassword {
+    text-align: right;
+    margin-bottom: 80px;
+}
+
+.forgotPasswordLink {
+    text-decoration: none;
+    font-size: 14px;
+    color: #0066AE;
+    font-weight: 700;
+}
+
+.loginButton {
+    width: 100%;
+    height: 48px;
+    margin-bottom: 20px;
+    background-color: #0066AE;
+    border-radius: 18px;
+}
+
+@media only screen and (max-width: 600px) {
+    .leftColumn {
+        display: none;
+    }
+    .logoBlue {
+        display: block;
+        position: absolute;
+        top: 38px;
+        left: 24px;
+        width: 100px;
+        height: auto;
+        z-index: 1000;
+    }
+    .rightColumn {
+        margin-top: -80px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .leftColumn {
+        display: none;
+    }
+    .rightColumn {
+        width: 100vh;
+    }
+    .formContainer {
+        width: 80%;
+    }
+    .logoBlue {
+        display: block;
+        position: absolute;
+        top: 40px; 
+        left: 40px; 
+        width: 150px;
+    }
+
+}

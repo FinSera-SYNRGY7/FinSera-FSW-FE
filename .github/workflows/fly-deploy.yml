@@ -4,7 +4,7 @@ name: Fly Deploy Production
 on:
   push:
     branches:
-      - main
+      - fix/error-deploy
 jobs:
   deploy:
     name: Deploy app

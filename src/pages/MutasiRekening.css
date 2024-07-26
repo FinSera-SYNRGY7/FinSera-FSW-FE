@@ -1,14 +1,27 @@
-.container {
-  margin: 0;
-}
+
 
 .containerMutation {
   width: 100%;
   margin: 92px 0 0 0;
+  padding: 0 64px;
+  align-items: flex-start;
+}
+
+.containerMutation h1 {
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-family: calibri;
+  font-weight: 700;
+}
+
+.containerInfoSaldo {
+  width: 100%;
+  margin: 50px 0 64px 0;
   padding: 0 80px;
   align-items: flex-start;
 }
-.containerMutation h1 {
+
+.containerInfoSaldo h1 {
   margin-bottom: 32px;
   font-size: 28px;
   font-family: calibri;
@@ -18,6 +31,10 @@
 .btnSection {
   justify-content: space-between;
   width: 100%;
+}
+
+.btnSection .dropdownMutasiRekening {
+  background-color: black;
 }
 
 .containerFilter {
@@ -30,7 +47,6 @@
   width: 50%;
   justify-content: space-between;
 }
-
 
 .containerCard {
   width: 100%;
@@ -45,7 +61,7 @@
   color: #0066AE;
 }
 
-.emptyData img{
+.emptyData img {
   width: 35%;
   margin-bottom: 30px;
 }

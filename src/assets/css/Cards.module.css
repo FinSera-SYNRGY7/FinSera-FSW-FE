@@ -1,0 +1,36 @@
+.cardHistory {
+  width: 100%;
+  padding: 20px 15px 20px 35px;
+  background-color: #0A3967;
+  color: white;
+  font-weight: 700;
+}
+
+.cardTitle {
+  font-size: 16px;
+}
+
+.cardText {
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.cardPrice {
+  font-size: 14px;
+}
+
+@media only screen and (max-width: 600px) {
+  .cardHistory img {
+    width: 14px;
+  }
+  .cardHistory {
+    padding: 12px 14px 6px 14px;
+  }
+  .cardTitle{
+    font-size: 14px;
+    margin: 0;
+  }
+  .cardPrice{
+    font-size: 12px;
+  }
+}

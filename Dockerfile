@@ -24,6 +24,7 @@ RUN apt-get update -qq && \
 COPY --chown=node:node . .
 COPY --link package.json ./
 RUN npm install
+RUN npm ci --include=dev
 
 # Copy application code
 COPY --link . .

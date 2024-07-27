@@ -23,7 +23,7 @@ RUN apt-get update -qq && \
 # Install node modules
 COPY --chown=node:node . .
 COPY --link package.json ./
-RUN npm ci --include=dev
+RUN npm install
 
 # Copy application code
 COPY --link . .

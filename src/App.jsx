@@ -26,7 +26,7 @@ function App() {
       <Route path="/info-saldo" element={<InfoSaldo />} />
       <Route path="/mutasi-rekening" element={<MutasiRekening />} />
       <Route path="/test" element={<TestComponent />} />
-      <Route path="/transfer" element={<Transfer />} />
+      <Route path="/transfer-sesama-bank" element={<Transfer />} />
       <Route path="/transferInput" element={<TransferInput />} />
       <Route path="/transferError" element={<TransferError />} />
       <Route path="/transferSuccess" element={<TransferSuccess />} />

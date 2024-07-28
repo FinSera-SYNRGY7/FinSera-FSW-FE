@@ -5,6 +5,8 @@ import SumberRekening from '@/components/sumberrekening/SumberRekening'
 import CardInfoSaldo from '@/components/cardinfosaldo/CardInfoSaldo'
 import ButtonIcon from '@/components/ButtonIcon'
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 
 
@@ -31,7 +33,10 @@ export default function InfoSaldo() {
     return (
         <Layout>
             <div className="d-flex flex-column containerInfoSaldo">
-                <h1>Informasi Saldo</h1>
+                <div className="d-flex w-100 align-items-center mb-5">
+                    <a href="" className="text-black d-inline d-md-none"><FontAwesomeIcon icon={faArrowLeft} /></a>
+                    <h1 className="flex-grow-1 text-md-start text-center p-0 m-0" aria-label="Informasi Saldo">Informasi Saldo</h1>
+                </div>
                 {/* <div className='d-flex flex-row'>
                     <ButtonIcon
                         label="Beranda"
@@ -49,6 +54,8 @@ export default function InfoSaldo() {
                         label="Beranda"
                         onClick={() => console.log("Outline Add Button Clicked")}
                         variant="btnBack"
+                        className="d-none d-md-inline-block"
+                        style={{ display: "none" }}
                     />
                     <DropdownSumberRekening
                         options={options}

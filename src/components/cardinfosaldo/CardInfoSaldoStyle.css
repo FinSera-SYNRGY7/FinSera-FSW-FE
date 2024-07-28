@@ -67,3 +67,88 @@
 .bg-saldo {
     background-color: #0A3967;
 }
+
+.bg-logo-bca {
+    height: 90%;
+    width: auto;
+    right: 10px;
+    top: 15px;
+}
+
+.containerInfoSaldo {
+    width: 100%;
+    margin: 50px 0 64px 0;
+    padding: 0 80px;
+    align-items: flex-start;
+}
+
+.containerInfoSaldo h1 {
+    margin-bottom: 32px;
+    font-size: 28px;
+    font-family: calibri;
+    font-weight: 700;
+}
+
+@media only screen and (max-width: 900px) {}
+
+@media only screen and (max-width: 600px) {
+    .card-saldo {
+        border-radius: 20px;
+        height: auto;
+        margin-top: 8.5vh;
+        margin-bottom: 20vh;
+        font-family: Calibri;
+    }
+
+    .text-user {
+        font-family: Calibri;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        margin-bottom: 15px;
+
+    }
+
+    .text-jumlah-saldo {
+        font-family: Calibri;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    .text-no-rek {
+        font-family: Calibri;
+        font-size: 12px;
+        font-style: normal;
+        margin-left: 10px;
+        padding-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .text-saldo {
+        font-size: 13px;
+        margin-bottom: 1px;
+    }
+
+    .bg-logo-mastercard {
+        height: 30px;
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+
+    .profile-name {
+        padding: 0;
+        margin: 0;
+    }
+
+    .containerInfoSaldo {
+        padding: 0 20px;
+    }
+
+    .bg-logo-bca {
+        height: 70%;
+        width: auto;
+        right: 10px;
+        top: 20px;
+    }
+}

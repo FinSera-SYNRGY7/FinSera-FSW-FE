@@ -1,7 +1,7 @@
 .cardHistory {
   width: 100%;
   padding: 20px 15px 20px 35px;
-  background-color: #0A3967;
+  background-color: #0a3967;
   color: white;
   font-weight: 700;
 }
@@ -19,6 +19,47 @@
   font-size: 14px;
 }
 
+/* cards Mutation */
+.containerMutation {
+  margin-bottom: 41px !important;
+}
+.mutationTitle {
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0 0 3px 0;
+}
+.containerCardMutation {
+ padding: 30px 84px;
+ border: 2px solid #F5F5F5;
+ box-shadow: 0 4px 5px rgba(0, 0, 0, 0.1);
+ border-radius: 10px;
+}
+
+.content1 p {
+  margin: 15px 0 0 0;
+}
+
+.textTXN {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.textPrice {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 900px){
+  /* card mutation */
+  .containerCardMutation {
+    padding: 30px 36px;
+  }
+  .content2 p {
+    margin-bottom: 10px;
+  }
+
+}
+
 @media only screen and (max-width: 600px) {
   .cardHistory img {
     width: 14px;
@@ -26,11 +67,34 @@
   .cardHistory {
     padding: 12px 14px 6px 14px;
   }
-  .cardTitle{
+  .cardTitle {
     font-size: 14px;
     margin: 0;
   }
-  .cardPrice{
+  .cardPrice {
     font-size: 12px;
+  }
+
+  /* card Mutation */
+  .mutationTitle {
+    font-size: 16px;
+  }
+  .textTXN {
+    font-size: 14px !important;
+  }
+  .containerCardMutation {
+    padding: 16px 20px;
+  }
+  .content1 p {
+    margin-top: 10px;
+  }
+  .content1 p, .content2 p {
+    font-size: 10px;
+  }
+  .content2 p {
+    margin-bottom: 8px;
+  }
+  .textPrice {
+    font-size: 16px !important;
   }
 }

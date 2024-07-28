@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./FilterDateStyle.css";
+import styles from "@/assets/css/FilterDate.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -16,13 +16,13 @@ const FilterDate = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="containerDate">
-      <dic className="d-flex flex-column filterDate">
-      <button className="example-custom-input" onClick={handleClick}>
-        <p>Tanggal  <i className={`fa fa-chevron-${isOpen ? "up" : "down"}`}></i></p>
+    <div className={styles.containerDate}>
+      <dic className={`d-flex flex-column ${styles.filterDate}`}>
+      <button className={styles.exampleCustomInput} onClick={handleClick} aria-haspopup="true" aria-expanded={isOpen} aria-controls="datePicker">
+        <p aria-label="Tanggal">Tanggal <i className={`fa fa-chevron-${isOpen ? "up" : "down"} ${isOpen ? styles.faChevronUp : ""}`}></i></p>
       </button>
       {isOpen && (
-        <div className="formDate">
+        <div id="datePicker" className="formDate">
           <DatePicker selected={startDate} onChange={handleChange} inline />
         </div>
       )}

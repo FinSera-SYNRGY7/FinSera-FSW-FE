@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import InfoSaldo from '@/pages/InfoSaldo';
 import TestComponent from '@/pages/TestComponent';
-import MutasiRekening from '@/pages/MutasiRekening';
+import AccountMutation from '@/pages/AccountMutation';
 import Login from '@/pages/Login.jsx'
 import Relog from '@/pages/Relog.jsx'
 import TransferAntarBank from './pages/TransferAntarBank';
@@ -24,7 +24,7 @@ function App() {
       <Route path="/relog" element={<Relog />} />
       <Route path="/home" element={<Homepage />} />
       <Route path="/info-saldo" element={<InfoSaldo />} />
-      <Route path="/mutasi-rekening" element={<MutasiRekening />} />
+      <Route path="/mutasi-rekening" element={<AccountMutation />} />
       <Route path="/test" element={<TestComponent />} />
       <Route path="/transfer-sesama-bank" element={<Transfer />} />
       <Route path="/transferInput" element={<TransferInput />} />

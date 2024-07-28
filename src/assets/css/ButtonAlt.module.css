@@ -1,0 +1,135 @@
+/* Button Icon */
+.containerButton.btnAdd {
+  width: 24%;
+  justify-content: flex-end;
+  padding: 12px 22px;
+  border:#0066AE 2px solid;
+}
+
+.containerButton.default {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.btnDownload2nd {
+  padding: 12px 41px;
+  background-color: white;
+  color: #0066AE;
+  width: 182px;
+  border: 2px solid #0066AE;
+  border-radius: 16px;
+}
+
+.btnDownload1st, .btnShare {
+  padding: 12px 0;
+  background-color: #0066AE;
+  color: white;
+  width: 27%;
+  border: none;
+  border-radius: 16px;
+}
+
+.btnBack {
+  padding: 12px 0 12px 25px;
+  background-color: #0066AE;
+  color: white;
+  justify-content: flex-start !important;
+  width: 87.5%;
+  border: none;
+  border-radius: 16px;
+}
+
+.btnAdd {
+  background-color: white;
+  padding: 0;
+  color: #0066AE;
+  border: none;
+  border-radius: 16px;
+  width: 100%;
+}
+.icon {
+  width: 15px;
+}
+.textLabel {
+  margin: 0 0 0 20px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Button Alter */
+.containerButtonAlt {
+  width: 100%;
+}
+
+.btnAltPrimary {
+  padding: 12px 0;
+  background-color: #0066AE;
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+}
+
+.btnAltSecondary, .btnAltSecondaryIcon {
+  padding: 12px 0;
+  background-color: white;
+  color: #0066AE;
+  width: 80%;
+  border: 2px solid #0066AE;
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.containerButtonAlt p {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  /* Button Icon */
+  .btnDownload2nd {
+    padding: 12px 20px;
+    width: 162px;
+  }
+  .textLabel {
+    margin-left: 15px;
+    font-size: 14px;
+  }
+
+  /* Button Alter */
+  .containerButtonAlt p {
+    font-size: 14px;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  /* Button Icon */
+  .btnBack {
+    background-color: white;
+    color: black;
+    padding-left: 0;
+    /* width: 20%; */
+  }
+  .btnBack .textLabel {
+    display: none;
+  }
+
+
+  /* Button Alter */
+  .containerButtonAlt p {
+    font-size: 11px;
+  }
+  .btnAltSecondary, .btnAltSecondaryIcon, .btnAltPrimary {
+    padding: 8px 0;
+  }
+  .btnAltSecondary, .btnAltSecondaryIcon {
+    border-radius: 14px;
+  }
+  .btnAltPrimary {
+    border-radius: 10px;
+  }
+}

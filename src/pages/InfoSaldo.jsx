@@ -5,7 +5,7 @@ import SumberRekening from '@/components/sumberrekening/SumberRekening'
 import CardInfoSaldo from '@/components/cardinfosaldo/CardInfoSaldo'
 import { ButtonIcon } from "@/components/ButtonAlt";
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown";
-import styles from "../assets/css/InfoSaldo.module.css";
+import styles from "@/assets/css/InfoSaldo.module.css";
 
 
 

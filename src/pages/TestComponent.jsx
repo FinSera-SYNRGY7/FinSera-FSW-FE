@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import BtnDropdown from "@/components/dropdown/Dropdwon";
-import ButtonIcon from "@/components/ButtonIcon";
-import {ButtonAlt} from "@/components/ButtonAlt";
-import CardMutation from "@/components/CardMutation";
-import FilterDate from "@/components/filterDate/FilterDate";
+import { ButtonAlt, ButtonIcon} from "@/components/ButtonAlt";
+import { CardMutation } from "@/components/Card";
+import FilterDate from "@/components/FilterDate";
 
 const TestComponent = () => {
   const [selectedOption, setSelectedOption] = useState("");
@@ -53,17 +52,17 @@ const TestComponent = () => {
         <ButtonAlt
           label="Secondary"
           onClick={() => console.log("secondary Button")}
-          variant="btnSecondary"
+          variant="btnAltSecondary"
         />
         <ButtonAlt
           label="Primary"
           onClick={() => console.log("secondary Button")}
-          variant="btnPrimary"
+          variant="btnAltPrimary"
         />
         <ButtonAlt
           label="SecondaryIcon"
           onClick={() => console.log("secondary Button")}
-          variant="btnSecondaryIcon"
+          variant="btnAltSecondaryIcon"
         />
       </div>
       <h3>Dropdown</h3>

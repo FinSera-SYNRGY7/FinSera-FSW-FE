@@ -1,0 +1,50 @@
+@media only screen and (max-width: 900px) {
+  .navbarHeader{
+    padding: 20px 0;
+  }
+  .containerFluid {
+    padding: 0 20px;
+  }
+  .navbarBrand {
+    padding: 0;
+    margin: 0;
+    width: 100px;
+  }
+  .navbarBrand img {
+    padding: 0;
+    width: 70%;
+    height: auto;
+  }
+  .logoList {
+    gap: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    width: 15%;
+  }
+  .logoList img {
+    width: 80% !important;
+    align-content: center;
+    height: auto;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .navbarHeader{
+    padding: 10px 0;
+  }
+  .containerFluid {
+    padding: 5px 10px;
+  }
+  .navbarBrand {
+    width: 64px;
+  }
+  .navbarBrand img {
+    width: 70%;
+    padding-bottom: 4px;
+  }
+  .formControl {
+    height: 24px;
+    font-size: 12px;
+  }
+}

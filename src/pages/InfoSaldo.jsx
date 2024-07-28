@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import Layout from '@/layout/Layout'
 import SumberRekening from '@/components/sumberrekening/SumberRekening'
 import CardInfoSaldo from '@/components/cardinfosaldo/CardInfoSaldo'
-import ButtonIcon from '@/components/ButtonIcon'
+import { ButtonIcon } from "@/components/ButtonAlt";
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown";
+import styles from "../assets/css/InfoSaldo.module.css";
 
 
 
@@ -30,7 +31,7 @@ export default function InfoSaldo() {
 
     return (
         <Layout>
-            <div className="d-flex flex-column containerInfoSaldo">
+            <div className={`d-flex flex-column ${styles.containerInfoSaldo}`}>
                 <h1>Informasi Saldo</h1>
                 {/* <div className='d-flex flex-row'>
                     <ButtonIcon
@@ -44,7 +45,7 @@ export default function InfoSaldo() {
                     />
                 </div> */}
 
-                <div className="d-flex flex-row btnSection">
+                <div className={`d-flex flex-row ${styles.btnSection}`}>
                     <ButtonIcon
                         label="Beranda"
                         onClick={() => console.log("Outline Add Button Clicked")}

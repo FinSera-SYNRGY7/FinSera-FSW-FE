@@ -17,7 +17,7 @@ const FilterDate = () => {
   };
   return (
     <div className={styles.containerDate}>
-      <dic className={`d-flex flex-column ${styles.filterDate}`}>
+      <div className={`d-flex flex-column ${styles.filterDate}`}>
       <button className={styles.exampleCustomInput} onClick={handleClick} aria-haspopup="true" aria-expanded={isOpen} aria-controls="datePicker">
         <p aria-label="Tanggal">Tanggal <i className={`fa fa-chevron-${isOpen ? "up" : "down"} ${isOpen ? styles.faChevronUp : ""}`}></i></p>
       </button>
@@ -26,7 +26,7 @@ const FilterDate = () => {
           <DatePicker selected={startDate} onChange={handleChange} inline />
         </div>
       )}
-    </dic>
+    </div>
     </div>
   );
 };

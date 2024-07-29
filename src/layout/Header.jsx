@@ -22,7 +22,7 @@ const Header = ({ type }) => {
             <img src={logobcablue} className="logo" alt="bca logo" />{" "}
           </Navbar.Brand>
           <Nav className="me-auto">
-            <Form inline>
+            <Form>
               <Row>
                 <Col xs="auto">
                   <Form.Control

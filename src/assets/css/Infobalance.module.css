@@ -1,70 +1,113 @@
-@media only screen and (max-width: 900px) {
-    .containerFluid {
-        padding: 0;
-    }
+.cardBalance {
+    border-radius: 20px;
+    height: 283px;
+    margin-top: 8.5vh;
+    margin-bottom: 20vh;
+    font-family: Calibri;
+    background-color: #0A3967;
+}
 
-    .cardFooter {
-        padding-right: 0 !important;
-        padding-left: 0 !important;
-        width: 100px;
-    }
+.textUser {
+    font-family: Calibri;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+}
 
-    .cardFooter img {
-        width: 70%;
-    }
+.textAmountBalance {
+    font-family: Calibri;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 700;
+}
 
-    .bodyContent {
-        font-size: 14px;
-    }
+.textNoRek {
+    font-family: Calibri;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 700;
+    margin-left: 20px;
+}
 
-    .bodyContent small {
-        font-size: 11px;
-        font-weight: normal;
-    }
+.bgLogoBca {
+    height: 90%;
+    width: auto;
+    right: 10px;
+    top: 15px;
+}
 
-    .logoList {
-        gap: 15px !important;
-        justify-content: end;
-        width: 30%;
-    }
+.containerInfoSaldo {
+    width: 100%;
+    margin: 50px 0 64px 0;
+    padding: 0 80px;
+    align-items: flex-start;
+}
 
-    .logoList img {
-        width: 15% !important;
-        height: auto;
-    }
+.containerInfoSaldo h1 {
+    margin-bottom: 32px;
+    font-size: 28px;
+    font-family: calibri;
+    font-weight: 700;
 }
 
 @media only screen and (max-width: 600px) {
-    .bodyContent {
-        font-size: 9px;
-    }
-
-    .textStart {
-        margin-left: 16px !important;
-    }
-
-    .cardFooter {
-        padding: 0 !important;
-        width: 64px;
-    }
-
-    .cardFooter img {
-        width: 70%;
-    }
-
-    .bodyContent small {
-        font-size: 6px;
-        font-weight: normal;
-    }
-
-    .logoList {
-        gap: 15px !important;
-        justify-content: end;
-        width: 100px;
-    }
-
-    .logoList img {
-        width: 12% !important;
+    .cardBalance {
+        border-radius: 20px;
         height: auto;
+        margin-top: 8.5vh;
+        margin-bottom: 20vh;
+        font-family: Calibri;
+    }
+
+    .textUser {
+        font-family: Calibri;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        margin-bottom: 15px;
+
+    }
+
+    .textAmountBalance {
+        font-family: Calibri;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    .textNoRek {
+        font-family: Calibri;
+        font-size: 12px;
+        font-style: normal;
+        margin-left: 10px;
+        padding-bottom: 15px;
+        font-weight: 700;
+    }
+
+    .textBalance {
+        font-size: 13px;
+        margin-bottom: 1px;
+    }
+
+    .bgLogoMastercard {
+        height: 30px;
+        margin-bottom: 20px;
+        padding-left: 0;
+    }
+
+    .profile-name {
+        padding: 0;
+        margin: 0;
+    }
+
+    .containerInfoSaldo {
+        padding: 0 20px;
+    }
+
+    .bgLogoBca {
+        height: 70%;
+        width: auto;
+        right: 10px;
+        top: 20px;
     }
 }

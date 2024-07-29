@@ -1,26 +1,27 @@
-.card-saldo {
+.cardBalance {
     border-radius: 20px;
     height: 283px;
     margin-top: 8.5vh;
     margin-bottom: 20vh;
     font-family: Calibri;
+    background-color: #0A3967;
 }
 
-.text-user {
+.textUser {
     font-family: Calibri;
     font-size: 28px;
     font-style: normal;
     font-weight: 700;
 }
 
-.text-jumlah-saldo {
+.textAmountBalance {
     font-family: Calibri;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
 }
 
-.text-no-rek {
+.textNoRek {
     font-family: Calibri;
     font-size: 28px;
     font-style: normal;
@@ -28,7 +29,7 @@
     margin-left: 20px;
 }
 
-.bg-logo-bca {
+.bgLogoBca {
     height: 90%;
     width: auto;
     right: 10px;
@@ -50,7 +51,7 @@
 }
 
 @media only screen and (max-width: 600px) {
-    .card-saldo {
+    .cardBalance {
         border-radius: 20px;
         height: auto;
         margin-top: 8.5vh;
@@ -58,7 +59,7 @@
         font-family: Calibri;
     }
 
-    .text-user {
+    .textUser {
         font-family: Calibri;
         font-size: 20px;
         font-style: normal;
@@ -67,14 +68,14 @@
 
     }
 
-    .text-jumlah-saldo {
+    .textAmountBalance {
         font-family: Calibri;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
     }
 
-    .text-no-rek {
+    .textNoRek {
         font-family: Calibri;
         font-size: 12px;
         font-style: normal;
@@ -83,12 +84,12 @@
         font-weight: 700;
     }
 
-    .text-saldo {
+    .textBalance {
         font-size: 13px;
         margin-bottom: 1px;
     }
 
-    .bg-logo-mastercard {
+    .bgLogoMastercard {
         height: 30px;
         margin-bottom: 20px;
         padding-left: 0;
@@ -103,7 +104,7 @@
         padding: 0 20px;
     }
 
-    .bg-logo-bca {
+    .bgLogoBca {
         height: 70%;
         width: auto;
         right: 10px;

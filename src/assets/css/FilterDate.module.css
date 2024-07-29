@@ -1,0 +1,43 @@
+.filterDate {
+  width: 143px;
+}
+.filterDate p {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+.exampleCustomInput {
+  padding: 12px 20px;
+  border-radius: 16px;
+  color: #0066AE;
+  border: 2px solid #0066AE;
+  background-color: white;
+  margin-bottom: 8px;
+}
+.exampleCustomInput.selected {
+  background-color: #0066AE;
+  color: white;
+}
+.exampleCustomInput:hover {
+  color: white !important;
+  background-color: #0066AE !important;
+}
+.faChevronUp{
+  margin-left: 12.5px !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .filterDate {
+    width: 80px;
+  }
+  .filterDate p {
+    font-size: 11px;
+  }
+  .exampleCustomInput {
+    padding: 8px 8px !important;
+    border-radius: 12px;
+  }
+  .exampleCustomInput i {
+    margin-left: 6px;
+  }
+}

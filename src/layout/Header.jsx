@@ -10,14 +10,15 @@ import Button from "react-bootstrap/Button";
 import logobcablue from "../assets/img/logobcablue.png";
 import logoAlert from "../assets/logo/alert.png";
 import logoProfile from "../assets/logo/profile.png";
+import styles from "../assets/css/Header.module.css";
 
 //ada perubahan di prop untuk melakukan pengkodisian
 const Header = ({ type }) => {
   return (
     <>
-      <Navbar expand="lg" className={`navbar-header`}>
-        <Container fluid>
-          <Navbar.Brand href="#home">
+      <Navbar expand="lg" className={`${styles.navbarHeader} navbar-header`}>
+        <Container fluid className={styles.containerFluid}>
+          <Navbar.Brand href="/home" className={styles.navbarBrand}>
             <img src={logobcablue} className="logo" alt="bca logo" />{" "}
           </Navbar.Brand>
           <Nav className="me-auto">
@@ -27,14 +28,14 @@ const Header = ({ type }) => {
                   <Form.Control
                     type="text"
                     placeholder="Cari di sini"
-                    className=" mr-sm-2"
+                    className={`${styles.formControl} mr-sm-2`}
                   />
                 </Col>
               </Row>
             </Form>
           </Nav>
           <Nav
-            className="logo-list d-flex align-items-center"
+            className={` ${styles.logoList} logo-list d-flex align-items-center`}
             style={{ gap: "20px" }}
           >
             <Nav.Link href="#alert">

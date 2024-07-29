@@ -1,0 +1,125 @@
+.containerMutation {
+  width: 100%;
+  margin: 92px 0 0 0;
+  padding: 0 64px;
+  align-items: flex-start;
+}
+
+.containerMutation h1 {
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.buttonAdroid{
+  display: none;
+}
+
+.buttonWeb {
+  width: 100%;
+}
+
+.containerFilter {
+  margin: 47px 0 64px 0;
+}
+
+.emptyData {
+  margin-top: 52px;
+  margin-bottom: 197px;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #0066AE;
+}
+
+.emptyData img {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.emptyData p {
+  margin: 0;
+}
+
+.btnDownloadAndro {
+  display: none;
+}
+
+@media only screen and (max-width: 900px) {
+  .containerMutation {
+    padding: 0 25px;
+  }
+  .containerMutation h1 {
+    font-size: 22px;
+  }
+  .emptyData{
+    font-size: 20px;
+  }
+  .emptyData img {
+    width: 70%;
+    margin-bottom: 30px;
+  }
+  
+  .emptyData p {
+    margin: 0;
+  }
+
+  .section1 {
+    width: 65% !important;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  .containerMutation {
+    width: 100%;
+    margin-top: 50px;
+    justify-content: center;
+  }
+  .containerMutation h1 {
+    font-size: 20px;
+    margin-bottom: 30px;
+    width: 100%;
+    text-align: center;
+  }
+  .titleMutation {
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  .titleMutation h1{
+    margin-bottom: 0;
+  }
+  .buttonAdroid {
+    display: flex !important;
+  }
+  .buttonWeb {
+    display: none;
+  }
+  .containerFilter {
+    margin: 20px 0 32px 0;
+  }
+  .section1 {
+    width: 100% !important;
+  }
+  .section2 {
+    display: none;
+  }
+  .emptyData{
+    font-size: 16px;
+  }
+  .emptyData img {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .emptyData p {
+    margin: 0;
+  }
+  .btnDownloadAndro {
+    display: flex;
+    width: 100%;
+    margin-bottom: 100px;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from "@/layout/Layout";
-import ButtonIcon from "@/components/ButtonIcon";
+import { ButtonIcon } from "../components/ButtonAlt";
 import CardTransfer from "@/components/CardTransfer";
 import profile from "@/assets/img/profile.png";
 import notransferdata from "@/assets/img/notransferdata.png";

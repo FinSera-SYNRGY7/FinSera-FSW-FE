@@ -96,6 +96,12 @@ a, p, h1, h2, h3, h4, h5, h6 {
     z-index: -999;
   }
 
+/* input date */
+.react-datepicker {
+    position: absolute !important;
+    z-index: 9;
+}
+
   /* mediaquery tablet */
   @media only screen and (max-width: 900px) {
 
@@ -112,5 +118,10 @@ a, p, h1, h2, h3, h4, h5, h6 {
   /* set mediaquery for footer */
   .footer-card {
     padding: 10px;
+  }
+
+  /* input date */
+  .react-datepicker {
+    right: 6%;
   }
 }

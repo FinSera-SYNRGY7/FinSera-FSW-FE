@@ -1,3 +1,12 @@
+.navbarHeader {
+  position: fixed;
+  z-index: 10;
+}
+
+.blankSpace {
+  margin-top: 126px;
+}
+
 @media only screen and (max-width: 900px) {
   .navbarHeader{
     padding: 20px 0;
@@ -27,6 +36,9 @@
     align-content: center;
     height: auto;
   }
+  .blankSpace {
+    margin-top: 81px;
+  }  
 }
 
 @media only screen and (max-width: 600px) {
@@ -46,5 +58,11 @@
   .formControl {
     height: 24px;
     font-size: 12px;
+  }
+  .blankSpace {
+    margin-top: 70px;
+  }
+  .logoList {
+    gap: 15px !important;
   }
 }

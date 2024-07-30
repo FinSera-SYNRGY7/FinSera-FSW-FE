@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import Layout from "@/layout/Layout";
-import { ButtonIcon } from "../components/ButtonAlt";
+import { ButtonIcon } from "@/components/ButtonAlt";
 import CardTransfer from "@/components/CardTransfer";
 import profile from "@/assets/img/profile.png";
 import notransferdata from "@/assets/img/notransferdata.png";
 import { useNavigate } from "react-router-dom";
+import styles from "@/assets/css/InterbankTransfer.module.css";
 
 // ini masih data dummy ngarang aja
 let dataLastTf = [
@@ -62,18 +63,17 @@ const TransferAntarBank = () => {
     <Layout>
       <>
         <div
-          className="d-flex flex-column"
-          style={{
-            paddingLeft: "64px",
-            paddingRight: "64px",
-            margin: "80px 0",
-            gap: "70px",
-            width: "100%"
-          }}
-        >
+          className={`${styles.containerTansfer} d-flex flex-column`}>
           {/* transfer antar bank */}
-          <div className="d-flex flex-column gap-3 w-100">
-            <div className=" d-flex align-items-start">
+          <div className={`d-flex flex-column gap-3 w-100 ${styles.containerTitle}`}>
+            <div className={`d-flex flex-row ${styles.titleInterbank}`}>
+              <div className={styles.buttonAdroid}>
+                <ButtonIcon
+                  label="Beranda"
+                  onClick={() => handleButtonBack()}
+                  variant="btnBack"
+                />
+              </div>
               <h2 style={{ fontWeight: 700, fontSize: "28px" }}>
                 Transfer Antar Bank
               </h2>
@@ -82,11 +82,13 @@ const TransferAntarBank = () => {
               className="d-flex flex-row justify-content-between"
               style={{ height: "50px" }}
             >
-              <ButtonIcon
-                label="Beranda"
-                onClick={() => handleButtonBack()}
-                variant="btnBack"
-              />
+              <div className={styles.buttonWeb}>
+                <ButtonIcon
+                  label="Beranda"
+                  onClick={() => handleButtonBack()}
+                  variant="btnBack"
+                />
+              </div>
               <ButtonIcon
                 label="Tambah Penerima Baru"
                 onClick={() => console.log("Outline Add Button Clicked")}

@@ -114,9 +114,20 @@
     padding-left: 0;
     /* width: 20%; */
   }
+  .textLabel {
+    font-size: 11px;
+  }
   .btnBack .textLabel {
     display: none;
   }
+  .containerButton.btnAdd {
+    width: fit-content;
+    padding: 8px;
+  }
+  .btnAdd .icon {
+    font-size: 12px;
+  }
+
 
 
   /* Button Alter */

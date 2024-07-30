@@ -7,10 +7,10 @@ import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import logobcablue from "../assets/img/logobcablue.png";
-import logoAlert from "../assets/logo/alert.png";
-import logoProfile from "../assets/logo/profile.png";
-import styles from "../assets/css/Header.module.css";
+import logobcablue from "@/assets/img/logobcablue.png";
+import logoAlert from "@/assets/logo/alert.png";
+import logoProfile from "@/assets/logo/profile.png";
+import styles from "@/assets/css/Header.module.css";
 
 //ada perubahan di prop untuk melakukan pengkodisian
 const Header = ({ type }) => {
@@ -52,6 +52,7 @@ const Header = ({ type }) => {
         </Container>
       </Navbar>
       {type === "necktie" && <div className="necktie"></div>}
+      <div className={styles.blankSpace}></div>
     </>
   );
 };

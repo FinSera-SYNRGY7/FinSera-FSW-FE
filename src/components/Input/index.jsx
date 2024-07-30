@@ -1,9 +1,12 @@
 import React from "react";
+import "./style.css";
 
-function Label({ children, to }) {
+function Label({ children, to, ...rest }) {
   return (
     <>
-      <label htmlFor={to}>{children}</label>
+      <label htmlFor={to} {...rest}>
+        {children}
+      </label>
     </>
   );
 }
@@ -24,7 +27,11 @@ function Input({ className, name, type, ...rest }) {
 
 function Select({ className, name, dataOption, ...rest }) {
   return (
-    <select className={`form-select ${className}`} name={name} id={name}>
+    <select
+      className={`form-select py-3 ps-5 ${className}`}
+      name={name}
+      id={name}
+    >
       {dataOption.map((item) => (
         <option key={item.value} value={item.value}>
           {item.label}
@@ -37,7 +44,7 @@ function Select({ className, name, dataOption, ...rest }) {
 function TextArea({ className, name, ...rest }) {
   return (
     <textarea
-      className={`form-control ${className}`}
+      className={`form-control py-3 ps-5 d-flex align-items-center ${className}`}
       name={name}
       id={name}
       {...rest}
@@ -45,8 +52,12 @@ function TextArea({ className, name, ...rest }) {
   );
 }
 
-function InputForm({ children, className }) {
-  return <div className={`form-group ${className}`}>{children}</div>;
+function InputForm({ children, className, ...rest }) {
+  return (
+    <div className={`form-group ${className}`} {...rest}>
+      {children}
+    </div>
+  );
 }
 
 InputForm.Label = Label;

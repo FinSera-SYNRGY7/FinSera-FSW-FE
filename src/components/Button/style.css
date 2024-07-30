@@ -1,0 +1,19 @@
+.btn-outline-base-color {
+    border: 1px solid #0066AE;
+    color: #0066AE;
+    background-color: white;
+  }
+  
+  .btn-outline-base-color:hover {
+    background-color: #0066AE;
+    color: white;
+  }
+
+  .btn {
+    padding: 12px 25px;
+    border-radius: 16px;
+  }
+
+  .ms-20{
+    margin-left: 20px;
+  }

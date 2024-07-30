@@ -8,11 +8,12 @@ import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown
 import styles from "@/assets/css/Infobalance.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function InfoSaldo() {
-
+    const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState("");
     const [emptyData, setEmptyData] = useState(false);
 
@@ -31,24 +32,30 @@ export default function InfoSaldo() {
         { value: "action3", label: "Action 3" },
     ];
 
+    const handleButtonBack = () => {
+        navigate("/home");
+      };
+
     return (
         <Layout>
-            <div className="d-flex flex-column containerInfoSaldo">
-                <div className="d-flex w-100 align-items-center mb-5">
-                    <a href="#" className="text-black d-inline d-md-none" aria-label="Back">
+            <div className={`d-flex flex-column ${styles.containerInfoSaldo}`}>
+                <div className={`d-flex w-100 align-items-center mb-5 mt-5`}>
+                    <a href="/home" className="text-black d-inline d-md-none" aria-label="Back">
                         <FontAwesomeIcon icon={faArrowLeft} />
                     </a>
                     <h1 className="flex-grow-1 text-md-start text-center p-0 m-0"> <span aria-label="Informasi Saldo">Informasi Saldo</span></h1>
                 </div>
-                <div className="d-flex flex-row btnSection">
-                    <ButtonIcon
-                        label="Beranda"
-                        onClick={() => console.log("Outline Add Button Clicked")}
-                        variant="btnBack"
-                        className="d-none d-md-inline-block"
-                        style={{ display: "none" }}
-                        aria-label="Beranda"
-                    />
+                <div className={`d-flex flex-row w-100 ${styles.btnSection}`}>
+                    <div className={`w-100 ${styles.btnWeb}`}>
+                        <ButtonIcon
+                            label="Beranda"
+                            onClick={() => handleButtonBack()}
+                            variant="btnBack"
+                            className="d-none d-md-inline-block"
+                            style={{ display: "none" }}
+                            aria-label="Beranda"
+                        />
+                    </div>
                     <DropdownSumberRekening
                         options={options}
                         onOptionSelect={handleOptionSelect}

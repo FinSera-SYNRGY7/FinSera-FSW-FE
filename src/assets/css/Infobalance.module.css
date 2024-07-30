@@ -1,7 +1,6 @@
 .cardBalance {
     border-radius: 20px;
     height: 283px;
-    margin-top: 8.5vh;
     margin-bottom: 20vh;
     font-family: Calibri;
     background-color: #0A3967;
@@ -39,7 +38,7 @@
 .containerInfoSaldo {
     width: 100%;
     margin: 50px 0 64px 0;
-    padding: 0 80px;
+    padding: 0 162px;
     align-items: flex-start;
 }
 
@@ -49,13 +48,15 @@
     font-family: calibri;
     font-weight: 700;
 }
+.btnSection {
+    margin-bottom: 43px;
+}
 
 @media only screen and (max-width: 600px) {
     .cardBalance {
         border-radius: 20px;
         height: auto;
-        margin-top: 8.5vh;
-        margin-bottom: 20vh;
+        margin-bottom: 49px;
         font-family: Calibri;
     }
 
@@ -109,5 +110,8 @@
         width: auto;
         right: 10px;
         top: 20px;
+    }
+    .btnWeb {
+        display: none;
     }
 }

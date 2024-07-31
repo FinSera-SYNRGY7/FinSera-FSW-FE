@@ -14,7 +14,7 @@ export default function Layout({ children, type, className }) {
   return (
     <div className="App">
       <Header type={type} />
-      <main className={mainClass}>{children}</main>
+      <main className={mainClass} style={{minHeight: "100vh"}}>{children}</main>
       <div className="card footer-card">
         <Footer />
       </div>

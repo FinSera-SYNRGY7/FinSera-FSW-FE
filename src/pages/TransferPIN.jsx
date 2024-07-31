@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Pininput from "react-pin-input";
+import { PinInput } from "@/components/PinInput";
 import Layout from "./../layout/Layout";
 import Button from "../components/Button";
 
@@ -36,18 +36,20 @@ function TransferPIN() {
         <span role="label" aria-label="Masukkan PIN">
           <h2 className="fw-bold">Masukkan PIN</h2>
         </span>
-        <Pininput
+        {/* <Pininput
           length={6}
           type="numeric"
           focus
           secret
+          className="pin-input"
           inputStyle={{
             borderRadius: "100%",
             margin: "1rem",
             border: "none",
             backgroundColor: "#B3B3B3",
           }}
-        />
+        /> */}
+        <PinInput />
       </div>
       <Button
         className={"btn base-color col-12 mb-5"}

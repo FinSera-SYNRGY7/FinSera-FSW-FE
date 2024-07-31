@@ -13,10 +13,12 @@ import settingList from "@/assets/logo/settings.svg";
 import helpList from "@/assets/logo/help-circle.svg";
 import logoutList from "@/assets/logo/log-out.svg";
 import { SearchInput } from "@/components/FormInput";
+import { useNavigate } from "react-router-dom";
 
 //ada perubahan di prop untuk melakukan pengkodisian
 const Header = ({ type }) => {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogoutClick = (e) => {
     e.preventDefault();
@@ -28,8 +30,9 @@ const Header = ({ type }) => {
   };
 
   const handleConfirmLogout = () => {
-    // Logic for logging out
-    console.log("Logged out"); // Replace with actual logout logic
+    localStorage.removeItem("auth_token");
+    localStorage.removeItem("auth_refresh_token");
+    navigate("/login");
     setShowLogoutPopup(false);
   };
 

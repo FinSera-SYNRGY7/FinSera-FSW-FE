@@ -11,8 +11,12 @@ import vAccount from "@/assets/logo/Folder.svg";
 import wallet from "@/assets/logo/Wallet.svg";
 import investation from "@/assets/logo/Activity.svg";
 import styles from "@/assets/css/Homepage.module.css";
+import Spinner from "react-bootstrap/Spinner";
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 
 const Homepage = () => {
+  const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
+
   return (
     <Layout>
       <div
@@ -24,11 +28,20 @@ const Homepage = () => {
         }}
       >
         <div className={`${styles.containerHome} d-flex flex-column z-1`}>
+        {isLoadingAmount ? (
+          <div className="text-center w-100">
+              <Spinner animation="border" role="status">
+                  <span className="visually-hidden">Loading...</span>
+              </Spinner>
+          </div>
+        ) : (
           <CardInfoSaldo
-            profile="Ramadhan"
-            norek="1234 567 897 890"
-            saldo="10.000.000"
+            profile={dataAmount.username}
+            norek={dataAmount.accountNumber}
+            saldo={dataAmount.amount.amount}
+            aria-label="Informasi Saldo Akun"
           />
+        )}
         </div>
       </div>
       <div className={`d-flex ${styles.titleServiceMenu}`}>

@@ -1,49 +1,48 @@
-import React, { useState } from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { useLogin } from "@/features/auth/useLogin";
-import { Container, Row, Col, Form } from 'react-bootstrap';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import React, { useState } from "react"
+import { useForm } from "react-hook-form"
+import { useNavigate } from "react-router-dom"
+import { useLogin } from "@/features/auth/useLogin"
+import { Container, Row, Col, Form } from 'react-bootstrap'
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
 import logobcawhite from '@/assets/img/logobcawhite.png'
 import logobcablue from '@/assets/img/logobcablue.png'
-import login from '@/assets/img/login.svg';
+import login from '@/assets/img/login.svg'
 import { FormInput } from '@/components/FormInput.jsx'
-import Button from 'react-bootstrap/Button';
-import Alert from "react-bootstrap/Alert";
+import Button from 'react-bootstrap/Button'
+import Alert from "react-bootstrap/Alert"
 import styles from "@/assets/css/Login.module.css"
 
 const Login = () => {
-    const { register, handleSubmit } = useForm();
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const [isError, setIsError] = useState(false); 
-    const [errorMessage, setErrorMessage] = useState("");
-    const navigate = useNavigate();
+    const { register, handleSubmit } = useForm()
+    const [passwordVisible, setPasswordVisible] = useState(false)
+    const [isError, setIsError] = useState(false) 
+    const [errorMessage, setErrorMessage] = useState("")
+    const navigate = useNavigate()
 
     const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
-    };
+        setPasswordVisible(!passwordVisible)
+    }
 
 
     const { mutate, isPending } = useLogin({
         onSuccess: (data) => {
-          localStorage.setItem("auth_token", data.data.token);
-          localStorage.setItem("auth_username", data.data.username);
-    
-          navigate("/home");
+            localStorage.setItem("auth_token", data.data.accessToken)
+            localStorage.setItem("auth_refresh_token", data.data.refreshToken)
+            navigate("/home")
         },
         onError: (error) => {
-            setIsError(true);
-            setErrorMessage(error.response.data.message);
+            setIsError(true)
+            setErrorMessage(error.response.data.message)
         },
-    });
+    })
 
     const onSubmit = (data) => {
         const dataLogin = {
           ...data
         }
     
-        mutate(dataLogin);
+        mutate(dataLogin)
     }
 
     return (
@@ -153,7 +152,7 @@ const Login = () => {
                 </Col>
             </Row>
         </Container>
-    );
-};
+    )
+}
 
-export default Login;
+export default Login

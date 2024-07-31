@@ -12,12 +12,14 @@ export default function TestQrCode() {
   
   return(
     <Layout>
-    <QRCode
-      size={200}
-      style={{ height: "auto", maxWidth: "50%", width: "50%" }}
-      value={value}
-      viewBox={`0 0 256 256`}
-    />
+    <div style={{ height: "auto", margin: "0 auto", maxWidth: "80%", width: "100%" }}>
+      <QRCode
+        size={256}
+        style={{ height: "300px", maxWidth: "100%", width: "100%" }}
+        value={value}
+        viewBox={`0 0 256 256`}
+      />
+    </div>
     </Layout>
   )
 }

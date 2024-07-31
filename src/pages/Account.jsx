@@ -5,7 +5,7 @@ import ProfileAccount from "@/assets/logo/profileAccount.svg";
 import ProfileAccountSmall from "@/assets/logo/profileAccountSmall.svg";
 import ChangePIN from "@/assets/logo/changePIN.svg";
 import Notification from "@/assets/logo/notification.svg";
-import Accessbility from "@/assets/logo/accessbility.svg";
+import Accessibility from "@/assets/logo/accessibility.svg";
 import Terms from "@/assets/logo/terms.svg";
 import Help from "@/assets/logo/help.svg";
 import Logout from "@/assets/logo/logout.svg";
@@ -56,8 +56,8 @@ const Account = () => {
                     </a>
                     <a href="#" className={styles.menuItem}>
                         <div className={styles.menuItemText}>
-                            <img src={Accessbility} alt="Accesibilitas" className={styles.menuItemIcon} />
-                            Accesibilitas
+                            <img src={Accessibility} alt="Aksesibilitas" className={styles.menuItemIcon} />
+                            Aksesibilitas
                         </div>
                         <img src={Click} alt="click" className={styles.click} />
                     </a>

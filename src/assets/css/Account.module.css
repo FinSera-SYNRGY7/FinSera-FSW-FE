@@ -40,7 +40,7 @@
 }
 
 .name {
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 550;
     margin-bottom: 10px;
 }
@@ -51,7 +51,7 @@
 }
 
 .accountNumber {
-    font-size: 26px;
+    font-size: 20px;
     font-weight: 550;
 }
 
@@ -135,14 +135,14 @@
     .container {
         max-width: 100%;
         padding: 10px;
-        margin-bottom: 60px;
+        margin-bottom: 154px;
     }
 
     .header {
         padding: 15px;
         padding-left: 50px;
-        margin-top: 20px;
-        margin-bottom: 40px;
+        margin-top: 40px;
+        margin-bottom: 60px;
         height: auto;
         min-height: 120px;
     }
@@ -171,12 +171,20 @@
         margin-bottom: 15px;
     }
 
+    .lastSection {
+        margin-left: 11px;
+    }
+
     .sectionTitle {
         font-size: 14px;
     }
 
     .menuItem {
         padding: 10px 0;
+    }
+
+    .menuItemText {
+        font-size: 16px;
     }
 
     .menuItemIcon {
@@ -186,7 +194,8 @@
     }
 
     .logoutButton {
-        margin-left: 10px;
+        margin-left: 11px;
+        font-size: 16px;
     }
 
     .logoutIcon {

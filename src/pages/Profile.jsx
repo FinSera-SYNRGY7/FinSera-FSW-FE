@@ -11,11 +11,9 @@ const Profile = () => {
       <div className={styles.container}>
         <header className={styles.header}>
           <button className={styles.backButton}> <img src={backButton} alt="Back" className={styles.backButton} /> </button>
-          <div className={styles.profileSection}>
             <div className={styles.profilePicContainer}>
               <img src={profilePic} alt="Profile" className={styles.profilePic} />
               <button className={styles.editPicButton}><button className={styles.editPic2Button}><img src={editButton} alt="Edit" className={styles.editPic} /></button></button>
-            </div>
           </div>
         </header>
 

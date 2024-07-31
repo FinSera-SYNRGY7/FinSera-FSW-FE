@@ -45,7 +45,9 @@ const AccountMutation = () => {
           </div>
           <h1 aria-label="Mutasi Rekening">Mutasi Rekening</h1>
         </div>
-        <div className={`d-flex flex-row w-100 justify-content-between ${styles.btnSection}`}>
+        <div
+          className={`d-flex flex-row w-100 justify-content-between ${styles.btnSection}`}
+        >
           <div className={styles.buttonWeb}>
             <ButtonIcon
               label="Beranda"
@@ -61,8 +63,12 @@ const AccountMutation = () => {
             className="dropdownSumberRekening"
           />
         </div>
-        <div className={`d-flex flex-row w-100 justify-content-between ${styles.containerFilter}`}>
-          <div className={`${styles.section1} justify-content-between w-50 d-flex flex-row`}>
+        <div
+          className={`d-flex flex-row w-100 justify-content-between ${styles.containerFilter}`}
+        >
+          <div
+            className={`${styles.section1} justify-content-between w-50 d-flex flex-row`}
+          >
             <ButtonAlt
               label="Hari ini"
               onClick={() => handleEmptyData()}
@@ -97,7 +103,9 @@ const AccountMutation = () => {
             )}
           </div>
         </div>
-        <div className={`d-flex flex-column w-100 align-items-center ${styles.containerCard}`}>
+        <div
+          className={`d-flex flex-column w-100 align-items-center ${styles.containerCard}`}
+        >
           {!emptyData ? (
             <>
               <CardMutation
@@ -125,7 +133,7 @@ const AccountMutation = () => {
                 typeTXN="Uang Keluar"
               />
               <div className={styles.btnDownloadAndro}>
-                <ButtonAlt 
+                <ButtonAlt
                   label="Download"
                   onClick={() => console.log("Download")}
                   variant="btnAltPrimary"
@@ -134,8 +142,14 @@ const AccountMutation = () => {
             </>
           ) : (
             <div className={styles.emptyData}>
-              <img src={imgEmptyData} alt="Data Kosong" aria-hidden="true"></img>
-              <p aria-label="Oops! Riwayat mutasi kosong">Oops! Riwayat mutasi kosong</p>
+              <img
+                src={imgEmptyData}
+                alt="Data Kosong"
+                aria-hidden="true"
+              ></img>
+              <p aria-label="Oops! Riwayat mutasi kosong">
+                Oops! Riwayat mutasi kosong
+              </p>
             </div>
           )}
         </div>

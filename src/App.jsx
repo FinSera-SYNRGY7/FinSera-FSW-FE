@@ -15,6 +15,8 @@ import TransferError from "./pages/TransferError";
 import TransferSuccess from "./pages/TransferSuccess";
 import TransferValid from "./pages/TransferValid";
 import TransferPIN from "./pages/TransferPIN";
+import Account from "./pages/Account";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -33,6 +35,8 @@ function App() {
       <Route path="/transferValid" element={<TransferValid />} />
       <Route path="/transferPIN" element={<TransferPIN />} />
       <Route path="/transfer-antar-bank" element={<TransferAntarBank />} />
+      <Route path="/account" element={<Account />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }

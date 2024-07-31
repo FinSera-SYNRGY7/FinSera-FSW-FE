@@ -1,0 +1,95 @@
+import React from 'react';
+import styles from "@/assets/css/Account.module.css";
+import Layout from "@/layout/Layout";
+import ProfileAccount from "@/assets/logo/profileAccount.svg";
+import ProfileAccountSmall from "@/assets/logo/profileAccountSmall.svg";
+import ChangePIN from "@/assets/logo/changePIN.svg";
+import Notification from "@/assets/logo/notification.svg";
+import Accessbility from "@/assets/logo/accessbility.svg";
+import Terms from "@/assets/logo/terms.svg";
+import Help from "@/assets/logo/help.svg";
+import Logout from "@/assets/logo/logout.svg";
+import Click from "@/assets/logo/click.svg";
+
+const Account = () => {
+    return (
+        <Layout>
+            <div className={styles.container}>
+                <header className={styles.header}>
+                    <div className={styles.profileIconContainer}>
+                        <div className={styles.profileIcon}>
+                            <img src={ProfileAccount} alt="Profile" />
+                        </div>
+                    </div>
+                    <div className={styles.profileInfo}>
+                        <div className={styles.name}>RAMADHAN ADI</div>
+                        <div className={styles.accountNumber}>1234 567 897 890</div>
+                    </div>
+                </header>
+
+                <section className={styles.section}>
+                    <h2 className={styles.sectionTitle}>Akun</h2>
+                    <a href="#" className={styles.menuItem}>
+                        <div className={styles.menuItemText}>
+                            <img src={ProfileAccountSmall} alt="Data Diri" className={styles.menuItemIcon} />
+                            Data Diri
+                        </div>
+                        <img src={Click} alt="click" className={styles.click} />
+                    </a>
+                    <a href="#" className={styles.menuItem}>
+                        <div className={styles.menuItemText}>
+                            <img src={ChangePIN} alt="Ubah PIN" className={styles.menuItemIcon} />
+                            Ubah PIN
+                        </div>
+                        <img src={Click} alt="click" className={styles.click} />
+                    </a>
+                </section>
+
+                <section className={styles.section}>
+                    <h2 className={styles.sectionTitle}>Preferensi</h2>
+                    <a href="#" className={styles.menuItem}>
+                        <div className={styles.menuItemText}>
+                            <img src={Notification} alt="Notifikasi" className={styles.menuItemIcon} />
+                            Notifikasi
+                        </div>
+                        <img src={Click} alt="click" className={styles.click} />
+                    </a>
+                    <a href="#" className={styles.menuItem}>
+                        <div className={styles.menuItemText}>
+                            <img src={Accessbility} alt="Accesibilitas" className={styles.menuItemIcon} />
+                            Accesibilitas
+                        </div>
+                        <img src={Click} alt="click" className={styles.click} />
+                    </a>
+                </section>
+
+                <section className={styles.section}>
+                    <h2 className={styles.sectionTitle}>Privasi</h2>
+                    <a href="#" className={styles.menuItem}>
+                        <div className={styles.menuItemText}>
+                            <img src={Terms} alt="Syarat dan Ketentuan" className={styles.menuItemIcon} />
+                            Syarat dan Ketentuan
+                        </div>
+                        <img src={Click} alt="click" className={styles.click} />
+                    </a>
+
+                </section>
+                <section className={styles.lastSection}>
+                    <a href="#" className={styles.lastMenuItem}>
+                        <div className={styles.menuItemText}>
+                            <img src={Help} alt="Pusat Bantuan" className={styles.menuItemIcon} />
+                            Pusat Bantuan
+                        </div>
+                        <img src={Click} alt="click" className={styles.click} />
+                    </a>
+                </section>
+                <button className={styles.logoutButton}>
+                    <img src={Logout} alt="Logout" className={styles.logoutIcon} />
+                    Logout
+                </button>
+            </div>
+        </Layout>
+    );
+};
+
+export default Account;

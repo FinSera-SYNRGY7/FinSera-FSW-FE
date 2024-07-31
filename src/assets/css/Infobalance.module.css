@@ -12,12 +12,20 @@
     font-style: normal;
     font-weight: 700;
 }
+.textAmountBalance img{
+    padding-bottom: 6px;
+}
+.logoCopy {
+    padding-bottom: 6px;
+    margin-left: 32px;
+}
 
-.textAmountBalance {
+.textAmountBalance h2 {
     font-family: Calibri;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
+    margin-right: 32px;
 }
 
 .textNoRek {
@@ -34,7 +42,9 @@
     right: 10px;
     top: 15px;
 }
-
+.cardName{
+    padding-top: 39px !important;
+}
 .containerInfoSaldo {
     width: 100%;
     margin: 50px 0 64px 0;
@@ -62,15 +72,20 @@
 
     .textUser {
         font-family: Calibri;
-        font-size: 20px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 700;
         margin-bottom: 15px;
 
     }
 
-    .textAmountBalance {
-        font-family: Calibri;
+    .textAmountBalance img{
+        padding-bottom: 6px;
+        width: 8% !important;
+    }
+
+    .textAmountBalance h2 {
+        margin-right: 16px;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -83,6 +98,12 @@
         margin-left: 10px;
         padding-bottom: 15px;
         font-weight: 700;
+    }
+
+    .logoCopy {
+        padding-bottom: 20px;
+        margin-left: 16px;
+        width: 6% !important;
     }
 
     .textBalance {
@@ -106,10 +127,10 @@
     }
 
     .bgLogoBca {
-        height: 70%;
-        width: auto;
+        height: auto;
+        width: 35%;
         right: 10px;
-        top: 20px;
+        top: 55px;
     }
     .btnWeb {
         display: none;

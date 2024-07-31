@@ -49,6 +49,13 @@
     font-weight: 700;
 }
 
+.hide-icon {
+    margin-bottom: 25.5px;
+}
+.hide-saldo {
+    margin-right: 32px;
+}
+
 @media only screen and (max-width: 600px) {
     .card-saldo {
         border-radius: 20px;

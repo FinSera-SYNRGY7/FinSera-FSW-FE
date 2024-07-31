@@ -7,6 +7,7 @@ import showIcon from "@/assets/logo/Show.svg";
 import copyIcon from "@/assets/logo/copy.svg";
 import hidePassIcon from "@/assets/logo/hide pass.svg";
 import { useState } from 'react';
+// import Spinner from "react-bootstrap/Spinner";
 
 
 function CardInfoSaldo({ profile, saldo, norek }) {

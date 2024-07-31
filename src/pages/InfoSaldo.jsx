@@ -9,6 +9,8 @@ import styles from "@/assets/css/Infobalance.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import Spinner from "react-bootstrap/Spinner";
 
 
 
@@ -34,7 +36,9 @@ export default function InfoSaldo() {
 
     const handleButtonBack = () => {
         navigate("/home");
-      };
+    };
+
+    const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
 
     return (
         <Layout>
@@ -65,17 +69,20 @@ export default function InfoSaldo() {
                         aria-labelledby="dropdownSumberRekeningTitle"
                     />
                 </div>
-
-                <CardInfoSaldo
-                    profile="Ramadhan"
-                    norek="1234 567 897 890"
-                    saldo="10.000.000"
-                    aria-label="Informasi Saldo Akun"
-                >
-                    <span id="profileName">Ramadhan</span>
-                    <span id="accountNumber">1234 567 897 890</span>
-                    <span id="accountBalance">10.000.000</span>
-                </CardInfoSaldo>
+                {isLoadingAmount ? (
+                    <div className="text-center w-100">
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </div>
+                ) : (
+                    <CardInfoSaldo
+                        profile={dataAmount.username}
+                        norek={dataAmount.accountNumber}
+                        saldo={dataAmount.amount.amount}
+                        aria-label="Informasi Saldo Akun"
+                    />
+                )}
             </div>
         </Layout>
     )

@@ -1,17 +1,16 @@
-import React, { Children } from "react";
 import Header from "./Header";
-import { Button } from "react-bootstrap";
-import Back from "./Back";
-import SumberRekening from "@/components/sumberrekening/SumberRekening";
 import style from "../assets/css/AccountMutation.module.css";
+import createActivityDetector from 'activity-detector';
 import Footer from "./Footer";
 
 export default function Layout({ children, type, className }) {
+  const activityDetector = createActivityDetector()
+  
   const mainClass =
     className === "haveStyle"
       ? `${style.containerMutation} ${type === "necktie" ? `mt-0` : ""}`
       : "";
-
+  
   return (
     <div className="App">
       <Header type={type} />

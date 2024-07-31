@@ -83,6 +83,9 @@
     width: 100%;
     text-align: center;
   }
+  .containerMutation h4 {
+    font-size: 18px;
+  }
   .titleMutation {
     justify-content: center;
     align-items: center;

@@ -33,7 +33,14 @@ export const PinInput = ({ style, ...otherProps }) => {
       fontSize: '1.2em'
     };
 
-    if (windowWidth <= 600) {
+    if (windowWidth <= 425) {
+      return {
+        ...baseStyle,
+        width: '35px',
+        height: '35px',
+        margin: '0 10px',
+      };
+    } else if(windowWidth <= 600) {
       return {
         ...baseStyle,
         width: '45px',

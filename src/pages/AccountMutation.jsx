@@ -10,15 +10,14 @@ import { useNavigate } from "react-router-dom"
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown"
 import Spinner from "react-bootstrap/Spinner"
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
-// import { useAccountMutation } from "@/features/accountMutation/useAccountMutation"
 import { useQuery } from "@tanstack/react-query";
 import { httpServer } from "@/lib/server";
-import { formatRupiah, formatDateIndo, formatTimeIndo, checkTypeTransaction, minusOneMonth, minusOneWeek } from "@/lib/utils"
+import { formatRupiah, formatDateYMD, formatDateIndo, formatTimeIndo, checkTypeTransaction, minusOneMonth, minusOneWeek } from "@/lib/utils"
 
 const AccountMutation = () => {
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
-  const [filterDate, setFilterDate] = useState({})
+  const [startRangeDate, setStartRangeDate] = useState("");
+  const [endRangeDate, setEndRangeDate] = useState("");
+  const [dataFilterDate, setDataFilterDate] = useState({})
   const [selectedOption, setSelectedOption] = useState("");
   const [emptyData, setEmptyData] = useState(false);
   const navigate = useNavigate();
@@ -33,13 +32,35 @@ const AccountMutation = () => {
   }
 
   const handleStartDate = (date) => {
-    setStartDate(date);
-    console.log("Start Date:", date);
+    setStartRangeDate(formatDateYMD(date));
+    if(startRangeDate != "" && endRangeDate != "") {
+      setDataFilterDate({
+        startDate: startRangeDate,
+        endDate: endRangeDate,
+        page: 1,
+        size: 20
+      })
+      // console.log("filter Start Range Date", startRangeDate)
+      // console.log("filter End Range Date", endRangeDate)
+      // console.log("cek data FilterDate", dataFilterDate)
+      refetchAccountMutation()
+    }
   };
 
   const handleEndDate = (date) => {
-    setEndDate(date);
-    console.log("End Date:", date);
+    setEndRangeDate(formatDateYMD(date));
+    if(startRangeDate != "" && endRangeDate != "") {
+      setDataFilterDate({
+        startDate: startRangeDate,
+        endDate: endRangeDate,
+        page: 1,
+        size: 20
+      })
+      // console.log("filter Start Range Date", startRangeDate)
+      // console.log("filter End Range Date", endRangeDate)
+      // console.log("cek data FilterDate", dataFilterDate)
+      refetchAccountMutation()
+    }
   };
 
   const handleButtonBack = () => {
@@ -47,40 +68,41 @@ const AccountMutation = () => {
   }
 
   const handleFilterHariIni = () => {
-    setFilterDate({})
-    setFilterDate({
-      // startDate: moment().format("YYYY-MM-DD"),
-      // endDate: moment().format("YYYY-MM-DD"),
-      startDate: '2024-08-05',
-      endDate: '2024-08-05',
+    // setFilterDate({})
+    setDataFilterDate({
+      startDate: moment().format("YYYY-MM-DD"),
+      endDate: moment().format("YYYY-MM-DD"),
       page: 1,
       size: 20
     })
-    console.log("filter hari ini", moment().format("YYYY-MM-DD"))
+    // console.log("filter hari ini", moment().format("YYYY-MM-DD"))
+    // console.log("cek data FilterDate", dataFilterDate)
     refetchAccountMutation()
   }
 
   const handleFilterSeminggu = () => {
-    setFilterDate({})
-    setFilterDate({
+    // setFilterDate({})
+    setDataFilterDate({
       startDate: minusOneWeek(),
       endDate: moment().format("YYYY-MM-DD"),
       page: 1,
       size: 20
     })
-    console.log("kurangin 7 hari", minusOneWeek())
+    // console.log("kurangin 7 hari", minusOneWeek())
+    // console.log("cek data FilterDate", dataFilterDate)
     refetchAccountMutation()
   }
 
   const handleFilterSebulan = () => {
-    setFilterDate({})
-    setFilterDate({
+    // setFilterDate({})
+    setDataFilterDate({
       startDate: minusOneMonth(),
       endDate: moment().format("YYYY-MM-DD"),
       page: 1,
       size: 20
     })
-    console.log("kurangin 1 bulan", minusOneMonth())
+    // console.log("kurangin 1 bulan", minusOneMonth())
+    // console.log("cek data FilterDate", dataFilterDate)
     refetchAccountMutation()
   }
 
@@ -92,20 +114,18 @@ const AccountMutation = () => {
 
   const fetchAccountMutation = async() => {
     const request = await httpServer.get('/api/v1/mutasi',{
-      params: filterDate
+      params: dataFilterDate
     })
     
     return request.data.data
   }
   
+  const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
   const { data: dataAccountMutation, isLoading: isLoadingMutation, refetch: refetchAccountMutation, isError: isErrorMutation, isRefetching: isRefetchingMutation} = useQuery({
     queryFn: fetchAccountMutation,
     queryKey: ['fetchAccountMutation']
   })
 
-  const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
-  // const { data: dataAccountMutation, isLoading: isLoadingMutation } = useAccountMutation()
-  console.log("cek data response", dataAccountMutation)
 
   const renderDataMutation = () => {          
     return dataAccountMutation?.map((row, key) => {
@@ -199,8 +219,8 @@ const AccountMutation = () => {
               aria-label="Filter 1 Bulan"
             />
             <FilterDate
-              startDate={startDate}
-              endDate={endDate}
+              startDate={startRangeDate}
+              endDate={endRangeDate}
               onStartDateChange={handleStartDate}
               onEndDateChange={handleEndDate}
             />

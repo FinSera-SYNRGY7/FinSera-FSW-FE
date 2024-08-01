@@ -2,7 +2,8 @@ import axios, { AxiosError } from 'axios'
 import { globalNavigate } from './utils'
 
 const httpServer = axios.create({
-  baseURL: import.meta.env.VITE_AXIOS_BASE_URL,
+  // baseURL: import.meta.env.VITE_AXIOS_BASE_URL,
+  baseURL: 'https://finsera-api.site',
 })
 
 httpServer.interceptors.request.use(

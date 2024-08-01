@@ -60,14 +60,20 @@ export default function InfoSaldo() {
                             aria-label="Beranda"
                         />
                     </div>
-                    <DropdownSumberRekening
-                        options={options}
-                        onOptionSelect={handleOptionSelect}
-                        title="Sumber Rekening"
-                        subtitle="1234 5678 8765 99"
-                        className="dropdownSumberRekening"
-                        aria-labelledby="dropdownSumberRekeningTitle"
-                    />
+                    {isLoadingAmount ? (
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    ) : (
+                        <DropdownSumberRekening
+                            options={options}
+                            onOptionSelect={handleOptionSelect}
+                            title="Sumber Rekening"
+                            subtitle={dataAmount.accountNumber}
+                            className="dropdownSumberRekening"
+                            aria-labelledby="dropdownSumberRekeningTitle"
+                        />
+                    )}
                 </div>
                 {isLoadingAmount ? (
                     <div className="text-center w-100">

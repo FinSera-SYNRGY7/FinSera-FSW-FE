@@ -29,10 +29,10 @@ httpServer.interceptors.response.use(
   (error) => {
     if(error.response) {
       if(error.response.status == 403 || error.response.status == 401) {
-        localStorage.removeItem('auth_token')
-        localStorage.removeItem('auth_name')
+        // localStorage.removeItem('auth_token')
+        // localStorage.removeItem('auth_name')
         
-        globalNavigate('/')
+        // globalNavigate('/')
       
       } else {
         throw new AxiosError((error))

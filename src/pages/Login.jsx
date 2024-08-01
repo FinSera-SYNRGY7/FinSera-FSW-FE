@@ -29,7 +29,8 @@ const Login = () => {
         onSuccess: (data) => {
             localStorage.setItem("auth_token", data.data.accessToken)
             localStorage.setItem("auth_refresh_token", data.data.refreshToken)
-            navigate("/home")
+            console.log("cek data login", data)
+            // navigate("/home")
         },
         onError: (error) => {
             setIsError(true)

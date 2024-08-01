@@ -3,14 +3,9 @@ import styles from "@/assets/css/FilterDate.module.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-const FilterDate = ({name}) => {
-  const [startDate, setStartDate] = useState(new Date());
+const FilterDate = ({ startDate, endDate, onStartDateChange, onEndDateChange }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const handleChange = (e) => {
-    setIsOpen(!isOpen);
-    setStartDate(e);
-    console.log(startDate);
-  };
+
   const handleClick = (e) => {
     e.preventDefault();
     setIsOpen(!isOpen);
@@ -22,8 +17,15 @@ const FilterDate = ({name}) => {
         <p aria-label="Tanggal">{name} <i className={`fa fa-chevron-${isOpen ? "up" : "down"} ${isOpen ? styles.faChevronUp : ""}`}></i></p>
       </button>
       {isOpen && (
-        <div id="datePicker" className="formDate">
-          <DatePicker selected={startDate} onChange={handleChange} inline />
+        <div className={styles.datePicker}>
+          <div id="datePicker" className={styles.formDate1}>
+            <p>Dari : </p>
+            <DatePicker selected={startDate} onChange={onStartDateChange} inline />
+          </div>
+          <div id="datePicker" className={styles.formDate2}>
+            <p>Sampai : </p>
+            <DatePicker selected={endDate} onChange={onEndDateChange} inline />
+          </div>
         </div>
       )}
     </div>

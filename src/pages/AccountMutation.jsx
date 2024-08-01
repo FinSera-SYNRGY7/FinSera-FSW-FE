@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown";
 
 const AccountMutation = () => {
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   const [selectedOption, setSelectedOption] = useState("");
   const [emptyData, setEmptyData] = useState(false);
   const navigate = useNavigate();
@@ -20,6 +22,16 @@ const AccountMutation = () => {
 
   const handleEmptyData = () => {
     setEmptyData(true);
+  };
+
+  const handleStartDate = (date) => {
+    setStartDate(date);
+    console.log("Start Date:", date);
+  };
+
+  const handleEndDate = (date) => {
+    setEndDate(date);
+    console.log("End Date:", date);
   };
 
   const handleButtonBack = () => {
@@ -87,7 +99,12 @@ const AccountMutation = () => {
               variant="btnAltSecondary"
               aria-label="Filter 1 Bulan"
             />
-            <FilterDate />
+            <FilterDate
+              startDate={startDate}
+              endDate={endDate}
+              onStartDateChange={handleStartDate}
+              onEndDateChange={handleEndDate}
+            />
           </div>
           <div className={`${styles.section2}`}>
             {!emptyData ? (

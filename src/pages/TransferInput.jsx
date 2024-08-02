@@ -27,7 +27,9 @@ function Transfer() {
         </h1>
       </div>
       <Button
-        className={"d-none d-sm-block col-sm-12 base-color text-sm-start mb-5"}
+        className={
+          "d-none d-sm-block col-sm-12 base-color shadow-hover text-sm-start mb-5"
+        }
         type="button"
         aria-label="kembali ke halaman sebelumnya"
       >
@@ -43,7 +45,7 @@ function Transfer() {
           </h1>
         </InputForm.Label>
         <InputForm.Input
-          className="py-3 ps-5 fz-input"
+          className="py-3 ps-5 fz-input input"
           type="number"
           name="rek"
           placeholder="Masukkan nomor rekening"
@@ -60,7 +62,7 @@ function Transfer() {
           </h1>
         </InputForm.Label>
         <InputForm.Input
-          className="py-3 ps-5 fz-input"
+          className="py-3 ps-5 fz-input input"
           type="number"
           name="nominal"
           placeholder="Masukkan nominal transfer"
@@ -77,7 +79,7 @@ function Transfer() {
           </h1>
         </InputForm.Label>
         <InputForm.TextArea
-          className="fz-input"
+          className="fz-input input"
           name="catatan"
           placeholder="Masukkan catatan"
           rows="6"
@@ -102,7 +104,7 @@ function Transfer() {
         </InputForm.Label>
       </InputForm>
       <Button
-        className={"btn base-color col-12 mb-5"}
+        className={"btn base-color col-12 mb-5 shadow-hover"}
         aria-label="Lanjutkan"
         type="submit"
       >

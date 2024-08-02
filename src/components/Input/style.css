@@ -1,3 +1,7 @@
 .fz-input {
     font-size: 20px;
 }
+
+.input:hover {
+    border: 1px solid #0066AE !important;
+}

@@ -21,7 +21,9 @@ function TransferPIN() {
         </h1>
       </div>
       <Button
-        className={"d-none d-sm-block col-sm-12 base-color text-sm-start mb-5"}
+        className={
+          "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
+        }
         type="button"
         aria-label="kembali ke halaman sebelumnya"
       >
@@ -50,7 +52,7 @@ function TransferPIN() {
         />
       </div>
       <Button
-        className={"btn base-color col-12 mb-5"}
+        className={"btn base-color col-12 mb-5 shadow-hover"}
         type="submit"
         aria-label="Lanjutkan"
       >

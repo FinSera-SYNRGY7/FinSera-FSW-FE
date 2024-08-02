@@ -58,14 +58,14 @@ export function CardVertical({ className, children, ...rest }) {
           </span>
           <div className="row justify-content-evenly mb-5">
             <Button
-              className={"col-4 base-color"}
+              className={"col-4 base-color shadow-hover"}
               type="button"
               aria-label="Download"
             >
               <i class="fa fa-download me-2"></i> Download
             </Button>
             <Button
-              className={"col-4 base-color"}
+              className={"col-4 base-color shadow-hover"}
               type="button"
               aria-label="Bagikan"
             >

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import Layout from "./../layout/Layout";
 import Button from "../components/Button/index";
 import { CardHorizontal } from "./../components/Card/index";
+import { useNavigate } from "react-router-dom";
 
 function Transfer() {
   return (
@@ -23,7 +24,7 @@ function Transfer() {
       <div className="d-flex justify-content-end justify-content-sm-between gap-5 mb-5">
         <Button
           className={
-            "d-none d-sm-block flex-grow-1 base-color text-sm-start d-flex"
+            "d-none d-sm-block flex-grow-1 base-color text-sm-start d-flex shadow-hover"
           }
           type="button"
           aria-label="kembali ke halaman sebelumnya"
@@ -45,36 +46,36 @@ function Transfer() {
       <div className="row mb-5">
         <div className="col-lg-3 col-md-4 col-6">
           <CardHorizontal
-            className={"shadow p-0 border-0"}
+            className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
           />
         </div>
         <div className="col-lg-3 col-md-4 col-6">
           <CardHorizontal
-            className={"shadow p-0 border-0"}
+            className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
           />
         </div>
         <div className="d-none d-md-block col-lg-3 col-md-4">
           <CardHorizontal
-            className={"shadow p-0 border-0"}
+            className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
           />
         </div>
         <div className="d-none d-lg-block col-lg-3">
           <CardHorizontal
-            className={"shadow p-0 border-0"}
+            className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
           />
         </div>
       </div>
       <h3 className="fw-bold mb-3">Daftar Tersimpan</h3>
       <CardHorizontal
-        className={"shadow p-0 border-0 mb-3"}
+        className={"shadow p-0 border-0 mb-3 outline"}
         aria-label="akun transfer tersimpan"
       />
       <CardHorizontal
-        className={"shadow p-0 border-0 mb-3"}
+        className={"shadow p-0 border-0 mb-3 outline"}
         aria-label="akun transfer tersimpan"
       />
       <div className="mb-5"></div>

@@ -281,7 +281,16 @@ const AccountMutation = () => {
             //     />
             //   </div>
             // </>
-              renderDataMutation()
+            <>
+              {renderDataMutation()}
+              <div className={styles.btnDownloadAndro}>
+                <ButtonAlt
+                  label="Download"
+                  onClick={() => console.log("Download")}
+                  variant="btnAltPrimary"
+                />
+              </div>
+            </>
               // <h1>render Mutation</h1>
             ) : (
               <div className={styles.emptyData}>

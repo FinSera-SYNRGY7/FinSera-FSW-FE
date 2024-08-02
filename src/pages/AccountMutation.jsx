@@ -135,10 +135,10 @@ const AccountMutation = () => {
 
       if(typeTransaction == 'Uang Masuk') {
         color = '#12D79C'
-        nominal = `+ Rp. ${row.amountTransfer.amount}`
+        nominal = `+ ${formatRupiah(row.amountTransfer.amount)}`
       } else {
         color = 'red'
-        nominal = `- Rp. ${row.amountTransfer.amount}`
+        nominal = `- ${formatRupiah(row.amountTransfer.amount)}`
       }
 
       return (

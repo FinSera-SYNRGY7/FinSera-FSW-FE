@@ -1,18 +1,19 @@
-import React from "react";
-import Layout from "@/layout/Layout";
-import CardInfoSaldo from "@/components/cardinfosaldo/CardInfoSaldo";
-import { ServiceMenu } from "@/components/Menu";
-import { CardTransaction } from "@/components/Card";
-import ticket from "@/assets/logo/Ticket Star.svg";
-import document from "@/assets/logo/Document.svg";
-import tfbank from "@/assets/logo/Vector1.svg";
-import tfinterbank from "@/assets/logo/Vector.svg";
-import vAccount from "@/assets/logo/Folder.svg";
-import wallet from "@/assets/logo/Wallet.svg";
-import investation from "@/assets/logo/Activity.svg";
-import styles from "@/assets/css/Homepage.module.css";
-import Spinner from "react-bootstrap/Spinner";
-import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import React from "react"
+import Layout from "@/layout/Layout"
+import CardInfoSaldo from "@/components/cardinfosaldo/CardInfoSaldo"
+import { ServiceMenu } from "@/components/Menu"
+import { CardTransaction } from "@/components/Card"
+import ticket from "@/assets/logo/Ticket Star.svg"
+import document from "@/assets/logo/Document.svg"
+import tfbank from "@/assets/logo/Vector1.svg"
+import tfinterbank from "@/assets/logo/Vector.svg"
+import vAccount from "@/assets/logo/Folder.svg"
+import wallet from "@/assets/logo/Wallet.svg"
+import investation from "@/assets/logo/Activity.svg"
+import styles from "@/assets/css/Homepage.module.css"
+import Spinner from "react-bootstrap/Spinner"
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
+import { formatRupiah } from "@/lib/utils"
 
 const Homepage = () => {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
@@ -38,7 +39,7 @@ const Homepage = () => {
           <CardInfoSaldo
             profile={dataAmount.username}
             norek={dataAmount.accountNumber}
-            saldo={dataAmount.amount.amount}
+            saldo={formatRupiah(dataAmount.amount.amount)}
             aria-label="Informasi Saldo Akun"
           />
         )}
@@ -115,7 +116,7 @@ const Homepage = () => {
         </div>
       </div>
     </Layout>
-  );
-};
+  )
+}
 
-export default Homepage;
+export default Homepage

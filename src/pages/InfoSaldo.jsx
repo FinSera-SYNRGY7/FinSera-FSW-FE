@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import { formatRupiah } from "@/lib/utils"
 import Spinner from "react-bootstrap/Spinner";
 
 
@@ -85,7 +86,7 @@ export default function InfoSaldo() {
                     <CardInfoSaldo
                         profile={dataAmount.username}
                         norek={dataAmount.accountNumber}
-                        saldo={dataAmount.amount.amount}
+                        saldo={formatRupiah(dataAmount.amount.amount)}
                         aria-label="Informasi Saldo Akun"
                     />
                 )}

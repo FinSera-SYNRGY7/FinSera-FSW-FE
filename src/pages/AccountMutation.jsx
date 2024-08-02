@@ -121,7 +121,7 @@ const AccountMutation = () => {
   }
   
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
-  const { data: dataAccountMutation, isLoading: isLoadingMutation, refetch: refetchAccountMutation, isError: isErrorMutation, isRefetching: isRefetchingMutation} = useQuery({
+  const { data: dataAccountMutation, isLoading: isLoadingMutation, refetch: refetchAccountMutation, isError: isErrorMutation, isRefetching: isRefetchingMutation, isRefetchError: isRefetchErrorMutation} = useQuery({
     queryFn: fetchAccountMutation,
     queryKey: ['fetchAccountMutation']
   })
@@ -226,7 +226,7 @@ const AccountMutation = () => {
             />
           </div>
           <div className={`${styles.section2}`}>
-            {!isErrorMutation ? (
+            {!isErrorMutation || !isRefetchErrorMutation ? (
               <>
                 <ButtonIcon
                   label="Download"
@@ -247,7 +247,7 @@ const AccountMutation = () => {
                 </Spinner>
             </div>
           ) : (
-            !isErrorMutation ? (
+            !isErrorMutation || !isRefetchErrorMutation ? (
                // <>
             //   <CardMutation
             //     color="red"

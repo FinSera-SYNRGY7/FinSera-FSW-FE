@@ -31,7 +31,7 @@ function CardInfoSaldo({ profile, saldo, norek }) {
                         <div className={`${styles.textAmountBalance} d-flex flex-row align-items-center`}>
                             {isBalanceVisible ? (
                                 <>
-                                    <h2>Rp. {saldo}</h2>
+                                    <h2>{saldo}</h2>
                                     <img
                                         src={showIcon}
                                         alt="Sembunyikan saldo"

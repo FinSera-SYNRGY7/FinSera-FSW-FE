@@ -15,7 +15,11 @@ const GlobalHistory = () => {
 }
 
 const formatRupiah = (currency) => {
-  return new Intl.NumberFormat('id-ID', { minimumFractionDigits:0 }).format(currency)
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(currency);
 }
 
 const formatDateIndo = (date) => {

@@ -65,7 +65,7 @@
 
 /* Button Alter */
 .containerButtonAlt {
-  width: 50%;
+  width: 100%;
 }
 
 .btnAltPrimary {
@@ -81,7 +81,7 @@
   padding: 12px 0;
   background-color: white;
   color: #0066AE;
-  width: 70%;
+  width: 80%;
   border: 2px solid #0066AE;
   border-radius: 16px;
   display: flex;
@@ -148,9 +148,6 @@
 
 
   /* Button Alter */
-  .containerButtonAlt {
-    width: 100%;
-  }
   .containerButtonAlt p {
     font-size: 11px;
   }
@@ -162,8 +159,5 @@
   }
   .btnAltPrimary {
     border-radius: 10px;
-  }
-  .btnAltSecondary {
-    width: 50%;
   }
 }

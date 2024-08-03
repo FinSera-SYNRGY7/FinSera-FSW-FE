@@ -1,7 +1,6 @@
 .cardBalance {
     border-radius: 20px;
     height: 283px;
-    margin-top: 8.5vh;
     margin-bottom: 20vh;
     font-family: Calibri;
     background-color: #0A3967;
@@ -13,12 +12,20 @@
     font-style: normal;
     font-weight: 700;
 }
+.textAmountBalance img{
+    padding-bottom: 6px;
+}
+.logoCopy {
+    padding-bottom: 6px;
+    margin-left: 32px;
+}
 
-.textAmountBalance {
+.textAmountBalance h2 {
     font-family: Calibri;
     font-size: 40px;
     font-style: normal;
     font-weight: 700;
+    margin-right: 32px;
 }
 
 .textNoRek {
@@ -35,11 +42,13 @@
     right: 10px;
     top: 15px;
 }
-
+.cardName{
+    padding-top: 39px !important;
+}
 .containerInfoSaldo {
     width: 100%;
     margin: 50px 0 64px 0;
-    padding: 0 80px;
+    padding: 0 162px;
     align-items: flex-start;
 }
 
@@ -49,27 +58,34 @@
     font-family: calibri;
     font-weight: 700;
 }
+.btnSection {
+    margin-bottom: 43px;
+}
 
 @media only screen and (max-width: 600px) {
     .cardBalance {
         border-radius: 20px;
         height: auto;
-        margin-top: 8.5vh;
-        margin-bottom: 20vh;
+        margin-bottom: 49px;
         font-family: Calibri;
     }
 
     .textUser {
         font-family: Calibri;
-        font-size: 20px;
+        font-size: 18px;
         font-style: normal;
         font-weight: 700;
         margin-bottom: 15px;
 
     }
 
-    .textAmountBalance {
-        font-family: Calibri;
+    .textAmountBalance img{
+        padding-bottom: 6px;
+        width: 8% !important;
+    }
+
+    .textAmountBalance h2 {
+        margin-right: 16px;
         font-size: 20px;
         font-style: normal;
         font-weight: 700;
@@ -82,6 +98,12 @@
         margin-left: 10px;
         padding-bottom: 15px;
         font-weight: 700;
+    }
+
+    .logoCopy {
+        padding-bottom: 20px;
+        margin-left: 16px;
+        width: 6% !important;
     }
 
     .textBalance {
@@ -105,9 +127,12 @@
     }
 
     .bgLogoBca {
-        height: 70%;
-        width: auto;
+        height: auto;
+        width: 35%;
         right: 10px;
-        top: 20px;
+        top: 55px;
+    }
+    .btnWeb {
+        display: none;
     }
 }

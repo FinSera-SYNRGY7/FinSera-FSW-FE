@@ -65,6 +65,7 @@ a, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-card {
+  position: fixed;
   padding: 2em;
   background-color: #0A3967 !important;
   border-radius: 0 !important;
@@ -120,5 +121,12 @@ a, p, h1, h2, h3, h4, h5, h6 {
   .pincode-input-text {
     width: 30px !important;
     height: 30px !important;
+  /* input date */
+  .react-datepicker {
+    right: 6%;
+  }
+  
+  .pin-input {
+      width:10px!important;
   }
 }

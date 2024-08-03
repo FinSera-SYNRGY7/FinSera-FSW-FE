@@ -8,11 +8,15 @@ import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown
 import styles from "@/assets/css/Infobalance.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import { formatRupiah } from "@/lib/utils"
+import Spinner from "react-bootstrap/Spinner";
 
 
 
 export default function InfoSaldo() {
-
+    const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState("");
     const [emptyData, setEmptyData] = useState(false);
 
@@ -31,44 +35,61 @@ export default function InfoSaldo() {
         { value: "action3", label: "Action 3" },
     ];
 
+    const handleButtonBack = () => {
+        navigate("/home");
+    };
+
+    const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
+
     return (
         <Layout>
-            <div className="d-flex flex-column containerInfoSaldo">
-                <div className="d-flex w-100 align-items-center mb-5">
-                    <a href="#" className="text-black d-inline d-md-none" aria-label="Back">
+            <div className={`d-flex flex-column ${styles.containerInfoSaldo}`}>
+                <div className={`d-flex w-100 align-items-center mb-5 mt-5`}>
+                    <a href="/home" className="text-black d-inline d-md-none" aria-label="Back">
                         <FontAwesomeIcon icon={faArrowLeft} />
                     </a>
                     <h1 className="flex-grow-1 text-md-start text-center p-0 m-0"> <span aria-label="Informasi Saldo">Informasi Saldo</span></h1>
                 </div>
-                <div className="d-flex flex-row btnSection">
-                    <ButtonIcon
-                        label="Beranda"
-                        onClick={() => console.log("Outline Add Button Clicked")}
-                        variant="btnBack"
-                        className="d-none d-md-inline-block"
-                        style={{ display: "none" }}
-                        aria-label="Beranda"
-                    />
-                    <DropdownSumberRekening
-                        options={options}
-                        onOptionSelect={handleOptionSelect}
-                        title="Sumber Rekening"
-                        subtitle="1234 5678 8765 99"
-                        className="dropdownSumberRekening"
-                        aria-labelledby="dropdownSumberRekeningTitle"
-                    />
+                <div className={`d-flex flex-row w-100 ${styles.btnSection}`}>
+                    <div className={`w-100 ${styles.btnWeb}`}>
+                        <ButtonIcon
+                            label="Beranda"
+                            onClick={() => handleButtonBack()}
+                            variant="btnBack"
+                            className="d-none d-md-inline-block"
+                            style={{ display: "none" }}
+                            aria-label="Beranda"
+                        />
+                    </div>
+                    {isLoadingAmount ? (
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    ) : (
+                        <DropdownSumberRekening
+                            options={options}
+                            onOptionSelect={handleOptionSelect}
+                            title="Sumber Rekening"
+                            subtitle={dataAmount.accountNumber}
+                            className="dropdownSumberRekening"
+                            aria-labelledby="dropdownSumberRekeningTitle"
+                        />
+                    )}
                 </div>
-
-                <CardInfoSaldo
-                    profile="Ramadhan"
-                    norek="1234 567 897 890"
-                    saldo="10.000.000"
-                    aria-label="Informasi Saldo Akun"
-                >
-                    <span id="profileName">Ramadhan</span>
-                    <span id="accountNumber">1234 567 897 890</span>
-                    <span id="accountBalance">10.000.000</span>
-                </CardInfoSaldo>
+                {isLoadingAmount ? (
+                    <div className="text-center w-100">
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </div>
+                ) : (
+                    <CardInfoSaldo
+                        profile={dataAmount.username}
+                        norek={dataAmount.accountNumber}
+                        saldo={formatRupiah(dataAmount.amount.amount)}
+                        aria-label="Informasi Saldo Akun"
+                    />
+                )}
             </div>
         </Layout>
     )

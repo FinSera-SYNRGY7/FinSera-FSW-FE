@@ -55,6 +55,13 @@
   font-size: 16px;
   font-weight: 700;
 }
+.btnDownload2nd:hover {
+  background-color: #0066AE;
+  color: white;
+}
+.btnBack:hover {
+  box-shadow: 0 5px 10px #c2c2c2;
+}
 
 /* Button Alter */
 .containerButtonAlt {
@@ -88,6 +95,11 @@
   margin: 0;
 }
 
+.btnAltSecondary:hover, .btnAltSecondaryIcon:hover {
+  background-color: #0066AE;
+  color: white;
+}
+
 @media only screen and (max-width: 900px) {
   /* Button Icon */
   .btnDownload2nd {
@@ -112,11 +124,27 @@
     background-color: white;
     color: black;
     padding-left: 0;
+    border: none !important;
     /* width: 20%; */
+  }
+  .textLabel {
+    font-size: 11px;
   }
   .btnBack .textLabel {
     display: none;
   }
+  .containerButton.btnAdd {
+    width: fit-content;
+    padding: 8px;
+  }
+  .btnAdd .icon {
+    font-size: 12px;
+  }
+
+  .btnBack:hover {
+    box-shadow: none !important;
+  }
+
 
 
   /* Button Alter */

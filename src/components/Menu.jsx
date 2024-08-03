@@ -13,7 +13,6 @@ const ServiceMenu = ({ label, navigation, icon }) => {
       >
         <div
           className={`${styles.logoMenu} d-flex flex-column justify-content-center align-items-center mb-3`}
-          aria-hidden="true"
         >
           <img src={icon} alt={label} />
         </div>

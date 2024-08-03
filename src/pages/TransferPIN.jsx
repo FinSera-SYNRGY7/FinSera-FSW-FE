@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Pininput from "react-pin-input";
+import { PinInput } from "@/components/PinInput";
 import Layout from "./../layout/Layout";
 import Button from "../components/Button";
 
@@ -48,6 +49,7 @@ function TransferPIN() {
             justifyContent: "space-evenly",
           }}
         />
+{/* <PinInput /> */}
       </div>
       <Button
         className={"btn base-color col-12 mb-5 shadow-hover"}

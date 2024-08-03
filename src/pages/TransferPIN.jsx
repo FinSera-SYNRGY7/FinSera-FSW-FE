@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Pininput from "react-pin-input";
 import { PinInput } from "@/components/PinInput";
 import Layout from "./../layout/Layout";
 import Button from "../components/Button";
@@ -36,29 +37,26 @@ function TransferPIN() {
         style={{ height: "30vh" }}
       >
         <span role="label" aria-label="Masukkan PIN">
-          <h2 className="fw-bold">Masukkan PIN</h2>
+          <h4 className="fw-bold">Masukkan PIN</h4>
         </span>
-        {/* <Pininput
+        <Pininput
           length={6}
           type="numeric"
           focus
           secret
-          className="pin-input"
-          inputStyle={{
-            borderRadius: "100%",
-            margin: "1rem",
-            border: "none",
-            backgroundColor: "#B3B3B3",
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
           }}
-        /> */}
-        <PinInput />
+        />
+{/* <PinInput /> */}
       </div>
       <Button
         className={"btn base-color col-12 mb-5 shadow-hover"}
         type="submit"
         aria-label="Lanjutkan"
       >
-        Lanjutkan
+        <h5 className="mb-0">Lanjutkan</h5>
       </Button>
     </Layout>
   );

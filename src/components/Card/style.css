@@ -20,4 +20,52 @@
 .outline:hover {
   border: 1px solid #0066AE !important;
 }
+
+.success{
+  border-radius: 70px;
+}
+
+.side-logo {
+  max-width: 100px;
+  width: 100%;
+  height: auto;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+
+@media screen and (max-width: 600px) {
+  .circle {
+    width: 30px;
+    height: 30px;
+  }
+
+  .text {
+    font-size: 16px;
+  }
+
+  .card-body {
+    padding: 0.25rem !important;
+  }
+
+  h5 {
+    font-size: 0.75rem !important;
+  }
+
+  h6 {
+    font-size: 0.675rem !important;
+  }
+
+  small {
+    font-size: 0.5rem !important;
+  }
+
+  .success{
+    border-radius: 50px;
+  }
+
+  .side-logo {
+    margin: 0;
+  }
+  
+}
   

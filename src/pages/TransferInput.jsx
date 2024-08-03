@@ -38,14 +38,14 @@ function Transfer() {
       </Button>
       <InputForm className={"my-4"}>
         <InputForm.Label to="rek" id="rek-label">
-          <h1 className="fw-bold mb-3">
+          <h4 className="fw-bold mb-3">
             <span role="input" aria-label="nomor rekening">
               Nomor Rekening
             </span>
-          </h1>
+          </h4>
         </InputForm.Label>
         <InputForm.Input
-          className="py-3 ps-5 fz-input input"
+          className="py-sm-3 ps-sm-5 fz-input input"
           type="number"
           name="rek"
           placeholder="Masukkan nomor rekening"
@@ -55,14 +55,14 @@ function Transfer() {
       </InputForm>
       <InputForm className={"my-4"}>
         <InputForm.Label to="nominal" id="nominal-label">
-          <h1 className="fw-bold mb-3">
+          <h4 className="fw-bold mb-3">
             <span role="input" aria-label="Nominal transfer">
               Nominal
             </span>
-          </h1>
+          </h4>
         </InputForm.Label>
         <InputForm.Input
-          className="py-3 ps-5 fz-input input"
+          className="py-sm-3 ps-sm-5 fz-input input"
           type="number"
           name="nominal"
           placeholder="Masukkan nominal transfer"
@@ -72,11 +72,11 @@ function Transfer() {
       </InputForm>
       <InputForm className={"my-4"}>
         <InputForm.Label to="catatan" id="catatan-label">
-          <h1 className="fw-bold mb-3">
+          <h4 className="fw-bold mb-3">
             <span role="input" aria-label="Masukkan catatan">
               Catatan
             </span>
-          </h1>
+          </h4>
         </InputForm.Label>
         <InputForm.TextArea
           className="fz-input input"
@@ -87,7 +87,7 @@ function Transfer() {
           required
         />
       </InputForm>
-      <InputForm className={"d-flex my-4 form-check"}>
+      <InputForm className={"d-flex my-4 form-check align-items-center"}>
         <InputForm.Input
           className="form-check-input me-2 p-0 border-black border-2"
           name="remember"
@@ -96,11 +96,11 @@ function Transfer() {
           required
         />
         <InputForm.Label to="remember" id="remember-label">
-          <h5 className="form-check-label">
+          <p className="form-check-label mb-0">
             <span role="checkbox" aria-label="Tambahkan ke daftar tersimpan">
               Tambahkan ke daftar tersimpan
             </span>
-          </h5>
+          </p>
         </InputForm.Label>
       </InputForm>
       <Button
@@ -108,7 +108,7 @@ function Transfer() {
         aria-label="Lanjutkan"
         type="submit"
       >
-        <h5>Lanjutkan</h5>
+        <h5 className="mb-0">Lanjutkan</h5>
       </Button>
     </Layout>
   );

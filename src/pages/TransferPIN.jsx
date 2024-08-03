@@ -36,18 +36,16 @@ function TransferPIN() {
         style={{ height: "30vh" }}
       >
         <span role="label" aria-label="Masukkan PIN">
-          <h2 className="fw-bold">Masukkan PIN</h2>
+          <h4 className="fw-bold">Masukkan PIN</h4>
         </span>
         <Pininput
           length={6}
           type="numeric"
           focus
           secret
-          inputStyle={{
-            borderRadius: "100%",
-            margin: "1rem",
-            border: "none",
-            backgroundColor: "#B3B3B3",
+          style={{
+            display: "flex",
+            justifyContent: "space-evenly",
           }}
         />
       </div>
@@ -56,7 +54,7 @@ function TransferPIN() {
         type="submit"
         aria-label="Lanjutkan"
       >
-        Lanjutkan
+        <h5 className="mb-0">Lanjutkan</h5>
       </Button>
     </Layout>
   );

@@ -5,8 +5,8 @@ import { useLogin } from "@/features/auth/useLogin"
 import { Container, Row, Col, Form } from 'react-bootstrap'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 
-import logobcawhite from '@/assets/img/logobcawhite.png'
-import logobcablue from '@/assets/img/logobcablue.png'
+import logoWhite from '@/assets/logo/logoWhite.svg'
+import logoBlue from '@/assets/logo/logoBlue.svg'
 import login from '@/assets/img/login.svg'
 import { FormInput } from '@/components/FormInput.jsx'
 import Button from 'react-bootstrap/Button'
@@ -18,6 +18,8 @@ const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false)
     const [isError, setIsError] = useState(false) 
     const [errorMessage, setErrorMessage] = useState("")
+    const [usernameError, setUsernameError] = useState(false)
+    const [passwordError, setPasswordError] = useState(false)
     const navigate = useNavigate()
 
     const togglePasswordVisibility = () => {
@@ -34,10 +36,24 @@ const Login = () => {
         onError: (error) => {
             setIsError(true)
             setErrorMessage(error.response.data.message)
+            if (error.response.data.field === 'username') {
+                setUsernameError(true)
+                setErrorMessage("Username yang Anda masukkan salah!")
+            } else if (error.response.data.field === 'password') {
+                setPasswordError(true)
+                setErrorMessage("Password yang Anda masukkan salah!")
+            } else {
+                setUsernameError(true)
+                setPasswordError(true)
+                setErrorMessage("Username dan password yang Anda masukkan salah!")
+            }
         },
     })
 
     const onSubmit = (data) => {
+        setUsernameError(false)
+        setPasswordError(false)
+        setIsError(false)
         const dataLogin = {
           ...data
         }
@@ -51,7 +67,7 @@ const Login = () => {
                 <Col md={6} className={styles.leftColumn}>
                     <div className={styles.logoContainer}>
                         <img
-                            src={logobcawhite}
+                            src={logoWhite}
                             alt="logo"
                             className={styles.logoWhite}
                         />
@@ -66,7 +82,7 @@ const Login = () => {
                 </Col>
                 <Col md={6} className={styles.rightColumn}>
                     <img
-                        src={logobcablue}
+                        src={logoBlue}
                         alt="logo"
                         className={styles.logoBlue}
                     />
@@ -75,7 +91,7 @@ const Login = () => {
                             Login
                         </h1>
                         <Form aria-label="Login form" onSubmit={handleSubmit(onSubmit)}>
-                            {isError ? (
+                            {/* {isError ? (
                                 <div className="mb-4">
                                     <Alert
                                         variant="danger"
@@ -91,8 +107,8 @@ const Login = () => {
                                 </div>
                             ) : (
                             ""
-                            )}
-                            <FormInput className="mb-5" aria-label="Username">
+                            )} */}
+                            <FormInput className={`${styles.formInputFirst} mb-5`} aria-label="Username">
                                 <Form.Label htmlFor="username" className={styles.formLabel}>
                                     Username
                                 </Form.Label>
@@ -100,7 +116,7 @@ const Login = () => {
                                     type="text"
                                     id="username"
                                     placeholder="masukkan username"
-                                    className={styles.formControl}
+                                    className={`${styles.formControl} ${usernameError ? styles.errorInput : ''}`}
                                     {...register("username")}
                                 />
                             </FormInput>
@@ -113,7 +129,7 @@ const Login = () => {
                                     type={passwordVisible ? 'text' : 'password'}
                                     id="password"
                                     placeholder="masukkan password"
-                                    className={styles.formControl}
+                                    className={`${styles.formControl} ${passwordError ? styles.errorInput : ''}`}
                                     {...register("password")}
                                 />
                                 <span
@@ -133,7 +149,7 @@ const Login = () => {
                                 isPending ?
                                 <Button
                                     aria-label="Tombol Login"
-                                    className={`btn btn-primary ${styles.loginButton}`}
+                                    className={styles.loginButton}
                                     type="submit"
                                     >
                                     <div className="spinner-border text-white" role="status"></div>
@@ -141,12 +157,17 @@ const Login = () => {
                                 :
                                 <Button
                                 aria-label="Tombol Login"
-                                className={`btn btn-primary ${styles.loginButton}`}
+                                className={styles.loginButton}
                                 type="submit"
                                 >
                                     Login
                                 </Button>
                             }
+                            {isError && (
+                                <div className={styles.errorMessage}>
+                                    {errorMessage}
+                                </div>
+                            )}
                         </Form>
                     </div>
                 </Col>

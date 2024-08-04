@@ -20,14 +20,6 @@ a, p, h1, h2, h3, h4, h5, h6 {
   transition: filter 300ms;
 }
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -102,6 +94,12 @@ a, p, h1, h2, h3, h4, h5, h6 {
     z-index: -999;
   }
 
+  .pincode-input-text {
+    border-radius: 100%;
+    border: none !important;
+    background-color: #B3B3B3 !important;
+  }
+
   /* mediaquery tablet */
   @media only screen and (max-width: 900px) {
 
@@ -120,6 +118,9 @@ a, p, h1, h2, h3, h4, h5, h6 {
     padding: 10px;
   }
 
+  .pincode-input-text {
+    width: 30px !important;
+    height: 30px !important;
   /* input date */
   .react-datepicker {
     right: 6%;

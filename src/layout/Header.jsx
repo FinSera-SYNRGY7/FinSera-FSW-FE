@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import Form from "react-bootstrap/Form";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import logoFinsera from "../assets/img/logoFinsera.svg";
 import logobcablue from "@/assets/img/logobcablue.png";
 import logoAlert from "@/assets/logo/alert.png";
 import logoProfile from "@/assets/logo/profile.png";
@@ -45,7 +49,7 @@ const Header = ({ type }) => {
       <Navbar expand="lg" className={`${styles.navbarHeader} navbar-header`}>
         <Container fluid className={styles.containerFluid}>
           <Navbar.Brand href="/home" className={styles.navbarBrand}>
-            <img src={logobcablue} className="logo" alt="bca logo" />{" "}
+            <img src={logoFinsera} className="logo" alt="finsera logo" />
           </Navbar.Brand>
           <Nav className={styles.searchBar} aria-label="Search Input">
             <SearchInput onSearch={handleSearch} />

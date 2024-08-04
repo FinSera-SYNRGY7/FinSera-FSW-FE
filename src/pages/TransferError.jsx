@@ -29,18 +29,18 @@ function TransferError() {
         <span className="ms-20">Back</span>
       </Button>
       <div className="container text-center p-5">
-        <img src={Error} alt="Error" />
+        <img className="w-100" src={Error} alt="Error" />
         <span role="label" aria-label="Oops! Sepertinya ada masalah">
-          <h2 className="card-title">Oops! Sepertinya ada masalah</h2>
+          <h4 className="card-title fw-bold">Oops! Sepertinya ada masalah</h4>
         </span>
         <span
           role="label"
           aria-label="Pastikan perangkat anda terhubung pada jaringan"
         >
-          <h4 className="card-subtitle mb-2 text-body-secondary">
+          <h5 className="card-subtitle  mb-2 text-body-secondary">
             Pastikan perangkat anda terhubung pada jaringan. Tunggu beberapa
             saat dan coba lagi akses halaman web.
-          </h4>
+          </h5>
         </span>
       </div>
     </Layout>

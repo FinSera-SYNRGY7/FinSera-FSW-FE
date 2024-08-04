@@ -28,7 +28,7 @@ function Input({ className, name, type, ...rest }) {
 function Select({ className, name, dataOption, ...rest }) {
   return (
     <select
-      className={`form-select py-3 ps-5 ${className}`}
+      className={`form-select py-3 ps-sm-5 ${className}`}
       name={name}
       id={name}
     >
@@ -44,7 +44,7 @@ function Select({ className, name, dataOption, ...rest }) {
 function TextArea({ className, name, ...rest }) {
   return (
     <textarea
-      className={`form-control py-3 ps-5 d-flex align-items-center ${className}`}
+      className={`form-control py-sm-3 ps-sm-5 d-flex align-items-center ${className}`}
       name={name}
       id={name}
       {...rest}

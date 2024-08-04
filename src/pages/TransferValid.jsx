@@ -35,28 +35,28 @@ function TransferValid() {
         aria-label="akun tujuan transfer"
       />
       <span role="label" aria-label="Nominal Transfer : Rp 100.000">
-        <div className="row justify-content-between mb-5">
-          <h4 className="col-auto">Nominal Transfer</h4>
-          <h4 className="fw-bold col-auto">Rp 100.000</h4>
+        <div className="row justify-content-between mb-3 mb-sm-5">
+          <h5 className="col-auto">Nominal Transfer</h5>
+          <h5 className="fw-bold col-auto">Rp 100.000</h5>
         </div>
       </span>
       <span role="label" aria-label="Jenis Transfer : Transfer Sesama Bank">
-        <div className="row justify-content-between mb-5">
-          <h4 className="col-auto">Jenis Transfer</h4>
-          <h4 className="fw-bold col-auto">Transfer Sesama Bank</h4>
+        <div className="row justify-content-between mb-3 mb-sm-5">
+          <h5 className="col-auto">Jenis Transfer</h5>
+          <h5 className="fw-bold col-auto">Transfer Sesama Bank</h5>
         </div>
       </span>
       <span role="label" aria-label="Catatan : Bayar Utang">
-        <div className="row justify-content-between mb-5">
-          <h4 className="col-auto">Catatan</h4>
-          <h4 className="fw-bold col-auto">Bayar Utang</h4>
+        <div className="row justify-content-between mb-3 mb-sm-5">
+          <h5 className="col-auto">Catatan</h5>
+          <h5 className="fw-bold col-auto">Bayar Utang</h5>
         </div>
       </span>
-      <h1 className="fw-bold mb-3 pt-3 text-start">
+      <h4 className="fw-bold mb-3 pt-3 text-start">
         <span role="label" aria-label="Sumber rekening">
           Sumber rekening
         </span>
-      </h1>
+      </h4>
       <CardTransfer
         className={"shadow p-0 border-0 mb-5"}
         first="col-1"
@@ -67,7 +67,7 @@ function TransferValid() {
         type="button"
         aria-label="Lanjutkan"
       >
-        Lanjutkan
+        <h5 className="mb-0">Lanjutkan</h5>
       </Button>
     </Layout>
   );

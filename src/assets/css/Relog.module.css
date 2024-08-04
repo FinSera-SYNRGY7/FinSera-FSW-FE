@@ -81,22 +81,15 @@
     border-radius: 18px;
 }
 
-@media only screen and (max-width: 600px) {
-    .leftColumn {
-        display: none;
-    }
-    .logoBlue {
-        display: block;
-        position: absolute;
-        top: 38px;
-        left: 24px;
-        width: 100px;
-        height: auto;
-        z-index: 1000;
-    }
-    .rightColumn {
-        margin-top: -80px;
-    }
+.errorMessage {
+    background-color: #FF0000;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 12px;
+    text-align: center;
+    width: 60%;
+    margin: 70px auto 15px auto;
 }
 
 @media only screen and (max-width: 768px) {
@@ -125,5 +118,23 @@
     }
     .forgotPIN {
         font-size: 18px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .leftColumn {
+        display: none;
+    }
+    .logoBlue {
+        display: block;
+        position: absolute;
+        top: 38px;
+        left: 24px;
+        width: 100px;
+        height: auto;
+        z-index: 1000;
+    }
+    .rightColumn {
+        margin-top: -80px;
     }
 }

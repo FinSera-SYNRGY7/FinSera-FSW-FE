@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 
-import logobcawhite from '@/assets/img/logobcawhite.png'
-import logobcablue from '@/assets/img/logobcablue.png'
+import logoWhite from '@/assets/logo/logoWhite.svg'
+import logoBlue from '@/assets/logo/logoBlue.svg'
 import login from '@/assets/img/login.svg';
 import Button from 'react-bootstrap/Button';
 import { PinInput } from '@/components/PinInput';
 import styles from "@/assets/css/Relog.module.css";
 
 const Relog = () => {
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("PIN yang Anda masukkan salah!"); 
     const [passwordVisible, setPasswordVisible] = useState(false);
+
+    const handlePinSubmit = (pin) => {
+        console.log("PIN submitted:", pin);
+    };
+
+    const showError = () => {
+        setIsError(true);
+    };
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -21,7 +31,7 @@ const Relog = () => {
                 <Col md={6} className={styles.leftColumn}>
                     <div className={styles.logoContainer}>
                         <img
-                            src={logobcawhite}
+                            src={logoWhite}
                             alt="logo"
                             className={styles.logo}
                         />
@@ -36,7 +46,7 @@ const Relog = () => {
                 </Col>
                 <Col md={6} className={styles.rightColumn}>
                     <img
-                        src={logobcablue}
+                        src={logoBlue}
                         alt="logo"
                         className={styles.logoBlue}
                     />
@@ -45,11 +55,16 @@ const Relog = () => {
                             Selamat Datang Kembali
                         </h2>
                         <h4 className={styles.subtitle} aria-label="Masukkan PIN Anda">Masukkan PIN Anda</h4>
-                        <PinInput className={styles.pinInput} />
+                        <PinInput className={styles.pinInput} onComplete={handlePinSubmit} />
                         <a href="#" className={styles.forgotPIN} aria-label="Lupa PIN?">Lupa PIN?</a>
-                        <Button className={`btn btn-primary ${styles.loginButton}`} type="submit">
+                        <Button className={styles.loginButton} type="submit" onClick={showError}>
                             Login
                         </Button>
+                        {isError && (
+                            <div className={styles.errorMessage}>
+                                {errorMessage}
+                            </div>
+                        )}
                     </div>
                 </Col>
             </Row>

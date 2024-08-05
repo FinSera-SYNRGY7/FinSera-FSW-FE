@@ -34,6 +34,7 @@ const AccountMutation = () => {
   const handleStartDate = (date) => {
     setStartRangeDate(formatDateYMD(date));
     if(startRangeDate != "" && endRangeDate != "") {
+      setDataFilterDate({})
       setDataFilterDate({
         startDate: startRangeDate,
         endDate: endRangeDate,
@@ -50,6 +51,7 @@ const AccountMutation = () => {
   const handleEndDate = (date) => {
     setEndRangeDate(formatDateYMD(date));
     if(startRangeDate != "" && endRangeDate != "") {
+      setDataFilterDate({})
       setDataFilterDate({
         startDate: startRangeDate,
         endDate: endRangeDate,
@@ -68,7 +70,7 @@ const AccountMutation = () => {
   }
 
   const handleFilterHariIni = () => {
-    // setFilterDate({})
+    setDataFilterDate({})
     setDataFilterDate({
       startDate: moment().format("YYYY-MM-DD"),
       endDate: moment().format("YYYY-MM-DD"),
@@ -81,7 +83,7 @@ const AccountMutation = () => {
   }
 
   const handleFilterSeminggu = () => {
-    // setFilterDate({})
+    setDataFilterDate({})
     setDataFilterDate({
       startDate: minusOneWeek(),
       endDate: moment().format("YYYY-MM-DD"),
@@ -94,7 +96,7 @@ const AccountMutation = () => {
   }
 
   const handleFilterSebulan = () => {
-    // setFilterDate({})
+    setDataFilterDate({})
     setDataFilterDate({
       startDate: minusOneMonth(),
       endDate: moment().format("YYYY-MM-DD"),
@@ -105,6 +107,28 @@ const AccountMutation = () => {
     // console.log("cek data FilterDate", dataFilterDate)
     refetchAccountMutation()
   }
+
+  const handleDownload = async () => {
+    try {
+      const requestDownload = await httpServer.get('/api/v1/mutasi/download', {
+        responseType: 'blob', // Important for downloading files
+        params: dataFilterDate
+      });
+  
+      const url = window.URL.createObjectURL(new Blob([requestDownload.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `Mutasi Rekening ${dataAmount.accountNumber}.pdf`); // Or any desired filename
+      document.body.appendChild(link);
+      link.click();
+  
+      // Clean up
+      link.parentNode.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading file:', error);
+    }
+  };
 
   const options = [
     { value: "action1", label: "Action 1" },
@@ -130,14 +154,17 @@ const AccountMutation = () => {
     return dataAccountMutation?.map((row, key) => {
       let color
       let nominal
+      let typeTxn
       const typeTransaction = checkTypeTransaction(row.transactionInformation)
 
       if(typeTransaction == 'Uang Masuk') {
         color = '#12D79C'
         nominal = `+ ${formatRupiah(row.amountTransfer.amount)}`
+        typeTxn = `Terima Uang dari ${row.destinationNameAccountNumber}`
       } else {
         color = 'red'
         nominal = `- ${formatRupiah(row.amountTransfer.amount)}`
+        typeTxn = `Transfer Uang ke ${row.destinationNameAccountNumber}`
       }
 
       return (
@@ -148,7 +175,7 @@ const AccountMutation = () => {
             noTXN={row.noTransaction}
             nominal={nominal}
             time={formatTimeIndo(row.transactionDate)}
-            typeTXN={typeTransaction}
+            typeTXN={typeTxn}
             key={key}
           />
         </>
@@ -236,7 +263,7 @@ const AccountMutation = () => {
               <>
                 <ButtonIcon
                   label="Download"
-                  onClick={() => console.log("Solid Download Clicked")}
+                  onClick={() => handleDownload()}
                   variant="btnDownload2nd"
                 />
               </>
@@ -255,45 +282,12 @@ const AccountMutation = () => {
             </div>
           ) : (
             !isErrorMutation ? (
-               // <>
-            //   <CardMutation
-            //     color="red"
-            //     dateTXN="7 juli 2024"
-            //     noTXN="121313112343111 DBT4"
-            //     nominal="- Rp. 200.000"
-            //     time="11:12:21 WIB"
-            //     typeTXN="Uang Keluar"
-            //   />
-            //   <CardMutation
-            //     color="red"
-            //     dateTXN="5 juli 2024"
-            //     noTXN="12142332343111 DBT4"
-            //     nominal="- Rp. 100.000"
-            //     time="11:12:21 WIB"
-            //     typeTXN="Uang Keluar"
-            //   />
-            //   <CardMutation
-            //     color="#12D79C"
-            //     dateTXN="1 juli 2024"
-            //     noTXN="531313112343111 DBT4"
-            //     nominal="+ Rp. 2.100.000"
-            //     time="11:12:21 WIB"
-            //     typeTXN="Uang Masuk"
-            //   />
-            //   <div className={styles.btnDownloadAndro}>
-            //     <ButtonAlt
-            //       label="Download"
-            //       onClick={() => console.log("Download")}
-            //       variant="btnAltPrimary"
-            //     />
-            //   </div>
-            // </>
             <>
               {renderDataMutation()}
               <div className={styles.btnDownloadAndro}>
                 <ButtonAlt
                   label="Download"
-                  onClick={() => console.log("Download")}
+                  onClick={() => handleDownload()}
                   variant="btnAltPrimary"
                 />
               </div>

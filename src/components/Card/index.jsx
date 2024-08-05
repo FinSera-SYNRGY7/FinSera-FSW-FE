@@ -3,8 +3,9 @@ import Success from "../../assets/img/Success.svg";
 import Button from "./../Button/index";
 import logobcablue from "../../assets/img/logobcablue.png";
 import "./style.css";
+import { formatRupiah } from "../../lib/utils";
 
-export function CardVertical({ className, children, ...rest }) {
+export function CardVertical({ className, children, data, ...rest }) {
   return (
     <>
       <div className="d-flex justify-content-end mb-3 mb-sm-5">
@@ -23,20 +24,20 @@ export function CardVertical({ className, children, ...rest }) {
           <span role="label" aria-label="Tanggal : 21 June 2024 | 12:45 WIB">
             <div className="row justify-content-between mb-3 mb-sm-5">
               <h5 className="col-auto">Tanggal</h5>
-              <h5 className="fw-bold col-auto">21 Juni 2024 | 12:45 WIB</h5>
+              <h5 className="fw-bold col-auto">{ data.transaction_date }</h5>
             </div>
           </span>
           <span role="label" aria-label="Nomor Transaksi : 12356676787878">
             <div className="row justify-content-between mb-3 mb-sm-5">
               <h5 className="col-auto">Nomor Transaksi</h5>
-              <h5 className="fw-bold col-auto">12356676787878</h5>
+              <h5 className="fw-bold col-auto">{ data.transaction_num }</h5>
             </div>
           </span>
           <hr />
           <span role="label" aria-label="Penerima : Putra Ardiansyah">
             <div className="row justify-content-between mb-3 mb-sm-5">
               <h5 className="col-auto">Penerima</h5>
-              <h5 className="fw-bold col-auto">Putra Ardiansyah</h5>
+              <h5 className="fw-bold col-auto">{ data.name_recipient }</h5>
             </div>
           </span>
           <span
@@ -51,13 +52,13 @@ export function CardVertical({ className, children, ...rest }) {
           <span role="label" aria-label="Jumlah : Rp 2.000.000">
             <div className="row justify-content-between mb-3 mb-sm-5">
               <h5 className="col-auto">Jumlah</h5>
-              <h5 className="fw-bold col-auto">Rp 2.000.000</h5>
+              <h5 className="fw-bold col-auto">{ data.nominal }</h5>
             </div>
           </span>
           <span role="label" aria-label="Catatan : Bayar Utang">
             <div className="row justify-content-between mb-3 mb-sm-5">
               <h5 className="col-auto">Catatan</h5>
-              <h5 className="fw-bold col-auto">Bayar Utang</h5>
+              <h5 className="fw-bold col-auto">{ data.note }</h5>
             </div>
           </span>
           <div className="row justify-content-evenly mb-4 mb-sm-5">
@@ -66,7 +67,7 @@ export function CardVertical({ className, children, ...rest }) {
               type="button"
               aria-label="Download"
             >
-              <i class="fa fa-download me-2"></i> Download
+              <i className="fa fa-download me-2"></i> Download
             </Button>
             <Button
               className={"col-5 col-sm-4 base-color shadow-hover"}
@@ -94,11 +95,11 @@ export function CardHorizontal({ className, first, second, data, ...rest }) {
         </div>
         <div className={`${second} p-0`}>
           <div className="card-body px-0">
-            <span role="label" aria-label="nama : Putri Kusuma">
-              <h5 className="card-title">Putri Kusuma</h5>
+            <span role="label" aria-label={`nama : ${data.name_recipient}`}>
+              <h5 className="card-title">{ data.name_recipient }</h5>
             </span>
             <span role="label" aria-label="akun Bank BCA">
-              <h6 class="card-subtitle text-body-secondary">Bank BCA</h6>
+              <h6 className="card-subtitle text-body-secondary">{data.bank_name}</h6>
             </span>
             <span
               className="h-c"
@@ -116,7 +117,7 @@ export function CardHorizontal({ className, first, second, data, ...rest }) {
   );
 }
 
-export function CardTransfer({ className, first, second }) {
+export function CardTransfer({ className, first, second, data }) {
   return (
     <div className={`card ${className}`}>
       <div className="d-flex">
@@ -132,13 +133,13 @@ export function CardTransfer({ className, first, second }) {
         <div className={`flex-grow-1 d-flex align-items-center me-0`}>
           <div className="card-body">
             <span role="label" aria-label="nomor rekening : 1234 567 897 890">
-              <h5 className="fw-bold">1234 567 897 890</h5>
+              <h5 className="fw-bold">{ data.username }</h5>
             </span>
             <span role="label" aria-label="nama : RAMADHAN ADI">
-              <h5 class="card-subtitle text-body-secondary">RAMADHAN ADI</h5>
+              <h5 className="card-subtitle text-body-secondary">{ data.accountNumber }</h5>
             </span>
-            <span role="label" aria-label="Saldo : Rp 10.890.500,00">
-              <h4 className="fw-bold text-primary">Rp 10.890.500,00</h4>
+            <span role="label" aria-label={`Saldo : ${formatRupiah(data.amount.amount)}`}>
+              <h4 className="fw-bold text-primary">{ formatRupiah(data.amount.amount) }</h4>
             </span>
           </div>
         </div>

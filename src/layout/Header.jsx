@@ -48,7 +48,9 @@ const Header = ({ type }) => {
     <>
       <Navbar expand="lg" className={`${styles.navbarHeader} navbar-header`}>
         <Container fluid className={styles.containerFluid}>
-          <Navbar.Brand href="/home" className={styles.navbarBrand}>
+          <Navbar.Brand href="/home" className={styles.navbarBrand} onClick={() => {
+            window.history.replaceState({}, '')
+          }}>
             <img src={logoFinsera} className="logo" alt="finsera logo" />
           </Navbar.Brand>
           <Nav className={styles.searchBar} aria-label="Search Input">

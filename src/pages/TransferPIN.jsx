@@ -1,10 +1,52 @@
 import React, { useState } from "react";
 import Pininput from "react-pin-input";
 import { PinInput } from "@/components/PinInput";
-import Layout from "./../layout/Layout";
-import Button from "../components/Button";
+import Layout from "@/layout/Layout";
+import Button from "@/components/Button";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useTransferBank } from "@/features/transferBank/useTransferBank";
+import { useForm } from "react-hook-form";
 
 function TransferPIN() {
+  
+  const { register, handleSubmit } = useForm()
+  
+  const [pinInput, setPinInput] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  
+  const navigate = useNavigate()
+  
+  const { state } = useLocation()
+  
+  const { mutate, isPending } = useTransferBank({
+    onSuccess:(success, data) => {
+      navigate('/transfer-sesama-bank/success', {
+        state:{
+          transaction_date:success.data.transaction_date,
+          transaction_num:success.data.transaction_num,
+          accountnum_recipient:success.data.accountnum_recipient,
+          name_recipient:success.data.name_recipient,
+          nominal:success.data.nominal,
+          note:success.data.note
+        }
+      })
+    },
+    onError:(error, data) => {
+      setErrorMessage(error.message.response.data.message)
+    }
+  })
+  
+  const submit = (value) => {
+    const data = {
+      accountnum_recipient:state.accountnum_recipient,
+      nominal:state.nominal,
+      note:state.note,
+      pin:pinInput
+    }
+    
+    mutate(data)
+  }
+  
   return (
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline">
@@ -31,7 +73,13 @@ function TransferPIN() {
         <i className="fa fa-arrow-left" />
         <span className="ms-20">Back</span>
       </Button>
-
+      {
+        errorMessage != '' ?
+          <div className="alert alert-danger" aria-label={`Pesan Error ${errorMessage}`}>
+          {errorMessage} <button className="btn-close" aria-label="tutup error" role="close">X</button>
+        </div> : ''
+      }
+      <form method="POST" onSubmit={handleSubmit(submit)}>
       <div
         className="row m-auto align-items-center text-center mb-5"
         style={{ height: "30vh" }}
@@ -48,6 +96,10 @@ function TransferPIN() {
             display: "flex",
             justifyContent: "space-evenly",
           }}
+          name="pin"
+          onChange={(value) => {
+            setPinInput(value)
+          }}
         />
 {/* <PinInput /> */}
       </div>
@@ -55,9 +107,11 @@ function TransferPIN() {
         className={"btn base-color col-12 mb-5 shadow-hover"}
         type="submit"
         aria-label="Lanjutkan"
+        disabled={isPending}
       >
         <h5 className="mb-0">Lanjutkan</h5>
       </Button>
+      </form>
     </Layout>
   );
 }

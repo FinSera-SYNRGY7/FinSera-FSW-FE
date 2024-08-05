@@ -25,8 +25,7 @@ const Login = () => {
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible)
     }
-
-
+    
     const { mutate, isPending } = useLogin({
         onSuccess: (data) => {
             localStorage.setItem("auth_token", data.data.accessToken)

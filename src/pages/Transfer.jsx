@@ -7,14 +7,24 @@ import { useNavigate, Link } from "react-router-dom";
 function Transfer() {
   return (
     <Layout className="haveStyle">
-      <div className="d-flex align-items-baseline">
-        <Button
-          className="d-sm-none p-0"
-          type="button"
+      <div className="d-flex align-items-baseline pt-5">
+        <Link
+          to="/home"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
           aria-label="kembali ke halaman sebelumnya"
+          role="button"
         >
-          <i className="fa fa-arrow-left" />
-        </Button>
+          <Button
+            className="d-sm-none p-0"
+            type="button"
+            aria-label="kembali ke halaman sebelumnya"
+          >
+            <i className="fa fa-arrow-left" />
+          </Button>
+        </Link>
         <h1 className="fw-bold col-12 text-center text-sm-start">
           <span role="label" aria-label="Transfer Sesama Bank">
             Transfer Sesama Bank
@@ -22,22 +32,36 @@ function Transfer() {
         </h1>
       </div>
       <div className="d-flex justify-content-end justify-content-sm-between gap-5 mb-sm-4">
-        <Button
-          className={
-            "d-none d-sm-block flex-grow-1 base-color text-sm-start d-flex shadow-hover"
-          }
-          type="button"
+        <Link
+          to="/home"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
           aria-label="kembali ke halaman sebelumnya"
+          role="button"
         >
-          <i className="fa fa-arrow-left"></i>
-          <span className="ms-20">Back</span>
-        </Button>
-        <Link to="/transfer-sesama-bank/form-input" className="m-0" style={{
-          textDecoration: 'none',
-          color:'inherit'
-        }}
-        role="button"
-        aria-label="Tambah penerima baru">
+          <Button
+            className={
+              "d-none d-sm-block flex-grow-1 base-color text-sm-start d-flex shadow-hover"
+            }
+            type="button"
+            aria-label="kembali ke halaman sebelumnya"
+          >
+            <i className="fa fa-arrow-left"></i>
+            <span className="ms-20">Back</span>
+          </Button>
+        </Link>
+        <Link
+          to="/transfer-sesama-bank/form-input"
+          className="m-0"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
+          role="button"
+          aria-label="Tambah penerima baru"
+        >
           <Button
             className={"d-flex align-items-center btn-outline-base-color"}
             type="button"
@@ -61,8 +85,8 @@ function Transfer() {
             className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
             data={{
-              name_recipient:'Kusuma Dewi',
-              bank_name:'Bank BCA'
+              name_recipient: "Kusuma Dewi",
+              bank_name: "Bank BCA",
             }}
           />
         </div>
@@ -71,8 +95,8 @@ function Transfer() {
             className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
             data={{
-              name_recipient:'Kusuma Dewi',
-              bank_name:'Bank BCA'
+              name_recipient: "Kusuma Dewi",
+              bank_name: "Bank BCA",
             }}
           />
         </div>
@@ -81,8 +105,8 @@ function Transfer() {
             className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
             data={{
-              name_recipient:'Kusuma Dewi',
-              bank_name:'Bank BCA'
+              name_recipient: "Kusuma Dewi",
+              bank_name: "Bank BCA",
             }}
           />
         </div>
@@ -91,8 +115,8 @@ function Transfer() {
             className={"shadow p-0 border-0 outline"}
             aria-label="akun transfer terakhir"
             data={{
-              name_recipient:'Kusuma Dewi',
-              bank_name:'Bank BCA'
+              name_recipient: "Kusuma Dewi",
+              bank_name: "Bank BCA",
             }}
           />
         </div>
@@ -102,16 +126,16 @@ function Transfer() {
         className={"shadow p-0 border-0 mb-3 outline"}
         aria-label="akun transfer tersimpan"
         data={{
-          name_recipient:'Kusuma Dewi',
-          bank_name:'Bank BCA'
+          name_recipient: "Kusuma Dewi",
+          bank_name: "Bank BCA",
         }}
       />
       <CardHorizontal
         className={"shadow p-0 border-0 mb-3 outline"}
         aria-label="akun transfer tersimpan"
         data={{
-          name_recipient:'Kusuma Dewi',
-          bank_name:'Bank BCA'
+          name_recipient: "Kusuma Dewi",
+          bank_name: "Bank BCA",
         }}
       />
       <div className="mb-5"></div>

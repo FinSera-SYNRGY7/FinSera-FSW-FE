@@ -6,7 +6,7 @@ import Error from "../assets/img/Error.svg";
 function TransferError() {
   return (
     <Layout className={"haveStyle"}>
-      <div className="d-flex align-items-baseline">
+      <div className="d-flex align-items-baseline pt-5">
         <Button
           className="d-sm-none p-0"
           type="button"

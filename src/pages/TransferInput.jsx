@@ -7,42 +7,47 @@ import { useForm } from "react-hook-form";
 import { useTransferBankCheck } from "@/features/transferBank/useTransferBankCheck";
 
 function Transfer() {
-  const navigate = useNavigate()
-  const { register, handleSubmit } = useForm()
-  const [errorMessage, setErrorMessage] = useState('')
-  
+  const navigate = useNavigate();
+  const { register, handleSubmit } = useForm();
+  const [errorMessage, setErrorMessage] = useState("");
+
   const { mutate, isPending } = useTransferBankCheck({
-    onSuccess:(success, data) => {
-      navigate('/transfer-sesama-bank/konfirmasi', {
-        state:{
-          accountnum_recipient:success.data.accountnum_recipient,
-          name_recipient:success.data.name_recipient,
-          nominal:data.nominal,
-          note:data.note
-        }
-      })
+    onSuccess: (success, data) => {
+      navigate("/transfer-sesama-bank/konfirmasi", {
+        state: {
+          accountnum_recipient: success.data.accountnum_recipient,
+          name_recipient: success.data.name_recipient,
+          nominal: data.nominal,
+          note: data.note,
+        },
+      });
     },
-    onError:(error) => {
-      setErrorMessage(error.message.response.data.message)
-    }
-  })
-  
+    onError: (error) => {
+      setErrorMessage(error.message.response.data.message);
+    },
+  });
+
   const submit = (value) => {
-    mutate(value)
-  }
+    mutate(value);
+  };
 
   return (
     <Layout className={"haveStyle"}>
-      <div className="d-flex align-items-baseline">
+      <div className="d-flex align-items-baseline pt-5">
         <Button
           className="d-sm-none p-0"
           type="button"
           aria-label="kembali ke halaman sebelumnya"
         >
-          <Link to="/transfer-sesama-bank" style={{
-            textDecoration:'none',
-            color:'inherit'
-          }} aria-label="kembali ke halaman sebelumnya" role="button">
+          <Link
+            to="/transfer-sesama-bank"
+            style={{
+              textDecoration: "none",
+              color: "inherit",
+            }}
+            aria-label="kembali ke halaman sebelumnya"
+            role="button"
+          >
             <i className="fa fa-arrow-left" />
           </Link>
         </Button>
@@ -52,28 +57,40 @@ function Transfer() {
           </span>
         </h1>
       </div>
-      <Link to="/transfer-sesama-bank" style={{
-        textDecoration:'none',
-        color:'inherit'
-      }} aria-label="kembali ke halaman sebelumnya" role="button">
+      <Link
+        to="/transfer-sesama-bank"
+        style={{
+          textDecoration: "none",
+          color: "inherit",
+        }}
+        aria-label="kembali ke halaman sebelumnya"
+        role="button"
+      >
         <Button
           className={
             "d-none d-sm-block col-sm-12 base-color shadow-hover text-sm-start mb-5"
           }
           type="button"
           aria-label="kembali ke halaman sebelumnya"
-          onClick={ () => console.log('sip')}
+          onClick={() => console.log("sip")}
         >
-            <i className="fa fa-arrow-left" />
-            <span className="ms-20">Back</span>
+          <i className="fa fa-arrow-left" />
+          <span className="ms-20">Back</span>
         </Button>
       </Link>
-      {
-        errorMessage != '' ?
-          <div className="alert alert-danger" aria-label={`Pesan Error ${errorMessage}`}>
-          {errorMessage} <button className="close" aria-label="tutup error" role="close">X</button>
-        </div> : ''
-      }
+      {errorMessage != "" ? (
+        <div
+          className="alert alert-danger"
+          aria-label={`Pesan Error ${errorMessage}`}
+        >
+          {errorMessage}{" "}
+          <button className="close" aria-label="tutup error" role="close">
+            X
+          </button>
+        </div>
+      ) : (
+        ""
+      )}
       <form method="POST" onSubmit={handleSubmit(submit)}>
         <InputForm className={"my-4"}>
           <InputForm.Label to="rek" id="rek-label">
@@ -89,7 +106,7 @@ function Transfer() {
             placeholder="Masukkan nomor rekening"
             aria-labelledby="rek-label"
             required
-            {...register('accountnum_recipient')}
+            {...register("accountnum_recipient")}
           />
         </InputForm>
         <InputForm className={"my-4"}>
@@ -106,7 +123,7 @@ function Transfer() {
             placeholder="Masukkan nominal transfer"
             aria-labelledby="nominal-label"
             required
-            {...register('nominal')}
+            {...register("nominal")}
           />
         </InputForm>
         <InputForm className={"my-4"}>
@@ -123,7 +140,7 @@ function Transfer() {
             rows="6"
             aria-labelledby="catatan-label"
             required
-            {...register('note')}
+            {...register("note")}
           />
         </InputForm>
         <InputForm className={"d-flex my-4 form-check align-items-center"}>

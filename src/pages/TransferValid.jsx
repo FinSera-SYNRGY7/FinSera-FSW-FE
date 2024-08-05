@@ -4,54 +4,62 @@ import { CardHorizontal, CardTransfer } from "@/components/Card/index";
 import Button from "@/components/Button/index";
 import { useLocation, Link, useNavigate } from "react-router-dom";
 import { formatRupiah } from "../lib/utils";
-import { useInfoAmount } from '@/features/infoAmount/useInfoAmount'
-import Spinner from "react-bootstrap/Spinner"
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import Spinner from "react-bootstrap/Spinner";
 
 function TransferValid() {
-  
-  const { state } = useLocation()
-  
-  const navigate = useNavigate()
-  
-  const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
-  
+  const { state } = useLocation();
+
+  const navigate = useNavigate();
+
+  const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
+
   const toInputPinPage = (data) => {
-    navigate('/transfer-sesama-bank/input-pin', {
-      state:{
-        accountnum_recipient:data.accountnum_recipient,
-        nominal:data.nominal,
-        note:data.note
-      }
-    })
-  }
-  
+    navigate("/transfer-sesama-bank/input-pin", {
+      state: {
+        accountnum_recipient: data.accountnum_recipient,
+        nominal: data.nominal,
+        note: data.note,
+      },
+    });
+  };
+
   return (
     <Layout className={"haveStyle"}>
-      <div className="d-flex align-items-baseline">
-      
-      <Link to="/transfer-sesama-bank/form-input" style={{
-          textDecoration:'none',
-          color:'inherit'
-        }} aria-label="kembali ke halaman sebelumnya" role="button">
-        <Button
-          className="d-sm-none p-0"
-          type="button"
+      <div className="d-flex align-items-baseline pt-5">
+        <Link
+          to="/transfer-sesama-bank/form-input"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
           aria-label="kembali ke halaman sebelumnya"
+          role="button"
         >
-          <i className="fa fa-arrow-left" />
-        </Button>
-      </Link>
+          <Button
+            className="d-sm-none p-0"
+            type="button"
+            aria-label="kembali ke halaman sebelumnya"
+          >
+            <i className="fa fa-arrow-left" />
+          </Button>
+        </Link>
         <h1 className="fw-bold col-12 text-center text-sm-start">
           <span role="label" aria-label="Konfirmasi Transaksi">
             Konfirmasi Transaksi
           </span>
         </h1>
       </div>
-      
-      <Link to="/transfer-sesama-bank/form-input" style={{
-          textDecoration:'none',
-          color:'inherit'
-        }} aria-label="kembali ke halaman sebelumnya" role="button">
+
+      <Link
+        to="/transfer-sesama-bank/form-input"
+        style={{
+          textDecoration: "none",
+          color: "inherit",
+        }}
+        aria-label="kembali ke halaman sebelumnya"
+        role="button"
+      >
         <Button
           className={
             "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
@@ -66,15 +74,15 @@ function TransferValid() {
       <CardHorizontal
         className={"p-0 border-0 mb-3"}
         data={{
-          name_recipient:state.name_recipient,
-          bank_name:'Bank BCA'
+          name_recipient: state.name_recipient,
+          bank_name: "Bank BCA",
         }}
         aria-label="akun tujuan transfer"
       />
       <span role="label" aria-label="Nominal Transfer : Rp 100.000">
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Nominal Transfer</h5>
-          <h5 className="fw-bold col-auto">{ formatRupiah(state.nominal) }</h5>
+          <h5 className="fw-bold col-auto">{formatRupiah(state.nominal)}</h5>
         </div>
       </span>
       <span role="label" aria-label="Jenis Transfer : Transfer Sesama Bank">
@@ -86,7 +94,7 @@ function TransferValid() {
       <span role="label" aria-label="Catatan : Bayar Utang">
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Catatan</h5>
-          <h5 className="fw-bold col-auto">{ state.note }</h5>
+          <h5 className="fw-bold col-auto">{state.note}</h5>
         </div>
       </span>
       <h4 className="fw-bold mb-3 pt-3 text-start">
@@ -94,34 +102,35 @@ function TransferValid() {
           Sumber rekening
         </span>
       </h4>
-      {
-        isLoadingAmount ? 
+      {isLoadingAmount ? (
         <div className="text-center w-100">
           <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
+            <span className="visually-hidden">Loading...</span>
+          </Spinner>
         </div>
-        : 
+      ) : (
         <CardTransfer
           className={"shadow p-0 border-0 mb-5"}
           first="col-1"
           second="col-2"
           data={{
-            username:dataAmount.username,
-            accountNumber:dataAmount.accountNumber,
-            amount:dataAmount.amount
+            username: dataAmount.username,
+            accountNumber: dataAmount.accountNumber,
+            amount: dataAmount.amount,
           }}
         />
-      }
+      )}
       <Button
         className={"btn base-color col-12 mb-5 shadow-hover"}
         type="button"
         aria-label="Lanjutkan"
-        onClick={ () => toInputPinPage({
-          accountnum_recipient:state.accountnum_recipient,
-          nominal:state.nominal,
-          note:state.note
-        }) }
+        onClick={() =>
+          toInputPinPage({
+            accountnum_recipient: state.accountnum_recipient,
+            nominal: state.nominal,
+            note: state.note,
+          })
+        }
       >
         <h5 className="mb-0">Lanjutkan</h5>
       </Button>

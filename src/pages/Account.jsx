@@ -29,7 +29,7 @@ const Account = () => {
 
                 <section className={styles.section}>
                     <h2 className={styles.sectionTitle}>Akun</h2>
-                    <a href="#" className={styles.menuItem}>
+                    <a href="/profile" className={styles.menuItem}>
                         <div className={styles.menuItemText}>
                             <img src={ProfileAccountSmall} alt="Data Diri" className={styles.menuItemIcon} />
                             Data Diri

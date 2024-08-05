@@ -18,6 +18,8 @@ import helpList from "@/assets/logo/help-circle.svg";
 import logoutList from "@/assets/logo/log-out.svg";
 import { SearchInput } from "@/components/FormInput";
 import { useNavigate } from "react-router-dom";
+// import { Profile } from "@/pages/Profile";
+// import { Account } from "@/pages/Account";
 
 //ada perubahan di prop untuk melakukan pengkodisian
 const Header = ({ type }) => {
@@ -64,7 +66,7 @@ const Header = ({ type }) => {
               <img
                 className="header-icon"
                 src={logoAlert}
-                alt="logo Notifikasi"
+                alt="Notifikasi"
               />
             </Nav.Link>
             <details className={styles.profile}>
@@ -72,7 +74,7 @@ const Header = ({ type }) => {
                 <img
                   className="header-icon"
                   src={logoProfile}
-                  alt="logo profile"
+                  alt="Akun"
                 />
               </summary>
               <ul>
@@ -91,11 +93,11 @@ const Header = ({ type }) => {
                 </li>
                 <li>
                   <img src={profileList} alt="View Profile" />
-                  <a href="">View Profile</a>
+                  <a href="./profile">View Profile</a>
                 </li>
                 <li>
                   <img src={settingList} alt="" />
-                  <a href="">Setting</a>
+                  <a href="./account">Setting</a>
                 </li>
                 <li>
                   <img src={helpList} alt="" />

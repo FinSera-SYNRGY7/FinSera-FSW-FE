@@ -30,7 +30,7 @@ const DropdownSumberRekening = ({
                             {subtitle}
                         </div>
                     </div>
-                    <i className="fa fa-chevron-down text-black dropdownRek"></i>
+                    <i className="text-black dropdownRek"></i>
                 </div>
             </Dropdown.Toggle>
         </Dropdown>

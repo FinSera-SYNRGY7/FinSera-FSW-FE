@@ -1,10 +1,20 @@
-.dropdownRek{
+.dropdownRek {
   margin-left: 71px !important;
 }
 
 .dropdown-sumber-rekening {
   background-color: white;
   width: 100% !important;
+}
+
+.dropdown-sumber-rekening:hover * {
+  color: white !important;
+  text-align: start;
+}
+
+.dropdown-sumber-rekening:focus,
+.dropdown-sumber-rekening:active {
+  background-color: transparent !important;
 }
 
 .dropdown-toggle .title {
@@ -26,6 +36,7 @@
   .dropdown-sumber-rekening {
     width: fit-content;
   }
+
   .dropdownRek {
     margin-left: 90px !important;
   }

@@ -3,8 +3,6 @@ import Dropdown from "react-bootstrap/Dropdown";
 import "./DropdownStyle.css"
 
 const DropdownSumberRekening = ({
-    options,
-    onOptionSelect,
     title,
     subtitle,
 }) => {
@@ -32,22 +30,9 @@ const DropdownSumberRekening = ({
                             {subtitle}
                         </div>
                     </div>
-                    <i className="fa fa-chevron-down text-black dropdownRek"></i>
+                    <i className="text-black dropdownRek"></i>
                 </div>
             </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-                {options.map((option) => (
-                    <Dropdown.Item
-                        as="button"
-                        key={option.value}
-                        onClick={() => onOptionSelect(option.value)}
-                        className="custom-dropdown-item"
-                    >
-                        {option.label}
-                    </Dropdown.Item>
-                ))}
-            </Dropdown.Menu>
         </Dropdown>
     );
 };

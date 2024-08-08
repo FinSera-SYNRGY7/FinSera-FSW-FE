@@ -92,7 +92,10 @@ const Relog = () => {
                             handlePinSubmit(value);
                           }}
                         />
-                        <a href="#" className={styles.forgotPIN} aria-label="Lupa PIN?">Lupa PIN?</a>
+                        <a href="#" onClick={() => {
+                          localStorage.removeItem('pin_app_lock')
+                          navigate('/')
+                        }} className={styles.forgotPIN} aria-label="Lupa PIN?">Lupa PIN?</a>
                         <Button className={styles.loginButton} disabled={ isPending } type="submit" onClick={loginAct}>
                             Login
                         </Button>

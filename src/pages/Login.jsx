@@ -30,7 +30,12 @@ const Login = () => {
         onSuccess: (data) => {
             localStorage.setItem("auth_token", data.data.accessToken)
             localStorage.setItem("auth_refresh_token", data.data.refreshToken)
-            navigate("/home")
+            const getPinAppLock = localStorage.getItem('pin_applock')
+            if(getPinAppLock == null) {
+              navigate('/setup-pin')
+            } else {
+              navigate("/home")
+            }
         },
         onError: (error) => {
             setIsError(true)

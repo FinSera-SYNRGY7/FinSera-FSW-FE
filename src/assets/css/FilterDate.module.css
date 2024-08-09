@@ -25,6 +25,26 @@
 .faChevronUp{
   margin-left: 12.5px !important;
 }
+.datePicker {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  z-index: 9;
+  top: 420px;
+}
+.formDate1 p, .formDate2 p {
+  font-size: 16px;
+  font-weight: 700;
+  margin-left: 6px !important;
+  margin: 0;
+}
+
+@media only screen and (max-width: 900px) {
+  .datePicker {
+    top: 360px;
+    right: 10%;
+  }
+}
 
 @media only screen and (max-width: 600px) {
   .filterDate {
@@ -39,5 +59,19 @@
   }
   .exampleCustomInput i {
     margin-left: 6px;
+  }
+  .faChevronUp{
+    margin-left: 8px !important;
+  }
+  .datePicker {
+    display: flex;
+    flex-direction: column;
+    top: 325px;
+    right: 10px;
+  }
+  .datePicker p {
+    font-size: 14px;
+    margin-bottom: 6px;
+    margin-left: 0 !important;
   }
 }

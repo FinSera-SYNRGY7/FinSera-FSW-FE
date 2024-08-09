@@ -1,0 +1,18 @@
+.fz-input {
+    font-size: 20px;
+}
+
+.input:hover {
+    border: 1px solid #0066AE !important;
+}
+
+@media screen and (max-width: 600px) {
+
+    .fz-input {
+        font-size: 0.675rem;
+    }
+    
+    p {
+        font-size: 0.675rem !important;
+    }
+}

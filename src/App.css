@@ -8,19 +8,16 @@ a, p, h1, h2, h3, h4, h5, h6 {
   font-family: Calibri, sans-serif!important;
 }
 
+.base-color{
+  color: white !important;
+  background-color: #0066AE !important;
+}
+
 .logo {
   height: 5em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
@@ -68,6 +65,7 @@ a, p, h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-card {
+  position: fixed;
   padding: 2em;
   background-color: #0A3967 !important;
   border-radius: 0 !important;
@@ -96,6 +94,12 @@ a, p, h1, h2, h3, h4, h5, h6 {
     z-index: -999;
   }
 
+  .pincode-input-text {
+    border-radius: 100%;
+    border: none !important;
+    background-color: #B3B3B3 !important;
+  }
+
   /* mediaquery tablet */
   @media only screen and (max-width: 900px) {
 
@@ -112,5 +116,19 @@ a, p, h1, h2, h3, h4, h5, h6 {
   /* set mediaquery for footer */
   .footer-card {
     padding: 10px;
+  }
+
+  .pincode-input-text {
+    width: 30px !important;
+    height: 30px !important;
+  /* input date */
+  }
+  
+  .react-datepicker {
+    right: 6%;
+  }
+  
+  .pin-input {
+      width:10px!important;
   }
 }

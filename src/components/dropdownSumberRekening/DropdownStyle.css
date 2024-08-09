@@ -1,9 +1,20 @@
-.fa-chevron-down {
-  margin-left: 13px;
+.dropdownRek {
+  margin-left: 71px !important;
 }
 
 .dropdown-sumber-rekening {
   background-color: white;
+  width: 100% !important;
+}
+
+.dropdown-sumber-rekening:hover * {
+  color: white !important;
+  text-align: start;
+}
+
+.dropdown-sumber-rekening:focus,
+.dropdown-sumber-rekening:active {
+  background-color: transparent !important;
 }
 
 .dropdown-toggle .title {
@@ -14,4 +25,19 @@
 .dropdown-toggle .subtitle {
   color: black;
   text-align: start;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 600px) {
+  .dropdown-sumber-rekening {
+    width: fit-content;
+  }
+
+  .dropdownRek {
+    margin-left: 90px !important;
+  }
 }

@@ -1,30 +1,38 @@
-import React from "react";
+import React, { forwardRef } from "react";
+import "./style.css";
 
-function Label({ children, to }) {
+function Label({ children, to, ...rest }) {
   return (
     <>
-      <label htmlFor={to}>{children}</label>
+      <label htmlFor={to} {...rest}>
+        {children}
+      </label>
     </>
   );
 }
 
-function Input({ className, name, type, ...rest }) {
+export const Input = forwardRef(({ className, name, type, ...rest }, ref) => {
   return (
-    <>
-      <input
-        className={`form-control ${className}`}
-        type={type}
-        name={name}
-        id={name}
-        {...rest}
-      />
-    </>
-  );
-}
+      <>
+        <input
+          className={`form-control ${className}`}
+          type={type}
+          name={name}
+          id={name}
+          ref={ ref}
+          {...rest}
+        />
+      </>
+    );
+})
 
 function Select({ className, name, dataOption, ...rest }) {
   return (
-    <select className={`form-select ${className}`} name={name} id={name}>
+    <select
+      className={`form-select py-3 ps-sm-5 ${className}`}
+      name={name}
+      id={name}
+    >
       {dataOption.map((item) => (
         <option key={item.value} value={item.value}>
           {item.label}
@@ -34,19 +42,24 @@ function Select({ className, name, dataOption, ...rest }) {
   );
 }
 
-function TextArea({ className, name, ...rest }) {
+export const TextArea = forwardRef(({ className, name, ...rest }, ref) => {
   return (
     <textarea
-      className={`form-control ${className}`}
+      className={`form-control py-sm-3 ps-sm-5 d-flex align-items-center ${className}`}
       name={name}
       id={name}
+      ref={ ref}
       {...rest}
     />
   );
-}
+})
 
-function InputForm({ children, className }) {
-  return <div className={`form-group ${className}`}>{children}</div>;
+function InputForm({ children, className, ...rest }) {
+  return (
+    <div className={`form-group ${className}`} {...rest}>
+      {children}
+    </div>
+  );
 }
 
 InputForm.Label = Label;

@@ -1,13 +1,62 @@
-import React from 'react';
+import React, { useState } from "react";
+import styles from "@/assets/css/FormInput.module.css";
 
 const FormInput = ({ className, children, ...props }) => {
-    return (
-        <div className={`form-group ${className}`} {...props}>
-            {children}
-        </div>
-    );
+  return (
+    <div className={`form-group ${className}`} {...props}>
+      {children}
+    </div>
+  );
 };
 
-export {
-    FormInput
+const SearchInput = ({ onSearch }) => {
+  const [isChecked, setIsChecked] = useState(true);
+  const [query, setQuery] = useState("");
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  };
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      onSearch(query);
+      setQuery("");
+    }
+  };
+
+  return (
+    <div className={styles.containerSearch}>
+      <input
+        className={styles.checkbox}
+        type="checkbox"
+        checked={isChecked}
+        onChange={handleCheckboxChange}
+        aria-label="Toggle tombol Search"
+      />
+      <div
+        className={`${styles.mainbox} ${
+          isChecked ? styles.mainboxChecked : ""
+        }`}
+      >
+        <div className={styles.iconContainer} aria-label="Search" tabIndex={0}>
+          <i className={`fa fa-search ${styles.faSearch}`}></i>
+        </div>
+        <input
+          className={styles.searchInput}
+          placeholder="Cari Disini ..."
+          type="text"
+          value={query}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyPress}
+          aria-label="Search input : cari disini.."
+        />
+      </div>
+    </div>
+  );
 };
+
+export { FormInput, SearchInput };

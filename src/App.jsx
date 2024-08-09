@@ -15,6 +15,9 @@ import TransferError from "./pages/TransferError";
 import TransferSuccess from "./pages/TransferSuccess";
 import TransferValid from "./pages/TransferValid";
 import TransferPIN from "./pages/TransferPIN";
+import Account from "./pages/Account";
+import Profile from "./pages/Profile";
+import TestQrCode from './pages/TestQrCode';
 
 function App() {
   return (
@@ -27,12 +30,15 @@ function App() {
       <Route path="/mutasi-rekening" element={<AccountMutation />} />
       <Route path="/test" element={<TestComponent />} />
       <Route path="/transfer-sesama-bank" element={<Transfer />} />
-      <Route path="/transferInput" element={<TransferInput />} />
-      <Route path="/transferError" element={<TransferError />} />
-      <Route path="/transferSuccess" element={<TransferSuccess />} />
-      <Route path="/transferValid" element={<TransferValid />} />
-      <Route path="/transferPIN" element={<TransferPIN />} />
+      <Route path="/transfer-sesama-bank/form-input" element={<TransferInput />} />
+      <Route path="/transfer-sesama-bank/konfirmasi" element={<TransferValid />} />
+      <Route path="/transfer-sesama-bank/input-pin" element={<TransferPIN />} />
+      <Route path="/transfer-sesama-bank/success" element={<TransferSuccess />} />
+      <Route path="/transfer-sesama-bank/error" element={<TransferError />} />
       <Route path="/transfer-antar-bank" element={<TransferAntarBank />} />
+      <Route path="/account" element={<Account />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/test-qr-code" element={<TestQrCode />} />
     </Routes>
   );
 }

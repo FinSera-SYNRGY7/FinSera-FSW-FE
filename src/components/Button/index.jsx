@@ -1,11 +1,12 @@
 import React, { Children } from "react";
+import "./style.css";
 
-function Button({ children, className, type, event, ...rest }) {
+function Button({ children, className, type, action, ...rest }) {
   return (
     <button
       className={`btn ${className}`}
       type={type}
-      onClick={event}
+      onClick={action}
       {...rest}
     >
       {children}

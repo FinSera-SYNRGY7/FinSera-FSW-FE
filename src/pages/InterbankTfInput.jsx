@@ -41,7 +41,7 @@ const InterbackTfInput = () => {
               aria-label="kembali ke halaman sebelumnya"
             >
               <Link
-                to="/transfer-sesama-bank"
+                to="/transfer-antar-bank"
                 style={{
                   textDecoration: "none",
                   color: "inherit",
@@ -59,7 +59,7 @@ const InterbackTfInput = () => {
             </h1>
           </div>
           <Link
-            to="/transfer-sesama-bank"
+            to="/transfer-antar-bank"
             style={{
               textDecoration: "none",
               color: "inherit",

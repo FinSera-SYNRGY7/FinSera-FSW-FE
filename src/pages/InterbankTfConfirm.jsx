@@ -15,7 +15,7 @@ const InterbankTfConfirm = () => {
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline pt-5">
         <Link
-          to="/transfer-sesama-bank/form-input"
+          to="/transfer-antar-bank/form-input"
           style={{
             textDecoration: "none",
             color: "inherit",
@@ -39,7 +39,7 @@ const InterbankTfConfirm = () => {
       </div>
 
       <Link
-        to="/transfer-sesama-bank/form-input"
+        to="/transfer-antar-bank/form-input"
         style={{
           textDecoration: "none",
           color: "inherit",

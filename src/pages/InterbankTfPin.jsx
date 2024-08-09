@@ -3,7 +3,7 @@ import Pininput from "react-pin-input";
 import { PinInput } from "@/components/PinInput";
 import Layout from "@/layout/Layout";
 import Button from "@/components/Button";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import { useTransferBank } from "@/features/transferBank/useTransferBank";
 import { useForm } from "react-hook-form";
 
@@ -14,29 +14,49 @@ const InterbankTfPin = () => {
   return (
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline tp-5">
-        <Button
-          className="d-sm-none p-0"
-          type="button"
+      <Link
+          to="/transfer-antar-bank/form-input"
+          style={{
+            textDecoration: "none",
+            color: "inherit",
+          }}
           aria-label="kembali ke halaman sebelumnya"
+          role="button"
         >
-          <i className="fa fa-arrow-left" />
-        </Button>
+          <Button
+            className="d-sm-none p-0"
+            type="button"
+            aria-label="kembali ke halaman sebelumnya"
+          >
+            <i className="fa fa-arrow-left" />
+          </Button>
+        </Link>
         <h1 className="fw-bold col-12 text-center text-sm-start">
           <span role="label" aria-label="Konfirmasi Transaksi">
             Konfirmasi Transaksi
           </span>
         </h1>
       </div>
-      <Button
-        className={
-          "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
-        }
-        type="button"
+      <Link
+        to="/transfer-antar-bank/form-input"
+        style={{
+          textDecoration: "none",
+          color: "inherit",
+        }}
         aria-label="kembali ke halaman sebelumnya"
+        role="button"
       >
-        <i className="fa fa-arrow-left" />
-        <span className="ms-20">Back</span>
-      </Button>
+        <Button
+          className={
+            "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
+          }
+          type="button"
+          aria-label="kembali ke halaman sebelumnya"
+        >
+          <i className="fa fa-arrow-left" />
+          <span className="ms-20">Back</span>
+        </Button>
+      </Link>
       {errorMessage != "" ? (
         <div
           className="alert alert-danger"

@@ -59,4 +59,28 @@ const SearchInput = ({ onSearch }) => {
   );
 };
 
-export { FormInput, SearchInput };
+const FormChooseBank = ({ label, selectedValue, options, onChange }) => {
+  return (
+    <>
+      <select
+        className={`form-select py-3 ps-sm-5 ${styles.selectBank}`}
+        name="bank"
+        id="bank"
+        aria-label={`Pilih bank ${label}`}
+        onChange={onChange}
+        value={selectedValue}
+      >
+        <option value="" disabled selected hidden>
+          {label}
+        </option>
+        {options.map((option) => (
+          <option key={option.value} value={option.value} aria-label={option.ariaLabel || option.label}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </>
+  );
+};
+
+export { FormInput, SearchInput, FormChooseBank };

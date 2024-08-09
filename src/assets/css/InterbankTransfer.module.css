@@ -1,47 +1,15 @@
-.containerTansfer {
-  padding: 0 64px;
-  margin: 80px 0;
-  width: 100%;
-}
-.containerTitle{
-  margin : 74px 0;
-}
-.buttonAdroid {
-  display: none;
+.backButton {
+  width: 70%;
 }
 
-.buttonWeb {
-  width: 100%;
-}
-
-/* meddia query tablet */
 @media only screen and (max-width: 900px) {
- .containerTansfer {
-    padding: 0 25px;
- }
+  .backButton {
+    width: 60%;
+  }
 }
 
-/* media query mobile */
 @media only screen and (max-width: 600px) {
-  .containerTransfer {
-    font-size: 20px;
-    margin-bottom: 30px;
-    width: 100%;
-    text-align: center;
-  }
-  .titleInterbank h2{
-    justify-content: center;
-    align-items: center !important;
-    text-align: center;
-    margin-bottom: 30px;
-    width: 100%;
-  }
-  .buttonAdroid {
-    display: flex !important;
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-  .buttonWeb {
-    display: none;
+  .backButton {
+    width: 0;
   }
 }

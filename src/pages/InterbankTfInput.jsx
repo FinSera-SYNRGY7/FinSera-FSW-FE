@@ -9,7 +9,7 @@ import { FormChooseBank } from "@/components/FormInput";
 
 const InterbackTfInput = () => {
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedBank, setSelectedBank] = useState('');
+  const [selectedValue, setSelectedValue] = useState("");
 
   const bankOptions = [
     { value: 'bca', label: 'BCA' },
@@ -27,10 +27,6 @@ const InterbackTfInput = () => {
     { value: 'panin', label: 'Panin' },
     { value: 'mega', label: 'Mega' },
   ];
-
-  const handleChooseBank = (event) => {
-    setSelectedBank(event.target.value);
-  };
 
     return (
         <Layout className={"haveStyle"}>
@@ -97,12 +93,13 @@ const InterbackTfInput = () => {
             <InputForm className={"my-4"}>
               <InputForm.Label to="bank" id="bank-label">
                 <h4 className="fw-bold mb-3">
-                  <span role="input" aria-label="Nama Bank">
+                  <span role="input" aria-label="Pilih Bank Tujuan Transfer">
                     Pilih Bank
                   </span>
                 </h4>
               </InputForm.Label>
-              <FormChooseBank label="Pilih" options={bankOptions} onChange={handleChooseBank} selectedValue={selectedBank}></FormChooseBank>
+              {/* <FormChooseBank label="Pilih" options={bankOptions} onChange={handleChooseBank} selectedValue={selectedBank}></FormChooseBank> */}
+              <FormChooseBank options={bankOptions} value={selectedValue} onChange={setSelectedValue} placeholder="Pilih" ariaLabel="Pilih Bank Tujuan Transfer" />
             </InputForm>
             <InputForm className={"my-4"}>
               <InputForm.Label to="rek" id="rek-label">

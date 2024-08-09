@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "@/assets/css/FormInput.module.css";
+import Select from 'react-select';
 
 const FormInput = ({ className, children, ...props }) => {
   return (
@@ -59,26 +60,17 @@ const SearchInput = ({ onSearch }) => {
   );
 };
 
-const FormChooseBank = ({ label, selectedValue, options, onChange }) => {
+const FormChooseBank = ({options, value, onChange, placeholder, ariaLabel}) => {
   return (
     <>
-      <select
-        className={`form-select py-3 ps-sm-5 ${styles.selectBank}`}
-        name="bank"
-        id="bank"
-        aria-label={`Pilih bank ${label}`}
-        onChange={onChange}
-        value={selectedValue}
-      >
-        <option value="" disabled selected hidden>
-          {label}
-        </option>
-        {options.map((option) => (
-          <option key={option.value} value={option.value} aria-label={option.ariaLabel || option.label}>
-            {option.label}
-          </option>
-        ))}
-      </select>
+      <Select
+      className={styles.selectBank}
+        options={options}
+        value={value}
+        onChange={(selectedOption) => onChange(selectedOption ? selectedOption.value : '')}
+        placeholder={placeholder}
+        aria-label={ariaLabel}
+      />
     </>
   );
 };

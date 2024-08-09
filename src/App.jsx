@@ -7,17 +7,22 @@ import TestComponent from '@/pages/TestComponent';
 import AccountMutation from '@/pages/AccountMutation';
 import Login from '@/pages/Login.jsx'
 import Relog from '@/pages/Relog.jsx'
-import TransferAntarBank from './pages/TransferAntarBank';
+import InterbankTransfer from '@/pages/InterbankTransfer';
+import InterbackTfInput from '@/pages/InterbankTfInput';
+import InterbankTfConfirm from '@/pages/InterbankTfConfirm';
+import InterbankTfPin from '@/pages/InterbankTfPin';
+import InterbankTfSuccess from './pages/InterbankTfSuccess';
+import InterbankTfError from './pages/InterbankTfError';
 import Homepage from '@/pages/Homepage';
-import Transfer from "./pages/Transfer";
-import TransferInput from "./pages/TransferInput";
-import TransferError from "./pages/TransferError";
-import TransferSuccess from "./pages/TransferSuccess";
-import TransferValid from "./pages/TransferValid";
-import TransferPIN from "./pages/TransferPIN";
-import Account from "./pages/Account";
-import Profile from "./pages/Profile";
-import TestQrCode from './pages/TestQrCode';
+import Transfer from "@/pages/Transfer";
+import TransferInput from "@/pages/TransferInput";
+import TransferError from "@/pages/TransferError";
+import TransferSuccess from "@/pages/TransferSuccess";
+import TransferValid from "@/pages/TransferValid";
+import TransferPIN from "@/pages/TransferPIN";
+import Account from "@/pages/Account";
+import Profile from "@/pages/Profile";
+import TestQrCode from '@/pages/TestQrCode';
 
 function App() {
   return (
@@ -35,7 +40,12 @@ function App() {
       <Route path="/transfer-sesama-bank/input-pin" element={<TransferPIN />} />
       <Route path="/transfer-sesama-bank/success" element={<TransferSuccess />} />
       <Route path="/transfer-sesama-bank/error" element={<TransferError />} />
-      <Route path="/transfer-antar-bank" element={<TransferAntarBank />} />
+      <Route path="/transfer-antar-bank" element={<InterbankTransfer />} />
+      <Route path="/transfer-antar-bank/form-input" element={<InterbackTfInput />} />
+      <Route path="/transfer-antar-bank/konfirmasi" element={<InterbankTfConfirm />} />
+      <Route path="/transfer-antar-bank/input-pin" element={<InterbankTfPin />} />
+      <Route path="/transfer-antar-bank/success" element={<InterbankTfSuccess />} />
+      <Route path="/transfer-antar-bank/error" element={<InterbankTfError />} />
       <Route path="/account" element={<Account />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/test-qr-code" element={<TestQrCode />} />

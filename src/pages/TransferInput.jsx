@@ -1,18 +1,81 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "@/layout/Layout";
 import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useTransferBankCheck } from "@/features/transferBank/useTransferBankCheck";
+import { findIndexOfNestedArray } from "../lib/utils";
 
 function Transfer() {
+  
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { state } = useLocation();
+  
+  const { register, handleSubmit, setValue } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
+  const [savedContact, setSavedContact] = useState(false)
+  
+  const saveContactAct = ({
+    accountnum_recipient,
+    name_recipient,
+    bank_name
+  }) => {
+    const getListContacts = localStorage.getItem('list_contacts') == null ? [] : JSON.parse(localStorage.getItem('list_contacts'))
+    
+    const cloneArr = [...getListContacts]
+    
+    if(getListContacts.findIndex((elem)=>elem.accountnum_recipient == accountnum_recipient) === -1) {
+      cloneArr.push(
+        {
+          accountnum_recipient,
+          name_recipient,
+          bank_name
+        }
+      )
+    }
+    
+    localStorage.setItem('list_contacts', JSON.stringify(cloneArr))
+  }
+  
+  const lastTransferAct = ({
+    accountnum_recipient,
+    name_recipient,
+    bank_name
+  }) => {
+    const getLastTransfers = localStorage.getItem('last_transfers') == null ? [] : JSON.parse(localStorage.getItem('last_transfers'))
+    
+    const cloneArr = [...getLastTransfers]
+    
+    if (getLastTransfers.findIndex((elem) => elem.accountnum_recipient == accountnum_recipient)) {
+      cloneArr.push(
+        {
+          accountnum_recipient,
+          name_recipient,
+          bank_name
+        }
+      )
+    }
+    
+    localStorage.setItem('last_transfers', JSON.stringify(cloneArr))
+  }
 
   const { mutate, isPending } = useTransferBankCheck({
     onSuccess: (success, data) => {
+      
+      if(savedContact) {
+        saveContactAct({
+          accountnum_recipient: success.data.accountnum_recipient,
+          name_recipient: success.data.name_recipient,
+          bank_name:'BCA'
+        })
+      }
+      lastTransferAct({
+        accountnum_recipient: success.data.accountnum_recipient,
+        name_recipient: success.data.name_recipient,
+        bank_name:'BCA'
+      })
+      
       navigate("/transfer-sesama-bank/konfirmasi", {
         state: {
           accountnum_recipient: success.data.accountnum_recipient,
@@ -30,6 +93,10 @@ function Transfer() {
   const submit = (value) => {
     mutate(value);
   };
+  
+  useEffect(() => {
+    setValue('accountnum_recipient', state?.accountnum_recipient)
+  },[])
 
   return (
     <Layout className={"haveStyle"}>
@@ -149,6 +216,7 @@ function Transfer() {
             name="remember"
             type="checkbox"
             aria-labelledby="remember-label"
+            onChange={ (e) => setSavedContact(e.target.checked)}
           />
           <InputForm.Label to="remember" id="remember-label">
             <p className="form-check-label mb-0">

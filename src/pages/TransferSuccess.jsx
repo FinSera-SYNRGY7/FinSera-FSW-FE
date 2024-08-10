@@ -6,8 +6,6 @@ import { useLocation, Link } from "react-router-dom";
 function TransferSuccess() {
   const { state } = useLocation();
 
-  console.log(state);
-
   return (
     <Layout type={"necktie"} className={"haveStyle"}>
       <div style={{ marginTop: "-20vh" }}></div>

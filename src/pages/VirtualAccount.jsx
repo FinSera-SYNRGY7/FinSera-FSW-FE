@@ -5,8 +5,6 @@ import Layout from "@/layout/Layout";
 import Button from "@/components/Button/index";
 import styles from "@/assets/css/InterbankTransfer.module.css";
 
-
-
 const VirtualAccount = () => {
   return (
     <Layout className="haveStyle">
@@ -47,7 +45,7 @@ const VirtualAccount = () => {
         >
           <Button
             className={
-              "d-none d-sm-block flex-grow-1 base-color text-sm-start d-flex shadow-hover"
+              "d-none d-sm-block flex-grow-1 base-color w-100 text-sm-start d-flex shadow-hover"
             }
             type="button"
             aria-label="kembali ke halaman sebelumnya"
@@ -92,7 +90,7 @@ const VirtualAccount = () => {
             data={{
               name_recipient: "Kusuma Dewi",
               transaction_name: "TransferPay",
-              no_transaction: "4257618919010"
+              no_transaction: "4257618919010",
             }}
           />
         </div>
@@ -104,7 +102,7 @@ const VirtualAccount = () => {
             data={{
               name_recipient: "Kusuma Dewi",
               transaction_name: "TransferPay",
-              no_transaction: "4257618919010"
+              no_transaction: "4257618919010",
             }}
           />
         </div>
@@ -116,7 +114,7 @@ const VirtualAccount = () => {
             data={{
               name_recipient: "Kusuma Dewi",
               transaction_name: "TransferPay",
-              no_transaction: "4257618919010"
+              no_transaction: "4257618919010",
             }}
           />
         </div>
@@ -128,7 +126,7 @@ const VirtualAccount = () => {
             data={{
               name_recipient: "Kusuma Dewi",
               transaction_name: "TransferPay",
-              no_transaction: "4257618919010"
+              no_transaction: "4257618919010",
             }}
           />
         </div>
@@ -141,7 +139,7 @@ const VirtualAccount = () => {
         data={{
           name_recipient: "Kusuma Dewi",
           transaction_name: "TransferPay",
-          no_transaction: "4257618919010"
+          no_transaction: "4257618919010",
         }}
       />
       <CardHorizontalAlt
@@ -151,11 +149,11 @@ const VirtualAccount = () => {
         data={{
           name_recipient: "Kusuma Dewi",
           transaction_name: "TransferPay",
-          no_transaction: "4257618919010"
+          no_transaction: "4257618919010",
         }}
       />
       <div className="mb-5"></div>
     </Layout>
   );
-}
+};
 export default VirtualAccount;

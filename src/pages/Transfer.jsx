@@ -3,7 +3,7 @@ import Layout from "@/layout/Layout";
 import Button from "@/components/Button/index";
 import { CardHorizontal } from "@/components/Card/index";
 import { useNavigate, Link } from "react-router-dom";
-
+import styles from "@/assets/css/Transfer.module.css";
 import notransferdata from "@/assets/img/notransferdata.png";
 
 function Transfer() {
@@ -43,6 +43,7 @@ function Transfer() {
       <div className="d-flex justify-content-end justify-content-sm-between gap-5 mb-sm-4">
         <Link
           to="/home"
+          className={styles.backButton}
           style={{
             textDecoration: "none",
             color: "inherit",
@@ -52,13 +53,13 @@ function Transfer() {
         >
           <Button
             className={
-              "d-none d-sm-block flex-grow-1 base-color text-sm-start d-flex shadow-hover"
+              "d-none d-sm-block flex-grow-1 base-color w-100 text-sm-start d-flex shadow-hover"
             }
             type="button"
             aria-label="kembali ke halaman sebelumnya"
           >
             <i className="fa fa-arrow-left"></i>
-            <span className="ms-20">Back</span>
+            <span className="ms-20">Beranda</span>
           </Button>
         </Link>
         <Link

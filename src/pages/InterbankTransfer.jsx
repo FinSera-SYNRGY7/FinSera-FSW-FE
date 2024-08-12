@@ -44,7 +44,7 @@ const InterbankTransfer = () => {
         >
           <Button
             className={
-              "d-none d-sm-block flex-grow-1 base-color text-sm-start d-flex shadow-hover"
+              "d-none d-sm-block flex-grow-1 base-color w-100 text-sm-start d-flex shadow-hover"
             }
             type="button"
             aria-label="kembali ke halaman sebelumnya"

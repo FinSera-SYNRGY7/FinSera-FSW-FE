@@ -36,9 +36,11 @@ export const PinInput = ({ style, ...otherProps }) => {
     if (windowWidth <= 425) {
       return {
         ...baseStyle,
-        width: '35px',
-        height: '35px',
+        width: '25px',
+        height: '25px',
         margin: '0 10px',
+        borderRadius: '8px',
+        fontSize: '1em',
       };
     } else if(windowWidth <= 600) {
       return {

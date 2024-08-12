@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
-import Layout from "./../layout/Layout";
-import Button from "../components/Button/index";
-import { CardHorizontal } from "./../components/Card/index";
+import Layout from "@/layout/Layout";
+import Button from "@/components/Button/index";
+import { CardHorizontal } from "@/components/Card/index";
 import { useNavigate, Link } from "react-router-dom";
+
+import notransferdata from "@/assets/img/notransferdata.png";
 
 function Transfer() {
   
@@ -150,7 +152,36 @@ function Transfer() {
               })
             }}
         />
-        )) : <></>  
+        )) : 
+        <div
+            className="d-flex flex-column gap-3 align-items-center"
+            style={{ marginTop: "40px" }}
+          >
+            <img src={notransferdata} alt="No Data" width={"260px"} />
+            <div style={{ width: "650px" }}>
+              <h3
+                style={{
+                  fontWeight: 700,
+                  fontSize: "24px",
+                  color: "#0066AE",
+                  lineHeight: "33px",
+                }}
+              >
+                Belum Ada Daftar Tersimpan
+              </h3>
+              <h4
+                style={{
+                  fontWeight: 400,
+                  fontSize: "20px",
+                  color: "#8A8A8A",
+                  lineHeight: "28px",
+                }}
+              >
+                Tambah penerima ke daftar tersimpan agar transaksi ke
+                orang terdekat lebih mudah
+              </h4>
+            </div>
+          </div>
       }
       {/* <CardHorizontal
         className={"shadow p-0 border-0 mb-3 outline"}

@@ -5,7 +5,6 @@ import Button from "@/components/Button/index";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useTransferBankCheck } from "@/features/transferBank/useTransferBankCheck";
-import { findIndexOfNestedArray } from "../lib/utils";
 
 function Transfer() {
   
@@ -70,6 +69,7 @@ function Transfer() {
           bank_name:'BCA'
         })
       }
+      
       lastTransferAct({
         accountnum_recipient: success.data.accountnum_recipient,
         name_recipient: success.data.name_recipient,

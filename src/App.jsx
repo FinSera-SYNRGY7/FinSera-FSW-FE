@@ -16,6 +16,7 @@ import InterbankTfSuccess from './pages/InterbankTfSuccess';
 import InterbankTfError from './pages/InterbankTfError';
 import Homepage from '@/pages/Homepage';
 import Transfer from "@/pages/Transfer";
+import TransferCheck from '@/pages/TransferCheck'
 import TransferInput from "@/pages/TransferInput";
 import TransferError from "@/pages/TransferError";
 import TransferSuccess from "@/pages/TransferSuccess";
@@ -44,6 +45,7 @@ function App() {
       <Route path="/info-saldo" element={<InfoSaldo />} />
       <Route path="/mutasi-rekening" element={<AccountMutation />} />
       <Route path="/transfer-sesama-bank" element={<Transfer />} />
+      <Route path="/transfer-sesama-bank/check" element={<TransferCheck />} />
       <Route path="/transfer-sesama-bank/form-input" element={<TransferInput />} />
       <Route path="/transfer-sesama-bank/konfirmasi" element={<TransferValid />} />
       <Route path="/transfer-sesama-bank/input-pin" element={<TransferPIN />} />

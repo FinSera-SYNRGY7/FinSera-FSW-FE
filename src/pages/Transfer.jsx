@@ -63,7 +63,7 @@ function Transfer() {
           </Button>
         </Link>
         <Link
-          to="/transfer-sesama-bank/form-input"
+          to="/transfer-sesama-bank/check"
           className="m-0"
           style={{
             textDecoration: "none",
@@ -148,7 +148,8 @@ function Transfer() {
               navigate('/transfer-sesama-bank/form-input', {
                 state: {
                   accountnum_recipient:value.accountnum_recipient,
-                  name_recipient:value.name_recipient
+                  name_recipient:value.name_recipient,
+                  bank_name:value.bank_name
                 }
               })
             }}

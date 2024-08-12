@@ -30,11 +30,15 @@ httpServer.interceptors.response.use(
   (error) => {
     if(error.response) {
       if(error.response.status == 403 || error.response.status == 401) {
-        // localStorage.removeItem('auth_token')
-        // localStorage.removeItem('auth_name')
-        
-        // globalNavigate('/')
-      
+        const pinAppLock = localStorage.getItem('pin_app_lock')
+        if(pinAppLock == null) {
+          localStorage.removeItem('auth_token')
+          localStorage.removeItem('auth_name')
+          
+          globalNavigate('/')
+        } else {
+          globalNavigate('/relog')
+        }
       } else {
         throw new AxiosError((error))
       }

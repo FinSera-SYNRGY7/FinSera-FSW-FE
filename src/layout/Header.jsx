@@ -18,6 +18,7 @@ import helpList from "@/assets/logo/help-circle.svg";
 import logoutList from "@/assets/logo/log-out.svg";
 import { SearchInput } from "@/components/FormInput";
 import { useNavigate } from "react-router-dom";
+import { PopUp } from "@/components/PopUp";
 // import { Profile } from "@/pages/Profile";
 // import { Account } from "@/pages/Account";
 
@@ -36,9 +37,14 @@ const Header = ({ type }) => {
   };
 
   const handleConfirmLogout = () => {
-    localStorage.removeItem("auth_token");
-    localStorage.removeItem("auth_refresh_token");
-    navigate("/login");
+    const pinAppLock = localStorage.getItem('pin_app_lock')
+    if (pinAppLock != null) { 
+      navigate('/relog')
+    } else {
+      localStorage.removeItem("auth_token");
+      localStorage.removeItem("auth_refresh_token");
+      navigate("/login");
+    }
     setShowLogoutPopup(false);
   };
 
@@ -117,26 +123,7 @@ const Header = ({ type }) => {
       {type === "necktie" && <div className="necktie"></div>}
       <div className={styles.blankSpace}></div>
       {showLogoutPopup && (
-        <div className={styles.overlay}>
-          <div className={styles.popup}>
-            <h5>Konfirmasi</h5>
-            <p>Apakah anda yakin ingin keluar dari aplikasi ini ?</p>
-            <div className="d-flex flex-row justify-content-between w-100">
-              <button
-                className={styles.btnSecondary}
-                onClick={handleClosePopup}
-              >
-                Tidak
-              </button>
-              <button
-                className={styles.btnPrimary}
-                onClick={handleConfirmLogout}
-              >
-                Ya
-              </button>
-            </div>
-          </div>
-        </div>
+        <PopUp handleClosePopup={handleClosePopup} handleConfirmLogout={ handleConfirmLogout } />
       )}
     </>
   );

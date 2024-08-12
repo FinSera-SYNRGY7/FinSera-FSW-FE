@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import Layout from "@/layout/Layout";
 import { CardVertical } from "@/components/Card/index";
 import { useLocation, Link } from "react-router-dom";
+import { useScreenshot } from "use-react-screenshot";
 
 function TransferSuccess() {
   const { state } = useLocation();
-
-  console.log(state);
 
   return (
     <Layout type={"necktie"} className={"haveStyle"}>

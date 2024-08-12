@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { useLogin } from "@/features/auth/useLogin"
@@ -30,7 +30,12 @@ const Login = () => {
         onSuccess: (data) => {
             localStorage.setItem("auth_token", data.data.accessToken)
             localStorage.setItem("auth_refresh_token", data.data.refreshToken)
-            navigate("/home")
+            const getPinAppLock = localStorage.getItem('pin_app_lock')
+            if(getPinAppLock == null) {
+              navigate('/setup-pin')
+            } else {
+              navigate("/home")
+            }
         },
         onError: (error) => {
             setIsError(true)
@@ -59,6 +64,14 @@ const Login = () => {
     
         mutate(dataLogin)
     }
+    
+    useEffect(() => {
+      const getPinAppLock = localStorage.getItem('pin_app_lock')
+      
+      if(getPinAppLock != null) {
+        navigate('/relog')
+      }
+    },[])
 
     return (
         <Container fluid>

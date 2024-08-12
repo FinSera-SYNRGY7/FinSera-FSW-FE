@@ -81,11 +81,11 @@ const ConfirmSetupPin = () => {
                         <Button className={styles.loginButton} type="submit" onClick={() => savePin()} aria-label="Simpan">
                             Simpan
                         </Button>
-                        {isError && (
-                            <div className={styles.errorMessage}>
-                                {errorMessage}
+                          {isError && (
+                            <div className={styles.errorMessage} aria-label={errorMessage}>
+                                {errorMessage} <button className="btn-close" role="button" aria-label="Tutup Error" onClick={() => setIsError(false)} />
                             </div>
-                        )}
+                          )}
                     </div>
                 </Col>
             </Row>

@@ -99,7 +99,7 @@ const InterbackTfInput = () => {
                 </h4>
               </InputForm.Label>
               {/* <FormChooseBank label="Pilih" options={bankOptions} onChange={handleChooseBank} selectedValue={selectedBank}></FormChooseBank> */}
-              <FormChooseBank options={bankOptions} value={selectedValue} onChange={setSelectedValue} placeholder="Pilih" ariaLabel="Pilih Bank Tujuan Transfer" />
+              <FormChooseBank options={bankOptions} value={selectedValue?.value || ""} onChange={(option) => setSelectedValue(option)} placeholder="Pilih" ariaLabel="Pilih Bank Tujuan Transfer" />
             </InputForm>
             <InputForm className={"my-4"}>
               <InputForm.Label to="rek" id="rek-label">

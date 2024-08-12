@@ -66,8 +66,8 @@ const FormChooseBank = ({options, value, onChange, placeholder, ariaLabel}) => {
       <Select
       className={styles.selectBank}
         options={options}
-        value={value}
-        onChange={(selectedOption) => onChange(selectedOption ? selectedOption.value : '')}
+        value={options.find(option => option.value === value)}
+        onChange={(selectedOption) => onChange(selectedOption)}
         placeholder={placeholder}
         aria-label={ariaLabel}
       />

@@ -58,14 +58,18 @@ const InterbankTfConfirm = () => {
           <span className="ms-20">Back</span>
         </Button>
       </Link>
-      <CardHorizontal
-        className={"p-0 border-0 mb-3"}
-        data={{
-          name_recipient: "jamal",
-          bank_name: "Bank BCA",
-        }}
-        aria-label="akun tujuan transfer"
-      />
+      <div className="d-flex flex-wrap gap-2 gap-sm-3 mb-5">
+        <div className="flex-fill">
+          <CardHorizontal
+            className={"shadow p-0 border-0 outline"}
+            data={{
+              name_recipient: "jamal",
+              bank_name: "Bank BCA",
+            }}
+            aria-label="akun tujuan transfer"
+          />
+        </div>
+      </div>
       <span role="label" aria-label="Nominal Transfer : Rp 100.000">
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Nominal Transfer</h5>

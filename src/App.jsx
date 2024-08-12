@@ -23,6 +23,13 @@ import TransferPIN from "@/pages/TransferPIN";
 import Account from "@/pages/Account";
 import Profile from "@/pages/Profile";
 import TestQrCode from '@/pages/TestQrCode';
+import VirtualAccount from '@/pages/VirtualAccount';
+import VAInput from '@/pages/VAInput';
+import VANextInput from './pages/VANextInput';
+import VAConfirm from './pages/VAConfirm';
+import VAPin from './pages/VAPin';
+import VASuccess from './pages/VASuccess';
+import VAError from './pages/VAError';
 
 function App() {
   return (
@@ -49,6 +56,13 @@ function App() {
       <Route path="/account" element={<Account />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/test-qr-code" element={<TestQrCode />} />
+      <Route path="/virtual-account" element={<VirtualAccount />} />
+      <Route path="/virtual-account/form-input" element={<VAInput />} />
+      <Route path="/virtual-account/next-input" element={<VANextInput />} />
+      <Route path="/virtual-account/konfirmasi" element={<VAConfirm />} />
+      <Route path="/virtual-account/input-pin" element={<VAPin />} />
+      <Route path="/virtual-account/success" element={<VASuccess />} />
+      <Route path="/virtual-account/error" element={<VAError />} />
     </Routes>
   );
 }

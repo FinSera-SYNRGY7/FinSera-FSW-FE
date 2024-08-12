@@ -9,6 +9,8 @@ import Spinner from "react-bootstrap/Spinner";
 
 function TransferValid() {
   const { state } = useLocation();
+  
+  console.log(state)
 
   const navigate = useNavigate();
 
@@ -27,23 +29,24 @@ function TransferValid() {
   return (
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline pt-5">
-        <Link
-          to="/transfer-sesama-bank/form-input"
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
+        <Button
+          className="d-sm-none p-0"
+          type="button"
           aria-label="kembali ke halaman sebelumnya"
-          role="button"
+          onClick={() => {
+            navigate("/transfer-sesama-bank/form-input", {
+              state: {
+                accountnum_recipient: state.accountnum_recipient,
+                name_recipient: state.name_recipient,
+                bank_name: state.bank_name,
+                nominal: state.nominal,
+                note: state.note,
+              }
+            })
+          }}
         >
-          <Button
-            className="d-sm-none p-0"
-            type="button"
-            aria-label="kembali ke halaman sebelumnya"
-          >
-            <i className="fa fa-arrow-left" />
-          </Button>
-        </Link>
+          <i className="fa fa-arrow-left" />
+        </Button>
         <h1 className="fw-bold col-12 text-center text-sm-start">
           <span role="label" aria-label="Konfirmasi Transaksi">
             Konfirmasi Transaksi
@@ -51,26 +54,27 @@ function TransferValid() {
         </h1>
       </div>
 
-      <Link
-        to="/transfer-sesama-bank/form-input"
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-        }}
-        aria-label="kembali ke halaman sebelumnya"
-        role="button"
-      >
         <Button
           className={
             "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
           }
           type="button"
           aria-label="kembali ke halaman sebelumnya"
+          onClick={() => {
+            navigate("/transfer-sesama-bank/form-input", {
+              state: {
+                accountnum_recipient: state.accountnum_recipient,
+                name_recipient: state.name_recipient,
+                bank_name: state.bank_name,
+                nominal: state.nominal,
+                note: state.note,
+              }
+            })
+          }}
         >
           <i className="fa fa-arrow-left" />
           <span className="ms-20">Back</span>
         </Button>
-      </Link>
       <CardHorizontal
         className={"p-0 border-0 mb-3"}
         data={{

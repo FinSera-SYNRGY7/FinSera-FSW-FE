@@ -41,6 +41,8 @@ const Relog = () => {
         mutate({
           refreshToken
         })
+      } else {
+        showError()
       }
     }
 
@@ -100,8 +102,8 @@ const Relog = () => {
                             Login
                         </Button>
                         {isError && (
-                          <div className={styles.errorMessage}>
-                              {errorMessage}
+                          <div className={styles.errorMessage} aria-label={errorMessage}>
+                              {errorMessage} <button className="btn-close" role="button" aria-label="Tutup Error" onClick={() => setIsError(false)} />
                           </div>
                         )}
                     </div>

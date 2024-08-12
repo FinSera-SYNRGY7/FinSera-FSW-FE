@@ -49,6 +49,11 @@
   font-weight: 700;
 }
 
+/* card vertical VA and E-wallet */
+.cardBtnSuccess {
+  margin: 7rem 0;
+}
+
 @media only screen and (max-width: 900px){
   /* card mutation */
   .containerCardMutation {
@@ -101,5 +106,16 @@
   }
   .textPrice {
     font-size: 14px !important;
+  }
+
+  /* card horizontal for VA and E-Wallet */
+  .cardImg img {
+    width: 50%;
+  }
+
+  /* card vertical VA and E-wallet */
+  .cardBtnSuccess {
+    margin: 2rem 0;
+    padding: 0 10px;
   }
 }

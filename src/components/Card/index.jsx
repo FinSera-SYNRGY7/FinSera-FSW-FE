@@ -1,15 +1,31 @@
-import React from "react";
+import React, { forwardRef, useRef } from "react";
 import Success from "../../assets/img/Success.svg";
 import Button from "./../Button/index";
 import logobcablue from "../../assets/img/logobcablue.png";
 import "./style.css";
 import { formatRupiah } from "../../lib/utils";
+import { useScreenshot, createFileName } from "use-react-screenshot";
 
-export function CardVertical({ className, children, data, ...rest }) {
+export const CardVertical = ({ className, children, data, ...rest }) => {
+  const layoutRef = useRef(null)
+  const [image, takeScreenshot] = useScreenshot({
+    type: "image/jpeg",
+    quality: 1.0
+  });
+
+  const download = (image, { name = "img", extension = "jpg" } = {}) => {
+    const a = document.createElement("a");
+    a.href = image;
+    a.download = createFileName(extension, name);
+    a.click();
+  }
+  
+  const getImage = () => takeScreenshot(layoutRef.current).then(download)
+  
   return (
     <>
       {children}
-      <div className={`card text-center ${className}`} {...rest}>
+      <div className={`card text-center ${className}`} {...rest} ref={layoutRef}>
         <img
           className="m-auto my-3 my-md-5 w-20"
           src={Success}
@@ -64,6 +80,7 @@ export function CardVertical({ className, children, data, ...rest }) {
               className={"col-5 col-sm-4 base-color shadow-hover"}
               type="button"
               aria-label="Download"
+              onClick={getImage}
             >
               <i className="fa fa-download me-2"></i> Download
             </Button>
@@ -80,6 +97,7 @@ export function CardVertical({ className, children, data, ...rest }) {
     </>
   );
 }
+
 export function CardHorizontal({ className, first, second, data, ...rest }) {
   return (
     <div className={`card ${className}`} {...rest}>

@@ -13,9 +13,9 @@ const InterbankTfPin = () => {
 
   return (
     <Layout className={"haveStyle"}>
-      <div className="d-flex align-items-baseline tp-5">
+      <div className="d-flex align-items-baseline pt-5">
       <Link
-          to="/transfer-antar-bank/form-input"
+          to="/transfer-antar-bank/konfirmasi"
           style={{
             textDecoration: "none",
             color: "inherit",
@@ -38,7 +38,7 @@ const InterbankTfPin = () => {
         </h1>
       </div>
       <Link
-        to="/transfer-antar-bank/form-input"
+        to="/transfer-antar-bank/konfirmasi"
         style={{
           textDecoration: "none",
           color: "inherit",

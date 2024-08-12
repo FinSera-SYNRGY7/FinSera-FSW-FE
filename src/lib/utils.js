@@ -98,6 +98,13 @@ const formatDateYMD = (date) => {
 
 }
 
+const findIndexOfNestedArray = (nestedArray, searchArray) => {
+  return searchArray.findIndex(item => {
+    return item.length === nestedArray.length
+    && item.every((a, i) => a === nestedArray[i])
+  })
+}
+
 export {
   checkIfLogin,
   globalNavigate,
@@ -109,4 +116,5 @@ export {
   checkTypeTransaction,
   minusOneMonth,
   minusOneWeek,
+  findIndexOfNestedArray
 }

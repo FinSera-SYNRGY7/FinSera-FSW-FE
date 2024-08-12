@@ -5,47 +5,29 @@ import logoWhite from '@/assets/logo/logoWhite.svg'
 import logoBlue from '@/assets/logo/logoBlue.svg'
 import login from '@/assets/img/login.svg';
 import Button from 'react-bootstrap/Button';
-// import { PinInput } from '@/components/PinInput';
-import PinInput from "react-pin-input";
+import { PinInput } from '@/components/PinInput';
+import Pininput from "react-pin-input";
 import styles from "@/assets/css/Relog.module.css";
-import { useRefreshToken } from '@/features/auth/useRefreshToken'
 import { useNavigate } from "react-router-dom";
 
-const Relog = () => {
+const SetupPin = () => {
   
     const navigate = useNavigate()
-    const [pin, setPin] = useState(0)
     const [isError, setIsError] = useState(false);
+    const [pin, setPin] = useState(0);
     const [errorMessage, setErrorMessage] = useState("PIN yang Anda masukkan salah!"); 
     const [passwordVisible, setPasswordVisible] = useState(false);
-    
-    const { mutate, isPending } = useRefreshToken({
-      onSuccess: (success) => {
-        localStorage.setItem('auth_token', success.data.accessToken)
-        navigate('/home')
-      },
-      onError: (data, error) => {
-        console.log(error)
-      }
-    })
 
     const handlePinSubmit = (pin) => {
       setPin(pin)
     };
-    
-    const loginAct = () => {
-      const refreshToken = localStorage.getItem('auth_refresh_token')
-      const pinAppLock = localStorage.getItem('pin_app_lock')
-      
-      if(pin == pinAppLock) {
-        mutate({
-          refreshToken
-        })
-      }
-    }
 
     const showError = () => {
         setIsError(true);
+    };
+
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
     };
 
     return (
@@ -74,11 +56,11 @@ const Relog = () => {
                         className={styles.logoBlue}
                     />
                     <div className={styles.formContainer}>
-                        <h2 className={styles.title} aria-label="Selamat Datang Kembali">
-                            Selamat Datang Kembali
+                        <h2 className={styles.title} aria-label="Buat Pin Lock Anda!">
+                            Buat Pin Lock Anda
                         </h2>
                         <h4 className={styles.subtitle} aria-label="Masukkan PIN Anda">Masukkan PIN Anda</h4>
-                        <PinInput
+                        <Pininput
                           length={6}
                           type="numeric"
                           focus
@@ -92,12 +74,14 @@ const Relog = () => {
                             handlePinSubmit(value);
                           }}
                         />
-                        <a href="#" onClick={() => {
-                          localStorage.removeItem('pin_app_lock')
-                          navigate('/')
-                        }} className={styles.forgotPIN} aria-label="Lupa PIN?">Lupa PIN?</a>
-                        <Button className={styles.loginButton} disabled={ isPending } type="submit" onClick={loginAct}>
-                            Login
+                        <Button className={styles.loginButton} type="submit" onClick={() => {
+                          navigate('/setup-pin/confirm', {
+                            state:{
+                              pinAppLock:pin
+                            }
+                          })
+                        }} aria-label="Lanjutkan">
+                            Lanjutkan
                         </Button>
                         {isError && (
                           <div className={styles.errorMessage}>
@@ -111,4 +95,4 @@ const Relog = () => {
     );
 };
 
-export default Relog;
+export default SetupPin;

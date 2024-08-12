@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "@/assets/css/FormInput.module.css";
+import Select from 'react-select';
 
 const FormInput = ({ className, children, ...props }) => {
   return (
@@ -59,4 +60,19 @@ const SearchInput = ({ onSearch }) => {
   );
 };
 
-export { FormInput, SearchInput };
+const FormChooseBank = ({options, value, onChange, placeholder, ariaLabel}) => {
+  return (
+    <>
+      <Select
+      className={styles.selectBank}
+        options={options}
+        value={options.find(option => option.value === value)}
+        onChange={(selectedOption) => onChange(selectedOption)}
+        placeholder={placeholder}
+        aria-label={ariaLabel}
+      />
+    </>
+  );
+};
+
+export { FormInput, SearchInput, FormChooseBank };

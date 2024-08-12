@@ -1,0 +1,20 @@
+.containerPin {
+  margin: 10rem 0 !important;
+}
+
+.pinInput {
+  margin-top: 40px;
+  margin-bottom: 10rem !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .containerPin {
+    margin: 5rem 0 !important;
+  }
+
+  .pinInput {
+    margin-top: 40px;
+    margin-bottom: 5rem !important;
+    padding: 0;
+  }
+}

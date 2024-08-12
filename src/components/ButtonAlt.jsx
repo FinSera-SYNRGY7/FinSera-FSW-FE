@@ -1,21 +1,27 @@
 import React from "react";
-import styles from "@/assets/css/ButtonAlt.module.css"
+import styles from "@/assets/css/ButtonAlt.module.css";
 
-
-
-const ButtonAlt = ({label, onClick, variant}) => {
-
+const ButtonAlt = ({ label, onClick, variant }) => {
   return (
     <div className={styles.containerButtonAlt}>
-      <button className={`${styles[variant]}`} onClick={onClick} aria-label={label}>
-      <p>{label}</p>
-    </button>
+      <button
+        className={`${styles[variant]}`}
+        onClick={onClick}
+        aria-label={label}
+      >
+        <p>{label}</p>
+      </button>
     </div>
-  )
-}
+  );
+};
 
 const ButtonIcon = ({ label, onClick, variant }) => {
-  const containerClassButton = variant === "btnAdd" ? styles.containerButton + " " + styles.btnAdd : styles.containerButton + " " + styles.default;
+  const containerClassButton =
+    variant === "btnAdd"
+      ? `${styles.containerButton} ${styles.btnAdd}`
+      : variant === "btnShare"
+      ? `${styles.containerButton} ${styles.default} justify-content-end`
+      : `${styles.containerButton} ${styles.default}`;
 
   const getIconClass = (variant) => {
     switch (variant) {
@@ -31,20 +37,23 @@ const ButtonIcon = ({ label, onClick, variant }) => {
       default:
         return "";
     }
-  }
+  };
 
   return (
     <div className={`d-flex ${containerClassButton}`}>
-      <button className={`d-flex flex-row justify-content-center align-items-center ${styles[variant]}`} onClick={onClick} aria-label={label}>
-      <i className={`${getIconClass(variant)} ${styles.icon}`} aria-hidden="true"></i>
-      <p className={styles.textLabel}>{label}</p>
-    </button>
+      <button
+        className={`d-flex flex-row justify-content-center align-items-center ${styles[variant]}`}
+        onClick={onClick}
+        aria-label={label}
+      >
+        <i
+          className={`${getIconClass(variant)} ${styles.icon}`}
+          aria-hidden="true"
+        ></i>
+        <p className={styles.textLabel}>{label}</p>
+      </button>
     </div>
-  )
-}
-
-
-export {
-  ButtonAlt,
-  ButtonIcon,
+  );
 };
+
+export { ButtonAlt, ButtonIcon };

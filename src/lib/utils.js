@@ -43,10 +43,10 @@ const formatTimeIndo = (date) => {
     minute: 'numeric',
     second: 'numeric',
     timeZone:'Asia/Jakarta',
-    timeZoneName: "short",
+    timeZoneName:'short',
     hour12:false
   })
-  return formatter.format(newDateTime)
+  return formatter.format(newDateTime).replaceAll('.',':')
 }
 
 

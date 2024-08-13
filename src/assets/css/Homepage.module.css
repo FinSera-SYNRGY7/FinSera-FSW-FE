@@ -6,8 +6,11 @@
 .titleServiceMenu {
   margin: 0 162px 34px 162px;
   font-family: calibri;
-  font-weight: 700;
+}
+
+.titleServiceMenu h1, .containerCardsTXN h1 {
   font-size: 28px;
+  font-weight: 700;
 }
 
 .cardsMenu {
@@ -62,7 +65,7 @@
     font-size: 24px;
   }
 
-  .titleServiceMenu p {
+  .titleServiceMenu h1 {
     margin: 0;
     font-size: 20px;
   }
@@ -73,6 +76,9 @@
 
   .containerCardsTXN {
     margin: 0 25px 88px 25px;
+  }
+
+  .containerCardsTXN h1 {
     font-size: 20px;
   }
 

@@ -46,7 +46,7 @@ const Homepage = () => {
         </div>
       </div>
       <div className={`d-flex ${styles.titleServiceMenu}`}>
-        <p>Layanan</p>
+        <h1>Menu</h1>
       </div>
       <div
         className={styles.cardsMenu}
@@ -82,9 +82,9 @@ const Homepage = () => {
         aria-labelledby="riwayat-transaksi"
       >
         <div className="d-flex flex-row justify-content-between mb-4 w-100 align-items-center">
-          <p id="riwayat-transaksi" className="m-0">
+          <h1 id="riwayat-transaksi" className="m-0">
             Riwayat Transaksi
-          </p>
+          </h1>
           <a
             href="/mutasi-rekening"
             style={{

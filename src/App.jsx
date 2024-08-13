@@ -1,7 +1,7 @@
 
 import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes, Navigate, useLocation} from 'react-router-dom';
 
 import InfoSaldo from '@/pages/InfoSaldo';
 import SetupPin from '@/pages/SetupPin';
@@ -39,8 +39,18 @@ import VAConfirm from './pages/VAConfirm';
 import VAPin from './pages/VAPin';
 import VASuccess from './pages/VASuccess';
 import VAError from './pages/VAError';
+import { useEffect } from 'react';
+import nProgress from 'nprogress';
 
 function App() {
+  
+  const location = useLocation();
+
+  useEffect(() => {
+    nProgress.start();
+    nProgress.done();
+  }, [location.pathname]);
+    
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />

@@ -1,7 +1,7 @@
 import React from "react";
-import Layout from "./../layout/Layout";
-import Button from "./../components/Button/index";
-import Error from "../assets/img/Error.svg";
+import Layout from "@/layout/Layout";
+import Button from "@/components/Button/index";
+import Error from "@/assets/img/Error.svg";
 
 function TransferError() {
   return (

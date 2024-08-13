@@ -4,12 +4,79 @@ import { PinInput } from "@/components/PinInput";
 import Layout from "@/layout/Layout";
 import Button from "@/components/Button";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { useTransferBank } from "@/features/transferBank/useTransferBank";
+import { useTransferInterBank } from "@/features/transferInterBank/useTransferInterBank";
 import { useForm } from "react-hook-form";
 
 const InterbankTfPin = () => {
   const [pinInput, setPinInput] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  
+  const { handleSubmit } = useForm()
+  const { state } = useLocation()
+  const navigate = useNavigate()
+  
+  const lastTransferAct = ({
+    accountnum_recipient,
+    name_recipient,
+    bank_id,
+    bank_name
+  }) => {
+    const getLastTransfers = localStorage.getItem('last_transfers_inter_bank') == null ? [] : JSON.parse(localStorage.getItem('last_transfers_inter_bank'))
+    
+    const cloneArr = [...getLastTransfers]
+    
+    if (getLastTransfers.findIndex((elem) => elem.accountnum_recipient == accountnum_recipient)) {
+      cloneArr.push(
+        {
+          accountnum_recipient,
+          name_recipient,
+          bank_id,
+          bank_name
+        }
+      )
+    }
+    
+    localStorage.setItem('last_transfers_inter_bank', JSON.stringify(cloneArr))
+  }
+  
+  const { mutate, isPending } = useTransferInterBank({
+    onSuccess: (success, data) => {
+      
+      lastTransferAct({
+        accountnum_recipient: success.data.accountnum_recipient,
+        name_recipient: success.data.name_recipient,
+        bank_id: state.bank_id,
+        bank_name:state.bank_name
+      })
+      
+      navigate('/transfer-antar-bank/success', {
+        state:{
+          transaction_date:success.data.transaction_date,
+          transaction_num:success.data.transaction_num,
+          accountnum_recipient:success.data.accountnum_recipient,
+          name_recipient:success.data.name_recipient,
+          nominal:success.data.nominal,
+          admin_fee:success.data.admin_fee,
+          note:success.data.note
+        }
+      })
+    },
+    onError: (error, data) => {
+      setErrorMessage('Error')
+    }
+  })
+  
+  const submit = (data) => {
+    const getValue = {
+      accountnum_recipient: state.accountnum_recipient,
+      bank_id:state.bank_id,
+      nominal: state.nominal,
+      note: state.note,
+      pin: pinInput,
+    }
+    
+    mutate(getValue)
+  }
 
   return (
     <Layout className={"haveStyle"}>
@@ -70,8 +137,7 @@ const InterbankTfPin = () => {
       ) : (
         ""
       )}
-      {/* <form method="POST" onSubmit={handleSubmit(submit)}> */}
-      <form method="POST">
+      <form method="POST" onSubmit={handleSubmit(submit)}>
         <div
           className="row m-auto align-items-center text-center mb-5"
           style={{ height: "30vh" }}
@@ -99,7 +165,7 @@ const InterbankTfPin = () => {
           className={"btn base-color col-12 mb-5 shadow-hover"}
           type="submit"
           aria-label="Lanjutkan"
-          // disabled={isPending}
+          disabled={isPending}
         >
           <h5 className="mb-0">Lanjutkan</h5>
         </Button>

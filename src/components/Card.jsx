@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useRef } from "react";
 import Card from "react-bootstrap/Card";
+import Button from "@/components/Button/index";
 import iconHistoryTXN from "@/assets/logo/HistoTXN.svg";
 import Success from "@/assets/img/Success.svg";
 import styles from "@/assets/css/Cards.module.css";
 import { ButtonAlt, ButtonIcon } from "./ButtonAlt";
+import { useScreenshot, createFileName } from "use-react-screenshot";
 
 const CardTransaction = ({ titleTXN, typeTXN, priceTXN }) => {
   return (
@@ -138,81 +140,95 @@ const CardHorizontalAlt = ({
 };
 
 const CardVerticalAlt = ({ className, children, data, ...rest }) => {
+  const layoutRef = useRef(null)
+  
+  const date = (new Date()).toLocaleDateString()
+  
+  const [image, takeScreenshot] = useScreenshot({
+    type: "image/jpeg",
+    quality: 1.0
+  });
+
+  const download = (image, { name = `TRANSFER-ANTAR-BANK-${date}`, extension = "jpg" } = {}) => {
+    const a = document.createElement("a");
+    a.href = image;
+    a.download = createFileName(extension, name);
+    a.click();
+  }
+  
+  const getImage = () => takeScreenshot(layoutRef.current).then(download)
+    
   return (
     <>
       {children}
       <div className={`card text-center ${className}`} {...rest}>
-        <img
-          className="m-auto my-5 my-md-5 w-20"
-          src={Success}
-          alt="Transfer Success"
-        />
-        <span role="label" aria-label="Transaksi Berhasil">
-          <h1 className="fw-bold">Transaksi Berhasil</h1>
-        </span>
-        <div className="card-body">
-          <span role="label" aria-label={`Tanggal : ${data.transaction_date}`}>
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Tanggal</h5>
-              <h5 className="fw-bold col-auto">{data.transaction_date}</h5>
-            </div>
+        <div ref={layoutRef}>
+          <img
+            className="m-auto my-5 my-md-5 w-20"
+            src={Success}
+            alt="Transfer Success"
+          />
+          <span role="label" aria-label="Transaksi Berhasil">
+            <h1 className="fw-bold">Transaksi Berhasil</h1>
           </span>
-          <span role="label" aria-label={`Nomor Transaksi : ${data.transaction_num}`}>
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Nomor Transaksi</h5>
-              <h5 className="fw-bold col-auto">{data.transaction_num}</h5>
-            </div>
-          </span>
-          <hr />
-          <span role="label" aria-label={`Penerima : ${data.name_recipient}`}>
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Penerima</h5>
-              <h5 className="fw-bold col-auto">{data.name_recipient}</h5>
-            </div>
-          </span>
-          <span
-            role="label"
-            aria-label={`Jenis Transaksi : ${data.type_transaksi}`}
+          <div className="card-body">
+            <span role="label" aria-label={`Tanggal : ${data.transaction_date}`}>
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Tanggal</h5>
+                <h5 className="fw-bold col-auto">{data.transaction_date}</h5>
+              </div>
+            </span>
+            <span role="label" aria-label={`Nomor Transaksi : ${data.transaction_num}`}>
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Nomor Transaksi</h5>
+                <h5 className="fw-bold col-auto">{data.transaction_num}</h5>
+              </div>
+            </span>
+            <hr />
+            <span role="label" aria-label={`Penerima : ${data.name_recipient}`}>
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Penerima</h5>
+                <h5 className="fw-bold col-auto">{data.name_recipient}</h5>
+              </div>
+            </span>
+            <span
+              role="label"
+              aria-label={`Jenis Transaksi : ${data.type_transaksi}`}
+            >
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Jenis Transaksi</h5>
+                <h5 className="fw-bold col-auto">{data.type_transaksi}</h5>
+              </div>
+            </span>
+            <span role="label" aria-label={`Jumlah : ${data.nominal}`}>
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Jumlah</h5>
+                <h5 className="fw-bold col-auto">{data.nominal}</h5>
+              </div>
+            </span>
+            <span role="label" aria-label={`Jumlah : ${data.nominal_admin}`}>
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Biaya Admin</h5>
+                <h5 className="fw-bold col-auto">{data.nominal_admin}</h5>
+              </div>
+            </span>
+            <span role="label" aria-label={`Catatan : ${data.note}`}>
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Catatan</h5>
+                <h5 className="fw-bold col-auto">{data.note}</h5>
+              </div>
+            </span>
+          </div>  
+        </div>
+        <div className="row justify-content-evenly mb-4 mb-sm-5">
+          <Button
+            className={"col-5 col-sm-4 base-color shadow-hover"}
+            type="button"
+            aria-label="Download"
+            onClick={getImage}
           >
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Jenis Transaksi</h5>
-              <h5 className="fw-bold col-auto">{data.type_transaksi}</h5>
-            </div>
-          </span>
-          <span role="label" aria-label={`Jumlah : ${data.nominal}`}>
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Jumlah</h5>
-              <h5 className="fw-bold col-auto">{data.nominal}</h5>
-            </div>
-          </span>
-          <span role="label" aria-label={`Jumlah : ${data.nominal_admin}`}>
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Biaya Admin</h5>
-              <h5 className="fw-bold col-auto">{data.nominal_admin}</h5>
-            </div>
-          </span>
-          <span role="label" aria-label={`Catatan : ${data.note}`}>
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Catatan</h5>
-              <h5 className="fw-bold col-auto">{data.note}</h5>
-            </div>
-          </span>
-          <div className={`${styles.cardBtnSuccess} d-flex flex-row justify-content-between mb-3 mb-sm-5`}>
-            <div className="w-100">
-              <ButtonIcon
-                label="unduh"
-                onClick={() => console.log("Solid Download Clicked")}
-                variant="btnDownload1st"
-              />
-            </div>
-            <div className="w-100">
-              <ButtonIcon
-                label="Bagikan"
-                onClick={() => console.log("Outline Add Button Clicked")}
-                variant="btnShare"
-              />
-            </div>
-          </div>
+            <i className="fa fa-download me-2"></i> Download
+          </Button>
         </div>
       </div>
     </>

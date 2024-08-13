@@ -15,8 +15,39 @@ function Transfer() {
   const { register, isPending, handleSubmit, setValue } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false)
+  
+  const saveContactAct = ({
+    accountnum_recipient,
+    name_recipient,
+    bank_name
+  }) => {
+    const getListContacts = localStorage.getItem('list_contacts') == null ? [] : JSON.parse(localStorage.getItem('list_contacts'))
+    
+    const cloneArr = [...getListContacts]
+    
+    if(getListContacts.findIndex((elem)=>elem.accountnum_recipient == accountnum_recipient) === -1) {
+      cloneArr.push(
+        {
+          accountnum_recipient,
+          name_recipient,
+          bank_name
+        }
+      )
+    }
+    
+    localStorage.setItem('list_contacts', JSON.stringify(cloneArr))
+  }
 
   const submit = (value) => {
+    
+    if(savedContact) {
+      saveContactAct({
+        accountnum_recipient: state.accountnum_recipient,
+        name_recipient: state.name_recipient,
+        bank_name:'BCA'
+      })
+    }
+    
     navigate("/transfer-sesama-bank/konfirmasi", {
       state: {
         accountnum_recipient: state.accountnum_recipient,

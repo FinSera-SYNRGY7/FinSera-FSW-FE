@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 
 function CardInfoSaldo({ profile, saldo, norek }) {
-    const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+    const [isBalanceVisible, setIsBalanceVisible] = useState(false);
 
     const toggleBalanceVisibility = () => {
         setIsBalanceVisible(!isBalanceVisible);
@@ -46,14 +46,15 @@ function CardInfoSaldo({ profile, saldo, norek }) {
                                         src={hidePassIcon}
                                         alt="Saldo mu ********"
                                         style={{ cursor: 'pointer' }}
-                                        className="hide-saldo"
+                                        // className="hide-saldo"
+                                        className={`${styles.hideSaldo}`}
                                     />
                                     <img
                                         src={hideIcon}
                                         alt="lihat saldo"
                                         onClick={toggleBalanceVisibility}
                                         style={{ cursor: 'pointer' }}
-                                        className="ms-2"
+                                        className="ms-1 ms-md-2"
                                     />
                                 </div>
                             )}

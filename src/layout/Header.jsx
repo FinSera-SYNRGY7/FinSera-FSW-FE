@@ -29,7 +29,7 @@ const Header = ({ type }) => {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const navigate = useNavigate();
   
-  const { data, state } = useGetKeyQuery(['getInfoAmount'])
+  const name = localStorage.getItem('name') ?? 'User';
 
   const handleLogoutClick = (e) => {
     e.preventDefault();
@@ -89,15 +89,14 @@ const Header = ({ type }) => {
               </summary>
               <ul>
                 <li style={{ borderBottom: "1px solid #F2F4F7" }}>
-                  <div className="d-flex flex-row">
+                  <div className="d-flex flex-row align-items-center">
                     <img
                       className={styles.pictProfile}
                       src={profileCard}
                       alt=""
                     />
                     <div>
-                        <h5>John Doe</h5>
-                        <p>12345678</p>
+                      <h5>{ name }</h5>
                     </div>
                   </div>
                 </li>

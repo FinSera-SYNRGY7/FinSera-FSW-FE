@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "@/assets/css/Account.module.css";
 import Layout from "@/layout/Layout";
-import ProfileAccount from "@/assets/logo/profileAccount.svg";
+import ProfileAccount from "@/assets/img/photo.png";
 import ProfileAccountSmall from "@/assets/logo/profileAccountSmall.svg";
 import ChangePIN from "@/assets/logo/changePIN.svg";
 import Notification from "@/assets/logo/notification.svg";
@@ -49,7 +49,7 @@ const Account = () => {
                         </div>
                         <img src={Click} alt="click" className={styles.click} />
                     </a>
-                    <a href="#" className={styles.menuItem}>
+                    <a href="/ubah-pin" className={styles.menuItem}>
                         <div className={styles.menuItemText}>
                             <img src={ChangePIN} alt="Ubah PIN" className={styles.menuItemIcon} />
                             Ubah PIN

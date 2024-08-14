@@ -5,52 +5,55 @@ import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useInfoAmount } from '@/features/infoAmount/useInfoAmount'
-import { formatRupiah } from '@/lib/utils'
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import { formatRupiah } from "@/lib/utils";
 
 function Transfer() {
-  
   const navigate = useNavigate();
   const { state } = useLocation();
-  
+
   const { register, isPending, handleSubmit } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
-  const [savedContact, setSavedContact] = useState(false)
-  
-  const { data:dataAmount } = useInfoAmount()
-  
+  const [savedContact, setSavedContact] = useState(false);
+
+  const { data: dataAmount } = useInfoAmount();
+
   const saveContactAct = ({
     accountnum_recipient,
     name_recipient,
-    bank_name
+    bank_name,
   }) => {
-    const getListContacts = localStorage.getItem('list_contacts') == null ? [] : JSON.parse(localStorage.getItem('list_contacts'))
-    
-    const cloneArr = [...getListContacts]
-    
-    if(getListContacts.findIndex((elem)=>elem.accountnum_recipient == accountnum_recipient) === -1) {
-      cloneArr.push(
-        {
-          accountnum_recipient,
-          name_recipient,
-          bank_name
-        }
-      )
+    const getListContacts =
+      localStorage.getItem("list_contacts") == null
+        ? []
+        : JSON.parse(localStorage.getItem("list_contacts"));
+
+    const cloneArr = [...getListContacts];
+
+    if (
+      getListContacts.findIndex(
+        (elem) => elem.accountnum_recipient == accountnum_recipient
+      ) === -1
+    ) {
+      cloneArr.push({
+        accountnum_recipient,
+        name_recipient,
+        bank_name,
+      });
     }
-    
-    localStorage.setItem('list_contacts', JSON.stringify(cloneArr))
-  }
+
+    localStorage.setItem("list_contacts", JSON.stringify(cloneArr));
+  };
 
   const submit = (value) => {
-    
-    if(savedContact) {
+    if (savedContact) {
       saveContactAct({
         accountnum_recipient: state.accountnum_recipient,
         name_recipient: state.name_recipient,
-        bank_name:'BCA'
-      })
+        bank_name: "BCA",
+      });
     }
-    
+
     navigate("/transfer-sesama-bank/konfirmasi", {
       state: {
         accountnum_recipient: state.accountnum_recipient,
@@ -122,7 +125,7 @@ function Transfer() {
       ) : (
         ""
       )}
-      <form method="POST" onSubmit={handleSubmit(submit)}>        
+      <form method="POST" onSubmit={handleSubmit(submit)}>
         <CardHorizontal
           className={"shadow p-0 border-0 outline"}
           aria-label="akun transfer terakhir"
@@ -141,9 +144,10 @@ function Transfer() {
           </InputForm.Label>
           <InputForm.Input
             className="py-sm-3 ps-sm-5 fz-input input"
-            type="text"
+            type="number"
             placeholder="Masukkan nominal transfer"
             aria-labelledby="nominal-label"
+            onWheel={(e) => e.preventDefault()}
             required
             {...register("nominal")}
           />
@@ -158,10 +162,15 @@ function Transfer() {
           </InputForm.Label>
           <InputForm.Input
             className="py-sm-3 ps-sm-5 fz-input input"
-            type="text"
-            placeholder={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
-            value={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
+            type="number"
+            placeholder={
+              dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ""
+            }
+            value={
+              dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ""
+            }
             aria-labelledby="info-saldo-label"
+            onWheel={(e) => e.preventDefault()}
             readOnly
           />
         </InputForm>
@@ -188,7 +197,7 @@ function Transfer() {
             name="remember"
             type="checkbox"
             aria-labelledby="remember-label"
-            onChange={ (e) => setSavedContact(e.target.checked)}
+            onChange={(e) => setSavedContact(e.target.checked)}
           />
           <InputForm.Label to="remember" id="remember-label">
             <p className="form-check-label mb-0">
@@ -198,8 +207,7 @@ function Transfer() {
             </p>
           </InputForm.Label>
         </InputForm>
-        {
-          dataAmount != null ? 
+        {dataAmount != null ? (
           <Button
             className={"btn base-color col-12 mb-5 shadow-hover"}
             aria-label="Lanjutkan"
@@ -207,7 +215,8 @@ function Transfer() {
             disabled={isPending}
           >
             <h5 className="mb-0">Lanjutkan</h5>
-          </Button> : 
+          </Button>
+        ) : (
           <Button
             className={"btn base-color col-12 mb-5 shadow-hover"}
             aria-label="Lanjutkan"
@@ -216,7 +225,7 @@ function Transfer() {
           >
             <h5 className="mb-0">Lanjutkan</h5>
           </Button>
-        }
+        )}
       </form>
     </Layout>
   );

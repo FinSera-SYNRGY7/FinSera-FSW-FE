@@ -31,6 +31,9 @@ const ChangePin = () => {
         resolver: joiResolver(schema)
     })
 
+    const [pinLamaVisible, setPinLamaVisible] = useState(false)
+    const [pinBaruVisible, setPinBaruVisible] = useState(false)
+    const [konfirmasiPinVisible, setKonfirmasiPinVisible] = useState(false)
     const [showLogoutPopup, setShowLogoutPopup] = useState(false);
     const [isError, setIsError] = useState(false) 
     const [isLoading, setIsLoading] = useState(false) 
@@ -39,6 +42,18 @@ const ChangePin = () => {
     const [pinBaruError, setPinBaruError] = useState(false)
     const [konfirmasiPinError, setKonfirmasiPinError] = useState(false)
     const navigate = useNavigate()
+
+    const togglePinLamaVisibility = () => {
+        setPinLamaVisible(!pinLamaVisible)
+    }
+
+    const togglePinBaruVisibility = () => {
+        setPinBaruVisible(!pinBaruVisible)
+    }
+
+    const toggleKonfirmasiPinVisibility = () => {
+        setKonfirmasiPinVisible(!konfirmasiPinVisible)
+    }
 
     const handleNavigateHome = () => {
         navigate('/home')
@@ -108,12 +123,20 @@ const ChangePin = () => {
                                         Pin Lama
                                     </Form.Label>
                                     <Form.Control
-                                        type="number"
+                                        type={pinLamaVisible ? 'text' : 'password'}
                                         id="pin_lama"
                                         placeholder="masukkan pin lama"
                                         className={`${styles.formControl} ${pinLamaError || validationErrors.pin_lama?.message ? styles.errorInput : ''}`}
                                         {...register("pin_lama")}
                                     />
+                                    <span
+                                        onClick={togglePinLamaVisibility}
+                                        className={styles.passwordToggle}
+                                        role="button"
+                                        aria-label={pinLamaVisible ? 'Sembunyikan pin lama' : 'Tampilkan pin lama'}
+                                    >
+                                        {pinLamaVisible ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
                                 </FormInput>
 
                                 <FormInput className="mb-5 position-relative" aria-label="Pin Baru">
@@ -121,12 +144,20 @@ const ChangePin = () => {
                                         Pin Baru
                                     </Form.Label>
                                     <Form.Control
-                                        type="number"
+                                        type={pinBaruVisible ? 'text' : 'password'}
                                         id="pin_baru"
                                         placeholder="masukkan pin baru"
                                         className={`${styles.formControl} ${pinBaruError || validationErrors.pin_baru?.message ? styles.errorInput : ''}`}
                                         {...register("pin_baru")}
                                     />
+                                    <span
+                                        onClick={togglePinBaruVisibility}
+                                        className={styles.passwordToggle}
+                                        role="button"
+                                        aria-label={pinBaruVisible ? 'Sembunyikan pin baru' : 'Tampilkan pin baru'}
+                                    >
+                                        {pinBaruVisible ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
                                 </FormInput>
 
                                 <FormInput className="mb-5 position-relative" aria-label="Konfirmasi Pin Baru">
@@ -134,12 +165,20 @@ const ChangePin = () => {
                                     Konfirmasi Pin Baru
                                     </Form.Label>
                                     <Form.Control
-                                        type="number"
+                                        type={konfirmasiPinVisible ? 'text' : 'password'}
                                         id="konfirmasi_pin_baru"
                                         placeholder="masukkan konfirmasi pin baru"
                                         className={`${styles.formControl} ${konfirmasiPinError || validationErrors.konfirmasi_pin_baru?.message ? styles.errorInput : ''}`}
                                         {...register("konfirmasi_pin_baru")}
                                     />
+                                    <span
+                                        onClick={toggleKonfirmasiPinVisibility}
+                                        className={styles.passwordToggle}
+                                        role="button"
+                                        aria-label={konfirmasiPinVisible ? 'Sembunyikan konfirmasi pin baru' : 'Tampilkan konfirmasi pin baru'}
+                                    >
+                                        {konfirmasiPinVisible ? <FaEyeSlash /> : <FaEye />}
+                                    </span>
                                 </FormInput>
 
                                 {

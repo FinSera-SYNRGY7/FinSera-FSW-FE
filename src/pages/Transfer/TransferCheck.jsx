@@ -13,73 +13,14 @@ function TransferCheck() {
   
   const { register, handleSubmit, setValue } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
-  const [savedContact, setSavedContact] = useState(false)
-  
-  const saveContactAct = ({
-    accountnum_recipient,
-    name_recipient,
-    bank_name
-  }) => {
-    const getListContacts = localStorage.getItem('list_contacts') == null ? [] : JSON.parse(localStorage.getItem('list_contacts'))
-    
-    const cloneArr = [...getListContacts]
-    
-    if(getListContacts.findIndex((elem)=>elem.accountnum_recipient == accountnum_recipient) === -1) {
-      cloneArr.push(
-        {
-          accountnum_recipient,
-          name_recipient,
-          bank_name
-        }
-      )
-    }
-    
-    localStorage.setItem('list_contacts', JSON.stringify(cloneArr))
-  }
-  
-  const lastTransferAct = ({
-    accountnum_recipient,
-    name_recipient,
-    bank_name
-  }) => {
-    const getLastTransfers = localStorage.getItem('last_transfers') == null ? [] : JSON.parse(localStorage.getItem('last_transfers'))
-    
-    const cloneArr = [...getLastTransfers]
-    
-    if (getLastTransfers.findIndex((elem) => elem.accountnum_recipient == accountnum_recipient)) {
-      cloneArr.push(
-        {
-          accountnum_recipient,
-          name_recipient,
-          bank_name
-        }
-      )
-    }
-    
-    localStorage.setItem('last_transfers', JSON.stringify(cloneArr))
-  }
 
   const { mutate, isPending } = useTransferBankCheck({
     onSuccess: (success, data) => {
-      
-      if(savedContact) {
-        saveContactAct({
-          accountnum_recipient: success.data.accountnum_recipient,
-          name_recipient: success.data.name_recipient,
-          bank_name:'BCA'
-        })
-      }
-      
-      lastTransferAct({
-        accountnum_recipient: success.data.accountnum_recipient,
-        name_recipient: success.data.name_recipient,
-        bank_name:'BCA'
-      })
-      
       navigate("/transfer-sesama-bank/form-input", {
         state: {
           accountnum_recipient: success.data.accountnum_recipient,
           name_recipient: success.data.name_recipient,
+          bank_name: 'BCA'
         },
       });
     },

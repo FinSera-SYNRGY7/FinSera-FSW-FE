@@ -1,13 +1,11 @@
 import React from "react";
 import Layout from "@/layout/Layout";
 import { useLocation, Link } from "react-router-dom";
-import { CardVerticalAlt } from "../components/Card";
-import { CardVertical } from "../components/Card/index";
+import { CardVerticalAlt } from "@/components/Card";
+import { CardVertical } from "@/components/Card/index";
 
 const InterbankTfSuccess = () => {
   const { state } = useLocation();
-
-  console.log(state);
 
   return (
     <div>
@@ -16,14 +14,14 @@ const InterbankTfSuccess = () => {
         <CardVerticalAlt
           className={"shadow p-0 border-0 mb-5 px-1 px-md-5 success"}
           data={{
-            transaction_date: "state.transaction_date",
-            transaction_num: "state.transaction_num",
-            accountnum_recipient: "state.accountnum_recipient",
-            name_recipient: "state.name_recipient",
+            transaction_date: state.transaction_date,
+            transaction_num: state.transaction_num,
+            accountnum_recipient: state.accountnum_recipient,
+            name_recipient: state.name_recipient,
             type_transaksi: "Transfer Antar Bank",
-            nominal: "state.nominal",
-            nominal_admin: "state.nominal_admin",
-            note: "state.note",
+            nominal: state.nominal,
+            nominal_admin: state.admin_fee,
+            note: state.note,
           }}
         >
           <div className="d-flex justify-content-end mb-3 mb-sm-5">

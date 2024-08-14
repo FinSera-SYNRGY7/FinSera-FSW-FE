@@ -159,7 +159,7 @@ function Transfer() {
             className="d-flex flex-column gap-3 align-items-center"
             style={{ marginTop: "40px" }}
           >
-            <img src={notransferdata} alt="No Data" width={"260px"} />
+            <img src={notransferdata} className="img-fluid" alt="No Data"/>
             <div style={{ width: "650px" }}>
               <h3
                 style={{

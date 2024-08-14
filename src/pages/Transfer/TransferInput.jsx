@@ -5,18 +5,52 @@ import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useTransferBankCheck } from "@/features/transferBank/useTransferBankCheck";
+import { useInfoAmount } from '@/features/infoAmount/useInfoAmount'
+import { formatRupiah } from '@/lib/utils'
 
 function Transfer() {
   
   const navigate = useNavigate();
   const { state } = useLocation();
   
-  const { register, isPending, handleSubmit, setValue } = useForm();
+  const { register, isPending, handleSubmit } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false)
+  
+  const { data:dataAmount } = useInfoAmount()
+  
+  const saveContactAct = ({
+    accountnum_recipient,
+    name_recipient,
+    bank_name
+  }) => {
+    const getListContacts = localStorage.getItem('list_contacts') == null ? [] : JSON.parse(localStorage.getItem('list_contacts'))
+    
+    const cloneArr = [...getListContacts]
+    
+    if(getListContacts.findIndex((elem)=>elem.accountnum_recipient == accountnum_recipient) === -1) {
+      cloneArr.push(
+        {
+          accountnum_recipient,
+          name_recipient,
+          bank_name
+        }
+      )
+    }
+    
+    localStorage.setItem('list_contacts', JSON.stringify(cloneArr))
+  }
 
   const submit = (value) => {
+    
+    if(savedContact) {
+      saveContactAct({
+        accountnum_recipient: state.accountnum_recipient,
+        name_recipient: state.name_recipient,
+        bank_name:'BCA'
+      })
+    }
+    
     navigate("/transfer-sesama-bank/konfirmasi", {
       state: {
         accountnum_recipient: state.accountnum_recipient,
@@ -107,11 +141,28 @@ function Transfer() {
           </InputForm.Label>
           <InputForm.Input
             className="py-sm-3 ps-sm-5 fz-input input"
-            type="number"
+            type="text"
             placeholder="Masukkan nominal transfer"
             aria-labelledby="nominal-label"
             required
             {...register("nominal")}
+          />
+        </InputForm>
+        <InputForm className={"my-4"}>
+          <InputForm.Label to="nominal" id="info-saldo-label">
+            <h4 className="fw-bold mb-3">
+              <span role="input" aria-label="Info Saldo">
+                Info Saldo
+              </span>
+            </h4>
+          </InputForm.Label>
+          <InputForm.Input
+            className="py-sm-3 ps-sm-5 fz-input input"
+            type="text"
+            placeholder={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
+            value={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
+            aria-labelledby="info-saldo-label"
+            readOnly
           />
         </InputForm>
         <InputForm className={"my-4"}>
@@ -147,14 +198,25 @@ function Transfer() {
             </p>
           </InputForm.Label>
         </InputForm>
-        <Button
-          className={"btn base-color col-12 mb-5 shadow-hover"}
-          aria-label="Lanjutkan"
-          type="submit"
-          disabled={isPending}
-        >
-          <h5 className="mb-0">Lanjutkan</h5>
-        </Button>
+        {
+          dataAmount != null ? 
+          <Button
+            className={"btn base-color col-12 mb-5 shadow-hover"}
+            aria-label="Lanjutkan"
+            type="submit"
+            disabled={isPending}
+          >
+            <h5 className="mb-0">Lanjutkan</h5>
+          </Button> : 
+          <Button
+            className={"btn base-color col-12 mb-5 shadow-hover"}
+            aria-label="Lanjutkan"
+            type="submit"
+            disabled
+          >
+            <h5 className="mb-0">Lanjutkan</h5>
+          </Button>
+        }
       </form>
     </Layout>
   );

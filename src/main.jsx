@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { GlobalHistory } from '@/lib/utils'
 import { BrowserRouter } from 'react-router-dom'
 import '@/index.css'
+import "nprogress/nprogress.css";
 
 
 const queryClient = new QueryClient({

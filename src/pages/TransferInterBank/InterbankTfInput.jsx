@@ -2,31 +2,70 @@ import React, { useState } from "react";
 import Layout from "@/layout/Layout";
 import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
-import { Link, useNavigate } from "react-router-dom";
-import { FormChooseBank } from "@/components/FormInput";
-// import { useForm } from "react-hook-form";
-// import { useTransferBankCheck } from "@/features/transferBank/useTransferBankCheck";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { CardHorizontal } from "@/components/Card/index";
+import { useInfoAmount } from '@/features/infoAmount/useInfoAmount'
+import { formatRupiah } from '@/lib/utils'
 
 const InterbackTfInput = () => {
+  
   const [errorMessage, setErrorMessage] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
-
-  const bankOptions = [
-    { value: 'bca', label: 'BCA' },
-    { value: 'bni', label: 'BNI' },
-    { value: 'bri', label: 'BRI' },
-    { value: 'mandiri', label: 'Mandiri' },
-    { value: 'cimb', label: 'CIMB' },
-    { value: 'btpn', label: 'BTPN' },
-    { value: 'btn', label: 'BTN' },
-    { value: 'muamalat', label: 'Muamalat' },
-    { value: 'bukopin', label: 'Bukopin' },
-    { value: 'danamon', label: 'Danamon' },
-    { value: 'maybank', label: 'Maybank' },
-    { value: 'permata', label: 'Permata' },
-    { value: 'panin', label: 'Panin' },
-    { value: 'mega', label: 'Mega' },
-  ];
+  const [savedContact, setSavedContact] = useState(false)
+  
+  const { data:dataAmount } = useInfoAmount()
+  
+  const { register, handleSubmit } = useForm()
+  
+  const { state } = useLocation()
+  const navigate = useNavigate()
+  
+  const saveContactAct = ({
+    accountnum_recipient,
+    name_recipient,
+    bank_id,
+    bank_name
+  }) => {
+    const getListContacts = localStorage.getItem('list_contacts_inter_bank') == null ? [] : JSON.parse(localStorage.getItem('list_contacts_inter_bank'))
+    
+    const cloneArr = [...getListContacts]
+    
+    if(getListContacts.findIndex((elem)=>elem.accountnum_recipient == accountnum_recipient) === -1) {
+      cloneArr.push(
+        {
+          accountnum_recipient,
+          name_recipient,
+          bank_id,
+          bank_name
+        }
+      )
+    }
+    
+    localStorage.setItem('list_contacts_inter_bank', JSON.stringify(cloneArr))
+  }
+  
+  const submit = (data) => {
+    
+    if(savedContact) {
+      saveContactAct({
+        accountnum_recipient: state.accountnum_recipient,
+        name_recipient: state.name_recipient,
+        bank_id:state.bank_id,
+        bank_name:state.bank_name
+      })
+    }
+    
+    navigate('/transfer-antar-bank/konfirmasi', {
+      state:{
+        accountnum_recipient:state.accountnum_recipient,
+        bank_id:state.bank_id,
+        bank_name:state.bank_name,
+        name_recipient:state.name_recipient,
+        nominal:data.nominal,
+        note:data.note
+      }
+    })
+  }
 
     return (
         <Layout className={"haveStyle"}>
@@ -89,35 +128,15 @@ const InterbackTfInput = () => {
             ""
           )}
           {/* <form method="POST" onSubmit={handleSubmit(submit)}> */}
-          <form method="POST">
-            <InputForm className={"my-4"}>
-              <InputForm.Label to="bank" id="bank-label">
-                <h4 className="fw-bold mb-3">
-                  <span role="input" aria-label="Pilih Bank Tujuan Transfer">
-                    Pilih Bank
-                  </span>
-                </h4>
-              </InputForm.Label>
-              {/* <FormChooseBank label="Pilih" options={bankOptions} onChange={handleChooseBank} selectedValue={selectedBank}></FormChooseBank> */}
-              <FormChooseBank options={bankOptions} value={selectedValue?.value || ""} onChange={(option) => setSelectedValue(option)} placeholder="Pilih" ariaLabel="Pilih Bank Tujuan Transfer" />
-            </InputForm>
-            <InputForm className={"my-4"}>
-              <InputForm.Label to="rek" id="rek-label">
-                <h4 className="fw-bold mb-3">
-                  <span role="input" aria-label="nomor rekening">
-                    Nomor Rekening
-                  </span>
-                </h4>
-              </InputForm.Label>
-              <InputForm.Input
-                className="py-sm-3 ps-sm-5 fz-input input"
-                type="number"
-                placeholder="Masukkan nomor rekening"
-                aria-labelledby="rek-label"
-                // required
-                // {...register("accountnum_recipient")}
-              />
-            </InputForm>
+          <form method="POST" onSubmit={handleSubmit(submit)}>
+            <CardHorizontal
+              className={"shadow p-0 border-0 outline"}
+              aria-label="akun transfer terakhir"
+              data={{
+                name_recipient: state.name_recipient,
+                bank_name: state.bank_name,
+              }}
+            />
             <InputForm className={"my-4"}>
               <InputForm.Label to="nominal" id="nominal-label">
                 <h4 className="fw-bold mb-3">
@@ -131,8 +150,25 @@ const InterbackTfInput = () => {
                 type="number"
                 placeholder="Masukkan nominal transfer"
                 aria-labelledby="nominal-label"
-                // required
-                // {...register("nominal")}
+                required
+                {...register("nominal")}
+              />
+            </InputForm>
+            <InputForm className={"my-4"}>
+              <InputForm.Label to="nominal" id="info-saldo-label">
+                <h4 className="fw-bold mb-3">
+                  <span role="input" aria-label="Info Saldo">
+                    Info Saldo
+                  </span>
+                </h4>
+              </InputForm.Label>
+              <InputForm.Input
+                className="py-sm-3 ps-sm-5 fz-input input"
+                type="text"
+                placeholder={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
+                value={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
+                aria-labelledby="info-saldo-label"
+                readOnly
               />
             </InputForm>
             <InputForm className={"my-4"}>
@@ -148,8 +184,8 @@ const InterbackTfInput = () => {
                 placeholder="Masukkan catatan"
                 rows="6"
                 aria-labelledby="catatan-label"
-                // required
-                // {...register("note")}
+                required
+                {...register("note")}
               />
             </InputForm>
             <InputForm className={"d-flex my-4 form-check align-items-center"}>
@@ -158,6 +194,7 @@ const InterbackTfInput = () => {
                 name="remember"
                 type="checkbox"
                 aria-labelledby="remember-label"
+                onChange={ (e) => setSavedContact(e.target.checked)}
               />
               <InputForm.Label to="remember" id="remember-label">
                 <p className="form-check-label mb-0">
@@ -171,7 +208,6 @@ const InterbackTfInput = () => {
               className={"btn base-color col-12 mb-5 shadow-hover"}
               aria-label="Lanjutkan"
               type="submit"
-            //   disabled={isPending}
             >
               <h5 className="mb-0">Lanjutkan</h5>
             </Button>

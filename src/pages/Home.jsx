@@ -15,7 +15,7 @@ import Spinner from "react-bootstrap/Spinner"
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
 import { formatRupiah } from "@/lib/utils"
 
-const Homepage = () => {
+const Home = () => {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
 
   return (
@@ -119,4 +119,4 @@ const Homepage = () => {
   )
 }
 
-export default Homepage
+export default Home

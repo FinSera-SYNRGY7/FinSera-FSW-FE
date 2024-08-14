@@ -10,21 +10,34 @@ import Terms from "@/assets/logo/terms.svg";
 import Help from "@/assets/logo/help.svg";
 import Logout from "@/assets/logo/logout.svg";
 import Click from "@/assets/logo/click.svg";
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import Spinner from "react-bootstrap/Spinner";
 
 const Account = () => {
+    const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
+
     return (
         <Layout>
             <div className={styles.container}>
                 <header className={styles.header}>
-                    <div className={styles.profileIconContainer}>
-                        <div className={styles.profileIcon}>
-                            <img src={ProfileAccount} alt="Profile" />
+                {isLoadingAmount ? (
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                ) : (
+                    <>
+                        <div className={styles.profileIconContainer}>
+                            <div className={styles.profileIcon}>
+                                <img src={ProfileAccount} alt="Profile" />
+                            </div>
                         </div>
-                    </div>
-                    <div className={styles.profileInfo}>
-                        <div className={styles.name}>RAMADHAN ADI</div>
-                        <div className={styles.accountNumber}>1234 567 897 890</div>
-                    </div>
+                        <div className={styles.profileInfo}>
+                            <div className={styles.name}>{dataAmount.username}</div>
+                            <div className={styles.accountNumber}>{dataAmount.accountNumber}</div>
+                            
+                        </div>
+                    </>
+                )}
                 </header>
 
                 <section className={styles.section}>

@@ -105,6 +105,14 @@ const findIndexOfNestedArray = (nestedArray, searchArray) => {
   })
 }
 
+const genderReplace = (gender) => {
+  if(gender == 'LAKI_LAKI') {
+    return 'Laki - laki'
+  }else{
+    return 'Perempuan'
+  }
+}
+
 export {
   checkIfLogin,
   globalNavigate,
@@ -116,5 +124,6 @@ export {
   checkTypeTransaction,
   minusOneMonth,
   minusOneWeek,
-  findIndexOfNestedArray
+  findIndexOfNestedArray,
+  genderReplace
 }

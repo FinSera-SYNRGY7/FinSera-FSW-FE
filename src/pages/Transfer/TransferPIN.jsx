@@ -16,9 +16,38 @@ function TransferPIN() {
   const navigate = useNavigate();
 
   const { state } = useLocation();
+  
+  const lastTransferAct = ({
+    accountnum_recipient,
+    name_recipient,
+    bank_name
+  }) => {
+    const getLastTransfers = localStorage.getItem('last_transfers') == null ? [] : JSON.parse(localStorage.getItem('last_transfers'))
+    
+    const cloneArr = [...getLastTransfers]
+    
+    if (getLastTransfers.findIndex((elem) => elem.accountnum_recipient == accountnum_recipient)) {
+      cloneArr.push(
+        {
+          accountnum_recipient,
+          name_recipient,
+          bank_name
+        }
+      )
+    }
+    
+    localStorage.setItem('last_transfers', JSON.stringify(cloneArr))
+  }
 
   const { mutate, isPending } = useTransferBank({
     onSuccess: (success, data) => {
+      
+      lastTransferAct({
+        accountnum_recipient: success.data.accountnum_recipient,
+        name_recipient: success.data.name_recipient,
+        bank_name:'BCA'
+      })
+      
       navigate("/transfer-sesama-bank/success", {
         state: {
           transaction_date: success.data.transaction_date,
@@ -103,6 +132,7 @@ function TransferPIN() {
               justifyContent: "space-evenly",
             }}
             name="pin"
+            ariaLabel="Pin Transaksi"
             onChange={(value) => {
               setPinInput(value);
             }}

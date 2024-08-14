@@ -3,14 +3,29 @@ import Layout from "@/layout/Layout";
 import { CardHorizontal, CardTransfer } from "@/components/Card/index";
 import Button from "@/components/Button/index";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-// import { formatRupiah } from "../lib/utils";
+import { formatRupiah } from "@/lib/utils";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import Spinner from "react-bootstrap/Spinner";
 
 const InterbankTfConfirm = () => {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
 
-
+  const { state } = useLocation()
+  const navigate = useNavigate()
+  
+  const toInputPinPage = (data) => {
+    navigate("/transfer-antar-bank/input-pin", {
+      state: {
+        accountnum_recipient:data.accountnum_recipient,
+        bank_id:data.bank_id,
+        bank_name:data.bank_name,
+        name_recipient:data.name_recipient,
+        nominal:data.nominal,
+        note:data.note,
+      },
+    });
+  };
+  
   return (
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline pt-5">
@@ -63,8 +78,8 @@ const InterbankTfConfirm = () => {
           <CardHorizontal
             className={"shadow p-0 border-0 outline"}
             data={{
-              name_recipient: "jamal",
-              bank_name: "Bank BCA",
+              name_recipient: state.name_recipient,
+              bank_name: state.bank_name,
             }}
             aria-label="akun tujuan transfer"
           />
@@ -74,7 +89,7 @@ const InterbankTfConfirm = () => {
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Nominal Transfer</h5>
           <h5 className="fw-bold col-auto">
-            {/* {formatRupiah(state.nominal)} */}
+            {formatRupiah(state.nominal)}
           </h5>
         </div>
       </span>
@@ -88,7 +103,7 @@ const InterbankTfConfirm = () => {
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Catatan</h5>
           <h5 className="fw-bold col-auto">
-            {/* {state.note} */}
+            {state.note}
           </h5>
         </div>
       </span>
@@ -109,9 +124,9 @@ const InterbankTfConfirm = () => {
           first="col-1"
           second="col-2"
           data={{
-            username: "jamal",
-            accountNumber: "1234567890",
-            amount: "100000",
+            username: dataAmount.username,
+            accountNumber: dataAmount.accountNumber,
+            amount: dataAmount.amount,
           }}
         />
       )}
@@ -119,13 +134,16 @@ const InterbankTfConfirm = () => {
         className={"btn base-color col-12 mb-5 shadow-hover"}
         type="button"
         aria-label="Lanjutkan"
-        // onClick={() =>
-        //   toInputPinPage({
-        //     accountnum_recipient: state.accountnum_recipient,
-        //     nominal: state.nominal,
-        //     note: state.note,
-        //   })
-        // }
+        onClick={() =>
+          toInputPinPage({
+            accountnum_recipient: state.accountnum_recipient,
+            bank_id: state.bank_id,
+            bank_name: state.bank_name,
+            name_recipient: state.name_recipient,
+            nominal: state.nominal,
+            note: state.note,
+          })
+        }
       >
         <h5 className="mb-0">Lanjutkan</h5>
       </Button>

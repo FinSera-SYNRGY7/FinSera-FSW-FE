@@ -11,7 +11,7 @@ import { useState } from 'react';
 
 
 function CardInfoSaldo({ profile, saldo, norek }) {
-    const [isBalanceVisible, setIsBalanceVisible] = useState(true);
+    const [isBalanceVisible, setIsBalanceVisible] = useState(false);
 
     const toggleBalanceVisibility = () => {
         setIsBalanceVisible(!isBalanceVisible);
@@ -44,16 +44,17 @@ function CardInfoSaldo({ profile, saldo, norek }) {
                                 <div className="hide-icon">
                                     <img
                                         src={hidePassIcon}
-                                        alt="Saldo mu ********"
+                                        alt={`Saldo mu ${saldo}`}
                                         style={{ cursor: 'pointer' }}
-                                        className="hide-saldo"
+                                        // className="hide-saldo"
+                                        className={`${styles.hideSaldo}`}
                                     />
                                     <img
                                         src={hideIcon}
                                         alt="lihat saldo"
                                         onClick={toggleBalanceVisibility}
                                         style={{ cursor: 'pointer' }}
-                                        className="ms-2"
+                                        className="ms-1 ms-md-2"
                                     />
                                 </div>
                             )}
@@ -62,7 +63,6 @@ function CardInfoSaldo({ profile, saldo, norek }) {
                     <div className="px-md-5 px-4 d-flex align-items-center">
                         <img src={mastercard} alt="" className={`${styles.bgLogoMastercard}`} />
                         <h2 className={`${styles.textNoRek}`}>{norek}</h2>
-                        <img className={styles.logoCopy} src={copyIcon} alt="Salin nomor rekening" />
                     </div>
                 </div>
             </div>

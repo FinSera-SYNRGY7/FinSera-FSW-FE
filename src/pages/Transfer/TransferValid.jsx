@@ -3,14 +3,12 @@ import Layout from "@/layout/Layout";
 import { CardHorizontal, CardTransfer } from "@/components/Card/index";
 import Button from "@/components/Button/index";
 import { useLocation, Link, useNavigate } from "react-router-dom";
-import { formatRupiah } from "../lib/utils";
+import { formatRupiah } from "@/lib/utils";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import Spinner from "react-bootstrap/Spinner";
 
 function TransferValid() {
   const { state } = useLocation();
-  
-  console.log(state)
 
   const navigate = useNavigate();
 

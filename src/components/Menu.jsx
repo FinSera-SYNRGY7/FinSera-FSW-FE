@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "@/assets/css/Menu.module.css";
 
-const ServiceMenu = ({ label, navigation, icon }) => {
+const ServiceMenu = ({ label, navigation, icon, ...props }) => {
   return (
     <a
       style={{ textDecoration: "none", color: "black" }}
       href={navigation}
       aria-label={label}
+      {...props}
     >
       <div
         className={`${styles.containerServiceMenu} d-flex flex-column justify-content-center align-items-center`}

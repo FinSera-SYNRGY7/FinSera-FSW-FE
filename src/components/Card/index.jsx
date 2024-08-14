@@ -1,19 +1,21 @@
 import React, { forwardRef, useRef } from "react";
-import Success from "../../assets/img/Success.svg";
-import Button from "./../Button/index";
-import logobcablue from "../../assets/img/logobcablue.png";
+import Success from "@/assets/img/Success.svg";
+import Button from "@/components/Button/index";
+import logobcablue from "@/assets/img/logobcablue.png";
 import "./style.css";
-import { formatRupiah } from "../../lib/utils";
+import { formatRupiah } from "@/lib/utils";
 import { useScreenshot, createFileName } from "use-react-screenshot";
 
 export const CardVertical = ({ className, children, data, ...rest }) => {
+  const date = (new Date()).toLocaleDateString()
+  
   const layoutRef = useRef(null)
   const [image, takeScreenshot] = useScreenshot({
     type: "image/jpeg",
     quality: 1.0
   });
 
-  const download = (image, { name = "img", extension = "jpg" } = {}) => {
+  const download = (image, { name = `TRANSFER-SESAMA-BANK-${date}`, extension = "jpg" } = {}) => {
     const a = document.createElement("a");
     a.href = image;
     a.download = createFileName(extension, name);
@@ -84,13 +86,6 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
             >
               <i className="fa fa-download me-2"></i> Download
             </Button>
-            <Button
-              className={"col-5 col-sm-4 base-color shadow-hover"}
-              type="button"
-              aria-label="Bagikan"
-            >
-              <i className="fa fa-share-alt  me-2"></i> Bagikan
-            </Button>
           </div>
         </div>
       </div>
@@ -100,7 +95,7 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
 
 export function CardHorizontal({ className, first, second, data, ...rest }) {
   return (
-    <div className={`card ${className}`} {...rest}>
+    <div className={`card ${className} p-1`} {...rest}>
       <div className="d-flex">
         <div
           className={`${first} mx-sm-3 ms-1 d-flex align-items-center justify-content-center`}
@@ -118,15 +113,6 @@ export function CardHorizontal({ className, first, second, data, ...rest }) {
               <h6 className="card-subtitle text-body-secondary">
                 {data.bank_name}
               </h6>
-            </span>
-            <span
-              className="h-c"
-              role="label"
-              aria-label="update terakhir 5 hari lalu"
-            >
-              <small className="text-body-secondary">
-                Last updated 3 mins ago
-              </small>
             </span>
           </div>
         </div>

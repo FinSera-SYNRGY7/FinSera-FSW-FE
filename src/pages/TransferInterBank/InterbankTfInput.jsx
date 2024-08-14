@@ -4,7 +4,7 @@ import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { CardHorizontal } from "@/components/Card/index";
+import { CardHorizontal, CardInfoSaldo } from "@/components/Card/index";
 import { useInfoAmount } from '@/features/infoAmount/useInfoAmount'
 import { formatRupiah } from '@/lib/utils'
 
@@ -13,7 +13,7 @@ const InterbackTfInput = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false)
   
-  const { data:dataAmount } = useInfoAmount()
+  const { data:dataAmount, isLoading:isLoadingAmount } = useInfoAmount()
   
   const { register, handleSubmit } = useForm()
   
@@ -137,6 +137,30 @@ const InterbackTfInput = () => {
                 bank_name: state.bank_name,
               }}
             />
+            <InputForm className={"d-flex my-4 form-check align-items-center"}>
+              <InputForm.Input
+                className="form-check-input me-2 p-0 border-black border-2"
+                name="remember"
+                type="checkbox"
+                aria-labelledby="remember-label"
+                onChange={ (e) => setSavedContact(e.target.checked)}
+              />
+              <InputForm.Label to="remember" id="remember-label">
+                <p className="form-check-label mb-0">
+                  <span role="checkbox" aria-label="Tambahkan ke daftar tersimpan">
+                    Tambahkan ke daftar tersimpan
+                  </span>
+                </p>
+              </InputForm.Label>
+            </InputForm>
+            <CardInfoSaldo 
+              className={"shadow p-0 border-0 mb-5"}
+              first="col-1"
+              second="col-2"
+              data={{
+                amount: isLoadingAmount ? null : dataAmount.amount.amount
+              }}
+            />
             <InputForm className={"my-4"}>
               <InputForm.Label to="nominal" id="nominal-label">
                 <h4 className="fw-bold mb-3">
@@ -187,22 +211,6 @@ const InterbackTfInput = () => {
                 required
                 {...register("note")}
               />
-            </InputForm>
-            <InputForm className={"d-flex my-4 form-check align-items-center"}>
-              <InputForm.Input
-                className="form-check-input me-2 p-0 border-black border-2"
-                name="remember"
-                type="checkbox"
-                aria-labelledby="remember-label"
-                onChange={ (e) => setSavedContact(e.target.checked)}
-              />
-              <InputForm.Label to="remember" id="remember-label">
-                <p className="form-check-label mb-0">
-                  <span role="checkbox" aria-label="Tambahkan ke daftar tersimpan">
-                    Tambahkan ke daftar tersimpan
-                  </span>
-                </p>
-              </InputForm.Label>
             </InputForm>
             <Button
               className={"btn base-color col-12 mb-5 shadow-hover"}

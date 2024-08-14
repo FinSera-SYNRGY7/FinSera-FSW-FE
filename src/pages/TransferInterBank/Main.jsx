@@ -145,7 +145,7 @@ const InterbankTransfer = () => {
                 bank_name: value.bank_name,
               }}
               onClick={() => {
-                navigate('/transfer-sesama-bank/form-input', {
+                navigate('/transfer-antar-bank/form-input', {
                   state: {
                     accountnum_recipient:value.accountnum_recipient,
                     name_recipient:value.name_recipient,

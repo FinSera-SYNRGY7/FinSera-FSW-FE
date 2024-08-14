@@ -147,7 +147,7 @@ const InterbackTfInput = () => {
               </InputForm.Label>
               <InputForm.Input
                 className="py-sm-3 ps-sm-5 fz-input input"
-                type="number"
+                type="text"
                 placeholder="Masukkan nominal transfer"
                 aria-labelledby="nominal-label"
                 required

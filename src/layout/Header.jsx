@@ -95,13 +95,10 @@ const Header = ({ type }) => {
                       src={profileCard}
                       alt=""
                     />
-                    {
-                      state.status === 'success' ?
-                      <div>
-                          <h5>{ data.username }</h5>
-                          <p>{ data.accountNumber }</p>
-                      </div> : <></>
-                    }
+                    <div>
+                        <h5>John Doe</h5>
+                        <p>12345678</p>
+                    </div>
                   </div>
                 </li>
                 <li>

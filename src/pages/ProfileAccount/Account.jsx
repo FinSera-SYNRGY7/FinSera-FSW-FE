@@ -49,7 +49,7 @@ const Account = () => {
                         </div>
                         <img src={Click} alt="click" className={styles.click} />
                     </a>
-                    <a href="#" className={styles.menuItem}>
+                    <a href="/ubah-pin" className={styles.menuItem}>
                         <div className={styles.menuItemText}>
                             <img src={ChangePIN} alt="Ubah PIN" className={styles.menuItemIcon} />
                             Ubah PIN

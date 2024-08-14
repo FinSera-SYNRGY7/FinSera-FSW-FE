@@ -32,6 +32,7 @@ import TransferPIN from "@/pages/Transfer/TransferPIN";
 
 import Account from "@/pages/ProfileAccount/Account";
 import Profile from "@/pages/ProfileAccount/Profile";
+import ChangePin from "@/pages/ProfileAccount/ChangePin";
 import TestQrCode from '@/pages/TestQrCode';
 import VirtualAccount from '@/pages/VirtualAccount';
 
@@ -82,6 +83,7 @@ function App() {
         <Route path="error" element={<InterbankTfError />} />
       </Route>
       <Route path="/account" element={<Account />} />
+      <Route path="/ubah-pin" element={<ChangePin />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/test-qr-code" element={<TestQrCode />} />
       <Route path="/virtual-account" element={<VirtualAccount />} />

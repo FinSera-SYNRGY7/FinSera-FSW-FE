@@ -21,6 +21,7 @@ import { useNavigate } from "react-router-dom";
 import { PopUp } from "@/components/PopUp";
 // import { Profile } from "@/pages/Profile";
 // import { Account } from "@/pages/Account";
+import { Link } from "react-router-dom";
 
 import { useGetKeyQuery } from "@/features/getKeyQuery/useGetKeyQuery";
 
@@ -102,11 +103,11 @@ const Header = ({ type }) => {
                 </li>
                 <li>
                   <img src={profileList} alt="View Profile" />
-                  <a href="./profile">View Profile</a>
+                  <Link to="/profile">View Profile</Link>
                 </li>
                 <li>
                   <img src={settingList} alt="" />
-                  <a href="./account">Setting</a>
+                  <Link to="/account">Settings</Link>
                 </li>
                 <li>
                   <img src={helpList} alt="" />

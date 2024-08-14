@@ -22,10 +22,14 @@ import { PopUp } from "@/components/PopUp";
 // import { Profile } from "@/pages/Profile";
 // import { Account } from "@/pages/Account";
 
+import { useGetKeyQuery } from "@/features/getKeyQuery/useGetKeyQuery";
+
 //ada perubahan di prop untuk melakukan pengkodisian
 const Header = ({ type }) => {
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const navigate = useNavigate();
+  
+  const { data, state } = useGetKeyQuery(['getInfoAmount'])
 
   const handleLogoutClick = (e) => {
     e.preventDefault();
@@ -91,10 +95,13 @@ const Header = ({ type }) => {
                       src={profileCard}
                       alt=""
                     />
-                    <div>
-                      <h5>Ramadhan Adi</h5>
-                      <p>1234 567 897 890</p>
-                    </div>
+                    {
+                      state.status === 'success' ?
+                      <div>
+                          <h5>{ data.username }</h5>
+                          <p>{ data.accountNumber }</p>
+                      </div> : <></>
+                    }
                   </div>
                 </li>
                 <li>

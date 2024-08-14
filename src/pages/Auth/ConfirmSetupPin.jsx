@@ -5,29 +5,33 @@ import logoWhite from '@/assets/logo/logoWhite.svg'
 import logoBlue from '@/assets/logo/logoBlue.svg'
 import login from '@/assets/img/login.svg';
 import Button from 'react-bootstrap/Button';
-import { PinInput } from '@/components/PinInput';
-import Pininput from "react-pin-input";
+import PinInput from "react-pin-input";
 import styles from "@/assets/css/Relog.module.css";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const SetupPin = () => {
-  
+const ConfirmSetupPin = () => {
+    
     const navigate = useNavigate()
+    const { state } = useLocation()
     const [isError, setIsError] = useState(false);
     const [pin, setPin] = useState(0);
     const [errorMessage, setErrorMessage] = useState("PIN yang Anda masukkan salah!"); 
-    const [passwordVisible, setPasswordVisible] = useState(false);
 
     const handlePinSubmit = (pin) => {
-      setPin(pin)
+        setPin(pin)
     };
+    
+    const savePin = () => {
+      if(state.pinAppLock == pin) {
+        localStorage.setItem('pin_app_lock', pin)
+        navigate('/home')
+      } else {
+        showError()
+      }
+    }
 
     const showError = () => {
         setIsError(true);
-    };
-
-    const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
     };
 
     return (
@@ -56,11 +60,11 @@ const SetupPin = () => {
                         className={styles.logoBlue}
                     />
                     <div className={styles.formContainer}>
-                        <h2 className={styles.title} aria-label="Buat Pin Lock Anda!">
-                            Buat Pin Lock Anda
+                        <h2 className={styles.title} aria-label="Konfirmasi Pin Lock Anda!">
+                            Konfirmasi Pin Lock Anda
                         </h2>
                         <h4 className={styles.subtitle} aria-label="Masukkan PIN Anda">Masukkan PIN Anda</h4>
-                        <Pininput
+                        <PinInput
                           length={6}
                           type="numeric"
                           focus
@@ -70,24 +74,19 @@ const SetupPin = () => {
                             justifyContent: "space-evenly",
                           }}
                           name="pin"
+                          ariaLabel="Pin Input"
                           onChange={(value) => {
                             handlePinSubmit(value);
                           }}
                         />
-                        <Button className={styles.loginButton} type="submit" onClick={() => {
-                          navigate('/setup-pin/confirm', {
-                            state:{
-                              pinAppLock:pin
-                            }
-                          })
-                        }} aria-label="Lanjutkan">
-                            Lanjutkan
+                        <Button className={styles.loginButton} type="submit" onClick={() => savePin()} aria-label="Simpan">
+                            Simpan
                         </Button>
-                        {isError && (
-                          <div className={styles.errorMessage}>
-                              {errorMessage}
-                          </div>
-                        )}
+                          {isError && (
+                            <div className={styles.errorMessage} aria-label={errorMessage}>
+                                {errorMessage} <button className="btn-close" role="button" aria-label="Tutup Error" onClick={() => setIsError(false)} />
+                            </div>
+                          )}
                     </div>
                 </Col>
             </Row>
@@ -95,4 +94,4 @@ const SetupPin = () => {
     );
 };
 
-export default SetupPin;
+export default ConfirmSetupPin;

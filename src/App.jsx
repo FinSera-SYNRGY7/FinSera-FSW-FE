@@ -3,12 +3,14 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route, Routes, Navigate, useLocation} from 'react-router-dom';
 
-import InfoSaldo from '@/pages/InfoSaldo';
-import SetupPin from '@/pages/SetupPin';
-import ConfirmSetupPin from '@/pages/ConfirmSetupPin';
-import AccountMutation from '@/pages/AccountMutation';
-import Login from '@/pages/Login.jsx'
-import Relog from '@/pages/Relog.jsx'
+import SetupPin from '@/pages/Auth/SetupPin';
+import ConfirmSetupPin from '@/pages/Auth/ConfirmSetupPin';
+import Login from '@/pages/Auth/Login.jsx'
+import Relog from '@/pages/Auth/Relog.jsx'
+
+import InfoSaldo from '@/pages/InfoAmount/Main';
+
+import AccountMutation from '@/pages/MutationBank/Main';
 
 import InterbankTransfer from '@/pages/TransferInterBank/Main';
 import InterbankTfCheck from '@/pages/TransferInterBank/InterbankTfCheck';
@@ -18,7 +20,7 @@ import InterbankTfPin from '@/pages/TransferInterBank/InterbankTfPin';
 import InterbankTfSuccess from './pages/TransferInterBank/InterbankTfSuccess';
 import InterbankTfError from './pages/TransferInterBank/InterbankTfError';
 
-import Homepage from '@/pages/Homepage';
+import Home from '@/pages/Home';
 
 import Transfer from "@/pages/Transfer/Main";
 import TransferCheck from '@/pages/Transfer/TransferCheck'
@@ -28,8 +30,8 @@ import TransferSuccess from "@/pages/Transfer/TransferSuccess";
 import TransferValid from "@/pages/Transfer/TransferValid";
 import TransferPIN from "@/pages/Transfer/TransferPIN";
 
-import Account from "@/pages/Account";
-import Profile from "@/pages/Profile";
+import Account from "@/pages/ProfileAccount/Account";
+import Profile from "@/pages/ProfileAccount/Profile";
 import TestQrCode from '@/pages/TestQrCode';
 import VirtualAccount from '@/pages/VirtualAccount';
 
@@ -58,7 +60,7 @@ function App() {
       <Route path="/relog" element={<Relog />} />
       <Route path="/setup-pin" element={<SetupPin />} />
       <Route path="/setup-pin/confirm" element={<ConfirmSetupPin />} />
-      <Route path="/home" element={<Homepage />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/info-saldo" element={<InfoSaldo />} />
       <Route path="/mutasi-rekening" element={<AccountMutation />} />
       <Route path="/transfer-sesama-bank">

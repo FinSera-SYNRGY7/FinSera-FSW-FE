@@ -20,6 +20,7 @@ function TransferCheck() {
         state: {
           accountnum_recipient: success.data.accountnum_recipient,
           name_recipient: success.data.name_recipient,
+          bank_name: 'BCA'
         },
       });
     },

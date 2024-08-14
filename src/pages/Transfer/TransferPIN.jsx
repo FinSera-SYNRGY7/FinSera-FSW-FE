@@ -132,6 +132,7 @@ function TransferPIN() {
               justifyContent: "space-evenly",
             }}
             name="pin"
+            ariaLabel="Pin Transaksi"
             onChange={(value) => {
               setPinInput(value);
             }}

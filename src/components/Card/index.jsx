@@ -7,13 +7,15 @@ import { formatRupiah } from "@/lib/utils";
 import { useScreenshot, createFileName } from "use-react-screenshot";
 
 export const CardVertical = ({ className, children, data, ...rest }) => {
+  const date = (new Date()).toLocaleDateString()
+  
   const layoutRef = useRef(null)
   const [image, takeScreenshot] = useScreenshot({
     type: "image/jpeg",
     quality: 1.0
   });
 
-  const download = (image, { name = "img", extension = "jpg" } = {}) => {
+  const download = (image, { name = `TRANSFER-SESAMA-BANK-${date}`, extension = "jpg" } = {}) => {
     const a = document.createElement("a");
     a.href = image;
     a.download = createFileName(extension, name);

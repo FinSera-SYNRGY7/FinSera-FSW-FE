@@ -27,30 +27,13 @@ const InterbankTfCheck = () => {
       })
     },
     onError: (error, data) => {
-      console.log(error)
+      setErrorMessage(error.message.response.data.message);
     }
   })
   
   const navigate = useNavigate();
   
   const { data, isLoading } = useListBanks()
-
-  const bankOptions = [
-    { value: 'bca', label: 'BCA' },
-    { value: 'bni', label: 'BNI' },
-    { value: 'bri', label: 'BRI' },
-    { value: 'mandiri', label: 'Mandiri' },
-    { value: 'cimb', label: 'CIMB' },
-    { value: 'btpn', label: 'BTPN' },
-    { value: 'btn', label: 'BTN' },
-    { value: 'muamalat', label: 'Muamalat' },
-    { value: 'bukopin', label: 'Bukopin' },
-    { value: 'danamon', label: 'Danamon' },
-    { value: 'maybank', label: 'Maybank' },
-    { value: 'permata', label: 'Permata' },
-    { value: 'panin', label: 'Panin' },
-    { value: 'mega', label: 'Mega' },
-  ];
   
   const submit = (data) => {
     const getValue = {
@@ -133,7 +116,7 @@ const InterbankTfCheck = () => {
               </InputForm.Label>
               {/* <FormChooseBank label="Pilih" options={bankOptions} onChange={handleChooseBank} selectedValue={selectedBank}></FormChooseBank> */}
               <FormChooseBank 
-                options={data === undefined ? [] : data} 
+                options={isLoading ? [] : data} 
                 value={selectedValue?.value || ""} 
                 onChange={(option) => setSelectedValue(option)} 
                 placeholder="Pilih" 
@@ -153,7 +136,7 @@ const InterbankTfCheck = () => {
                 type="number"
                 placeholder="Masukkan nomor rekening"
                 aria-labelledby="rek-label"
-                // required
+                required
                 {...register("accountnum_recipient")}
               />
             </InputForm>

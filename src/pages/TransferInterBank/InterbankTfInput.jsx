@@ -5,12 +5,15 @@ import Button from "@/components/Button/index";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { CardHorizontal } from "@/components/Card/index";
+import { useInfoAmount } from '@/features/infoAmount/useInfoAmount'
+import { formatRupiah } from '@/lib/utils'
 
 const InterbackTfInput = () => {
-  const [errorMessage, setErrorMessage] = useState("");
-  const [selectedValue, setSelectedValue] = useState("");
   
+  const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false)
+  
+  const { data:dataAmount } = useInfoAmount()
   
   const { register, handleSubmit } = useForm()
   
@@ -147,8 +150,25 @@ const InterbackTfInput = () => {
                 type="number"
                 placeholder="Masukkan nominal transfer"
                 aria-labelledby="nominal-label"
-                // required
+                required
                 {...register("nominal")}
+              />
+            </InputForm>
+            <InputForm className={"my-4"}>
+              <InputForm.Label to="nominal" id="info-saldo-label">
+                <h4 className="fw-bold mb-3">
+                  <span role="input" aria-label="Info Saldo">
+                    Info Saldo
+                  </span>
+                </h4>
+              </InputForm.Label>
+              <InputForm.Input
+                className="py-sm-3 ps-sm-5 fz-input input"
+                type="text"
+                placeholder={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
+                value={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
+                aria-labelledby="info-saldo-label"
+                readOnly
               />
             </InputForm>
             <InputForm className={"my-4"}>
@@ -164,7 +184,7 @@ const InterbackTfInput = () => {
                 placeholder="Masukkan catatan"
                 rows="6"
                 aria-labelledby="catatan-label"
-                // required
+                required
                 {...register("note")}
               />
             </InputForm>
@@ -188,7 +208,6 @@ const InterbackTfInput = () => {
               className={"btn base-color col-12 mb-5 shadow-hover"}
               aria-label="Lanjutkan"
               type="submit"
-            //   disabled={isPending}
             >
               <h5 className="mb-0">Lanjutkan</h5>
             </Button>

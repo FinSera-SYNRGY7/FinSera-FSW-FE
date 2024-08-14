@@ -5,26 +5,42 @@ import logoWhite from '@/assets/logo/logoWhite.svg'
 import logoBlue from '@/assets/logo/logoBlue.svg'
 import login from '@/assets/img/login.svg';
 import Button from 'react-bootstrap/Button';
+// import { PinInput } from '@/components/PinInput';
 import PinInput from "react-pin-input";
 import styles from "@/assets/css/Relog.module.css";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useRefreshToken } from '@/features/auth/useRefreshToken'
+import { useNavigate } from "react-router-dom";
 
-const ConfirmSetupPin = () => {
-    
+const Relog = () => {
+  
     const navigate = useNavigate()
-    const { state } = useLocation()
+    const [pin, setPin] = useState(0)
     const [isError, setIsError] = useState(false);
-    const [pin, setPin] = useState(0);
     const [errorMessage, setErrorMessage] = useState("PIN yang Anda masukkan salah!"); 
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    
+    const { mutate, isPending } = useRefreshToken({
+      onSuccess: (success) => {
+        localStorage.setItem('auth_token', success.data.accessToken)
+        navigate('/home')
+      },
+      onError: (data, error) => {
+        console.log(error)
+      }
+    })
 
     const handlePinSubmit = (pin) => {
-        setPin(pin)
+      setPin(pin)
     };
     
-    const savePin = () => {
-      if(state.pinAppLock == pin) {
-        localStorage.setItem('pin_app_lock', pin)
-        navigate('/home')
+    const loginAct = () => {
+      const refreshToken = localStorage.getItem('auth_refresh_token')
+      const pinAppLock = localStorage.getItem('pin_app_lock')
+      
+      if(pin == pinAppLock) {
+        mutate({
+          refreshToken
+        })
       } else {
         showError()
       }
@@ -60,8 +76,8 @@ const ConfirmSetupPin = () => {
                         className={styles.logoBlue}
                     />
                     <div className={styles.formContainer}>
-                        <h2 className={styles.title} aria-label="Konfirmasi Pin Lock Anda!">
-                            Konfirmasi Pin Lock Anda
+                        <h2 className={styles.title} aria-label="Selamat Datang Kembali">
+                            Selamat Datang Kembali
                         </h2>
                         <h4 className={styles.subtitle} aria-label="Masukkan PIN Anda">Masukkan PIN Anda</h4>
                         <PinInput
@@ -73,19 +89,24 @@ const ConfirmSetupPin = () => {
                             display: "flex",
                             justifyContent: "space-evenly",
                           }}
+                          ariaLabel="Pin Input"
                           name="pin"
                           onChange={(value) => {
                             handlePinSubmit(value);
                           }}
                         />
-                        <Button className={styles.loginButton} type="submit" onClick={() => savePin()} aria-label="Simpan">
-                            Simpan
+                        <a href="#" onClick={() => {
+                          localStorage.removeItem('pin_app_lock')
+                          navigate('/')
+                        }} className={styles.forgotPIN} aria-label="Lupa PIN?">Lupa PIN?</a>
+                        <Button className={styles.loginButton} disabled={ isPending } type="submit" onClick={loginAct}>
+                            Login
                         </Button>
-                          {isError && (
-                            <div className={styles.errorMessage} aria-label={errorMessage}>
-                                {errorMessage} <button className="btn-close" role="button" aria-label="Tutup Error" onClick={() => setIsError(false)} />
-                            </div>
-                          )}
+                        {isError && (
+                          <div className={styles.errorMessage} aria-label={errorMessage}>
+                              {errorMessage} <button className="btn-close" role="button" aria-label="Tutup Error" onClick={() => setIsError(false)} />
+                          </div>
+                        )}
                     </div>
                 </Col>
             </Row>
@@ -93,4 +114,4 @@ const ConfirmSetupPin = () => {
     );
 };
 
-export default ConfirmSetupPin;
+export default Relog;

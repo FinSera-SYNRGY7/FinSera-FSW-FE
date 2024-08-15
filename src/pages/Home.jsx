@@ -138,9 +138,16 @@ const Home = () => {
               typeTXN={value.destinationBankName}
               priceTXN={formatRupiah(value.amountTransfer.amount)}
             /> : 
+            value.transactionsType == 'VIRTUAL_ACCOUNT' ?
             <CardTransaction
               key={index}
               titleTXN="Transfer VA"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            /> :
+            <CardTransaction
+              key={index}
+              titleTXN="TopUp E-Wallet"
               typeTXN={value.destinationBankName}
               priceTXN={formatRupiah(value.amountTransfer.amount)}
             />

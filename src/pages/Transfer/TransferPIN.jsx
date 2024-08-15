@@ -82,6 +82,17 @@ function TransferPIN() {
           className="d-sm-none p-0"
           type="button"
           aria-label="kembali ke halaman sebelumnya"
+          onClick={() => {
+            navigate('/transfer-sesama-bank/konfirmasi', {
+              state:{
+                accountnum_recipient: state.accountnum_recipient,
+                name_recipient: state.name_recipient,
+                bank_name: state.bank_name,
+                nominal: state.nominal,
+                note: state.note,
+              }
+            })
+          }}
         >
           <i className="fa fa-arrow-left" />
         </Button>
@@ -97,6 +108,17 @@ function TransferPIN() {
         }
         type="button"
         aria-label="kembali ke halaman sebelumnya"
+        onClick={() => {
+          navigate('/transfer-sesama-bank/konfirmasi', {
+            state:{
+              accountnum_recipient: state.accountnum_recipient,
+              name_recipient: state.name_recipient,
+              bank_name: state.bank_name,
+              nominal: state.nominal,
+              note: state.note,
+            }
+          })
+        }}
       >
         <i className="fa fa-arrow-left" />
         <span className="ms-20">Back</span>

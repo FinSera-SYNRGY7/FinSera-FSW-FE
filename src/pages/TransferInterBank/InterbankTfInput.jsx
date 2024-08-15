@@ -20,6 +20,8 @@ const InterbackTfInput = () => {
   const { state } = useLocation()
   const navigate = useNavigate()
   
+  console.log(state)
+  
   const saveContactAct = ({
     accountnum_recipient,
     name_recipient,
@@ -131,7 +133,7 @@ const InterbackTfInput = () => {
           <form method="POST" onSubmit={handleSubmit(submit)}>
             <CardHorizontal
               className={"shadow p-0 border-0 outline"}
-              aria-label="akun transfer terakhir"
+              aria-label={`penerima ${ state.name_recipient }`}
               data={{
                 name_recipient: state.name_recipient,
                 bank_name: state.bank_name,

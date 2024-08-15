@@ -29,50 +29,54 @@ const InterbankTfConfirm = () => {
   return (
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline pt-5">
-        <Link
-          to="/transfer-antar-bank/form-input"
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-          aria-label="kembali ke halaman sebelumnya"
-          role="button"
-        >
           <Button
             className="d-sm-none p-0"
             type="button"
             aria-label="kembali ke halaman sebelumnya"
+            onClick={() => {
+              navigate("/transfer-antar-bank/form-input", {
+                state: {
+                  accountnum_recipient: state.accountnum_recipient,
+                  name_recipient: state.name_recipient,
+                  bank_id: state.bank_id,
+                  bank_name: state.bank_name,
+                  nominal: state.nominal,
+                  note: state.note,
+                }
+              })
+            }}
           >
             <i className="fa fa-arrow-left" />
           </Button>
-        </Link>
         <h1 className="fw-bold col-12 text-center text-sm-start">
           <span role="label" aria-label="Konfirmasi Transaksi">
             Konfirmasi Transaksi
           </span>
         </h1>
       </div>
-
-      <Link
-        to="/transfer-antar-bank/form-input"
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-        }}
-        aria-label="kembali ke halaman sebelumnya"
-        role="button"
-      >
+        
         <Button
           className={
             "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
           }
           type="button"
           aria-label="kembali ke halaman sebelumnya"
+          onClick={() => {
+            navigate("/transfer-antar-bank/form-input", {
+              state: {
+                accountnum_recipient: state.accountnum_recipient,
+                name_recipient: state.name_recipient,
+                bank_id: state.bank_id,
+                bank_name: state.bank_name,
+                nominal: state.nominal,
+                note: state.note,
+              }
+            })
+          }}
         >
           <i className="fa fa-arrow-left" />
           <span className="ms-20">Back</span>
         </Button>
-      </Link>
       <div className="d-flex flex-wrap gap-2 gap-sm-3 mb-5">
         <div className="flex-fill">
           <CardHorizontal

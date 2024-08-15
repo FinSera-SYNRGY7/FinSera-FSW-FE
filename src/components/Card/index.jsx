@@ -154,11 +154,6 @@ export function CardTransfer({ className, first, second, data }) {
             </span>
           </div>
         </div>
-        <div className={`col-auto justify-content-end d-flex me-3 pt-2`}>
-          <a href="" aria-label="Ganti nomor rekening">
-            <h5>Ganti</h5>
-          </a>
-        </div>
       </div>
     </div>
   );

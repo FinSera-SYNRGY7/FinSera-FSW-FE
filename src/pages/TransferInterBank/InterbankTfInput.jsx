@@ -171,28 +171,12 @@ const InterbackTfInput = () => {
               </InputForm.Label>
               <InputForm.Input
                 className="py-sm-3 ps-sm-5 fz-input input"
-                type="text"
+                type="number"
                 placeholder="Masukkan nominal transfer"
                 aria-labelledby="nominal-label"
+                onWheel={(e) => e.target.blur()}
                 required
                 {...register("nominal")}
-              />
-            </InputForm>
-            <InputForm className={"my-4"}>
-              <InputForm.Label to="nominal" id="info-saldo-label">
-                <h4 className="fw-bold mb-3">
-                  <span role="input" aria-label="Info Saldo">
-                    Info Saldo
-                  </span>
-                </h4>
-              </InputForm.Label>
-              <InputForm.Input
-                className="py-sm-3 ps-sm-5 fz-input input"
-                type="text"
-                placeholder={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
-                value={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
-                aria-labelledby="info-saldo-label"
-                readOnly
               />
             </InputForm>
             <InputForm className={"my-4"}>

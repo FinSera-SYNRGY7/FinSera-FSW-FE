@@ -33,7 +33,7 @@ import TransferPIN from "@/pages/Transfer/TransferPIN";
 import Account from "@/pages/ProfileAccount/Account";
 import Profile from "@/pages/ProfileAccount/Profile";
 import ChangePin from "@/pages/ProfileAccount/ChangePin";
-import QRIS from '@/pages/QRIS';
+import QRIS from '@/pages/QRIS/Main';
 import VirtualAccount from '@/pages/VirtualAccount';
 
 import VAInput from '@/pages/VAInput';

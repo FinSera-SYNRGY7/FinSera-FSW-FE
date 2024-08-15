@@ -4,7 +4,7 @@ import Button from "@/components/Button/index";
 import Error from "@/assets/img/Error.svg";
 import { Link } from "react-router-dom";
 
-const VAError = () => {
+const VirtualAccountTfError = () => {
   return (
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline pt-5">
@@ -71,4 +71,4 @@ const VAError = () => {
   );
 };
 
-export default VAError;
+export default VirtualAccountTfError;

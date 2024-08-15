@@ -12,7 +12,7 @@ function Transfer() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const { register, isPending, handleSubmit } = useForm();
+  const { register, isPending, handleSubmit, setValue } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false);
 
@@ -64,6 +64,16 @@ function Transfer() {
       },
     });
   };
+  
+  useEffect(() => {
+    if(state?.nominal !== undefined) {
+      setValue('nominal', state?.nominal)
+    }
+    
+    if(state?.note !== undefined) {
+      setValue('note', state?.note)
+    }
+  },[])
 
   return (
     <Layout className={"haveStyle"}>

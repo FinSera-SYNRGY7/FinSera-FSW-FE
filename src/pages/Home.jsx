@@ -9,14 +9,17 @@ import tfbank from "@/assets/logo/Vector1.svg"
 import tfinterbank from "@/assets/logo/Vector.svg"
 import vAccount from "@/assets/logo/Folder.svg"
 import wallet from "@/assets/logo/Wallet.svg"
-import investation from "@/assets/logo/Activity.svg"
+import QRIS from "@/assets/logo/Scan.svg"
 import styles from "@/assets/css/Homepage.module.css"
 import Spinner from "react-bootstrap/Spinner"
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
 import { formatRupiah } from "@/lib/utils"
+import { useMutationBank } from "@/features/mutationBank/useMutationBank"
 
 const Home = () => {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
+  
+  const { data: dataMutation, isLoading: isLoadingMutation } = useMutationBank({}, true)
 
   return (
     <Layout>
@@ -75,7 +78,11 @@ const Home = () => {
         />
         <ServiceMenu icon={vAccount} label="Virtual Account" navigation="/transfer-virtual-account" />
         <ServiceMenu icon={wallet} label="E - Wallet" />
-        <ServiceMenu icon={investation} label="Investasi" />
+        <ServiceMenu
+          navigation="/qris"
+          icon={QRIS}
+          label="QRIS"
+        />
       </div>
       <div
         className={`d-flex flex-column align-items-start ${styles.containerCardsTXN}`}
@@ -98,21 +105,58 @@ const Home = () => {
           </a>
         </div>
         <div className={styles.cardsTXN} role="list">
+        {
+          isLoadingMutation ?   
+          <>
           <CardTransaction
-            titleTXN="TopUp E-Wallet"
-            typeTXN="ShopeePay"
-            priceTXN="Rp. 200.000"
-          />
-          <CardTransaction
-            titleTXN="Transfer Antar Bank"
-            typeTXN="BRI"
-            priceTXN="Rp. 500.000"
-          />
-          <CardTransaction
-            titleTXN="TopUp E-Wallet"
-            typeTXN="OVO"
-            priceTXN="Rp. 100.000"
-          />
+              titleTXN=""
+              typeTXN=""
+              priceTXN=""
+              isLoading={isLoadingMutation}
+            />
+            <CardTransaction
+              titleTXN=""
+              typeTXN=""
+              priceTXN=""
+              isLoading={isLoadingMutation}
+            />
+            <CardTransaction
+              titleTXN=""
+              typeTXN=""
+              priceTXN=""
+              isLoading={isLoadingMutation}
+            />
+          </> : 
+          dataMutation.map((value, index) => (
+            value.transactionsType == 'SESAMA_BANK' ?
+            <CardTransaction
+              key={index}
+              titleTXN="Transfer Sesama Bank"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            /> : 
+            value.transactionsType == 'ANTAR_BANK' ? 
+            <CardTransaction
+              key={index}
+              titleTXN="Transfer Antar Bank"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            /> : 
+            value.transactionsType == 'VIRTUAL_ACCOUNT' ?
+            <CardTransaction
+              key={index}
+              titleTXN="Transfer VA"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            /> :
+            <CardTransaction
+              key={index}
+              titleTXN="TopUp E-Wallet"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            />
+          ))
+        }
         </div>
       </div>
     </Layout>

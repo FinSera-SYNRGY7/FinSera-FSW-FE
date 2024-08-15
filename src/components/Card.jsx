@@ -7,35 +7,62 @@ import styles from "@/assets/css/Cards.module.css";
 import { ButtonAlt, ButtonIcon } from "./ButtonAlt";
 import { useScreenshot, createFileName } from "use-react-screenshot";
 
-const CardTransaction = ({ titleTXN, typeTXN, priceTXN }) => {
+const CardTransaction = ({ titleTXN, typeTXN, priceTXN, isLoading = false, ...rest }) => {
   return (
     <Card
       className={`${styles.cardHistory}`}
       role="listitem"
       aria-labelledby={`judul-transaksi-${titleTXN}`}
       aria-describedby={`detail-transaksi-${titleTXN}`}
+      {...rest}
     >
       <Card.Body className="d-flex flex-column justify-content-start align-items-start p-0">
         <img className="mb-2" src={iconHistoryTXN} alt="Riwayat Transaksi" />
-        <Card.Title
-          className={styles.cardTitle}
-          id={`judul-transaksi-${titleTXN}`}
-        >
-          {titleTXN}
-        </Card.Title>
-        <Card.Text
-          className={`${styles.cardText} m-0`}
-          id={`detail-transaksi-${titleTXN}`}
-        >
-          {typeTXN}
-        </Card.Text>
-        <div
-          className={`${styles.cardPrice} d-flex flex-row-reverse px-3 w-100`}
-        >
-          <p id={`detail-transaksi-${titleTXN}`} className="m-0">
-            {priceTXN}
-          </p>
-        </div>
+        {
+          isLoading ?
+          <>
+          <Card.Title
+            className={`${styles.cardTitle} placeholder-glow w-100`}
+            id={`judul-transaksi-${titleTXN}`}
+          >
+             <span className="placeholder col-7"></span>
+            </Card.Title>
+          <Card.Text
+            className={`${styles.cardText} placeholder-glow m-0 w-100`}
+            id={`detail-transaksi-${titleTXN}`}
+          >
+            <span className="placeholder col-4"></span>
+          </Card.Text>
+          <div
+            className={`${styles.cardPrice} d-flex placeholder-glow flex-row-reverse px-3 w-100`}
+          >
+            <p id={`detail-transaksi-${titleTXN}`} className="m-0 placeholder col-4">
+              
+            </p>
+          </div>
+         </> : 
+         <>
+          <Card.Title
+            className={`${styles.cardTitle}`}
+            id={`judul-transaksi-${titleTXN}`}
+          >
+            {titleTXN}
+            </Card.Title>
+          <Card.Text
+            className={`${styles.cardText} m-0`}
+            id={`detail-transaksi-${titleTXN}`}
+          >
+            {typeTXN}
+          </Card.Text>
+          <div
+            className={`${styles.cardPrice} d-flex flex-row-reverse px-3 w-100`}
+          >
+            <p id={`detail-transaksi-${titleTXN}`} className="m-0">
+              {priceTXN}
+            </p>
+          </div>
+          </>
+        }
       </Card.Body>
     </Card>
   );

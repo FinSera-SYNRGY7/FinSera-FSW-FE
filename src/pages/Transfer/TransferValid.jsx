@@ -9,6 +9,8 @@ import Spinner from "react-bootstrap/Spinner";
 
 function TransferValid() {
   const { state } = useLocation();
+  
+  console.log(state)
 
   const navigate = useNavigate();
 
@@ -18,6 +20,8 @@ function TransferValid() {
     navigate("/transfer-sesama-bank/input-pin", {
       state: {
         accountnum_recipient: data.accountnum_recipient,
+        name_recipient:state.name_recipient,
+        bank_name: state.bank_name,
         nominal: data.nominal,
         note: data.note,
       },

@@ -1,39 +1,52 @@
-import React from "react";
 import Layout from "@/layout/Layout";
 import { CardTransfer } from "@/components/Card/index";
 import Button from "@/components/Button/index";
-import { useLocation, Link, useNavigate } from "react-router-dom";
-// import { formatRupiah } from "../lib/utils";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import { CardHorizontalAlt } from "@/components/Card";
+import { formatRupiah } from "@/lib/utils";
 import Spinner from "react-bootstrap/Spinner";
-import { CardHorizontalAlt } from "../components/Card";
-import VaIcon from "../assets/img/VaIcon.svg";
+import VaIcon from "@/assets/img/VaIcon.svg";
 
 
 
 const VAConfirm = () => {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
 
+  const { state } = useLocation()
+  const navigate = useNavigate()
+
+  const toInputPinPage = (data) => {
+    navigate("/transfer-virtual-account/input-pin", {
+      state: {
+        accountNum: data.virtualAccountNumber,
+        accountName: state.accountName,
+        typeTranscation: state.typeTranscation,
+        nominal: data.nominal
+      },
+    });
+  };
+
   return (
     <Layout className={"haveStyle"}>
       <div className="d-flex align-items-baseline pt-5">
-        <Link
-          to="/virtual-account/next-input"
-          style={{
-            textDecoration: "none",
-            color: "inherit",
-          }}
-          aria-label="kembali ke halaman sebelumnya"
-          role="button"
-        >
-          <Button
+        <Button
             className="d-sm-none p-0"
             type="button"
             aria-label="kembali ke halaman sebelumnya"
+            onClick={() => {
+              navigate("/transfer-virtual-account/form-input", {
+                state: {
+                  accountNum: state.accountNum,
+                  accountName: state.accountName,
+                  typeTranscation: state.typeTranscation,
+                  nominal: state.nominal
+                }
+              })
+            }}
           >
             <i className="fa fa-arrow-left" />
           </Button>
-        </Link>
         <h1 className="fw-bold col-12 text-center text-sm-start">
           <span role="label" aria-label="Konfirmasi Transaksi">
             Konfirmasi Transaksi
@@ -41,26 +54,26 @@ const VAConfirm = () => {
         </h1>
       </div>
 
-      <Link
-        to="/virtual-account/next-input"
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-        }}
+      <Button
+        className={
+          "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
+        }
+        type="button"
         aria-label="kembali ke halaman sebelumnya"
-        role="button"
+        onClick={() => {
+          navigate("/transfer-virtual-account/form-input", {
+            state: {
+              accountNum: state.accountNum,
+              accountName: state.accountName,
+              typeTranscation: state.typeTranscation,
+              nominal: state.nominal
+            }
+          })
+        }}
       >
-        <Button
-          className={
-            "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
-          }
-          type="button"
-          aria-label="kembali ke halaman sebelumnya"
-        >
-          <i className="fa fa-arrow-left" />
-          <span className="ms-20">Back</span>
-        </Button>
-      </Link>
+        <i className="fa fa-arrow-left" />
+        <span className="ms-20">Back</span>
+      </Button>
       <div className="d-flex flex-wrap gap-2 gap-sm-3 mb-5">
           <div className="flex-fill">
             <CardHorizontalAlt
@@ -68,9 +81,9 @@ const VAConfirm = () => {
               className={"shadow p-0 border-0 outline"}
               aria-label="akun transfer terakhir"
               data={{
-                name_recipient: "Kusuma Dewi",
-                transaction_name: "TransferPay",
-                no_transaction: "4257618919010",
+                name_recipient: state.accountName,
+                transaction_name: state.typeTranscation,
+                no_transaction: state.accountNum,
               }}
             />
           </div>
@@ -79,7 +92,7 @@ const VAConfirm = () => {
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Nominal Transfer</h5>
           <h5 className="fw-bold col-auto">
-            {/* {formatRupiah(state.nominal)} */}
+            {formatRupiah(state.nominal)}
           </h5>
         </div>
       </span>
@@ -87,22 +100,6 @@ const VAConfirm = () => {
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Jenis Transfer</h5>
           <h5 className="fw-bold col-auto">Virtual Account</h5>
-        </div>
-      </span>
-      <span role="label" aria-label="Catatan : Bayar Utang">
-        <div className="row justify-content-between mb-3 mb-sm-5">
-          <h5 className="col-auto">Catatan</h5>
-          <h5 className="fw-bold col-auto">
-            {/* {state.note} */}
-          </h5>
-        </div>
-      </span>
-      <span role="label" aria-label="Biaya : Biaya Admin">
-        <div className="row justify-content-between mb-3 mb-sm-5">
-          <h5 className="col-auto">Biaya Admin</h5>
-          <h5 className="fw-bold col-auto">
-            {/* {formatRupiah(state.nominal_admin)} Biaya Admin*/} 
-          </h5>
         </div>
       </span>
       <h4 className="fw-bold mb-3 pt-3 text-start">
@@ -122,9 +119,9 @@ const VAConfirm = () => {
           first="col-1"
           second="col-2"
           data={{
-            username: "jamal",
-            accountNumber: "1234567890",
-            amount: "100000",
+            username: dataAmount.username,
+            accountNumber: dataAmount.accountNumber,
+            amount: dataAmount.amount,
           }}
         />
       )}
@@ -132,13 +129,12 @@ const VAConfirm = () => {
         className={"btn base-color col-12 mb-5 shadow-hover"}
         type="button"
         aria-label="Lanjutkan"
-        // onClick={() =>
-        //   toInputPinPage({
-        //     accountnum_recipient: state.accountnum_recipient,
-        //     nominal: state.nominal,
-        //     note: state.note,
-        //   })
-        // }
+        onClick={() =>
+          toInputPinPage({
+            virtualAccountNumber: state.accountNum,
+            nominal: state.nominal,
+          })
+        }
       >
         <h5 className="mb-0">Lanjutkan</h5>
       </Button>

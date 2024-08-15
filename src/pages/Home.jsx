@@ -14,9 +14,12 @@ import styles from "@/assets/css/Homepage.module.css"
 import Spinner from "react-bootstrap/Spinner"
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
 import { formatRupiah } from "@/lib/utils"
+import { useMutationBank } from "@/features/mutationBank/useMutationBank"
 
 const Home = () => {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
+  
+  const { data: dataMutation, isLoading: isLoadingMutation } = useMutationBank({}, true)
 
   return (
     <Layout>
@@ -98,21 +101,51 @@ const Home = () => {
           </a>
         </div>
         <div className={styles.cardsTXN} role="list">
+        {
+          isLoadingMutation ?   
+          <>
           <CardTransaction
-            titleTXN="TopUp E-Wallet"
-            typeTXN="ShopeePay"
-            priceTXN="Rp. 200.000"
-          />
-          <CardTransaction
-            titleTXN="Transfer Antar Bank"
-            typeTXN="BRI"
-            priceTXN="Rp. 500.000"
-          />
-          <CardTransaction
-            titleTXN="TopUp E-Wallet"
-            typeTXN="OVO"
-            priceTXN="Rp. 100.000"
-          />
+              titleTXN=""
+              typeTXN=""
+              priceTXN=""
+              isLoading={isLoadingMutation}
+            />
+            <CardTransaction
+              titleTXN=""
+              typeTXN=""
+              priceTXN=""
+              isLoading={isLoadingMutation}
+            />
+            <CardTransaction
+              titleTXN=""
+              typeTXN=""
+              priceTXN=""
+              isLoading={isLoadingMutation}
+            />
+          </> : 
+          dataMutation.map((value, index) => (
+            value.transactionsType == 'SESAMA_BANK' ?
+            <CardTransaction
+              key={index}
+              titleTXN="Transfer Sesama Bank"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            /> : 
+            value.transactionsType == 'ANTAR_BANK' ? 
+            <CardTransaction
+              key={index}
+              titleTXN="Transfer Antar Bank"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            /> : 
+            <CardTransaction
+              key={index}
+              titleTXN="Transfer VA"
+              typeTXN={value.destinationBankName}
+              priceTXN={formatRupiah(value.amountTransfer.amount)}
+            />
+          ))
+        }
         </div>
       </div>
     </Layout>

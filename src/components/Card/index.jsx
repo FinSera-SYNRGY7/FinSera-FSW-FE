@@ -1,7 +1,7 @@
 import React, { forwardRef, useRef } from "react";
 import Success from "@/assets/img/Success.svg";
 import Button from "@/components/Button/index";
-import logobcablue from "@/assets/img/logobcablue.png";
+import logoFinsera from "@/assets/img/logoFinsera.svg";
 import "./style.css";
 import { formatRupiah } from "@/lib/utils";
 import { useScreenshot, createFileName } from "use-react-screenshot";
@@ -132,7 +132,7 @@ export function CardTransfer({ className, first, second, data }) {
             backgroundColor: "#E4EDFFE5",
           }}
         >
-          <img className="side-logo" src={logobcablue} alt="Bank BCA" />
+          <img className="side-logo" src={logoFinsera} alt="Bank BCA" />
         </div>
         <div className={`flex-grow-1 d-flex align-items-center me-0`}>
           <div className="card-body">
@@ -154,10 +154,38 @@ export function CardTransfer({ className, first, second, data }) {
             </span>
           </div>
         </div>
-        <div className={`col-auto justify-content-end d-flex me-3 pt-2`}>
-          <a href="" aria-label="Ganti nomor rekening">
-            <h5>Ganti</h5>
-          </a>
+      </div>
+    </div>
+  );
+}
+
+export function CardInfoSaldo({ className, first, second, data }) {
+  return (
+    <div className={`card ${className}`}>
+      <div className="d-flex">
+        <div
+          className={`d-flex align-items-center justify-content-center me-1 me-sm-3`}
+          style={{
+            borderRadius: "5px 100px 100px 5px",
+            backgroundColor: "#E4EDFFE5",
+          }}
+        >
+          <img className="side-logo" src={logoFinsera} alt="Bank BCA" />
+        </div>
+        <div className={`flex-grow-1 d-flex align-items-center me-0`}>
+          <div className="card-body">
+            <span role="label" aria-label="Saldo Aktif">
+              <h5 className="fw-bold">Saldo Aktif</h5>
+            </span>
+            <span
+              role="label"
+              aria-label={`Saldo : ${formatRupiah(data.amount)}`}
+            >
+              <h4 className="fw-bold text-primary">
+                {formatRupiah(data.amount)}
+              </h4>
+            </span>
+          </div>
         </div>
       </div>
     </div>
@@ -169,4 +197,4 @@ CardHorizontal.defaultProps = {
   second: "col-md-auto",
 };
 
-export default { CardVertical, CardTransfer, CardHorizontal };
+export default { CardVertical, CardTransfer, CardHorizontal, CardInfoSaldo };

@@ -10,7 +10,7 @@ import VaIcon from "@/assets/img/VaIcon.svg";
 
 
 
-const VAConfirm = () => {
+const VirtualAccountTfConfirm = () => {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
 
   const { state } = useLocation()
@@ -142,4 +142,4 @@ const VAConfirm = () => {
   )
 };
 
-export default VAConfirm;
+export default VirtualAccountTfConfirm;

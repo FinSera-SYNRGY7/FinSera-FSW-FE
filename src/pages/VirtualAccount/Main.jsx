@@ -6,7 +6,7 @@ import Button from "@/components/Button/index";
 import styles from "@/assets/css/InterbankTransfer.module.css";
 import notransferdata from "@/assets/img/notransferdata.png";
 
-const VirtualAccount = () => {
+const VirtualAccountTransfer = () => {
   const navigate = useNavigate()
   
   const listContacts = localStorage.getItem('list_contacts_virtual_account')
@@ -231,4 +231,4 @@ const VirtualAccount = () => {
     </Layout>
   );
 };
-export default VirtualAccount;
+export default VirtualAccountTransfer;

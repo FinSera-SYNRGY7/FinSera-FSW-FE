@@ -6,7 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useTransferVirtualAccountCheck } from "@/features/virtualAccount/useTransferVirtualAccountCheck";
 
-const VAInput = () => {
+const VirtualAccountTfCheck = () => {
   const navigate = useNavigate();
   
   const { register, handleSubmit } = useForm();
@@ -124,4 +124,4 @@ const VAInput = () => {
   );
 };
 
-export default VAInput;
+export default VirtualAccountTfCheck;

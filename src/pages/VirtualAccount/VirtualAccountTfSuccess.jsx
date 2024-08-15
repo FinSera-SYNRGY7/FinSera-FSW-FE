@@ -4,7 +4,7 @@ import { CardVirtualAccountSuccess } from "@/components/Card";
 import { formatRupiah } from "@/lib/utils";
 
 
-const VASuccess = () => {
+const VirtualAccountTfSuccess = () => {
   const { state } = useLocation();
 
   console.log(state);
@@ -45,4 +45,4 @@ const VASuccess = () => {
   )
 };
 
-export default VASuccess;
+export default VirtualAccountTfSuccess;

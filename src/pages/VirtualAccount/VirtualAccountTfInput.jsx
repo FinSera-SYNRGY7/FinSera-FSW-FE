@@ -9,7 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import VaIcon from "@/assets/img/VaIcon.svg";
 
-const VANextInput = () => {
+const VirtualAccountTfInput = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -211,4 +211,4 @@ const VANextInput = () => {
   );
 };
 
-export default VANextInput;
+export default VirtualAccountTfInput;

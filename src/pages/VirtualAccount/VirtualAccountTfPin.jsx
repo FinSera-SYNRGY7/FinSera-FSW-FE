@@ -6,7 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTransferVirtualAccount } from "@/features/virtualAccount/useTransferVirtualAccount";
 import { useForm } from "react-hook-form";
 
-const InterbankTfPin = () => {
+const VirtualAccountTfPin = () => {
   const [pinInput, setPinInput] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   
@@ -166,4 +166,5 @@ const InterbankTfPin = () => {
     </Layout>
   );
 };
-export default InterbankTfPin;
+
+export default VirtualAccountTfPin;

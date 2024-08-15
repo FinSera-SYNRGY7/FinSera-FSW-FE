@@ -1,7 +1,7 @@
 import React from "react";
 import QRCode from "react-qr-code";
 import Layout from '@/layout/Layout'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Spinner } from 'react-bootstrap';
 import styles from "@/assets/css/QR.module.css";
 import qrisLogo from "@/assets/logo/QRIS.svg";
 import qrImage from "@/assets/img/qrImage.svg";
@@ -9,15 +9,10 @@ import Button from "@/components/Button/index";
 import { Link } from "react-router-dom";
 import backBlack from "@/assets/logo/backBlack.svg";
 import back from "@/assets/logo/back.svg";
+import { useQRIS } from "@/features/QRIS/useQRIS";
 
 export default function QRIS() {
-  const data = [{
-    time: (new Date()),
-    name: 'Hafiidh Luqman',
-    bank_account: '123020320230230',
-    bank_name: 'MANDIRI'
-  }]
-  const value = JSON.stringify(data)
+  const { data:value, isLoading } = useQRIS()
 
   return (
     <Layout>
@@ -79,12 +74,20 @@ export default function QRIS() {
                   secara cepat dan efisien.
                 </p>
                 <div className={styles.qrCodeWrapper}>
-                  <QRCode
-                    size={256}
-                    style={{ height: "300px", maxWidth: "100%", width: "100%" }}
-                    value={value}
-                    viewBox={`0 0 256 256`}
-                  />
+                  {
+                    isLoading ? 
+                    <div className="text-center w-100">
+                        <Spinner animation="border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </Spinner>
+                    </div> : 
+                    <QRCode
+                      size={256}
+                      style={{ height: "300px", maxWidth: "100%", width: "100%" }}
+                      value={value}
+                      viewBox={`0 0 256 256`}
+                    />
+                  }
                 </div>
               </div>
             </Col>

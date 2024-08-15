@@ -76,7 +76,7 @@ const Home = () => {
           icon={tfinterbank}
           label="Transfer Antar Bank"
         />
-        <ServiceMenu icon={vAccount} label="Virtual Account" navigation="/virtual-account" />
+        <ServiceMenu icon={vAccount} label="Virtual Account" navigation="/transfer-virtual-account" />
         <ServiceMenu icon={wallet} label="E - Wallet" />
         <ServiceMenu
           navigation="/qris"

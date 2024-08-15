@@ -34,14 +34,15 @@ import Account from "@/pages/ProfileAccount/Account";
 import Profile from "@/pages/ProfileAccount/Profile";
 import ChangePin from "@/pages/ProfileAccount/ChangePin";
 import QRIS from '@/pages/QRIS';
-import VirtualAccount from '@/pages/VirtualAccount';
 
-import VAInput from '@/pages/VAInput';
-import VANextInput from './pages/VANextInput';
-import VAConfirm from './pages/VAConfirm';
-import VAPin from './pages/VAPin';
-import VASuccess from './pages/VASuccess';
-import VAError from './pages/VAError';
+import VirtualAccountTransfer from '@/pages/VirtualAccount/Main';
+import VirtualAccountTfCheck from '@/pages/VirtualAccount/VirtualAccountTfCheck';
+import VirtualAccountTfInput from '@/pages/VirtualAccount/VirtualAccountTfInput';
+import VirtualAccountTfConfirm from '@/pages/VirtualAccount/VirtualAccountTfConfirm';
+import VirtualAccountTfPin from '@/pages/VirtualAccount/VirtualAccountTfPin';
+import VirtualAccountTfSuccess from '@/pages/VirtualAccount/VirtualAccountTfSuccess';
+import VirtualAccountTfError from '@/pages/VirtualAccount/VirtualAccountTfError';
+
 import { useEffect } from 'react';
 import nProgress from 'nprogress';
 
@@ -82,17 +83,19 @@ function App() {
         <Route path="success" element={<InterbankTfSuccess />} />
         <Route path="error" element={<InterbankTfError />} />
       </Route>
+      <Route path="/transfer-virtual-account">
+        <Route index element={<VirtualAccountTransfer />} />
+        <Route path="check" element={<VirtualAccountTfCheck />} />
+        <Route path="form-input" element={<VirtualAccountTfInput />} />
+        <Route path="konfirmasi" element={<VirtualAccountTfConfirm />} />
+        <Route path="input-pin" element={<VirtualAccountTfPin />} />
+        <Route path="success" element={<VirtualAccountTfSuccess />} />
+        <Route path="error" element={<VirtualAccountTfError />} />
+      </Route>
+      <Route path="/qris" element={<QRIS />} />
       <Route path="/account" element={<Account />} />
       <Route path="/ubah-pin" element={<ChangePin />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/qris" element={<QRIS />} />
-      <Route path="/virtual-account" element={<VirtualAccount />} />
-      <Route path="/virtual-account/form-input" element={<VAInput />} />
-      <Route path="/virtual-account/next-input" element={<VANextInput />} />
-      <Route path="/virtual-account/konfirmasi" element={<VAConfirm />} />
-      <Route path="/virtual-account/input-pin" element={<VAPin />} />
-      <Route path="/virtual-account/success" element={<VASuccess />} />
-      <Route path="/virtual-account/error" element={<VAError />} />
     </Routes>
   );
 }

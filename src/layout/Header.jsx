@@ -69,7 +69,7 @@ const Header = ({ type }) => {
             className={` ${styles.logoList} logo-list d-flex align-items-center`}
             style={{ gap: "20px" }}
           >
-            <Nav.Link href="#alert">
+            <Nav.Link href="/notification">
               <img
                 className="header-icon"
                 src={logoAlert}

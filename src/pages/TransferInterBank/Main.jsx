@@ -161,13 +161,14 @@ const InterbankTransfer = () => {
               style={{ marginTop: "40px" }}
             >
               <img src={notransferdata} className="img-fluid" alt="No Data"/>
-              <div style={{ width: "650px" }}>
+              <div style={{ width: "70%" }}>
                 <h3
                   style={{
                     fontWeight: 700,
-                    fontSize: "24px",
+                    fontSize: "18px",
                     color: "#0066AE",
                     lineHeight: "33px",
+                    textAlign:'center'
                   }}
                 >
                   Belum Ada Daftar Tersimpan
@@ -175,7 +176,7 @@ const InterbankTransfer = () => {
                 <h4
                   style={{
                     fontWeight: 400,
-                    fontSize: "20px",
+                    fontSize: "18px",
                     color: "#8A8A8A",
                     lineHeight: "28px",
                   }}

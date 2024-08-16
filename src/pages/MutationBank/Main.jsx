@@ -13,14 +13,17 @@ import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
 import { useQuery } from "@tanstack/react-query";
 import { httpServer } from "@/lib/server";
 import { formatRupiah, formatDateYMD, formatDateIndo, formatTimeIndo, checkTypeTransaction, minusOneMonth, minusOneWeek } from "@/lib/utils"
+import { PopupDate } from "../../components/PopUp"
 
 const AccountMutation = () => {
-  const [startRangeDate, setStartRangeDate] = useState("");
-  const [endRangeDate, setEndRangeDate] = useState("");
+  // const [startRangeDate, setStartRangeDate] = useState("");
+  // const [endRangeDate, setEndRangeDate] = useState("");
   const [dataFilterDate, setDataFilterDate] = useState({})
   const [selectedOption, setSelectedOption] = useState("");
   const [emptyData, setEmptyData] = useState(false);
   const navigate = useNavigate();
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  // const [selectedValue, setSelectedValue] = useState("");
 
   const handleOptionSelect = (value) => {
     setSelectedOption(value)
@@ -31,39 +34,39 @@ const AccountMutation = () => {
     setEmptyData(true)
   }
 
-  const handleStartDate = (date) => {
-    setStartRangeDate(formatDateYMD(date));
-    if(startRangeDate != "" && endRangeDate != "") {
-      setDataFilterDate({})
-      setDataFilterDate({
-        startDate: startRangeDate,
-        endDate: endRangeDate,
-        page: 1,
-        size: 20
-      })
-      // console.log("filter Start Range Date", startRangeDate)
-      // console.log("filter End Range Date", endRangeDate)
-      // console.log("cek data FilterDate", dataFilterDate)
-      refetchAccountMutation()
-    }
-  };
+  // const handleStartDate = (date) => {
+  //   setStartRangeDate(formatDateYMD(date));
+  //   if(startRangeDate != "" && endRangeDate != "") {
+  //     setDataFilterDate({})
+  //     setDataFilterDate({
+  //       startDate: startRangeDate,
+  //       endDate: endRangeDate,
+  //       page: 1,
+  //       size: 20
+  //     })
+  //     // console.log("filter Start Range Date", startRangeDate)
+  //     // console.log("filter End Range Date", endRangeDate)
+  //     // console.log("cek data FilterDate", dataFilterDate)
+  //     refetchAccountMutation()
+  //   }
+  // };
 
-  const handleEndDate = (date) => {
-    setEndRangeDate(formatDateYMD(date));
-    if(startRangeDate != "" && endRangeDate != "") {
-      setDataFilterDate({})
-      setDataFilterDate({
-        startDate: startRangeDate,
-        endDate: endRangeDate,
-        page: 1,
-        size: 20
-      })
-      // console.log("filter Start Range Date", startRangeDate)
-      // console.log("filter End Range Date", endRangeDate)
-      // console.log("cek data FilterDate", dataFilterDate)
-      refetchAccountMutation()
-    }
-  };
+  // const handleEndDate = (date) => {
+  //   setEndRangeDate(formatDateYMD(date));
+  //   if(startRangeDate != "" && endRangeDate != "") {
+  //     setDataFilterDate({})
+  //     setDataFilterDate({
+  //       startDate: startRangeDate,
+  //       endDate: endRangeDate,
+  //       page: 1,
+  //       size: 20
+  //     })
+  //     // console.log("filter Start Range Date", startRangeDate)
+  //     // console.log("filter End Range Date", endRangeDate)
+  //     // console.log("cek data FilterDate", dataFilterDate)
+  //     refetchAccountMutation()
+  //   }
+  // };
 
   const handleButtonBack = () => {
     navigate("/home")
@@ -183,6 +186,34 @@ const AccountMutation = () => {
     })
   }
 
+  const handlePopupDate = (e) => {
+    e.preventDefault();
+    setShowLogoutPopup(true);
+  };
+
+  const handleClosePopup = () => {
+    setShowLogoutPopup(false);
+  };
+
+  const BulanOptions = [
+    { value: '01', label: 'Januari' },
+    { value: '02', label: 'Februari' },
+    { value: '03', label: 'Maret' },
+    { value: '04', label: 'April' },
+    { value: '05', label: 'Mei' },
+    { value: '06', label: 'Juni' },
+    { value: '07', label: 'Juli' },
+    { value: '08', label: 'Agustus' },
+    { value: '09', label: 'September' },
+    { value: '10', label: 'Oktober' },
+    { value: '11', label: 'November' },
+    { value: '12', label: 'Desember' }
+  ];
+
+  const handleConfirmDate = (dateRange) => {
+    console.log("Selected Date Range:", dateRange);
+  };
+
   return (
     <Layout>
       <div className={`d-flex flex-column ${styles.containerMutation}`}>
@@ -244,12 +275,18 @@ const AccountMutation = () => {
               variant="btnAltSecondary"
               aria-label="Filter 1 Bulan"
             />
-            <FilterDate
+            <ButtonAlt
+              label="Tanggal"
+              onClick={(e) => handlePopupDate(e)}
+              variant="btnAltSecondary"
+              aria-label="Filter 1 Bulan"
+            />
+            {/* <FilterDate
               startDate={startRangeDate}
               endDate={endRangeDate}
               onStartDateChange={handleStartDate}
               onEndDateChange={handleEndDate}
-            />
+            /> */}
           </div>
           <div className={`${styles.section2}`}>
           {isLoadingMutation || isRefetchingMutation ? (
@@ -308,6 +345,9 @@ const AccountMutation = () => {
           )}
         </div>
       </div>
+      {showLogoutPopup && (
+        <PopupDate handleClosePopup={handleClosePopup} options={BulanOptions} handleConfirmDate={handleConfirmDate} />
+      )}
     </Layout>
   )
 }

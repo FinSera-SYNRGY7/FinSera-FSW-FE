@@ -34,7 +34,7 @@ import Account from "@/pages/ProfileAccount/Account";
 import Profile from "@/pages/ProfileAccount/Profile";
 import ChangePin from "@/pages/ProfileAccount/ChangePin";
 import QRIS from '@/pages/QRIS/Main';
-import Notification from '@/pages/Notification';
+import Notification from '@/pages/Notification/Main';
 
 import VirtualAccountTransfer from '@/pages/VirtualAccount/Main';
 import VirtualAccountTfCheck from '@/pages/VirtualAccount/VirtualAccountTfCheck';

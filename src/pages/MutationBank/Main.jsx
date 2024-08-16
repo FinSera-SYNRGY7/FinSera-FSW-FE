@@ -13,7 +13,8 @@ import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
 import { useQuery } from "@tanstack/react-query";
 import { httpServer } from "@/lib/server";
 import { formatRupiah, formatDateYMD, formatDateIndo, formatTimeIndo, checkTypeTransaction, minusOneMonth, minusOneWeek } from "@/lib/utils"
-import { PopupDate } from "../../components/PopUp"
+import { PopupDate } from "@/components/PopUp"
+import { useMutationBank } from '@/features/mutationBank/useMutationBank'
 
 const AccountMutation = () => {
   // const [startRangeDate, setStartRangeDate] = useState("");
@@ -139,19 +140,22 @@ const AccountMutation = () => {
     { value: "action3", label: "Action 3" },
   ]
 
-  const fetchAccountMutation = async() => {
-    const request = await httpServer.get('/api/v1/mutasi',{
-      params: dataFilterDate
-    })
+  // const fetchAccountMutation = async() => {
+  //   const request = await httpServer.get('/api/v1/mutasi',{
+  //     params: dataFilterDate
+  //   })
     
-    return request.data.data
-  }
+  //   return request.data.data
+  // }
   
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
-  const { data: dataAccountMutation, isLoading: isLoadingMutation, refetch: refetchAccountMutation, isError: isErrorMutation, isRefetching: isRefetchingMutation} = useQuery({
-    queryFn: fetchAccountMutation,
-    queryKey: ['fetchAccountMutation']
-  })
+  const { 
+    data: dataAccountMutation, 
+    isLoading: isLoadingMutation, 
+    refetch: refetchAccountMutation, 
+    isError: isErrorMutation, 
+    isRefetching: isRefetchingMutation
+  } = useMutationBank(dataFilterDate)
 
   const renderDataMutation = () => {          
     return dataAccountMutation?.map((row, key) => {

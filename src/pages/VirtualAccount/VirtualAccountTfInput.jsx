@@ -1,82 +1,75 @@
-import React, { useState, useEffect } from "react";
-import { CardHorizontal, CardInfoSaldo } from "@/components/Card/index";
+import { useState } from "react";
 import Layout from "@/layout/Layout";
 import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
+import { CardHorizontalAlt } from "@/components/Card";
+import { CardInfoSaldo } from "@/components/Card/index";
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
-import { formatRupiah } from "@/lib/utils";
+import VaIcon from "@/assets/img/VaIcon.svg";
 
-function Transfer() {
+const VirtualAccountTfInput = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const { register, isPending, handleSubmit, setValue } = useForm();
+  const { register, isPending, handleSubmit } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false);
 
   const { data: dataAmount, isLoading:isLoadingAmount } = useInfoAmount();
 
   const saveContactAct = ({
-    accountnum_recipient,
-    name_recipient,
-    bank_name,
+    accountNum,
+    accountName,
+    typeTranscation,
+    nominal
   }) => {
     const getListContacts =
-      localStorage.getItem("list_contacts") == null
+      localStorage.getItem("list_contacts_virtual_account") == null
         ? []
-        : JSON.parse(localStorage.getItem("list_contacts"));
+        : JSON.parse(localStorage.getItem("list_contacts_virtual_account"));
 
     const cloneArr = [...getListContacts];
 
     if (
       getListContacts.findIndex(
-        (elem) => elem.accountnum_recipient == accountnum_recipient
+        (elem) => elem.accountNum == accountNum
       ) === -1
     ) {
       cloneArr.push({
-        accountnum_recipient,
-        name_recipient,
-        bank_name,
+        accountNum,
+        accountName,
+        typeTranscation,
+        nominal
       });
     }
 
-    localStorage.setItem("list_contacts", JSON.stringify(cloneArr));
+    localStorage.setItem("list_contacts_virtual_account", JSON.stringify(cloneArr));
   };
 
   const submit = (value) => {
     if (savedContact) {
       saveContactAct({
-        accountnum_recipient: state.accountnum_recipient,
-        name_recipient: state.name_recipient,
-        bank_name: "BCA",
+        accountNum: state.accountNum,
+        accountName: state.accountName,
+        typeTranscation: state.typeTranscation,
+        nominal: state.nominal,
       });
     }
 
-    navigate("/transfer-sesama-bank/konfirmasi", {
+    navigate("/transfer-virtual-account/konfirmasi", {
       state: {
-        accountnum_recipient: state.accountnum_recipient,
-        name_recipient: state.name_recipient,
-        bank_name: state.bank_name,
-        nominal: value.nominal,
-        note: value.note,
+        accountNum: state.accountNum,
+        accountName: state.accountName,
+        typeTranscation: state.typeTranscation,
+        nominal: state.nominal,
       },
     });
   };
-  
-  useEffect(() => {
-    if(state?.nominal !== undefined) {
-      setValue('nominal', state?.nominal)
-    }
-    
-    if(state?.note !== undefined) {
-      setValue('note', state?.note)
-    }
-  },[])
 
   return (
-    <Layout className={"haveStyle"}>
+    <Layout className="haveStyle">
       <div className="d-flex align-items-baseline pt-5">
         <Button
           className="d-sm-none p-0"
@@ -84,7 +77,7 @@ function Transfer() {
           aria-label="kembali ke halaman sebelumnya"
         >
           <Link
-            to="/transfer-sesama-bank"
+            to="/transfer-virtual-account"
             style={{
               textDecoration: "none",
               color: "inherit",
@@ -96,13 +89,13 @@ function Transfer() {
           </Link>
         </Button>
         <h1 className="fw-bold col-12 text-center text-sm-start">
-          <span role="label" aria-label="Transfer Sesama Bank">
-            Transfer Sesama Bank
+          <span role="label" aria-label="Virtual Account">
+            Virtual Account
           </span>
         </h1>
       </div>
       <Link
-        to="/transfer-sesama-bank"
+        to="/transfer-virtual-account"
         style={{
           textDecoration: "none",
           color: "inherit",
@@ -136,38 +129,44 @@ function Transfer() {
         ""
       )}
       <form method="POST" onSubmit={handleSubmit(submit)}>
-        <CardHorizontal
-          className={"shadow p-0 border-0 outline"}
-          aria-label="akun transfer terakhir"
-          data={{
-            name_recipient: state.name_recipient,
-            bank_name: `Bank ${state.bank_name}`,
-          }}
-        />
-        <InputForm className={"d-flex my-4 form-check align-items-center"}>
-          <InputForm.Input
-            className="form-check-input me-2 p-0 border-black border-2"
-            name="remember"
-            type="checkbox"
-            aria-labelledby="remember-label"
-            onChange={(e) => setSavedContact(e.target.checked)}
-          />
-          <InputForm.Label to="remember" id="remember-label">
-            <p className="form-check-label mb-0">
-              <span role="checkbox" aria-label="Tambahkan ke daftar tersimpan">
-                Tambahkan ke daftar tersimpan
-              </span>
-            </p>
-          </InputForm.Label>
-        </InputForm>
-        <CardInfoSaldo 
-          className={"shadow p-0 border-0 mb-5"}
-          first="col-1"
-          second="col-2"
-          data={{
-            amount: isLoadingAmount ? null : dataAmount.amount.amount
-          }}
-        />
+        <div className="d-flex flex-wrap gap-2 gap-sm-3 mb-5">
+          <div className="flex-fill">
+            <CardHorizontalAlt
+              img={VaIcon}
+              className={"shadow p-0 border-0 outline"}
+              aria-label="akun transfer terakhir"
+              data={{
+                name_recipient: state.accountName,
+                transaction_name: state.typeTranscation,
+                no_transaction: state.accountNum,
+              }}
+            />
+            <InputForm className={"d-flex my-4 form-check align-items-center"}>
+              <InputForm.Input
+                className="form-check-input me-2 p-0 border-black border-2"
+                name="remember"
+                type="checkbox"
+                aria-labelledby="remember-label"
+                onChange={ (e) => setSavedContact(e.target.checked)}
+              />
+              <InputForm.Label to="remember" id="remember-label">
+                <p className="form-check-label mb-0">
+                  <span role="checkbox" aria-label="Tambahkan ke daftar tersimpan">
+                    Tambahkan ke daftar tersimpan
+                  </span>
+                </p>
+              </InputForm.Label>
+            </InputForm>
+            <CardInfoSaldo 
+              className={"shadow p-0 border-0 mb-5"}
+              first="col-1"
+              second="col-2"
+              data={{
+                amount: isLoadingAmount ? null : dataAmount.amount.amount
+              }}
+            />
+          </div>
+        </div>
         <InputForm className={"my-4"}>
           <InputForm.Label to="nominal" id="nominal-label">
             <h4 className="fw-bold mb-3">
@@ -178,29 +177,14 @@ function Transfer() {
           </InputForm.Label>
           <InputForm.Input
             className="py-sm-3 ps-sm-5 fz-input input"
+            type="number"
             placeholder="Masukkan nominal transfer"
             aria-labelledby="nominal-label"
-            type="number"
-            onWheel={(e) => e.target.blur()}
+            readOnly
+            disabled
+            value={state.nominal}
             required
             {...register("nominal")}
-          />
-        </InputForm>
-        <InputForm className={"my-4"}>
-          <InputForm.Label to="catatan" id="catatan-label">
-            <h4 className="fw-bold mb-3">
-              <span role="input" aria-label="Masukkan catatan">
-                Catatan
-              </span>
-            </h4>
-          </InputForm.Label>
-          <InputForm.TextArea
-            className="fz-input input"
-            placeholder="Masukkan catatan"
-            rows="6"
-            aria-labelledby="catatan-label"
-            required
-            {...register("note")}
           />
         </InputForm>
         {dataAmount != null ? (
@@ -225,6 +209,6 @@ function Transfer() {
       </form>
     </Layout>
   );
-}
+};
 
-export default Transfer;
+export default VirtualAccountTfInput;

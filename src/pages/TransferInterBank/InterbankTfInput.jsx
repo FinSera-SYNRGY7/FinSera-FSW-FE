@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@/layout/Layout";
 import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
@@ -15,10 +15,12 @@ const InterbackTfInput = () => {
   
   const { data:dataAmount, isLoading:isLoadingAmount } = useInfoAmount()
   
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, setValue } = useForm()
   
   const { state } = useLocation()
   const navigate = useNavigate()
+  
+  console.log(state)
   
   const saveContactAct = ({
     accountnum_recipient,
@@ -66,6 +68,16 @@ const InterbackTfInput = () => {
       }
     })
   }
+  
+  useEffect(() => {
+    if(state?.nominal !== undefined) {
+      setValue('nominal', state?.nominal)
+    }
+    
+    if(state?.note !== undefined) {
+      setValue('note', state?.note)
+    }
+  },[])
 
     return (
         <Layout className={"haveStyle"}>
@@ -131,7 +143,7 @@ const InterbackTfInput = () => {
           <form method="POST" onSubmit={handleSubmit(submit)}>
             <CardHorizontal
               className={"shadow p-0 border-0 outline"}
-              aria-label="akun transfer terakhir"
+              aria-label={`penerima ${ state.name_recipient }`}
               data={{
                 name_recipient: state.name_recipient,
                 bank_name: state.bank_name,
@@ -171,28 +183,12 @@ const InterbackTfInput = () => {
               </InputForm.Label>
               <InputForm.Input
                 className="py-sm-3 ps-sm-5 fz-input input"
-                type="text"
+                type="number"
                 placeholder="Masukkan nominal transfer"
                 aria-labelledby="nominal-label"
+                onWheel={(e) => e.target.blur()}
                 required
                 {...register("nominal")}
-              />
-            </InputForm>
-            <InputForm className={"my-4"}>
-              <InputForm.Label to="nominal" id="info-saldo-label">
-                <h4 className="fw-bold mb-3">
-                  <span role="input" aria-label="Info Saldo">
-                    Info Saldo
-                  </span>
-                </h4>
-              </InputForm.Label>
-              <InputForm.Input
-                className="py-sm-3 ps-sm-5 fz-input input"
-                type="text"
-                placeholder={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
-                value={dataAmount != null ? formatRupiah(dataAmount?.amount.amount) : ''}
-                aria-labelledby="info-saldo-label"
-                readOnly
               />
             </InputForm>
             <InputForm className={"my-4"}>

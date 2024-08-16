@@ -1,18 +1,18 @@
+import { CardHorizontalAlt } from "@/components/Card";
+import { useNavigate, Link } from "react-router-dom";
+import VaIcon from "@/assets/img/VaIcon.svg";
 import Layout from "@/layout/Layout";
 import Button from "@/components/Button/index";
 import styles from "@/assets/css/InterbankTransfer.module.css";
-import { CardHorizontal } from "@/components/Card/index";
-import { useNavigate, Link } from "react-router-dom";
 import notransferdata from "@/assets/img/notransferdata.png";
 
-const InterbankTransfer = () => {
-  
+const VirtualAccountTransfer = () => {
   const navigate = useNavigate()
   
-  const listContacts = localStorage.getItem('list_contacts_inter_bank')
+  const listContacts = localStorage.getItem('list_contacts_virtual_account')
   
-  const lastTransfers = localStorage.getItem('last_transfers_inter_bank')
-  
+  const lastTransfers = localStorage.getItem('last_transfers_virtual_account')
+
   return (
     <Layout className="haveStyle">
       <div className="d-flex align-items-baseline pt-5">
@@ -34,8 +34,8 @@ const InterbankTransfer = () => {
           </Button>
         </Link>
         <h1 className="fw-bold col-12 text-center text-sm-start">
-          <span role="label" aria-label="Transfer Antar Bank">
-            Transfer Antar Bank
+          <span role="label" aria-label="Virtual Account">
+            Virtual Account
           </span>
         </h1>
       </div>
@@ -62,7 +62,7 @@ const InterbankTransfer = () => {
           </Button>
         </Link>
         <Link
-          to="/transfer-antar-bank/check"
+          to="/transfer-virtual-account/check"
           className="m-0"
           style={{
             textDecoration: "none",
@@ -89,29 +89,55 @@ const InterbankTransfer = () => {
         </span>
       </h4>
       <div className="d-flex flex-wrap gap-2 gap-sm-3 mb-5">
-        
-        { lastTransfers != null ? JSON.parse(lastTransfers).filter((item, index) => index <= 3).map((value, index) => (
+      { lastTransfers != null ? JSON.parse(lastTransfers).filter((item, index) => index <= 3).map((value, index) => (
             <>
           {
             index >= 0 && index <= 1 ? 
           <div className="flex-fill">
-            <CardHorizontal
+
+            <CardHorizontalAlt
+              img={VaIcon}
               className={"shadow p-0 border-0 outline"}
+              role="button"
               aria-label="akun transfer terakhir"
               data={{
-                name_recipient: value.name_recipient,
-                bank_name: value.bank_name,
+                name_recipient: value.accountName,
+                transaction_name: value.typeTranscation,
+                no_transaction: value.accountNum,
+              }}
+              onClick={() => {
+                navigate('/transfer-virtual-account/form-input', {
+                  state: {
+                    accountNum: value.accountNum,
+                    accountName: value.accountName,
+                    typeTranscation: value.typeTranscation,
+                    nominal: value.nominal
+                  }
+                })
               }}
             />
           </div> : <></> }
           {
             index == 2 ? <div className="d-none d-md-block flex-fill">
-              <CardHorizontal
+              <CardHorizontalAlt
+                img={VaIcon}
                 className={"shadow p-0 border-0 outline"}
+                role="button"
                 aria-label="akun transfer terakhir"
                 data={{
-                  name_recipient: value.name_recipient,
-                  bank_name: value.bank_name,
+                  name_recipient: value.accountName,
+                  transaction_name: value.typeTranscation,
+                  no_transaction: value.accountNum,
+                }}
+                onClick={() => {
+                  navigate('/transfer-virtual-account/form-input', {
+                    state: {
+                      accountNum: value.accountNum,
+                      accountName: value.accountName,
+                      typeTranscation: value.typeTranscation,
+                      nominal: value.nominal
+                    }
+                  })
                 }}
               />
             </div> : <></>
@@ -119,38 +145,53 @@ const InterbankTransfer = () => {
           {
             index == 3 ? 
             <div className="d-none d-lg-block flex-fill">
-              <CardHorizontal
+              <CardHorizontalAlt
+                img={VaIcon}
                 className={"shadow p-0 border-0 outline"}
+                role="button"
                 aria-label="akun transfer terakhir"
                 data={{
-                  name_recipient: value.name_recipient,
-                  bank_name: value.bank_name,
+                  name_recipient: value.accountName,
+                  transaction_name: value.typeTranscation,
+                  no_transaction: value.accountNum,
+                }}
+                onClick={() => {
+                  navigate('/transfer-virtual-account/form-input', {
+                    state: {
+                      accountNum: value.accountNum,
+                      accountName: value.accountName,
+                      typeTranscation: value.typeTranscation,
+                      nominal: value.nominal
+                    }
+                  })
                 }}
               />
             </div> : <></>
           }
           </>
-          )) : <></> }
+      )) : <></> }
       </div>
       <h4 className="fw-bold mb-3">Daftar Tersimpan</h4>
-        {
+      {
           listContacts != null ? JSON.parse(listContacts).map((value, index) => (
-          <CardHorizontal
+          <CardHorizontalAlt
               key={index}
-              className={"shadow p-0 border-0 mb-3 outline"}
+              img={VaIcon}
+              className={"shadow p-0 border-0 outline"}
               role="button"
-              aria-label="akun transfer tersimpan"
+              aria-label="akun transfer terakhir"
               data={{
-                name_recipient: value.name_recipient,
-                bank_name: value.bank_name,
+                name_recipient: value.accountName,
+                transaction_name: value.typeTranscation,
+                no_transaction: value.accountNum,
               }}
               onClick={() => {
-                navigate('/transfer-antar-bank/form-input', {
+                navigate('/transfer-virtual-account/form-input', {
                   state: {
-                    accountnum_recipient:value.accountnum_recipient,
-                    name_recipient:value.name_recipient,
-                    bank_id:value.bank_id,
-                    bank_name:value.bank_name
+                    accountNum: value.accountNum,
+                    accountName: value.accountName,
+                    typeTranscation: value.typeTranscation,
+                    nominal: value.nominal
                   }
                 })
               }}
@@ -185,11 +226,10 @@ const InterbankTransfer = () => {
                   orang terdekat lebih mudah
                 </h4>
               </div>
-            </div>
-        }
+          </div>
+      }
       <div className="mb-5"></div>
     </Layout>
   );
 };
-
-export default InterbankTransfer;
+export default VirtualAccountTransfer;

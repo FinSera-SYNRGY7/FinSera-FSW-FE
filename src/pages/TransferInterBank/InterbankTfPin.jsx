@@ -104,26 +104,27 @@ const InterbankTfPin = () => {
           </span>
         </h1>
       </div>
-      <Link
-        to="/transfer-antar-bank/konfirmasi"
-        style={{
-          textDecoration: "none",
-          color: "inherit",
-        }}
-        aria-label="kembali ke halaman sebelumnya"
-        role="button"
-      >
+        
         <Button
-          className={
-            "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
-          }
-          type="button"
-          aria-label="kembali ke halaman sebelumnya"
-        >
+        className={
+          "d-none d-sm-block col-sm-12 base-color text-sm-start mb-5 shadow-hover"
+        }
+        type="button"
+        aria-label="kembali ke halaman sebelumnya"
+        onClick={() => navigate("/transfer-antar-bank/konfirmasi", {
+            state: {
+              accountnum_recipient: state.accountnum_recipient,
+              name_recipient: state.name_recipient,
+              bank_id: state.bank_id,
+              bank_name: state.bank_name,
+              nominal: state.nominal,
+              note: state.note,
+            }
+          })
+        }>
           <i className="fa fa-arrow-left" />
           <span className="ms-20">Back</span>
         </Button>
-      </Link>
       {errorMessage != "" ? (
         <div
           className="alert alert-danger"

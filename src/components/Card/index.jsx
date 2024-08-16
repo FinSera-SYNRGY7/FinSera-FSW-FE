@@ -27,56 +27,58 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
   return (
     <>
       {children}
-      <div className={`card text-center ${className}`} {...rest} ref={layoutRef}>
-        <img
-          className="m-auto my-3 my-md-5 w-20"
-          src={Success}
-          alt="Transfer Success"
-        />
-        <span role="label" aria-label="Transaksi Berhasil">
-          <h1 className="fw-bold">Transaksi Berhasil</h1>
-        </span>
-        <div className="card-body">
-          <span role="label" aria-label="Tanggal : 21 June 2024 | 12:45 WIB">
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Tanggal</h5>
-              <h5 className="fw-bold col-auto">{data.transaction_date}</h5>
-            </div>
+      <div className={`card text-center ${className}`} {...rest}>
+        <div ref={layoutRef}>
+          <img
+            className="m-auto my-3 my-md-5 w-20"
+            src={Success}
+            alt="Transfer Success"
+          />
+          <span role="label" aria-label="Transaksi Berhasil">
+            <h1 className="fw-bold">Transaksi Berhasil</h1>
           </span>
-          <span role="label" aria-label="Nomor Transaksi : 12356676787878">
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Nomor Transaksi</h5>
-              <h5 className="fw-bold col-auto">{data.transaction_num}</h5>
-            </div>
-          </span>
-          <hr />
-          <span role="label" aria-label="Penerima : Putra Ardiansyah">
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Penerima</h5>
-              <h5 className="fw-bold col-auto">{data.name_recipient}</h5>
-            </div>
-          </span>
-          <span
-            role="label"
-            aria-label="Jenis Transaksi : Transfer Sesama Bank"
-          >
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Jenis Transaksi</h5>
-              <h5 className="fw-bold col-auto">Transfer Sesama Bank</h5>
-            </div>
-          </span>
-          <span role="label" aria-label="Jumlah : Rp 2.000.000">
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Jumlah</h5>
-              <h5 className="fw-bold col-auto">{data.nominal}</h5>
-            </div>
-          </span>
-          <span role="label" aria-label="Catatan : Bayar Utang">
-            <div className="row justify-content-between mb-3 mb-sm-5">
-              <h5 className="col-auto">Catatan</h5>
-              <h5 className="fw-bold col-auto">{data.note}</h5>
-            </div>
-          </span>
+          <div className="card-body">
+            <span role="label" aria-label="Tanggal : 21 June 2024 | 12:45 WIB">
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Tanggal</h5>
+                <h5 className="fw-bold col-auto">{data.transaction_date}</h5>
+              </div>
+            </span>
+            <span role="label" aria-label="Nomor Transaksi : 12356676787878">
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Nomor Transaksi</h5>
+                <h5 className="fw-bold col-auto">{data.transaction_num}</h5>
+              </div>
+            </span>
+            <hr />
+            <span role="label" aria-label="Penerima : Putra Ardiansyah">
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Penerima</h5>
+                <h5 className="fw-bold col-auto">{data.name_recipient}</h5>
+              </div>
+            </span>
+            <span
+              role="label"
+              aria-label="Jenis Transaksi : Transfer Sesama Bank"
+            >
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Jenis Transaksi</h5>
+                <h5 className="fw-bold col-auto">Transfer Sesama Bank</h5>
+              </div>
+            </span>
+            <span role="label" aria-label="Jumlah : Rp 2.000.000">
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Jumlah</h5>
+                <h5 className="fw-bold col-auto">{data.nominal}</h5>
+              </div>
+            </span>
+            <span role="label" aria-label="Catatan : Bayar Utang">
+              <div className="row justify-content-between mb-3 mb-sm-5">
+                <h5 className="col-auto">Catatan</h5>
+                <h5 className="fw-bold col-auto">{data.note}</h5>
+              </div>
+            </span>
+          </div>
           <div className="row justify-content-evenly mb-4 mb-sm-5">
             <Button
               className={"col-5 col-sm-4 base-color shadow-hover"}
@@ -153,11 +155,6 @@ export function CardTransfer({ className, first, second, data }) {
               </h4>
             </span>
           </div>
-        </div>
-        <div className={`col-auto justify-content-end d-flex me-3 pt-2`}>
-          <a href="" aria-label="Ganti nomor rekening">
-            <h5>Ganti</h5>
-          </a>
         </div>
       </div>
     </div>

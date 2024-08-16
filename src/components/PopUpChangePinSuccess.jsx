@@ -1,4 +1,4 @@
-import styles from "@/assets/css/Header.module.css";
+import styles from "@/assets/css/PopUp.module.css";
 import Success from "@/assets/img/Success.svg";
 
 const PopUpChangePinSuccess = ({handleNavigateHome}) => {

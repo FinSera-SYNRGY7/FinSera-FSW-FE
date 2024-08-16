@@ -11,11 +11,7 @@ import logobcablue from "@/assets/img/logobcablue.png";
 import logoAlert from "@/assets/logo/alert.png";
 import logoProfile from "@/assets/logo/profile.png";
 import styles from "@/assets/css/Header.module.css";
-import profileCard from "@/assets/logo/Frame 2581.svg";
-import profileList from "@/assets/logo/user.svg";
-import settingList from "@/assets/logo/settings.svg";
-import helpList from "@/assets/logo/help-circle.svg";
-import logoutList from "@/assets/logo/log-out.svg";
+import logoutIcon from "@/assets/img/LogoutIcon.svg";
 import { SearchInput } from "@/components/FormInput";
 import { useNavigate } from "react-router-dom";
 import { PopUp } from "@/components/PopUp";
@@ -80,47 +76,16 @@ const Header = ({ type }) => {
                 alt="Notifikasi"
               />
             </Nav.Link>
-            <details className={styles.profile}>
-              <summary>
-                <img
-                  className="header-icon"
-                  src={logoProfile}
-                  alt="Akun"
-                />
-              </summary>
-              <ul>
-                <li style={{ borderBottom: "1px solid #F2F4F7" }}>
-                  <div className="d-flex flex-row align-items-center">
-                    <img
-                      className={styles.pictProfile}
-                      src={profileCard}
-                      alt=""
-                    />
-                    <div>
-                      <h5>{ name }</h5>
-                    </div>
-                  </div>
-                </li>
-                <li>
-                  <img src={profileList} alt="View Profile" />
-                  <Link to="/profile">View Profile</Link>
-                </li>
-                <li>
-                  <img src={settingList} alt="" />
-                  <Link to="/account">Settings</Link>
-                </li>
-                <li>
-                  <img src={helpList} alt="" />
-                  <a href="">Support</a>
-                </li>
-                <li style={{ borderTop: "1px solid #F2F4F7" }}>
-                  <img src={logoutList} alt="" />
-                  <a href="" onClick={handleLogoutClick}>
-                    Log out
-                  </a>
-                </li>
-              </ul>
-            </details>
+            <Nav.Link href="/account">
+              <img
+                className="header-icon"
+                src={logoProfile}
+                alt="Akun"
+              />
+            </Nav.Link>
+            <Nav.Link>
+              <img src={logoutIcon} alt="" onClick={handleLogoutClick} />
+            </Nav.Link>
           </Nav>
         </Container>
       </Navbar>

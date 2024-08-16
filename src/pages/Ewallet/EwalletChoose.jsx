@@ -43,7 +43,11 @@ function EwalletChoose() {
         <i className="fa fa-arrow-left" />
         <span className="ms-20">Back</span>
       </Button>
-      <div className="d-flex gap-3" aria-label="pilih e-wallet" role="menu">
+      <div
+        className="d-flex flex-wrap gap-3"
+        aria-label="pilih e-wallet"
+        role="menu"
+      >
         <ServiceMenu color="ovo-color" icon={logoOvo} label="OVO" />
         <ServiceMenu color="dana-color" icon={logoDana} label="DANA" />
         <ServiceMenu color="gopay-color" icon={logoGopay} label="GOPAY" />

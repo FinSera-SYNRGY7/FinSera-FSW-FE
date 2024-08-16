@@ -7,7 +7,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useTransferBank } from "@/features/transferBank/useTransferBank";
 import { useForm } from "react-hook-form";
 
-function TransferPIN() {
+function EwalletPIN() {
   const { register, handleSubmit } = useForm();
 
   const [pinInput, setPinInput] = useState("");
@@ -52,7 +52,7 @@ function TransferPIN() {
         bank_name: "BCA",
       });
 
-      navigate("/transfer-sesama-bank/success", {
+      navigate("/ewallet/success", {
         state: {
           transaction_date: success.data.transaction_date,
           transaction_num: success.data.transaction_num,
@@ -87,7 +87,7 @@ function TransferPIN() {
           type="button"
           aria-label="kembali ke halaman sebelumnya"
           onClick={() => {
-            navigate("/transfer-sesama-bank/konfirmasi", {
+            navigate("/ewallet/konfirmasi", {
               state: {
                 accountnum_recipient: state.accountnum_recipient,
                 name_recipient: state.name_recipient,
@@ -113,7 +113,7 @@ function TransferPIN() {
         type="button"
         aria-label="kembali ke halaman sebelumnya"
         onClick={() => {
-          navigate("/transfer-sesama-bank/konfirmasi", {
+          navigate("/ewallet/konfirmasi", {
             state: {
               accountnum_recipient: state.accountnum_recipient,
               name_recipient: state.name_recipient,
@@ -178,4 +178,4 @@ function TransferPIN() {
   );
 }
 
-export default TransferPIN;
+export default EwalletPIN;

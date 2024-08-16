@@ -13,6 +13,29 @@ a, p, h1, h2, h3, h4, h5, h6 {
   background-color: #0066AE !important;
 }
 
+.ovo-color {
+  background-color: #4C3494 !important;
+  ;
+}
+
+.gopay-color {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dana-color {
+  background-color: #108EE9 !important;
+}
+
+.paypal-color {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.spay-color {
+  background-color: #F0592C !important;
+}
+
 .logo {
   height: 5em;
   padding: 1.5em;

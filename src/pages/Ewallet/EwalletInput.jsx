@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import { formatRupiah } from "@/lib/utils";
 
-function TransferInput() {
+function EwalletInput() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
@@ -54,7 +54,7 @@ function TransferInput() {
       });
     }
 
-    navigate("/transfer-sesama-bank/konfirmasi", {
+    navigate("/ewallet/konfirmasi", {
       state: {
         accountnum_recipient: state.accountnum_recipient,
         name_recipient: state.name_recipient,
@@ -84,7 +84,7 @@ function TransferInput() {
           aria-label="kembali ke halaman sebelumnya"
         >
           <Link
-            to="/transfer-sesama-bank"
+            to="/ewallet"
             style={{
               textDecoration: "none",
               color: "inherit",
@@ -96,13 +96,13 @@ function TransferInput() {
           </Link>
         </Button>
         <h1 className="fw-bold col-12 text-center text-sm-start">
-          <span role="label" aria-label="Transfer Sesama Bank">
-            Transfer Sesama Bank
+          <span role="label" aria-label="E-wallet">
+            E-wallet
           </span>
         </h1>
       </div>
       <Link
-        to="/transfer-sesama-bank"
+        to="/ewallet"
         style={{
           textDecoration: "none",
           color: "inherit",
@@ -137,6 +137,7 @@ function TransferInput() {
       )}
       <form method="POST" onSubmit={handleSubmit(submit)}>
         <CardHorizontal
+          type="ovo"
           className={"shadow p-0 border-0 outline"}
           aria-label="akun transfer terakhir"
           data={{
@@ -186,23 +187,6 @@ function TransferInput() {
             {...register("nominal")}
           />
         </InputForm>
-        <InputForm className={"my-4"}>
-          <InputForm.Label to="catatan" id="catatan-label">
-            <h4 className="fw-bold mb-3">
-              <span role="input" aria-label="Masukkan catatan">
-                Catatan
-              </span>
-            </h4>
-          </InputForm.Label>
-          <InputForm.TextArea
-            className="fz-input input"
-            placeholder="Masukkan catatan"
-            rows="6"
-            aria-labelledby="catatan-label"
-            required
-            {...register("note")}
-          />
-        </InputForm>
         {dataAmount != null ? (
           <Button
             className={"btn base-color col-12 mb-5 shadow-hover"}
@@ -227,4 +211,4 @@ function TransferInput() {
   );
 }
 
-export default TransferInput;
+export default EwalletInput;

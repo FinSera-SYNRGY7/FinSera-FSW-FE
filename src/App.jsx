@@ -1,29 +1,28 @@
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Route, Routes, Navigate, useLocation } from "react-router-dom";
 
-import './App.css'
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Route, Routes, Navigate, useLocation} from 'react-router-dom';
+import SetupPin from "@/pages/Auth/SetupPin";
+import ConfirmSetupPin from "@/pages/Auth/ConfirmSetupPin";
+import Login from "@/pages/Auth/Login.jsx";
+import Relog from "@/pages/Auth/Relog.jsx";
 
-import SetupPin from '@/pages/Auth/SetupPin';
-import ConfirmSetupPin from '@/pages/Auth/ConfirmSetupPin';
-import Login from '@/pages/Auth/Login.jsx'
-import Relog from '@/pages/Auth/Relog.jsx'
+import InfoSaldo from "@/pages/InfoAmount/Main";
 
-import InfoSaldo from '@/pages/InfoAmount/Main';
+import AccountMutation from "@/pages/MutationBank/Main";
 
-import AccountMutation from '@/pages/MutationBank/Main';
+import InterbankTransfer from "@/pages/TransferInterBank/Main";
+import InterbankTfCheck from "@/pages/TransferInterBank/InterbankTfCheck";
+import InterbackTfInput from "@/pages/TransferInterBank/InterbankTfInput";
+import InterbankTfConfirm from "@/pages/TransferInterBank/InterbankTfConfirm";
+import InterbankTfPin from "@/pages/TransferInterBank/InterbankTfPin";
+import InterbankTfSuccess from "./pages/TransferInterBank/InterbankTfSuccess";
+import InterbankTfError from "./pages/TransferInterBank/InterbankTfError";
 
-import InterbankTransfer from '@/pages/TransferInterBank/Main';
-import InterbankTfCheck from '@/pages/TransferInterBank/InterbankTfCheck';
-import InterbackTfInput from '@/pages/TransferInterBank/InterbankTfInput';
-import InterbankTfConfirm from '@/pages/TransferInterBank/InterbankTfConfirm';
-import InterbankTfPin from '@/pages/TransferInterBank/InterbankTfPin';
-import InterbankTfSuccess from './pages/TransferInterBank/InterbankTfSuccess';
-import InterbankTfError from './pages/TransferInterBank/InterbankTfError';
-
-import Home from '@/pages/Home';
+import Home from "@/pages/Home";
 
 import Transfer from "@/pages/Transfer/Main";
-import TransferCheck from '@/pages/Transfer/TransferCheck'
+import TransferCheck from "@/pages/Transfer/TransferCheck";
 import TransferInput from "@/pages/Transfer/TransferInput";
 import TransferError from "@/pages/Transfer/TransferError";
 import TransferSuccess from "@/pages/Transfer/TransferSuccess";
@@ -33,28 +32,36 @@ import TransferPIN from "@/pages/Transfer/TransferPIN";
 import Account from "@/pages/ProfileAccount/Account";
 import Profile from "@/pages/ProfileAccount/Profile";
 import ChangePin from "@/pages/ProfileAccount/ChangePin";
-import QRIS from '@/pages/QRIS';
+import QRIS from "@/pages/QRIS";
 
-import VirtualAccountTransfer from '@/pages/VirtualAccount/Main';
-import VirtualAccountTfCheck from '@/pages/VirtualAccount/VirtualAccountTfCheck';
-import VirtualAccountTfInput from '@/pages/VirtualAccount/VirtualAccountTfInput';
-import VirtualAccountTfConfirm from '@/pages/VirtualAccount/VirtualAccountTfConfirm';
-import VirtualAccountTfPin from '@/pages/VirtualAccount/VirtualAccountTfPin';
-import VirtualAccountTfSuccess from '@/pages/VirtualAccount/VirtualAccountTfSuccess';
-import VirtualAccountTfError from '@/pages/VirtualAccount/VirtualAccountTfError';
+import VirtualAccountTransfer from "@/pages/VirtualAccount/Main";
+import VirtualAccountTfCheck from "@/pages/VirtualAccount/VirtualAccountTfCheck";
+import VirtualAccountTfInput from "@/pages/VirtualAccount/VirtualAccountTfInput";
+import VirtualAccountTfConfirm from "@/pages/VirtualAccount/VirtualAccountTfConfirm";
+import VirtualAccountTfPin from "@/pages/VirtualAccount/VirtualAccountTfPin";
+import VirtualAccountTfSuccess from "@/pages/VirtualAccount/VirtualAccountTfSuccess";
+import VirtualAccountTfError from "@/pages/VirtualAccount/VirtualAccountTfError";
 
-import { useEffect } from 'react';
-import nProgress from 'nprogress';
+import Ewallet from "@/pages/Ewallet/Main";
+import EwalletError from "@/pages/Ewallet/EwalletError";
+import EwalletSuccess from "@/pages/Ewallet/EwalletSuccess";
+import EwalletCheck from "@/pages/Ewallet/EwalletCheck";
+import EwalletInput from "@/pages/Ewallet/EwalletInput";
+import EwalletConfirm from "@/pages/Ewallet/EwalletConfirm";
+import EwalletPIN from "@/pages/Ewallet/EwalletPIN";
+import EwalletChoose from "@/pages/Ewallet/EwalletChoose";
+
+import { useEffect } from "react";
+import nProgress from "nprogress";
 
 function App() {
-  
   const location = useLocation();
 
   useEffect(() => {
     nProgress.start();
     nProgress.done();
   }, [location.pathname]);
-    
+
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/login" />} />
@@ -91,6 +98,16 @@ function App() {
         <Route path="input-pin" element={<VirtualAccountTfPin />} />
         <Route path="success" element={<VirtualAccountTfSuccess />} />
         <Route path="error" element={<VirtualAccountTfError />} />
+      </Route>
+      <Route path="/ewallet">
+        <Route index element={<Ewallet />} />
+        <Route path="check" element={<EwalletCheck />} />
+        <Route path="form-input" element={<EwalletInput />} />
+        <Route path="konfirmasi" element={<EwalletConfirm />} />
+        <Route path="input-pin" element={<EwalletPIN />} />
+        <Route path="choose" element={<EwalletChoose />} />
+        <Route path="success" element={<EwalletSuccess />} />
+        <Route path="error" element={<EwalletError />} />
       </Route>
       <Route path="/qris" element={<QRIS />} />
       <Route path="/account" element={<Account />} />

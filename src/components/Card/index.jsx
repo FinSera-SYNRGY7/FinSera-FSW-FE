@@ -5,25 +5,33 @@ import logoFinsera from "@/assets/img/logoFinsera.svg";
 import "./style.css";
 import { formatRupiah } from "@/lib/utils";
 import { useScreenshot, createFileName } from "use-react-screenshot";
+import logoOvo from "@/assets/logo/logoOvo.svg";
+import logoDana from "@/assets/logo/logoDana.svg";
+import logoGopay from "@/assets/logo/logoGopay.svg";
+import logoPaypal from "@/assets/logo/logoPaypal.svg";
+import logoShopeePay from "@/assets/logo/logoShopeePay.svg";
 
 export const CardVertical = ({ className, children, data, ...rest }) => {
-  const date = (new Date()).toLocaleDateString()
-  
-  const layoutRef = useRef(null)
+  const date = new Date().toLocaleDateString();
+
+  const layoutRef = useRef(null);
   const [image, takeScreenshot] = useScreenshot({
     type: "image/jpeg",
-    quality: 1.0
+    quality: 1.0,
   });
 
-  const download = (image, { name = `TRANSFER-SESAMA-BANK-${date}`, extension = "jpg" } = {}) => {
+  const download = (
+    image,
+    { name = `TRANSFER-SESAMA-BANK-${date}`, extension = "jpg" } = {}
+  ) => {
     const a = document.createElement("a");
     a.href = image;
     a.download = createFileName(extension, name);
     a.click();
-  }
-  
-  const getImage = () => takeScreenshot(layoutRef.current).then(download)
-  
+  };
+
+  const getImage = () => takeScreenshot(layoutRef.current).then(download);
+
   return (
     <>
       {children}
@@ -57,6 +65,14 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
                 <h5 className="fw-bold col-auto">{data.name_recipient}</h5>
               </div>
             </span>
+            {data.notelp && (
+              <span role="label" aria-label={`nomer telfon : ${data.notelp}`}>
+                <div className="row justify-content-between mb-3 mb-sm-5">
+                  <h5 className="col-auto">Nomer Telfon</h5>
+                  <h5 className="fw-bold col-auto">{data.notelp}</h5>
+                </div>
+              </span>
+            )}
             <span
               role="label"
               aria-label="Jenis Transaksi : Transfer Sesama Bank"
@@ -66,18 +82,28 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
                 <h5 className="fw-bold col-auto">Transfer Sesama Bank</h5>
               </div>
             </span>
-            <span role="label" aria-label="Jumlah : Rp 2.000.000">
+            <span role="label" aria-label={`Jumlah : ${data.nominal}`}>
               <div className="row justify-content-between mb-3 mb-sm-5">
                 <h5 className="col-auto">Jumlah</h5>
                 <h5 className="fw-bold col-auto">{data.nominal}</h5>
               </div>
             </span>
-            <span role="label" aria-label="Catatan : Bayar Utang">
-              <div className="row justify-content-between mb-3 mb-sm-5">
-                <h5 className="col-auto">Catatan</h5>
-                <h5 className="fw-bold col-auto">{data.note}</h5>
-              </div>
-            </span>
+            {data.note && (
+              <span role="label" aria-label={`Catatan : ${data.note}`}>
+                <div className="row justify-content-between mb-3 mb-sm-5">
+                  <h5 className="col-auto">Catatan</h5>
+                  <h5 className="fw-bold col-auto">{data.note}</h5>
+                </div>
+              </span>
+            )}
+            {data.admin_fee && (
+              <span role="label" aria-label="Biaya admin">
+                <div className="row justify-content-between mb-3 mb-sm-5">
+                  <h5 className="col-auto">Biaya admin</h5>
+                  <h5 className="fw-bold col-auto">{data.admin_fee}</h5>
+                </div>
+              </span>
+            )}
           </div>
           <div className="row justify-content-evenly mb-4 mb-sm-5">
             <Button
@@ -93,18 +119,47 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
       </div>
     </>
   );
-}
+};
 
-export function CardHorizontal({ className, first, second, data, ...rest }) {
+export function CardHorizontal({
+  className,
+  type = "common",
+  first = "col-md-auto",
+  second = "col-md-auto",
+  data,
+  ...rest
+}) {
+  let sideLogo;
+
+  switch (type) {
+    case "gopay":
+      sideLogo = <Gopay />;
+      break;
+    case "shopeepay":
+      sideLogo = <Spay />;
+      break;
+    case "paypal":
+      sideLogo = <Paypal />;
+      break;
+    case "ovo":
+      sideLogo = <Ovo />;
+      break;
+    case "dana":
+      sideLogo = <Dana />;
+      break;
+    case "common":
+    default:
+      sideLogo = <Common />;
+      break;
+  }
+
   return (
     <div className={`card ${className} p-1`} {...rest}>
       <div className="d-flex">
         <div
           className={`${first} mx-sm-3 ms-1 d-flex align-items-center justify-content-center`}
         >
-          <div className="circle">
-            <p className="text">P</p>
-          </div>
+          {sideLogo}
         </div>
         <div className={`${second} p-0`}>
           <div className="card-body px-0">
@@ -194,9 +249,48 @@ export function CardInfoSaldo({ className, first, second, data }) {
   );
 }
 
-CardHorizontal.defaultProps = {
-  first: "col-md-auto",
-  second: "col-md-auto",
-};
+function Common({ initial = "p" }) {
+  return (
+    <div className="circle base-color">
+      <p className="text">{initial}</p>
+    </div>
+  );
+}
+
+function Ovo() {
+  return (
+    <div className="circle ovo-color">
+      <img src={logoOvo} alt="logo ovo" />
+    </div>
+  );
+}
+function Gopay() {
+  return (
+    <div className="circle gopay-color">
+      <img src={logoGopay} alt="logo gopay" />
+    </div>
+  );
+}
+function Dana() {
+  return (
+    <div className="circle dana-color">
+      <img src={logoDana} alt="logo dana" />
+    </div>
+  );
+}
+function Paypal() {
+  return (
+    <div className="circle paypal-color">
+      <img style={{ width: "50%" }} src={logoPaypal} alt="logo paypal" />
+    </div>
+  );
+}
+function Spay() {
+  return (
+    <div className="circle spay-color">
+      <img src={logoShopeePay} alt="logo shopee pay" />
+    </div>
+  );
+}
 
 export default { CardVertical, CardTransfer, CardHorizontal, CardInfoSaldo };

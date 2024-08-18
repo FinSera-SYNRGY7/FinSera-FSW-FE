@@ -4,7 +4,7 @@ import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useTransferBankCheck } from "@/features/transferBank/useTransferBankCheck";
+import { useEWalletCheck } from "@/features/eWallet/useEWalletCheck";
 
 function EwalletCheck() {
   const navigate = useNavigate();
@@ -13,23 +13,29 @@ function EwalletCheck() {
   const { register, handleSubmit, setValue } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
 
-  const { mutate, isPending } = useTransferBankCheck({
+  const { mutate, isPending } = useEWalletCheck({
     onSuccess: (success, data) => {
-      navigate("/ewallet/form-input", {
+      navigate("/e-wallet/form-input", {
         state: {
-          accountnum_recipient: success.data.accountnum_recipient,
-          name_recipient: success.data.name_recipient,
-          bank_name: "BCA",
+          ewallet_name: success.data.ewalletName,
+          ewallet_account_id: success.data.ewalletAccountId,
+          ewallet_account: success.data.ewalletAccount,
+          ewallet_account_name: success.data.ewalletAccountName
         },
       });
     },
-    onError: (error) => {
+    onError: (error, data) => {
+      console.log(data)
       setErrorMessage(error.message.response.data.message);
     },
   });
 
   const submit = (value) => {
-    mutate(value);
+    const data = {
+      ...value,
+      ewalletId:state.ewalletId
+    }
+    mutate(data);
   };
 
   return (
@@ -41,7 +47,7 @@ function EwalletCheck() {
           aria-label="kembali ke halaman sebelumnya"
         >
           <Link
-            to="/ewallet"
+            to="/e-wallet"
             style={{
               textDecoration: "none",
               color: "inherit",
@@ -59,7 +65,7 @@ function EwalletCheck() {
         </h1>
       </div>
       <Link
-        to="/ewallet"
+        to="/e-wallet"
         style={{
           textDecoration: "none",
           color: "inherit",
@@ -81,13 +87,13 @@ function EwalletCheck() {
       </Link>
       {errorMessage != "" ? (
         <div
-          className="alert alert-danger"
+          className="alert alert-danger alert-dismissible"
           aria-label={`Pesan Error ${errorMessage}`}
         >
           {errorMessage}{" "}
-          <button className="close" aria-label="tutup error" role="close">
-            X
-          </button>
+        <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+          setErrorMessage('')
+        }}/>
         </div>
       ) : (
         ""
@@ -107,7 +113,7 @@ function EwalletCheck() {
             placeholder="Masukkan nomor Telfon"
             aria-labelledby="rek-label"
             required
-            {...register("accountnum_recipient")}
+            {...register("ewalletAccount")}
           />
         </InputForm>
         <Button

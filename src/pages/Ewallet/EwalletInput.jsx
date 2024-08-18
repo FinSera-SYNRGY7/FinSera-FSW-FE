@@ -19,46 +19,50 @@ function EwalletInput() {
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
 
   const saveContactAct = ({
-    accountnum_recipient,
-    name_recipient,
-    bank_name,
+    ewallet_name,
+    ewallet_account_name,
+    ewallet_account,
+    ewallet_id,
   }) => {
     const getListContacts =
-      localStorage.getItem("list_contacts") == null
+      localStorage.getItem("list_contact_e-wallets") == null
         ? []
-        : JSON.parse(localStorage.getItem("list_contacts"));
+        : JSON.parse(localStorage.getItem("list_contact_e-wallets"));
 
     const cloneArr = [...getListContacts];
 
     if (
       getListContacts.findIndex(
-        (elem) => elem.accountnum_recipient == accountnum_recipient
+        (elem) => elem.ewallet_account == ewallet_account
       ) === -1
     ) {
       cloneArr.push({
-        accountnum_recipient,
-        name_recipient,
-        bank_name,
+        ewallet_name,
+        ewallet_account_name,
+        ewallet_account,
+        ewallet_id,
       });
     }
 
-    localStorage.setItem("list_contacts", JSON.stringify(cloneArr));
+    localStorage.setItem("list_contact_e-wallets", JSON.stringify(cloneArr));
   };
 
   const submit = (value) => {
     if (savedContact) {
       saveContactAct({
-        accountnum_recipient: state.accountnum_recipient,
-        name_recipient: state.name_recipient,
-        bank_name: "BCA",
+        ewallet_name: state.ewallet_name,
+        ewallet_account_name: state.ewallet_account_name,
+        ewallet_account: state.ewallet_account,
+        ewallet_id: state.ewallet_account_id,
       });
     }
 
-    navigate("/ewallet/konfirmasi", {
+    navigate("/e-wallet/konfirmasi", {
       state: {
-        accountnum_recipient: state.accountnum_recipient,
-        name_recipient: state.name_recipient,
-        bank_name: state.bank_name,
+        ewallet_name: state.ewallet_name,
+        ewallet_account_name: state.ewallet_account_name,
+        ewallet_account: state.ewallet_account,
+        ewallet_id: state.ewallet_account_id,
         nominal: value.nominal,
         note: value.note,
       },
@@ -84,7 +88,7 @@ function EwalletInput() {
           aria-label="kembali ke halaman sebelumnya"
         >
           <Link
-            to="/ewallet"
+            to="/e-wallet"
             style={{
               textDecoration: "none",
               color: "inherit",
@@ -102,7 +106,7 @@ function EwalletInput() {
         </h1>
       </div>
       <Link
-        to="/ewallet"
+        to="/e-wallet"
         style={{
           textDecoration: "none",
           color: "inherit",
@@ -128,21 +132,21 @@ function EwalletInput() {
           aria-label={`Pesan Error ${errorMessage}`}
         >
           {errorMessage}{" "}
-          <button className="close" aria-label="tutup error" role="close">
-            X
-          </button>
+          <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+            setErrorMessage('')
+          }} />
         </div>
       ) : (
         ""
       )}
       <form method="POST" onSubmit={handleSubmit(submit)}>
         <CardHorizontal
-          type="ovo"
+          type={state.ewallet_name.toLowerCase()}
           className={"shadow p-0 border-0 outline"}
           aria-label="akun transfer terakhir"
           data={{
-            name_recipient: state.name_recipient,
-            bank_name: `Bank ${state.bank_name}`,
+            name_recipient: state.ewallet_account_name,
+            bank_name: state.ewallet_name,
           }}
         />
         <InputForm className={"d-flex my-4 form-check align-items-center"}>
@@ -185,6 +189,23 @@ function EwalletInput() {
             onWheel={(e) => e.target.blur()}
             required
             {...register("nominal")}
+          />
+        </InputForm>
+        <InputForm className={"my-4"}>
+          <InputForm.Label to="catatan" id="catatan-label">
+            <h4 className="fw-bold mb-3">
+              <span role="input" aria-label="Masukkan catatan">
+                Catatan
+              </span>
+            </h4>
+          </InputForm.Label>
+          <InputForm.TextArea
+            className="fz-input input"
+            placeholder="Masukkan catatan"
+            rows="6"
+            aria-labelledby="catatan-label"
+            required
+            {...register("note")}
           />
         </InputForm>
         {dataAmount != null ? (

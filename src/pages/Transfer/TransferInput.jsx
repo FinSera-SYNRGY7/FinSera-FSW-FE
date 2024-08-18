@@ -128,9 +128,9 @@ function TransferInput() {
           aria-label={`Pesan Error ${errorMessage}`}
         >
           {errorMessage}{" "}
-          <button className="close" aria-label="tutup error" role="close">
-            X
-          </button>
+          <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+            setErrorMessage('')
+          }} />
         </div>
       ) : (
         ""

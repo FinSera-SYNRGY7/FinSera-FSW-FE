@@ -4,7 +4,7 @@ import { PinInput } from "@/components/PinInput";
 import Layout from "@/layout/Layout";
 import Button from "@/components/Button";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useTransferBank } from "@/features/transferBank/useTransferBank";
+import { useEWallet } from "@/features/eWallet/useEWallet";
 import { useForm } from "react-hook-form";
 
 function EwalletPIN() {
@@ -16,48 +16,54 @@ function EwalletPIN() {
   const navigate = useNavigate();
 
   const { state } = useLocation();
+  
+  console.log(state)
 
   const lastTransferAct = ({
-    accountnum_recipient,
-    name_recipient,
-    bank_name,
+    ewallet_name,
+    ewallet_account_name,
+    ewallet_account,
+    ewallet_id,
   }) => {
     const getLastTransfers =
-      localStorage.getItem("last_transfers") == null
+      localStorage.getItem("last_transfer_e-wallets") == null
         ? []
-        : JSON.parse(localStorage.getItem("last_transfers"));
+        : JSON.parse(localStorage.getItem("last_transfer_e-wallets"));
 
     const cloneArr = [...getLastTransfers];
 
     if (
       getLastTransfers.findIndex(
-        (elem) => elem.accountnum_recipient == accountnum_recipient
+        (elem) => elem.ewallet_account == ewallet_account
       )
     ) {
       cloneArr.push({
-        accountnum_recipient,
-        name_recipient,
-        bank_name,
+        ewallet_name,
+        ewallet_account_name,
+        ewallet_account,
+        ewallet_id,
       });
     }
 
-    localStorage.setItem("last_transfers", JSON.stringify(cloneArr));
+    localStorage.setItem("last_transfer_e-wallets", JSON.stringify(cloneArr));
   };
 
-  const { mutate, isPending } = useTransferBank({
+  const { mutate, isPending } = useEWallet({
     onSuccess: (success, data) => {
       lastTransferAct({
-        accountnum_recipient: success.data.accountnum_recipient,
-        name_recipient: success.data.name_recipient,
-        bank_name: "BCA",
+        ewallet_name: state.ewallet_name,
+        ewallet_account_name: state.ewallet_account_name,
+        ewallet_account: state.ewallet_account,
+        ewallet_id: state.ewallet_id,
       });
 
-      navigate("/ewallet/success", {
+      navigate("/e-wallet/success", {
         state: {
-          transaction_date: success.data.transaction_date,
-          transaction_num: success.data.transaction_num,
-          accountnum_recipient: success.data.accountnum_recipient,
-          name_recipient: success.data.name_recipient,
+          transaction_date: success.data.transactionDate,
+          transaction_num: success.data.transactionNum,
+          accountnum_recipient: success.data.ewalletAccount,
+          name_recipient: success.data.ewalletAccountName,
+          ewallet_name: success.data.ewalletName, 
           nominal: success.data.nominal,
           note: success.data.note,
         },
@@ -70,7 +76,8 @@ function EwalletPIN() {
 
   const submit = (value) => {
     const data = {
-      accountnum_recipient: state.accountnum_recipient,
+      ewalletAccount: state.ewallet_account,
+      ewalletId: state.ewallet_id,
       nominal: state.nominal,
       note: state.note,
       pin: pinInput,
@@ -87,11 +94,12 @@ function EwalletPIN() {
           type="button"
           aria-label="kembali ke halaman sebelumnya"
           onClick={() => {
-            navigate("/ewallet/konfirmasi", {
+            navigate("/e-wallet/konfirmasi", {
               state: {
-                accountnum_recipient: state.accountnum_recipient,
-                name_recipient: state.name_recipient,
-                bank_name: state.bank_name,
+                ewallet_name: state.ewallet_name,
+                ewallet_account_name: state.ewallet_account_name,
+                ewallet_account: state.ewallet_account,
+                ewallet_id: state.ewallet_id,
                 nominal: state.nominal,
                 note: state.note,
               },
@@ -113,11 +121,12 @@ function EwalletPIN() {
         type="button"
         aria-label="kembali ke halaman sebelumnya"
         onClick={() => {
-          navigate("/ewallet/konfirmasi", {
+          navigate("/e-wallet/konfirmasi", {
             state: {
-              accountnum_recipient: state.accountnum_recipient,
-              name_recipient: state.name_recipient,
-              bank_name: state.bank_name,
+              ewallet_name: state.ewallet_name,
+              ewallet_account_name: state.ewallet_account_name,
+              ewallet_account: state.ewallet_account,
+              ewallet_id: state.ewallet_id,
               nominal: state.nominal,
               note: state.note,
             },
@@ -127,19 +136,19 @@ function EwalletPIN() {
         <i className="fa fa-arrow-left" />
         <span className="ms-20">Back</span>
       </Button>
-      {errorMessage != "" ? (
-        <div
-          className="alert alert-danger"
-          aria-label={`Pesan Error ${errorMessage}`}
-        >
-          {errorMessage}{" "}
-          <button className="btn-close" aria-label="tutup error" role="close">
-            X
-          </button>
-        </div>
-      ) : (
-        ""
-      )}
+        {errorMessage != "" ? (
+          <div
+            className="alert alert-danger alert-dismissible"
+            aria-label={`Pesan Error ${errorMessage}`}
+          >
+            {errorMessage}{" "}
+          <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+            setErrorMessage('')
+          }}/>
+          </div>
+        ) : (
+          ""
+        )}
       <form method="POST" onSubmit={handleSubmit(submit)}>
         <div
           className="row m-auto align-items-center text-center mb-5"

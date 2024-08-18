@@ -16,14 +16,15 @@ function EwalletConfirm() {
 
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
 
-  const toInputPinPage = (data) => {
-    navigate("/ewallet/input-pin", {
+  const toInputPinPage = () => {
+    navigate("/e-wallet/input-pin", {
       state: {
-        accountnum_recipient: data.accountnum_recipient,
-        name_recipient: state.name_recipient,
-        bank_name: state.bank_name,
-        nominal: data.nominal,
-        note: data.note,
+        ewallet_name: state.ewallet_name,
+        ewallet_account_name: state.ewallet_account_name,
+        ewallet_account: state.ewallet_account,
+        ewallet_id: state.ewallet_id,
+        nominal: state.nominal,
+        note: state.note,
       },
     });
   };
@@ -38,9 +39,10 @@ function EwalletConfirm() {
           onClick={() => {
             navigate("/ewallet/form-input", {
               state: {
-                accountnum_recipient: state.accountnum_recipient,
-                name_recipient: state.name_recipient,
-                bank_name: state.bank_name,
+                ewallet_name: state.ewallet_name,
+                ewallet_account_name: state.ewallet_account_name,
+                ewallet_account: state.ewallet_account,
+                ewallet_id: state.ewallet_id,
                 nominal: state.nominal,
                 note: state.note,
               },
@@ -63,11 +65,12 @@ function EwalletConfirm() {
         type="button"
         aria-label="kembali ke halaman sebelumnya"
         onClick={() => {
-          navigate("/ewallet/form-input", {
+          navigate("/e-wallet/form-input", {
             state: {
-              accountnum_recipient: state.accountnum_recipient,
-              name_recipient: state.name_recipient,
-              bank_name: state.bank_name,
+              ewallet_name: state.ewallet_name,
+              ewallet_account_name: state.ewallet_account_name,
+              ewallet_account: state.ewallet_account,
+              ewallet_id: state.ewallet_id,
               nominal: state.nominal,
               note: state.note,
             },
@@ -78,11 +81,11 @@ function EwalletConfirm() {
         <span className="ms-20">Back</span>
       </Button>
       <CardHorizontal
-        type="dana"
+        type={state.ewallet_name.toLowerCase()}
         className={"p-0 border-0 mb-3"}
         data={{
-          name_recipient: state.name_recipient,
-          bank_name: "Bank BCA",
+          name_recipient: state.ewallet_account_name,
+          bank_name: state.ewallet_name,
         }}
         aria-label="akun tujuan transfer"
       />
@@ -95,7 +98,7 @@ function EwalletConfirm() {
       <span role="label" aria-label="Jenis Transfer : Transfer Sesama Bank">
         <div className="row justify-content-between mb-3 mb-sm-5">
           <h5 className="col-auto">Jenis Transfer</h5>
-          <h5 className="fw-bold col-auto">Topup dana</h5>
+          <h5 className="fw-bold col-auto">TopUp {state.ewallet_name}</h5>
         </div>
       </span>
       <span role="label" aria-label="Catatan : Bayar Utang">
@@ -132,11 +135,7 @@ function EwalletConfirm() {
         type="button"
         aria-label="Lanjutkan"
         onClick={() =>
-          toInputPinPage({
-            accountnum_recipient: state.accountnum_recipient,
-            nominal: state.nominal,
-            note: state.note,
-          })
+          toInputPinPage()
         }
       >
         <h5 className="mb-0">Lanjutkan</h5>

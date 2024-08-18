@@ -12,6 +12,7 @@ function EwalletSuccess() {
       <div style={{ marginTop: "-20vh" }}></div>
       <CardVertical
         className={"shadow p-0 border-0 mb-5 px-1 px-md-5 success"}
+        typeTrx={`TopUp ${state.ewallet_name}`}
         data={{
           transaction_date: state.transaction_date,
           transaction_num: state.transaction_num,

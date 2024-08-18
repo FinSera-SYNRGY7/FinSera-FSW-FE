@@ -35,20 +35,13 @@ const Home = () => {
         }}
       >
         <div className={`${styles.containerHome} d-flex flex-column z-1`}>
-          {isLoadingAmount ? (
-            <div className="text-center w-100">
-              <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-              </Spinner>
-            </div>
-          ) : (
             <CardInfoSaldo
-              profile={dataAmount.username}
-              norek={dataAmount.accountNumber}
-              saldo={formatRupiah(dataAmount.amount.amount)}
+              profile={dataAmount?.username}
+              norek={dataAmount?.accountNumber}
+              saldo={formatRupiah(dataAmount?.amount.amount)}
               aria-label="Informasi Saldo Akun"
+              isLoading={isLoadingAmount}
             />
-          )}
         </div>
       </div>
       <div className={`d-flex ${styles.titleServiceMenu}`}>
@@ -84,7 +77,7 @@ const Home = () => {
           label="Virtual Account"
           navigation="/transfer-virtual-account"
         />
-        <ServiceMenu icon={wallet} label="E - Wallet" navigation="/ewallet" />
+        <ServiceMenu icon={wallet} label="E - Wallet" navigation="/e-wallet" />
         <ServiceMenu navigation="/qris" icon={QRIS} label="QRIS" />
       </div>
       <div

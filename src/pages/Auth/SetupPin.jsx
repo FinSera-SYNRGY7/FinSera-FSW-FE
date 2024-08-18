@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 
 import logoWhite from '@/assets/logo/logoWhite.svg'
@@ -29,6 +29,12 @@ const SetupPin = () => {
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
+    
+    useEffect(() => {
+      if(localStorage.getItem('auth_token') != null) {
+        navigate('/home')
+      }
+    },[])
 
     return (
         <Container fluid>

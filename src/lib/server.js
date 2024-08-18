@@ -31,10 +31,10 @@ httpServer.interceptors.response.use(
     if(error.response) {
       if(error.response.status == 403 || error.response.status == 401) {
         const pinAppLock = localStorage.getItem('pin_app_lock')
+        localStorage.removeItem('auth_token')
+        localStorage.removeItem('auth_name')
+        
         if(pinAppLock == null) {
-          localStorage.removeItem('auth_token')
-          localStorage.removeItem('auth_name')
-          
           globalNavigate('/')
         } else {
           globalNavigate('/relog')

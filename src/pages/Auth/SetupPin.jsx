@@ -31,7 +31,7 @@ const SetupPin = () => {
     };
     
     useEffect(() => {
-      if(localStorage.getItem('auth_token') != null) {
+      if(localStorage.getItem('pin_app_lock') != null) {
         navigate('/home')
       }
     },[])
@@ -77,6 +77,7 @@ const SetupPin = () => {
                           }}
                           name="pin"
                           ariaLabel="Pin Input"
+                          inputMode="numeric"
                           onChange={(value) => {
                             handlePinSubmit(value);
                           }}

@@ -35,7 +35,7 @@ const ConfirmSetupPin = () => {
     };
     
     useEffect(() => {
-      if(localStorage.getItem('auth_token') != null) {
+      if(localStorage.getItem('pin_app_lock') != null) {
         navigate('/home')
       }
     },[])
@@ -75,6 +75,7 @@ const ConfirmSetupPin = () => {
                           type="numeric"
                           focus
                           secret
+                          inputMode="numeric"
                           style={{
                             display: "flex",
                             justifyContent: "space-evenly",

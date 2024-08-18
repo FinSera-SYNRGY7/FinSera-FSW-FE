@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { useForm } from "react-hook-form"
 import { useNavigate } from "react-router-dom"
 import { useLogin } from "@/features/auth/useLogin"
@@ -10,7 +10,6 @@ import logoBlue from '@/assets/logo/logoBlue.svg'
 import login from '@/assets/img/login.svg'
 import { FormInput } from '@/components/FormInput.jsx'
 import Button from 'react-bootstrap/Button'
-import Alert from "react-bootstrap/Alert"
 import styles from "@/assets/css/Login.module.css"
 
 const Login = () => {
@@ -40,16 +39,14 @@ const Login = () => {
         onError: (error) => {
             setIsError(true)
             setErrorMessage(error.response.data.message)
-            if (error.response.data.field === 'username') {
+            if (error.response.data.message === 'Username or Password is invalid') {
                 setUsernameError(true)
-                setErrorMessage("Username yang Anda masukkan salah!")
-            } else if (error.response.data.field === 'password') {
                 setPasswordError(true)
-                setErrorMessage("Password yang Anda masukkan salah!")
+                setErrorMessage("Username atau password yang Anda masukkan salah!")
+            } else if (error.response.data.message === 'Your account is inactive') {
+                setErrorMessage("Akun anda tidak aktif!")
             } else {
-                setUsernameError(true)
-                setPasswordError(true)
-                setErrorMessage("Username dan password yang Anda masukkan salah!")
+                setErrorMessage("Ada masalah pada server!")
             }
         },
     })

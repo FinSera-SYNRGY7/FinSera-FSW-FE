@@ -1,70 +1,23 @@
-import React, { useState } from "react"
 import moment from 'moment'
 import Layout from "@/layout/Layout"
-import { CardMutation } from "@/components/Card"
-import FilterDate from "@/components/FilterDate"
-import imgEmptyData from "@/assets/img/No data-pana 1.png"
 import styles from "@/assets/css/AccountMutation.module.css"
-import { ButtonAlt, ButtonIcon } from "@/components/ButtonAlt"
-import { useNavigate } from "react-router-dom"
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown"
 import Spinner from "react-bootstrap/Spinner"
-import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
-import { useQuery } from "@tanstack/react-query";
+import imgEmptyData from "@/assets/img/No data-pana 1.png"
+import { useState } from "react"
+import { PopupDate } from "@/components/PopUp"
 import { httpServer } from "@/lib/server";
-import { formatRupiah, formatDateYMD, formatDateIndo, formatTimeIndo, checkTypeTransaction, minusOneMonth, minusOneWeek } from "@/lib/utils"
+import { useNavigate } from "react-router-dom"
+import { CardMutation } from "@/components/Card"
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount"
 import { useMutationBank } from '@/features/mutationBank/useMutationBank'
+import { ButtonAlt, ButtonIcon } from "@/components/ButtonAlt"
+import { formatRupiah, formatDateIndo, formatTimeIndo, checkTypeTransaction, minusOneMonth, minusOneWeek } from "@/lib/utils"
 
 const AccountMutation = () => {
-  const [startRangeDate, setStartRangeDate] = useState("");
-  const [endRangeDate, setEndRangeDate] = useState("");
   const [dataFilterDate, setDataFilterDate] = useState({})
-  const [selectedOption, setSelectedOption] = useState("");
-  const [emptyData, setEmptyData] = useState(false);
+  const [showDateRangePopup, setShowDateRangePopup] = useState(false);
   const navigate = useNavigate();
-
-  const handleOptionSelect = (value) => {
-    setSelectedOption(value)
-    console.log("Selected option:", value)
-  }
-
-  const handleEmptyData = () => {
-    setEmptyData(true)
-  }
-
-  const handleStartDate = (date) => {
-    setStartRangeDate(formatDateYMD(date));
-    if(startRangeDate != "" && endRangeDate != "") {
-      setDataFilterDate({})
-      setDataFilterDate({
-        startDate: startRangeDate,
-        endDate: endRangeDate,
-        page: 1,
-        size: 20
-      })
-      // console.log("filter Start Range Date", startRangeDate)
-      // console.log("filter End Range Date", endRangeDate)
-      // console.log("cek data FilterDate", dataFilterDate)
-      refetchAccountMutation()
-    }
-  };
-
-  const handleEndDate = (date) => {
-    setEndRangeDate(formatDateYMD(date));
-    if(startRangeDate != "" && endRangeDate != "") {
-      setDataFilterDate({})
-      setDataFilterDate({
-        startDate: startRangeDate,
-        endDate: endRangeDate,
-        page: 1,
-        size: 20
-      })
-      // console.log("filter Start Range Date", startRangeDate)
-      // console.log("filter End Range Date", endRangeDate)
-      // console.log("cek data FilterDate", dataFilterDate)
-      refetchAccountMutation()
-    }
-  };
 
   const handleButtonBack = () => {
     navigate("/home")
@@ -112,38 +65,23 @@ const AccountMutation = () => {
   const handleDownload = async () => {
     try {
       const requestDownload = await httpServer.get('/api/v1/mutasi/download', {
-        responseType: 'blob', // Important for downloading files
+        responseType: 'blob',
         params: dataFilterDate
       });
   
       const url = window.URL.createObjectURL(new Blob([requestDownload.data]));
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `Mutasi Rekening ${dataAmount.accountNumber}.pdf`); // Or any desired filename
+      link.setAttribute('download', `Mutasi Rekening ${dataAmount.accountNumber}.pdf`);
       document.body.appendChild(link);
       link.click();
   
-      // Clean up
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error downloading file:', error);
     }
   };
-
-  const options = [
-    { value: "action1", label: "Action 1" },
-    { value: "action2", label: "Action 2" },
-    { value: "action3", label: "Action 3" },
-  ]
-
-  // const fetchAccountMutation = async() => {
-  //   const request = await httpServer.get('/api/v1/mutasi',{
-  //     params: dataFilterDate
-  //   })
-    
-  //   return request.data.data
-  // }
   
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
   const { 
@@ -187,6 +125,46 @@ const AccountMutation = () => {
     })
   }
 
+  const handlePopupDateRange = (e) => {
+    e.preventDefault();
+    setShowDateRangePopup(true);
+  };
+
+  const handleClosePopupDateRange = () => {
+    setShowDateRangePopup(false);
+  };
+
+  const BulanOptions = [
+    { value: '01', label: 'Januari' },
+    { value: '02', label: 'Februari' },
+    { value: '03', label: 'Maret' },
+    { value: '04', label: 'April' },
+    { value: '05', label: 'Mei' },
+    { value: '06', label: 'Juni' },
+    { value: '07', label: 'Juli' },
+    { value: '08', label: 'Agustus' },
+    { value: '09', label: 'September' },
+    { value: '10', label: 'Oktober' },
+    { value: '11', label: 'November' },
+    { value: '12', label: 'Desember' }
+  ];
+
+  const handleConfirmDateRange = (dateRange) => {
+    const startRangeDate = `${dateRange.startYear}-${dateRange.startMonth.value}-${dateRange.startDate}`
+    const endRangeDate = `${dateRange.endYear}-${dateRange.endMonth.value}-${dateRange.endDate}`
+    setDataFilterDate({})
+    setDataFilterDate({
+      startDate: startRangeDate,
+      endDate: endRangeDate,
+      page: 1,
+      size: 20
+    })
+    // console.log("cek startRangeDate", startRangeDate)
+    // console.log("cek endRangeDate", endRangeDate)
+    // console.log("Selected Date Range:", dateRange);
+    refetchAccountMutation()
+  };
+
   return (
     <Layout>
       <div className={`d-flex flex-column ${styles.containerMutation}`}>
@@ -216,8 +194,6 @@ const AccountMutation = () => {
               </Spinner>
           ) : (
           <DropdownSumberRekening
-            options={options}
-            onOptionSelect={handleOptionSelect}
             title="Sumber Rekening"
             subtitle={dataAmount.accountNumber}
             className="dropdownSumberRekening"
@@ -248,11 +224,11 @@ const AccountMutation = () => {
               variant="btnAltSecondary"
               aria-label="Filter 1 Bulan"
             />
-            <FilterDate
-              startDate={startRangeDate}
-              endDate={endRangeDate}
-              onStartDateChange={handleStartDate}
-              onEndDateChange={handleEndDate}
+            <ButtonAlt
+              label="Tanggal"
+              onClick={(e) => handlePopupDateRange(e)}
+              variant="btnAltSecondary"
+              aria-label="Filter Rentang Tanggal"
             />
           </div>
           <div className={`${styles.section2}`}>
@@ -296,7 +272,6 @@ const AccountMutation = () => {
                 />
               </div>
             </>
-              // <h1>render Mutation</h1>
             ) : (
               <div className={styles.emptyData}>
                 <img
@@ -312,6 +287,9 @@ const AccountMutation = () => {
           )}
         </div>
       </div>
+      {showDateRangePopup && (
+        <PopupDate handleClosePopup={handleClosePopupDateRange} options={BulanOptions} handleConfirmDate={handleConfirmDateRange} />
+      )}
     </Layout>
   )
 }

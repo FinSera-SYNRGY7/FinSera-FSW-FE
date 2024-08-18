@@ -32,7 +32,8 @@ import TransferPIN from "@/pages/Transfer/TransferPIN";
 import Account from "@/pages/ProfileAccount/Account";
 import Profile from "@/pages/ProfileAccount/Profile";
 import ChangePin from "@/pages/ProfileAccount/ChangePin";
-import QRIS from "@/pages/QRIS/Main";
+import QRIS from '@/pages/QRIS/Main';
+import Notification from '@/pages/Notification/Main';
 
 import VirtualAccountTransfer from "@/pages/VirtualAccount/Main";
 import VirtualAccountTfCheck from "@/pages/VirtualAccount/VirtualAccountTfCheck";
@@ -113,6 +114,7 @@ function App() {
       <Route path="/account" element={<Account />} />
       <Route path="/ubah-pin" element={<ChangePin />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/notification" element={<Notification />} />
     </Routes>
   );
 }

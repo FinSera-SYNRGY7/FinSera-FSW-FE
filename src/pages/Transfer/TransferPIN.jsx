@@ -152,6 +152,7 @@ function TransferPIN() {
           <Pininput
             length={6}
             type="numeric"
+            inputMode="numeric"
             focus
             secret
             style={{

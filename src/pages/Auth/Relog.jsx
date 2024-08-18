@@ -91,6 +91,7 @@ const Relog = () => {
                           type="numeric"
                           focus
                           secret
+                          inputMode="numeric"
                           style={{
                             display: "flex",
                             justifyContent: "space-evenly",

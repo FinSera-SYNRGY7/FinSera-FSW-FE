@@ -61,35 +61,23 @@ export default function InfoSaldo() {
                             aria-label="Beranda"
                         />
                     </div>
-                    {isLoadingAmount ? (
-                        <Spinner animation="border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </Spinner>
-                    ) : (
-                        <DropdownSumberRekening
-                            options={options}
-                            onOptionSelect={handleOptionSelect}
-                            title="Sumber Rekening"
-                            subtitle={dataAmount.accountNumber}
-                            className="dropdownSumberRekening"
-                            aria-labelledby="dropdownSumberRekeningTitle"
-                        />
-                    )}
+                      <DropdownSumberRekening
+                          options={options}
+                          onOptionSelect={handleOptionSelect}
+                          title="Sumber Rekening"
+                          subtitle={dataAmount?.accountNumber}
+                          isLoading={isLoadingAmount}
+                          className="dropdownSumberRekening"
+                          aria-labelledby="dropdownSumberRekeningTitle"
+                      />
                 </div>
-                {isLoadingAmount ? (
-                    <div className="text-center w-100">
-                        <Spinner animation="border" role="status">
-                            <span className="visually-hidden">Loading...</span>
-                        </Spinner>
-                    </div>
-                ) : (
-                    <CardInfoSaldo
-                        profile={dataAmount.username}
-                        norek={dataAmount.accountNumber}
-                        saldo={formatRupiah(dataAmount.amount.amount)}
-                        aria-label="Informasi Saldo Akun"
-                    />
-                )}
+                <CardInfoSaldo
+                  profile={dataAmount?.username}
+                  norek={dataAmount?.accountNumber}
+                  saldo={formatRupiah(dataAmount?.amount.amount)}
+                  aria-label="Informasi Saldo Akun"
+                  isLoading={isLoadingAmount}
+                />
             </div>
         </Layout>
     )

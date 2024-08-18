@@ -5,6 +5,7 @@ import "./DropdownStyle.css"
 const DropdownSumberRekening = ({
     title,
     subtitle,
+    isLoading = false
 }) => {
     return (
         <Dropdown style={{ display: "flex" }}>
@@ -26,9 +27,15 @@ const DropdownSumberRekening = ({
                         <div className="title">
                             {title}
                         </div>
-                        <div className="subtitle">
-                            {subtitle}
-                        </div>
+                        {
+                          isLoading ?  
+                          <div className="subtitle placeholder-glow" role="status">
+                            <span className="placeholder col-7" aria-label="Loading..." />
+                          </div> : 
+                          <div className="subtitle">
+                              {subtitle}
+                          </div> 
+                        }
                     </div>
                     <i className="text-black dropdownRek"></i>
                 </div>

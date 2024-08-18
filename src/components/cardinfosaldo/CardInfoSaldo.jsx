@@ -25,8 +25,8 @@ function CardInfoSaldo({ profile, saldo, norek, isLoading = false }) {
                 <div className="col-10">
                     {
                       isLoading ? 
-                      <div className={`px-md-5 px-4 py-md-4 pt-3 ${styles.cardName} placeholder-glow`}>
-                        <h3 className={`${styles.textUser}`}><span aria-label="Hi {profile}">Hi, </span> <span className='placeholder col-4' /></h3>
+                      <div className={`px-md-5 px-4 py-md-4 pt-3 ${styles.cardName} placeholder-glow`} role='status'>
+                        <h3 className={`${styles.textUser}`}><span aria-label="Hi {profile}">Hi, </span> <span className='placeholder col-4' aria-label='Loading...' /></h3>
                       </div> : 
                       <div className={`px-md-5 px-4 py-md-4 pt-3 ${styles.cardName}`}>
                           <h3 className={`${styles.textUser}`}><span aria-label="Hi {profile}">Hi, {profile}</span></h3>
@@ -36,10 +36,10 @@ function CardInfoSaldo({ profile, saldo, norek, isLoading = false }) {
                         <h6 className={`${styles.text}`}>Saldo Aktif</h6>
                         {
                           isLoading ? 
-                          <div className={`${styles.textAmountBalance} d-flex flex-row align-items-center placeholder-glow`}>
+                          <div className={`${styles.textAmountBalance} d-flex flex-row align-items-center placeholder-glow`} role='status'>
                             <span className="placeholder col-7" style={{
                               height:'50px'
-                            }}></span>
+                            }} aria-label="Loading..." />
                           </div> : 
                           <div className={`${styles.textAmountBalance} d-flex flex-row align-items-center`}>
                               {isBalanceVisible ? (
@@ -76,9 +76,9 @@ function CardInfoSaldo({ profile, saldo, norek, isLoading = false }) {
                     </div>
                     {
                       isLoading ? 
-                      <div className="px-md-5 px-4 d-flex align-items-center placeholder-glow">
-                        <span className={`${styles.bgLogoMastercard} placeholder col-7 mt-5`}></span>
-                        <h2 className={`${styles.textNoRek}`}><span className="placeholder col-7"></span></h2>
+                      <div className="px-md-5 px-4 d-flex align-items-center placeholder-glow" role='status'>
+                        <span className={`${styles.bgLogoMastercard} placeholder col-7 mt-5`} aria-label="Loading..." />
+                        <h2 className={`${styles.textNoRek}`}><span className="placeholder col-7" aria-label="Loading..." /></h2>
                       </div> : 
                       <div className="px-md-5 px-4 d-flex align-items-center">
                           <img src={mastercard} alt="" className={`${styles.bgLogoMastercard}`} />

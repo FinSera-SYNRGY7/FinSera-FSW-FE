@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "@/layout/Layout";
 import InputForm from "@/components/Input/index";
 import Button from "@/components/Button/index";
@@ -15,7 +15,7 @@ const InterbackTfInput = () => {
   
   const { data:dataAmount, isLoading:isLoadingAmount } = useInfoAmount()
   
-  const { register, handleSubmit } = useForm()
+  const { register, handleSubmit, setValue } = useForm()
   
   const { state } = useLocation()
   const navigate = useNavigate()
@@ -68,6 +68,16 @@ const InterbackTfInput = () => {
       }
     })
   }
+  
+  useEffect(() => {
+    if(state?.nominal !== undefined) {
+      setValue('nominal', state?.nominal)
+    }
+    
+    if(state?.note !== undefined) {
+      setValue('note', state?.note)
+    }
+  },[])
 
     return (
         <Layout className={"haveStyle"}>
@@ -118,13 +128,14 @@ const InterbackTfInput = () => {
           </Link>
           {errorMessage != "" ? (
             <div
-              className="alert alert-danger"
+              className="alert alert-danger alert-dismissible"
               aria-label={`Pesan Error ${errorMessage}`}
+              role="alert"
             >
               {errorMessage}{" "}
-              <button className="close" aria-label="tutup error" role="close">
-                X
-              </button>
+              <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+                setErrorMessage('')
+              }} />
             </div>
           ) : (
             ""

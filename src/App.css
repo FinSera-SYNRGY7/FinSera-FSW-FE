@@ -13,6 +13,29 @@ a, p, h1, h2, h3, h4, h5, h6 {
   background-color: #0066AE !important;
 }
 
+.ovo-color {
+  background-color: #4C3494 !important;
+  ;
+}
+
+.gopay-color {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dana-color {
+  background-color: #108EE9 !important;
+}
+
+.paypal-color {
+  background-color: #FFFFFF !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.spay-color {
+  background-color: #F0592C !important;
+}
+
 .logo {
   height: 5em;
   padding: 1.5em;
@@ -132,6 +155,20 @@ input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-in
   display: none !important;
 }
 
+
+/* select date month */
+.selectMonth {
+  width: 30%;
+  max-height: 56px !important;
+}
+.selectMonth .css-hlgwow{
+  padding-left: 1.5rem !important;
+  font-size: 16px;
+}
+.selectMonth .css-1nmdiq5-menu {
+  padding-left: 0 !important;
+}
+
   /* mediaquery tablet */
   @media only screen and (max-width: 900px) {
 
@@ -173,5 +210,18 @@ input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-in
   }
   .css-1nmdiq5-menu {
     padding: 0.375rem 0.75rem !important;
+  }
+
+    /* select date month */
+  .selectMonth {
+    width: 37%;
+    max-height: 56px !important;
+  }
+  .selectMonth .css-hlgwow{
+    padding-left: 0.25rem !important;
+    font-size: 12px;
+  }
+  .selectMonth .css-1nmdiq5-menu {
+    padding-left: 0 !important;
   }
 }

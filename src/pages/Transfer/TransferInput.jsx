@@ -8,15 +8,15 @@ import { useForm } from "react-hook-form";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import { formatRupiah } from "@/lib/utils";
 
-function Transfer() {
+function TransferInput() {
   const navigate = useNavigate();
   const { state } = useLocation();
 
-  const { register, isPending, handleSubmit } = useForm();
+  const { register, isPending, handleSubmit, setValue } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false);
 
-  const { data: dataAmount, isLoading:isLoadingAmount } = useInfoAmount();
+  const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
 
   const saveContactAct = ({
     accountnum_recipient,
@@ -64,6 +64,16 @@ function Transfer() {
       },
     });
   };
+
+  useEffect(() => {
+    if (state?.nominal !== undefined) {
+      setValue("nominal", state?.nominal);
+    }
+
+    if (state?.note !== undefined) {
+      setValue("note", state?.note);
+    }
+  }, []);
 
   return (
     <Layout className={"haveStyle"}>
@@ -118,9 +128,9 @@ function Transfer() {
           aria-label={`Pesan Error ${errorMessage}`}
         >
           {errorMessage}{" "}
-          <button className="close" aria-label="tutup error" role="close">
-            X
-          </button>
+          <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+            setErrorMessage('')
+          }} />
         </div>
       ) : (
         ""
@@ -150,12 +160,12 @@ function Transfer() {
             </p>
           </InputForm.Label>
         </InputForm>
-        <CardInfoSaldo 
+        <CardInfoSaldo
           className={"shadow p-0 border-0 mb-5"}
           first="col-1"
           second="col-2"
           data={{
-            amount: isLoadingAmount ? null : dataAmount.amount.amount
+            amount: isLoadingAmount ? null : dataAmount.amount.amount,
           }}
         />
         <InputForm className={"my-4"}>
@@ -217,4 +227,4 @@ function Transfer() {
   );
 }
 
-export default Transfer;
+export default TransferInput;

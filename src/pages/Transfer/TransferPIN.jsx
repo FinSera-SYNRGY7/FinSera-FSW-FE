@@ -16,38 +16,42 @@ function TransferPIN() {
   const navigate = useNavigate();
 
   const { state } = useLocation();
-  
+
   const lastTransferAct = ({
     accountnum_recipient,
     name_recipient,
-    bank_name
+    bank_name,
   }) => {
-    const getLastTransfers = localStorage.getItem('last_transfers') == null ? [] : JSON.parse(localStorage.getItem('last_transfers'))
-    
-    const cloneArr = [...getLastTransfers]
-    
-    if (getLastTransfers.findIndex((elem) => elem.accountnum_recipient == accountnum_recipient)) {
-      cloneArr.push(
-        {
-          accountnum_recipient,
-          name_recipient,
-          bank_name
-        }
+    const getLastTransfers =
+      localStorage.getItem("last_transfers") == null
+        ? []
+        : JSON.parse(localStorage.getItem("last_transfers"));
+
+    const cloneArr = [...getLastTransfers];
+
+    if (
+      getLastTransfers.findIndex(
+        (elem) => elem.accountnum_recipient == accountnum_recipient
       )
+    ) {
+      cloneArr.push({
+        accountnum_recipient,
+        name_recipient,
+        bank_name,
+      });
     }
-    
-    localStorage.setItem('last_transfers', JSON.stringify(cloneArr))
-  }
+
+    localStorage.setItem("last_transfers", JSON.stringify(cloneArr));
+  };
 
   const { mutate, isPending } = useTransferBank({
     onSuccess: (success, data) => {
-      
       lastTransferAct({
         accountnum_recipient: success.data.accountnum_recipient,
         name_recipient: success.data.name_recipient,
-        bank_name:'BCA'
-      })
-      
+        bank_name: "BCA",
+      });
+
       navigate("/transfer-sesama-bank/success", {
         state: {
           transaction_date: success.data.transaction_date,
@@ -77,11 +81,22 @@ function TransferPIN() {
 
   return (
     <Layout className={"haveStyle"}>
-      <div className="d-flex align-items-baseline tp-5">
+      <div className="d-flex align-items-baseline pt-5">
         <Button
           className="d-sm-none p-0"
           type="button"
           aria-label="kembali ke halaman sebelumnya"
+          onClick={() => {
+            navigate("/transfer-sesama-bank/konfirmasi", {
+              state: {
+                accountnum_recipient: state.accountnum_recipient,
+                name_recipient: state.name_recipient,
+                bank_name: state.bank_name,
+                nominal: state.nominal,
+                note: state.note,
+              },
+            });
+          }}
         >
           <i className="fa fa-arrow-left" />
         </Button>
@@ -97,19 +112,31 @@ function TransferPIN() {
         }
         type="button"
         aria-label="kembali ke halaman sebelumnya"
+        onClick={() => {
+          navigate("/transfer-sesama-bank/konfirmasi", {
+            state: {
+              accountnum_recipient: state.accountnum_recipient,
+              name_recipient: state.name_recipient,
+              bank_name: state.bank_name,
+              nominal: state.nominal,
+              note: state.note,
+            },
+          });
+        }}
       >
         <i className="fa fa-arrow-left" />
         <span className="ms-20">Back</span>
       </Button>
       {errorMessage != "" ? (
         <div
-          className="alert alert-danger"
+          className="alert alert-danger alert-dismissible"
           aria-label={`Pesan Error ${errorMessage}`}
+          role="alert"
         >
           {errorMessage}{" "}
-          <button className="btn-close" aria-label="tutup error" role="close">
-            X
-          </button>
+          <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+            setErrorMessage('')
+          }} />
         </div>
       ) : (
         ""

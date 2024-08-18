@@ -1,0 +1,118 @@
+.title h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 12rem;
+    margin-bottom: 40px;
+}
+
+.container {
+    margin-top: 30px;
+    position: relative;
+}
+
+.blueBox {
+    position: absolute;
+    top: 310px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 158px;
+    background-color: rgba(228, 237, 255, 0.5);
+    filter: blur(4px);
+    box-shadow: 5px 5px 40px rgba(228, 237, 255, 0.5);
+    border-radius: 10px;
+    z-index: -10;
+}
+
+.leftColumn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
+  
+  .imageContainer {
+    max-width: 100%;
+  }
+  
+  .qrImage {
+    max-width: 100%;
+    max-height: 373px;
+  }
+  
+  .rightColumn {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+  }
+  
+  .qrisLogo {
+    align-self: center;
+    max-width: 100px;
+    margin-bottom: 1rem;
+  }
+  
+  .contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+  }
+  
+  .description {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 0rem;
+    font-weight: 700;
+    text-align: center;
+  }
+  
+  .qrCodeWrapper {
+    max-width: 227px;
+    margin: 0 auto;
+  }
+  
+  @media (max-width: 768px) {
+    .back {
+      margin-top: 3rem;
+      width: 16px;
+      height: auto;
+    }
+    .title h1 {
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 700;
+        margin-top: -1rem;
+        margin-bottom: 2rem;
+    }
+    .leftColumn {
+        display: none;
+    }
+    .rightColumn {
+        padding: 0rem;
+      }
+    .container {
+        margin-top: -10px;
+        position: relative;
+    }
+    .qrImage {
+        display: none;
+    }
+    .qrisLogo {
+      margin-top: 20px;
+        max-width: 62px;
+      }
+    .description {
+        max-width: 100%;
+        font-size: 4px;
+    }
+    .blueBox {
+        margin-top: -40px;
+        max-width: 100vw;
+        height: 15vh;
+    }
+    .qrCodeWrapper {
+        max-width: 157px;
+      }
+  }

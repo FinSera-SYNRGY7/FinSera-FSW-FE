@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 
 import logoWhite from '@/assets/logo/logoWhite.svg'
@@ -49,6 +49,12 @@ const Relog = () => {
     const showError = () => {
         setIsError(true);
     };
+    
+    useEffect(() => {
+      if(localStorage.getItem('auth_token') != null) {
+        navigate('/home')
+      }
+    },[])
 
     return (
         <Container fluid>
@@ -97,6 +103,7 @@ const Relog = () => {
                         />
                         <a href="#" onClick={() => {
                           localStorage.removeItem('pin_app_lock')
+                          localStorage.removeItem('auth_token')
                           navigate('/')
                         }} className={styles.forgotPIN} aria-label="Lupa PIN?">Lupa PIN?</a>
                         <Button className={styles.loginButton} disabled={ isPending } type="submit" onClick={loginAct}>

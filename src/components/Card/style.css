@@ -1,10 +1,41 @@
 .circle {
     width: 50px;
     height: 50px;
-    background-color: #0066AE;
     border-radius: 100%;
     display: flex;
   }
+
+  .circle img {
+    margin: auto;
+    width: 80%;
+  }
+
+.base-color {
+    background-color: #0066AE;
+  }
+
+.ovo-color {
+    background-color: #4C3494;
+    ;
+}
+
+.gopay-color {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.dana-color {
+    background-color: #108EE9;
+}
+
+.paypal-color {
+    background-color: #FFFFFF;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.spay-color {
+    background-color: #F0592C;
+}
   
   .text {
     color: white;

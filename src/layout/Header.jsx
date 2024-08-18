@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -39,11 +39,10 @@ const Header = ({ type }) => {
 
   const handleConfirmLogout = () => {
     const pinAppLock = localStorage.getItem('pin_app_lock')
+    localStorage.removeItem("auth_token");
     if (pinAppLock != null) { 
       navigate('/relog')
     } else {
-      localStorage.removeItem("auth_token");
-      localStorage.removeItem("auth_refresh_token");
       navigate("/login");
     }
     setShowLogoutPopup(false);
@@ -52,6 +51,17 @@ const Header = ({ type }) => {
   const handleSearch = (query) => {
     console.log("Search query:", query);
   };
+  
+  useEffect(() => {
+    if(localStorage.getItem('auth_token') == null) {
+      const pinAppLock = localStorage.getItem('pin_app_lock')
+      if (pinAppLock != null) { 
+        navigate('/relog')
+      } else {
+        navigate("/login");
+      }
+    }
+  },[])
 
   return (
     <>

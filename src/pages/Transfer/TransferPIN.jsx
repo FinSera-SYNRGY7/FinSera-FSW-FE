@@ -129,13 +129,14 @@ function TransferPIN() {
       </Button>
       {errorMessage != "" ? (
         <div
-          className="alert alert-danger"
+          className="alert alert-danger alert-dismissible"
           aria-label={`Pesan Error ${errorMessage}`}
+          role="alert"
         >
           {errorMessage}{" "}
-          <button className="btn-close" aria-label="tutup error" role="close">
-            X
-          </button>
+          <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+            setErrorMessage('')
+          }} />
         </div>
       ) : (
         ""

@@ -11,7 +11,7 @@ import logoGopay from "@/assets/logo/logoGopay.svg";
 import logoPaypal from "@/assets/logo/logoPaypal.svg";
 import logoShopeePay from "@/assets/logo/logoShopeePay.svg";
 
-export const CardVertical = ({ className, children, data, ...rest }) => {
+export const CardVertical = ({ className, children, data, typeTrx = 'Transfer Sesama Bank', ...rest }) => {
   const date = new Date().toLocaleDateString();
 
   const layoutRef = useRef(null);
@@ -22,7 +22,7 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
 
   const download = (
     image,
-    { name = `TRANSFER-SESAMA-BANK-${date}`, extension = "jpg" } = {}
+    { name = `${typeTrx.toUpperCase()}-${date}`, extension = "jpg" } = {}
   ) => {
     const a = document.createElement("a");
     a.href = image;
@@ -79,7 +79,7 @@ export const CardVertical = ({ className, children, data, ...rest }) => {
             >
               <div className="row justify-content-between mb-3 mb-sm-5">
                 <h5 className="col-auto">Jenis Transaksi</h5>
-                <h5 className="fw-bold col-auto">Transfer Sesama Bank</h5>
+                <h5 className="fw-bold col-auto">{ typeTrx }</h5>
               </div>
             </span>
             <span role="label" aria-label={`Jumlah : ${data.nominal}`}>

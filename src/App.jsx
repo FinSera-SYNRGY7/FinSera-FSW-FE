@@ -100,13 +100,13 @@ function App() {
         <Route path="success" element={<VirtualAccountTfSuccess />} />
         <Route path="error" element={<VirtualAccountTfError />} />
       </Route>
-      <Route path="/ewallet">
+      <Route path="/e-wallet">
         <Route index element={<Ewallet />} />
+        <Route path="pilih" element={<EwalletChoose />} />
         <Route path="check" element={<EwalletCheck />} />
         <Route path="form-input" element={<EwalletInput />} />
         <Route path="konfirmasi" element={<EwalletConfirm />} />
         <Route path="input-pin" element={<EwalletPIN />} />
-        <Route path="choose" element={<EwalletChoose />} />
         <Route path="success" element={<EwalletSuccess />} />
         <Route path="error" element={<EwalletError />} />
       </Route>

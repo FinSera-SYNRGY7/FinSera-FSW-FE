@@ -9,9 +9,9 @@ import notransferdata from "@/assets/img/notransferdata.png";
 function Ewallet() {
   const navigate = useNavigate();
 
-  const listContacts = localStorage.getItem("list_contacts");
+  const listContacts = localStorage.getItem("list_contact_e-wallets");
 
-  const lastTransfers = localStorage.getItem("last_transfers");
+  const lastTransfers = localStorage.getItem("last_transfer_e-wallets");
 
   return (
     <Layout className="haveStyle">
@@ -62,7 +62,7 @@ function Ewallet() {
           </Button>
         </Link>
         <Link
-          to="/ewallet/check"
+          to="/e-wallet/pilih"
           className="m-0"
           style={{
             textDecoration: "none",
@@ -97,12 +97,12 @@ function Ewallet() {
                 {index >= 0 && index <= 1 ? (
                   <div className="flex-fill">
                     <CardHorizontal
-                      type="ovo"
+                      type={value.ewallet_name.toLowerCase()}
                       className={"shadow p-0 border-0 outline"}
                       aria-label="akun transfer terakhir"
                       data={{
-                        name_recipient: value.name_recipient,
-                        bank_name: `Bank ${value.bank_name}`,
+                        name_recipient: value.ewallet_account_name,
+                        bank_name: value.ewallet_name,
                       }}
                     />
                   </div>
@@ -112,12 +112,12 @@ function Ewallet() {
                 {index == 2 ? (
                   <div className="d-none d-md-block flex-fill">
                     <CardHorizontal
-                      type="dana"
+                      type={value.ewallet_name.toLowerCase()}
                       className={"shadow p-0 border-0 outline"}
                       aria-label="akun transfer terakhir"
                       data={{
-                        name_recipient: value.name_recipient,
-                        bank_name: `Bank ${value.bank_name}`,
+                        name_recipient: value.ewallet_account_name,
+                        bank_name: value.ewallet_name,
                       }}
                     />
                   </div>
@@ -127,12 +127,12 @@ function Ewallet() {
                 {index == 3 ? (
                   <div className="d-none d-lg-block flex-fill">
                     <CardHorizontal
-                      type="gopay"
+                      type={value.ewallet_name.toLowerCase()}
                       className={"shadow p-0 border-0 outline"}
                       aria-label="akun transfer terakhir"
                       data={{
-                        name_recipient: value.name_recipient,
-                        bank_name: `Bank ${value.bank_name}`,
+                        name_recipient: value.ewallet_account_name,
+                        bank_name: value.ewallet_name,
                       }}
                     />
                   </div>
@@ -149,21 +149,22 @@ function Ewallet() {
       {listContacts != null ? (
         JSON.parse(listContacts).map((value, index) => (
           <CardHorizontal
-            type="shopeepay"
+            type={value.ewallet_name.toLowerCase()}
             key={index}
             className={"shadow p-0 border-0 mb-3 outline"}
             role="button"
             aria-label="akun transfer tersimpan"
             data={{
-              name_recipient: value.name_recipient,
-              bank_name: `Bank ${value.bank_name}`,
+              name_recipient: value.ewallet_account_name,
+              bank_name: value.ewallet_name,
             }}
             onClick={() => {
-              navigate("/ewallet/form-input", {
+              navigate("/e-wallet/form-input", {
                 state: {
-                  accountnum_recipient: value.accountnum_recipient,
-                  name_recipient: value.name_recipient,
-                  bank_name: value.bank_name,
+                  ewallet_name: value.ewallet_name,
+                  ewallet_account_name: value.ewallet_account_name,
+                  ewallet_account: value.ewallet_account,
+                  ewallet_account_id: value.ewallet_id,
                 },
               });
             }}
@@ -175,11 +176,11 @@ function Ewallet() {
           style={{ marginTop: "40px" }}
         >
           <img src={notransferdata} className="img-fluid" alt="No Data" />
-          <div style={{ width: "650px" }}>
+          <div style={{ width: "70%" }}>
             <h3
               style={{
                 fontWeight: 700,
-                fontSize: "24px",
+                fontSize: "18px",
                 color: "#0066AE",
                 lineHeight: "33px",
               }}
@@ -189,7 +190,7 @@ function Ewallet() {
             <h4
               style={{
                 fontWeight: 400,
-                fontSize: "20px",
+                fontSize: "18px",
                 color: "#8A8A8A",
                 lineHeight: "28px",
               }}

@@ -48,15 +48,64 @@ function EwalletChoose() {
         aria-label="pilih e-wallet"
         role="menu"
       >
-        <ServiceMenu color="ovo-color" icon={logoOvo} label="OVO" />
-        <ServiceMenu color="dana-color" icon={logoDana} label="DANA" />
-        <ServiceMenu color="gopay-color" icon={logoGopay} label="GOPAY" />
-        <ServiceMenu color="paypal-color" icon={logoPaypal} label="PAYPAL" />
+        <ServiceMenu 
+          color="ovo-color" 
+          icon={logoOvo} 
+          label="OVO" 
+          role="button" 
+          onClick={() => {
+            navigate('/e-wallet/check', {
+              state:{
+                ewalletId:2
+              }
+            })
+          }}
+        />
+        <ServiceMenu 
+          color="dana-color" 
+          icon={logoDana} 
+          label="DANA" 
+          role="button"  
+          onClick={() => {
+            navigate('/e-wallet/check', {
+              state:{
+                ewalletId:1
+              }
+            })
+          }}
+        />
+        <ServiceMenu 
+          color="gopay-color" 
+          icon={logoGopay} 
+          label="GOPAY" 
+          role="button"  
+          onClick={() => {
+            navigate('/e-wallet/check', {
+              state:{
+                ewalletId:3
+              }
+            })
+          }}
+        />
+        <ServiceMenu 
+          color="paypal-color" 
+          icon={logoPaypal} 
+          label="PAYPAL" 
+          role="button"
+        />
         <ServiceMenu
           color="spay-color"
           icon={logoShopeePay}
           label="SHOPEE PAY"
-        />
+          role="button"
+          onClick={() => {
+            navigate('/e-wallet/check', {
+              state:{
+                ewalletId:4
+              }
+            })
+          }}
+        /> 
       </div>
     </Layout>
   );

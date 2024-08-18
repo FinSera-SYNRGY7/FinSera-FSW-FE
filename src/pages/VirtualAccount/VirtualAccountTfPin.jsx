@@ -119,12 +119,13 @@ const VirtualAccountTfPin = () => {
         </Button>
       {errorMessage != "" ? (
         <div
-          className="alert alert-danger"
-          aria-label={`Pesan Error ${errorMessage}`}
-        >
-          {errorMessage}{" "}
-          <button className="btn-close" aria-label="tutup error" role="close">
-          </button>
+            className="alert alert-danger alert-dismissible"
+            aria-label={`Pesan Error ${errorMessage}`}
+          >
+            {errorMessage}{" "}
+          <button className="btn-close" aria-label="tutup error" role="close" onClick={() => {
+            setErrorMessage('')
+          }} />
         </div>
       ) : (
         ""

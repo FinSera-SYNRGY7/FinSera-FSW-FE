@@ -30,6 +30,25 @@ const Notification = () => {
     }
   };
 
+  const renderDataNotification = () => {
+    return dataNotification.map((notification, index) => {
+      return (
+        <>
+          <div key={index} className={`${styles.notificationItem} ${index % 2 === 0 ? styles.blue : styles.white}`}>
+            <img src={bell} className={styles.bell}/>
+            <div className={styles.content}>
+              <div className={styles.type}>{notification.typeNotification}</div>
+              <div className={styles.date}>{notification.createdDate}</div>
+              <div className={styles.title}>{notification.tittle}</div>
+              <div className={styles.description}>{notification.description}</div>
+            </div>
+            {getTypeIcon(notification.typeNotification)}
+          </div>
+        </>
+      )
+    })
+  }
+
   return (
     <Layout>
         <div className={styles.container}>
@@ -71,19 +90,8 @@ const Notification = () => {
             </Spinner>
         </div>
       ) : (
-        dataNotification != null && !isErrorNotification ? (
-          dataNotification.map((notification, index) => (
-            <div key={index} className={`${styles.notificationItem} ${index % 2 === 0 ? styles.blue : styles.white}`}>
-              <img src={bell} className={styles.bell}/>
-              <div className={styles.content}>
-                <div className={styles.type}>{notification.typeNotification}</div>
-                <div className={styles.date}>{notification.createdDate}</div>
-                <div className={styles.title}>{notification.tittle}</div>
-                <div className={styles.description}>{notification.description}</div>
-              </div>
-              {getTypeIcon(notification.typeNotification)}
-            </div>
-          ))
+        !isErrorNotification ? (
+          renderDataNotification()
         ) : (
           <div className={styles.noNotification}>
             <img src={noNotification} alt="No Notification" className={styles.noNotificationImage} />

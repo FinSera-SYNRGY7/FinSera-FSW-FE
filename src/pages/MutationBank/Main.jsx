@@ -33,7 +33,7 @@ const AccountMutation = () => {
     })
     // console.log("filter hari ini", moment().format("YYYY-MM-DD"))
     // console.log("cek data FilterDate", dataFilterDate)
-    refetchAccountMutation()
+    
   }
 
   const handleFilterSeminggu = () => {
@@ -46,7 +46,7 @@ const AccountMutation = () => {
     })
     // console.log("kurangin 7 hari", minusOneWeek())
     // console.log("cek data FilterDate", dataFilterDate)
-    refetchAccountMutation()
+    
   }
 
   const handleFilterSebulan = () => {
@@ -59,7 +59,7 @@ const AccountMutation = () => {
     })
     // console.log("kurangin 1 bulan", minusOneMonth())
     // console.log("cek data FilterDate", dataFilterDate)
-    refetchAccountMutation()
+    
   }
 
   const handleDownload = async () => {
@@ -87,9 +87,7 @@ const AccountMutation = () => {
   const { 
     data: dataAccountMutation, 
     isLoading: isLoadingMutation, 
-    refetch: refetchAccountMutation, 
     isError: isErrorMutation, 
-    isRefetching: isRefetchingMutation
   } = useMutationBank(dataFilterDate)
 
   const renderDataMutation = () => {          
@@ -162,7 +160,7 @@ const AccountMutation = () => {
     // console.log("cek startRangeDate", startRangeDate)
     // console.log("cek endRangeDate", endRangeDate)
     // console.log("Selected Date Range:", dateRange);
-    refetchAccountMutation()
+    
   };
 
   return (
@@ -232,7 +230,7 @@ const AccountMutation = () => {
             />
           </div>
           <div className={`${styles.section2}`}>
-          {isLoadingMutation || isRefetchingMutation ? (
+          {isLoadingMutation ? (
             <div className="text-center w-100">
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>
@@ -254,7 +252,7 @@ const AccountMutation = () => {
           </div>
         </div>
         <div className={`d-flex flex-column w-100 align-items-center ${styles.containerCard}`}>
-          {isLoadingMutation || isRefetchingMutation ? (
+          {isLoadingMutation ? (
             <div className="text-center w-100">
                 <Spinner animation="border" role="status">
                     <span className="visually-hidden">Loading...</span>

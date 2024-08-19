@@ -20,6 +20,6 @@ export const useMutationBank = (dataFilterDate, isLimit = false) => {
   
   return useQuery({
     queryFn: fetchAccountMutation,
-    queryKey: ['fetchAccountMutation']
+    queryKey: ['fetchAccountMutation', dataFilterDate]
   })
 }

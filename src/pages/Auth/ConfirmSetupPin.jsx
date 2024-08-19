@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 
 import logoWhite from '@/assets/logo/logoWhite.svg'
@@ -33,6 +33,12 @@ const ConfirmSetupPin = () => {
     const showError = () => {
         setIsError(true);
     };
+    
+    useEffect(() => {
+      if(localStorage.getItem('pin_app_lock') != null) {
+        navigate('/home')
+      }
+    },[])
 
     return (
         <Container fluid>
@@ -69,6 +75,7 @@ const ConfirmSetupPin = () => {
                           type="numeric"
                           focus
                           secret
+                          inputMode="numeric"
                           style={{
                             display: "flex",
                             justifyContent: "space-evenly",

@@ -63,10 +63,8 @@ const Login = () => {
     }
     
     useEffect(() => {
-      const getPinAppLock = localStorage.getItem('pin_app_lock')
-      
-      if(getPinAppLock != null) {
-        navigate('/relog')
+      if(localStorage.getItem('auth_token') != null) {
+        navigate('/home')
       }
     },[])
 

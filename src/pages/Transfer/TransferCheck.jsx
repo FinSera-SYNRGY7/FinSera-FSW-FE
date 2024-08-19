@@ -105,8 +105,10 @@ function TransferCheck() {
           </InputForm.Label>
           <InputForm.Input
             className="py-sm-3 ps-sm-5 fz-input input"
-            type="text"
+            type="number"
+            inputMode="numeric"
             placeholder="Masukkan nomor rekening"
+            onWheel={(event) => event.target.blur()}
             aria-labelledby="rek-label"
             required
             {...register("accountnum_recipient")}

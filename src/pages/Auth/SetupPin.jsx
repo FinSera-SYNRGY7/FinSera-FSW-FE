@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Col } from 'react-bootstrap';
 
 import logoWhite from '@/assets/logo/logoWhite.svg'
@@ -29,6 +29,12 @@ const SetupPin = () => {
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
+    
+    useEffect(() => {
+      if(localStorage.getItem('pin_app_lock') != null) {
+        navigate('/home')
+      }
+    },[])
 
     return (
         <Container fluid>
@@ -71,6 +77,7 @@ const SetupPin = () => {
                           }}
                           name="pin"
                           ariaLabel="Pin Input"
+                          inputMode="numeric"
                           onChange={(value) => {
                             handlePinSubmit(value);
                           }}

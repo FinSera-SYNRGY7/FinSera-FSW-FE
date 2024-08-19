@@ -135,6 +135,7 @@ const InterbankTfCheck = () => {
               <InputForm.Input
                 className="py-sm-3 ps-sm-5 fz-input input"
                 type="number"
+                inputMode="numeric"
                 placeholder="Masukkan nomor rekening"
                 aria-labelledby="rek-label"
                 required

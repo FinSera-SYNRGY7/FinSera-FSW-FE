@@ -105,6 +105,7 @@ const VirtualAccountTfCheck = () => {
             className="py-sm-3 ps-sm-5 fz-input input"
             type="number"
             placeholder="Masukkan nomor virtual Account"
+            onWheel={(e) => e.target.blur()}
             aria-labelledby="rek-label"
             required
             {...register("virtualAccountNumber")}

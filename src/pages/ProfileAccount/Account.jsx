@@ -32,7 +32,7 @@ const Account = () => {
                             </div>
                         </div>
                         <div className={styles.profileInfo}>
-                            <div className={styles.name}>{dataAmount.username}</div>
+                            <div className={styles.name}>{dataAmount.name}</div>
                             <div className={styles.accountNumber}>{dataAmount.accountNumber}</div>
                             
                         </div>

@@ -7,6 +7,9 @@ import { useForm } from "react-hook-form";
 import { CardHorizontal, CardInfoSaldo } from "@/components/Card/index";
 import { useInfoAmount } from '@/features/infoAmount/useInfoAmount'
 import { formatRupiah } from '@/lib/utils'
+import { joiResolver } from '@hookform/resolvers/joi';
+import Joi from 'joi';
+import styles from "@/assets/css/Login.module.css"
 
 const InterbackTfInput = () => {
   
@@ -15,12 +18,22 @@ const InterbackTfInput = () => {
   
   const { data:dataAmount, isLoading:isLoadingAmount } = useInfoAmount()
   
-  const { register, handleSubmit, setValue } = useForm()
-  
   const { state } = useLocation()
   const navigate = useNavigate()
   
-  console.log(state)
+  const schema = Joi.object({
+      nominal: Joi.number().min(10000).max(dataAmount == null ? 0 : dataAmount?.amount.amount).required().messages({
+        'any.empty': 'Nominal Harus Berupa Angka!',
+        'any.required': 'Nominal Wajib Isi!',
+        'any.min': 'Nominal Tidak Boleh Kurang Dari Rp. 10.000',
+        'any.max': 'Nominal Melebih Saldo!'
+      }),
+      note: Joi.allow()
+  });
+  
+  const { register, isPending, handleSubmit, setValue, formState: { errors: validationErrors }, } = useForm({
+      resolver: joiResolver(schema)
+  })
   
   const saveContactAct = ({
     accountnum_recipient,
@@ -126,6 +139,11 @@ const InterbackTfInput = () => {
               <span className="ms-20">Back</span>
             </Button>
           </Link>
+          {validationErrors?.nominal && (
+              <div className={`${styles.errorMessage} mt-4`}>
+                  {validationErrors.nominal?.message}
+              </div>
+          )}
           {errorMessage != "" ? (
             <div
               className="alert alert-danger alert-dismissible"

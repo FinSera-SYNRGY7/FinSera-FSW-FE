@@ -67,15 +67,21 @@ const InterbankTfPin = () => {
   })
   
   const submit = (data) => {
-    const getValue = {
-      accountnum_recipient: state.accountnum_recipient,
-      bank_id:state.bank_id,
-      nominal: state.nominal,
-      note: state.note,
-      pin: pinInput,
+    if (pinInput == '') {
+      setErrorMessage('Pin Kosong!')
+    } else if (pinInput.toString().length < 6) {
+      setErrorMessage('Pin Kurang Dari 6 digit')
+    } else {
+      const getValue = {
+        accountnum_recipient: state.accountnum_recipient,
+        bank_id: state.bank_id,
+        nominal: state.nominal,
+        note: state.note,
+        pin: pinInput,
+      }
+
+      mutate(getValue)
     }
-    
-    mutate(getValue)
   }
 
   return (

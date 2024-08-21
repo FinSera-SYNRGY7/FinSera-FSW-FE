@@ -36,7 +36,7 @@ const Home = () => {
       >
         <div className={`${styles.containerHome} d-flex flex-column z-1`}>
             <CardInfoSaldo
-              profile={dataAmount?.username}
+              profile={dataAmount?.name}
               norek={dataAmount?.accountNumber}
               saldo={formatRupiah(dataAmount?.amount.amount)}
               aria-label="Informasi Saldo Akun"

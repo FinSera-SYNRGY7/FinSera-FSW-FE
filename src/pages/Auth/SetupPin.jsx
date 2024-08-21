@@ -83,11 +83,19 @@ const SetupPin = () => {
                           }}
                         />
                         <Button className={styles.loginButton} type="submit" onClick={() => {
-                          navigate('/setup-pin/confirm', {
-                            state:{
-                              pinAppLock:pin
-                            }
-                          })
+                          if(pin == '') {
+                            setIsError(true)
+                            setErrorMessage('Pin Kosong!')
+                          } else if(pin.toString().length < 6) {
+                            setIsError(true)
+                            setErrorMessage('Pin Kurang Dari 6 digit')
+                          } else {
+                            navigate('/setup-pin/confirm', {
+                              state:{
+                                pinAppLock:pin
+                              }
+                            })
+                          }
                         }} aria-label="Lanjutkan">
                             Lanjutkan
                         </Button>

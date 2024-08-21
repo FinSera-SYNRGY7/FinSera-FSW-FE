@@ -26,10 +26,10 @@ function CardInfoSaldo({ profile, saldo, norek, isLoading = false }) {
                     {
                       isLoading ? 
                       <div className={`px-md-5 px-4 py-md-4 pt-3 ${styles.cardName} placeholder-glow`} role='status'>
-                        <h3 className={`${styles.textUser}`}><span aria-label="Hi {profile}">Hi, </span> <span className='placeholder col-4' aria-label='Loading...' /></h3>
+                        <h3 className={`${styles.textUser}`}><span aria-label="Hi, ">Hi, </span> <span className='placeholder col-4' aria-label='Loading...' /></h3>
                       </div> : 
                       <div className={`px-md-5 px-4 py-md-4 pt-3 ${styles.cardName}`}>
-                          <h3 className={`${styles.textUser}`}><span aria-label="Hi {profile}">Hi, {profile}</span></h3>
+                          <h3 className={`${styles.textUser}`}><span aria-label={`Hi ${profile}`}>Hi, {profile}</span></h3>
                       </div>
                     }
                     <div className="px-md-5 px-4 py-md-1 py-0">

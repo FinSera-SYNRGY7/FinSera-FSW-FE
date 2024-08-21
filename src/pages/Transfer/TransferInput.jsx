@@ -7,16 +7,31 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import { formatRupiah } from "@/lib/utils";
+import { joiResolver } from '@hookform/resolvers/joi';
+import Joi from 'joi';
+import styles from "@/assets/css/Login.module.css"
 
 function TransferInput() {
   const navigate = useNavigate();
   const { state } = useLocation();
-
-  const { register, isPending, handleSubmit, setValue } = useForm();
   const [errorMessage, setErrorMessage] = useState("");
   const [savedContact, setSavedContact] = useState(false);
 
   const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount();
+  
+  const schema = Joi.object({
+      nominal: Joi.number().min(10000).max(dataAmount == null ? 0 : dataAmount?.amount.amount).required().messages({
+        'any.empty': 'Nominal Harus Berupa Angka!',
+        'any.required': 'Nominal Wajib Isi!',
+        'any.min': 'Nominal Tidak Boleh Kurang Dari Rp. 10.000',
+        'any.max': 'Nominal Melebih Saldo!'
+      }),
+      note: Joi.allow()
+  });
+  
+  const { register, isPending, handleSubmit, setValue, formState: { errors: validationErrors }, } = useForm({
+      resolver: joiResolver(schema)
+  })
 
   const saveContactAct = ({
     accountnum_recipient,
@@ -122,6 +137,11 @@ function TransferInput() {
           <span className="ms-20">Back</span>
         </Button>
       </Link>
+      {validationErrors?.nominal && (
+          <div className={`${styles.errorMessage} mt-4`}>
+              {validationErrors.nominal?.message}
+          </div>
+      )}
       {errorMessage != "" ? (
         <div
           className="alert alert-danger"
@@ -182,7 +202,6 @@ function TransferInput() {
             aria-labelledby="nominal-label"
             type="number"
             onWheel={(e) => e.target.blur()}
-            required
             {...register("nominal")}
           />
         </InputForm>
@@ -199,7 +218,6 @@ function TransferInput() {
             placeholder="Masukkan catatan"
             rows="6"
             aria-labelledby="catatan-label"
-            required
             {...register("note")}
           />
         </InputForm>

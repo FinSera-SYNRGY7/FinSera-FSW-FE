@@ -39,15 +39,8 @@ const Login = () => {
         onError: (error) => {
             setIsError(true)
             setErrorMessage(error.response.data.message)
-            if (error.response.data.message === 'Username or Password is invalid') {
-                setUsernameError(true)
-                setPasswordError(true)
-                setErrorMessage("Username atau password yang Anda masukkan salah!")
-            } else if (error.response.data.message === 'Your account is inactive') {
-                setErrorMessage("Akun anda tidak aktif!")
-            } else {
-                setErrorMessage("Ada masalah pada server!")
-            }
+            setUsernameError(true)
+            setPasswordError(true)
         },
     })
 

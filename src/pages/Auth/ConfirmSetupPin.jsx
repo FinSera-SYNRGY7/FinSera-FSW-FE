@@ -27,6 +27,7 @@ const ConfirmSetupPin = () => {
         navigate('/home')
       } else {
         showError()
+        setErrorMessage('Pin Tidak Sesuai!')
       }
     }
 

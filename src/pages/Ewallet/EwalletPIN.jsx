@@ -75,15 +75,21 @@ function EwalletPIN() {
   });
 
   const submit = (value) => {
-    const data = {
-      ewalletAccount: state.ewallet_account,
-      ewalletId: state.ewallet_id,
-      nominal: state.nominal,
-      note: state.note,
-      pin: pinInput,
-    };
+    if (pinInput == '') {
+      setErrorMessage('Pin Kosong!')
+    } else if (pinInput.toString().length < 6) {
+      setErrorMessage('Pin Kurang Dari 6 digit')
+    } else {
+      const data = {
+        ewalletAccount: state.ewallet_account,
+        ewalletId: state.ewallet_id,
+        nominal: state.nominal,
+        note: state.note,
+        pin: pinInput,
+      };
 
-    mutate(data);
+      mutate(data);
+    }
   };
 
   return (

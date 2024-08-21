@@ -25,7 +25,8 @@ const Relog = () => {
         navigate('/home')
       },
       onError: (data, error) => {
-        console.log(error)
+        showError()
+        setErrorMessage(error.message.response.data.message);
       }
     })
 
@@ -43,6 +44,7 @@ const Relog = () => {
         })
       } else {
         showError()
+        setErrorMessage('Pin Salah!')
       }
     }
 

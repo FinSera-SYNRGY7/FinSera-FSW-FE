@@ -6,7 +6,7 @@ export const useProfile = () => {
   const getProfile = async () => {
     const response = await httpServer.get("/api/v1/profile");
 
-    return response.data.data.data.userDetails;
+    return response.data.data;
   };
 
   return useQuery({

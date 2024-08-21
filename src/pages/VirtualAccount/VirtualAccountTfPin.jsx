@@ -66,12 +66,18 @@ const VirtualAccountTfPin = () => {
   })
   
   const submit = (data) => {
-    const getValue = {
-      virtualAccountNumber: state.accountNum,
-      mpinAccount: pinInput,
+    if (pinInput == '') {
+      setErrorMessage('Pin Kosong!')
+    } else if (pinInput.toString().length < 6) {
+      setErrorMessage('Pin Kurang Dari 6 digit')
+    } else {
+      const getValue = {
+        virtualAccountNumber: state.accountNum,
+        mpinAccount: pinInput,
+      }
+
+      mutate(getValue)
     }
-    
-    mutate(getValue)
   }
 
   return (

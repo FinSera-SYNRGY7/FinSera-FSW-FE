@@ -119,7 +119,7 @@ const VirtualAccountTfConfirm = () => {
           first="col-1"
           second="col-2"
           data={{
-            username: dataAmount.username,
+            username: dataAmount.name,
             accountNumber: dataAmount.accountNumber,
             amount: dataAmount.amount,
           }}

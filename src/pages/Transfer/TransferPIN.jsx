@@ -69,14 +69,22 @@ function TransferPIN() {
   });
 
   const submit = (value) => {
-    const data = {
-      accountnum_recipient: state.accountnum_recipient,
-      nominal: state.nominal,
-      note: state.note,
-      pin: pinInput,
-    };
-
-    mutate(data);
+    
+    if(pinInput == '') {
+      setErrorMessage('Pin Kosong!')
+    } else if(pinInput.toString().length < 6) {
+      setErrorMessage('Pin Kurang Dari 6 digit')
+    } else {
+      const data = {
+        accountnum_recipient: state.accountnum_recipient,
+        nominal: state.nominal,
+        note: state.note,
+        pin: pinInput,
+      };
+  
+      mutate(data);
+    }
+    
   };
 
   return (

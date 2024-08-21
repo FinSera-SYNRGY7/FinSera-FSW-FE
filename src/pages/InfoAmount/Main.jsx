@@ -72,7 +72,7 @@ export default function InfoSaldo() {
                       />
                 </div>
                 <CardInfoSaldo
-                  profile={dataAmount?.username}
+                  profile={dataAmount?.name}
                   norek={dataAmount?.accountNumber}
                   saldo={formatRupiah(dataAmount?.amount.amount)}
                   aria-label="Informasi Saldo Akun"

@@ -38,9 +38,13 @@ const Login = () => {
         },
         onError: (error) => {
             setIsError(true)
+            if(error.response.data.message == 'User tidak ditemukan') {
+                setUsernameError(true)
+            } else if(error.response.data.message == 'Username atau password yang anda masukkan salah!') {
+                setUsernameError(true)
+                setPasswordError(true)
+            }
             setErrorMessage(error.response.data.message)
-            setUsernameError(true)
-            setPasswordError(true)
         },
     })
 

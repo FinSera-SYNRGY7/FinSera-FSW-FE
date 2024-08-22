@@ -1,9 +1,20 @@
 import React from "react";
 import styles from "@/assets/css/ButtonAlt.module.css";
 
-const ButtonAlt = ({ label, onClick, variant }) => {
+const ButtonAlt = ({ label, onClick, variant, isLoading = false }) => {
   return (
-    <div className={styles.containerButtonAlt}>
+    <>
+    {isLoading ?
+      <div className={styles.containerButtonAlt}>
+        <button
+          className={`${styles[variant]}`}
+          onClick={onClick}
+          aria-label={label}
+        >
+          <span className="placeholder col-6" style={{height:'15px'}} aria-label="Loading..." />
+        </button>
+      </div> :
+      <div className={styles.containerButtonAlt}>
       <button
         className={`${styles[variant]}`}
         onClick={onClick}
@@ -11,11 +22,12 @@ const ButtonAlt = ({ label, onClick, variant }) => {
       >
         <p>{label}</p>
       </button>
-    </div>
+    </div> }
+    </>
   );
 };
 
-const ButtonIcon = ({ label, onClick, variant }) => {
+const ButtonIcon = ({ label, onClick, variant, isLoading = false }) => {
   const containerClassButton =
     variant === "btnAdd"
       ? `${styles.containerButton} ${styles.btnAdd}`
@@ -40,19 +52,31 @@ const ButtonIcon = ({ label, onClick, variant }) => {
   };
 
   return (
-    <div className={`d-flex ${containerClassButton}`}>
+    <>
+    {isLoading ?
+    <div className={`d-flex ${containerClassButton} placeholder-glow`}>
       <button
         className={`d-flex flex-row justify-content-center align-items-center ${styles[variant]}`}
         onClick={onClick}
         aria-label={label}
       >
-        <i
-          className={`${getIconClass(variant)} ${styles.icon}`}
-          aria-hidden="true"
-        ></i>
-        <p className={styles.textLabel}>{label}</p>
+       <span className="placeholder col-12" style={{height:'auto'}} aria-label="Loading..." />
       </button>
-    </div>
+    </div> :
+    <div className={`d-flex ${containerClassButton}`}>
+    <button
+      className={`d-flex flex-row justify-content-center align-items-center ${styles[variant]}`}
+      onClick={onClick}
+      aria-label={label}
+    >
+      <i
+        className={`${getIconClass(variant)} ${styles.icon}`}
+        aria-hidden="true"
+      ></i>
+      <p className={styles.textLabel}>{label}</p>
+    </button>
+    </div>}
+  </>
   );
 };
 

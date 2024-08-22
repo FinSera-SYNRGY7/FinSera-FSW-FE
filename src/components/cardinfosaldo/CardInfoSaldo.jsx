@@ -17,8 +17,6 @@ function CardInfoSaldo({ profile, saldo, norek, isLoading = false }) {
         setIsBalanceVisible(!isBalanceVisible);
     };
 
-    console.log("cek isLoading di infosaldo", isLoading)
-
     return (
         <div className={`${styles.cardBalance} w-100 d-flex flex-column text-start text-white position-relative`}>
             <img src={gambar1} alt="" className={`${styles.bgLogoBca} position-absolute`} />

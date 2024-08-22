@@ -2,7 +2,6 @@ import moment from 'moment'
 import Layout from "@/layout/Layout"
 import styles from "@/assets/css/AccountMutation.module.css"
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown"
-import Spinner from "react-bootstrap/Spinner"
 import imgEmptyData from "@/assets/img/No data-pana 1.png"
 import { useState } from "react"
 import { PopupDate } from "@/components/PopUp"
@@ -16,6 +15,7 @@ import { formatRupiah, formatDateIndo, formatTimeIndo, checkTypeTransaction, min
 
 const AccountMutation = () => {
   const [dataFilterDate, setDataFilterDate] = useState({})
+  const [isLoadingDownload, setIsLoadingDownload] = useState(false)
   const [showDateRangePopup, setShowDateRangePopup] = useState(false);
   const navigate = useNavigate();
 
@@ -64,6 +64,7 @@ const AccountMutation = () => {
 
   const handleDownload = async () => {
     try {
+      setIsLoadingDownload(true)
       const requestDownload = await httpServer.get('/api/v1/mutasi/download', {
         responseType: 'blob',
         params: dataFilterDate
@@ -78,6 +79,7 @@ const AccountMutation = () => {
   
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
+      setIsLoadingDownload(false)
     } catch (error) {
       console.error('Error downloading file:', error);
     }
@@ -242,7 +244,9 @@ const AccountMutation = () => {
           <ButtonIcon
             label="Download"
             variant="btnDownload2nd"
+            onClick={() => handleDownload()}
             isLoading={isLoadingMutation}
+            isLoadingDownload={isLoadingDownload}
           />
           </div>
         </div>
@@ -265,8 +269,10 @@ const AccountMutation = () => {
               <div className={styles.btnDownloadAndro}>
                 <ButtonAlt
                   label="Download"
-                  onClick={() => handleDownload()}
                   variant="btnAltPrimary"
+                  onClick={() => handleDownload()}
+                  isLoading={isLoadingMutation}
+                  isLoadingDownload={isLoadingDownload}
                 />
               </div>
             </>

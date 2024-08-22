@@ -1,7 +1,8 @@
 import React from "react";
+import Spinner from "react-bootstrap/Spinner"
 import styles from "@/assets/css/ButtonAlt.module.css";
 
-const ButtonAlt = ({ label, onClick, variant, isLoading = false }) => {
+const ButtonAlt = ({ label, onClick, variant, isLoading = false, isLoadingDownload = false }) => {
   return (
     <>
     {isLoading ?
@@ -20,14 +21,20 @@ const ButtonAlt = ({ label, onClick, variant, isLoading = false }) => {
         onClick={onClick}
         aria-label={label}
       >
+        {isLoadingDownload ?
+      <>
+        <div className="spinner-border spinner-border-sm" role="status"></div>
+      </> :
+      <>
         <p>{label}</p>
+      </>}
       </button>
     </div> }
     </>
   );
 };
 
-const ButtonIcon = ({ label, onClick, variant, isLoading = false }) => {
+const ButtonIcon = ({ label, onClick, variant, isLoading = false, isLoadingDownload = false }) => {
   const containerClassButton =
     variant === "btnAdd"
       ? `${styles.containerButton} ${styles.btnAdd}`
@@ -57,8 +64,7 @@ const ButtonIcon = ({ label, onClick, variant, isLoading = false }) => {
     <div className={`d-flex ${containerClassButton} placeholder-glow`}>
       <button
         className={`d-flex flex-row justify-content-center align-items-center ${styles[variant]}`}
-        onClick={onClick}
-        aria-label={label}
+        aria-label="Loading..."
       >
        <span className="placeholder col-12" style={{height:'auto'}} aria-label="Loading..." />
       </button>
@@ -69,11 +75,17 @@ const ButtonIcon = ({ label, onClick, variant, isLoading = false }) => {
       onClick={onClick}
       aria-label={label}
     >
-      <i
-        className={`${getIconClass(variant)} ${styles.icon}`}
-        aria-hidden="true"
-      ></i>
-      <p className={styles.textLabel}>{label}</p>
+      {isLoadingDownload ?
+      <>
+        <div className="spinner-border spinner-border-sm" role="status"></div>
+      </> :
+      <>
+        <i
+          className={`${getIconClass(variant)} ${styles.icon}`}
+          aria-hidden="true"
+        ></i>
+        <p className={styles.textLabel}>{label}</p> 
+      </>}
     </button>
     </div>}
   </>

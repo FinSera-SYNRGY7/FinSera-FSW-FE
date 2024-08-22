@@ -92,10 +92,8 @@ const CardMutation = ({ color, dateTXN, noTXN, typeTXN, nominal, time, isLoading
             <div
               className={`${styles.content1} d-flex flex-column align-items-start`}
             >
-              <div className="col-12">
-                <span className='placeholder col-12' aria-label='Loading...' style={{width:'100%'}} /> <br/>
-                <span className='placeholder col-12' aria-label='Loading...' style={{width:'100px'}} />
-              </div>
+              <span className='placeholder col-12' aria-label='Loading...' style={{width:'100px'}} /> <br/>
+              <span className='placeholder col-12' aria-label='Loading...' style={{width:'100px'}} />
             </div>
             <div
               className={`${styles.content2} d-flex flex-column align-items-end`}

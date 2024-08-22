@@ -90,6 +90,20 @@ const AccountMutation = () => {
     isError: isErrorMutation, 
   } = useMutationBank(dataFilterDate)
 
+  const renderLoadingDataMutation = () => {
+    const loopDataLoading =  [1, 2, 3, 4, 5]
+    return loopDataLoading.map((item, index) => {
+      return (
+        <>
+          <CardMutation
+            key={index}
+            isLoading={isLoadingMutation}
+          />
+        </>
+      )
+    })
+  }
+
   const renderDataMutation = () => {          
     return dataAccountMutation?.map((row, key) => {
       let color
@@ -186,17 +200,12 @@ const AccountMutation = () => {
               variant="btnBack"
             />
           </div>
-          {isLoadingAmount ? (
-              <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-              </Spinner>
-          ) : (
           <DropdownSumberRekening
             title="Sumber Rekening"
-            subtitle={dataAmount.accountNumber}
+            subtitle={dataAmount?.accountNumber}
             className="dropdownSumberRekening"
+            isLoading={isLoadingAmount}
           />
-          )}
         </div>
         <div
           className={`d-flex flex-row w-100 justify-content-between ${styles.containerFilter}`}
@@ -230,34 +239,25 @@ const AccountMutation = () => {
             />
           </div>
           <div className={`${styles.section2}`}>
-          {isLoadingMutation ? (
-            <div className="text-center w-100">
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            </div>
-          ) : (
-            !isErrorMutation ? (
-              <>
-                <ButtonIcon
-                  label="Download"
-                  onClick={() => handleDownload()}
-                  variant="btnDownload2nd"
-                />
-              </>
-            ) : (
-              ""
-            )
-          )}
+          <ButtonIcon
+            label="Download"
+            variant="btnDownload2nd"
+            isLoading={isLoadingMutation}
+          />
           </div>
         </div>
         <div className={`d-flex flex-column w-100 align-items-center ${styles.containerCard}`}>
           {isLoadingMutation ? (
-            <div className="text-center w-100">
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            </div>
+            <>
+            {renderLoadingDataMutation()}
+            <div className={styles.btnDownloadAndro}>
+                <ButtonAlt
+                  label="Download"
+                  variant="btnAltPrimary"
+                  isLoading={isLoadingMutation}
+                />
+              </div>
+            </>
           ) : (
             !isErrorMutation ? (
             <>

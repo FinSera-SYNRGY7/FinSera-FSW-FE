@@ -7,7 +7,6 @@ import bell from "@/assets/logo/bell.svg";
 import notifTransaction from "@/assets/img/notifTransaction.png";
 import notifInfo from "@/assets/img/notifInfo.svg";
 import noNotification from "@/assets/img/noNotification.svg";
-import Spinner from "react-bootstrap/Spinner"
 import { Link } from "react-router-dom";
 import { useNotification } from "@/features/notification/useNotification";
 
@@ -30,8 +29,28 @@ const Notification = () => {
     }
   };
 
+  const renderLoadingDataNotification = () => {
+    const loopDataLoading =  [1, 2, 3, 4, 5]
+    return loopDataLoading.map((item, index) => {
+      return (
+        <>
+          <div key={index} className={`${styles.notificationItem} ${index % 2 === 0 ? styles.blue : styles.white} placeholder-glow`} role='status'>
+            <span className={`${styles.bell} placeholder col-7`} aria-label="Loading..." />
+            <div className={styles.content}>
+              <div><span className='placeholder col-6' aria-label='Loading...' /></div>
+              <div><span className='placeholder col-6' aria-label='Loading...' /></div>
+              <div><span className='placeholder col-6' aria-label='Loading...' /></div>
+              <div><span className='placeholder col-6' aria-label='Loading...' /></div>
+            </div>
+            <span className={`${styles.icon} placeholder col-7`} aria-label="Loading..." />
+          </div>
+        </>
+      )
+    })
+  }
+
   const renderDataNotification = () => {
-    return dataNotification.map((notification, index) => {
+    return dataNotification?.map((notification, index) => {
       return (
         <>
           <div key={index} className={`${styles.notificationItem} ${index % 2 === 0 ? styles.blue : styles.white}`}>
@@ -84,11 +103,7 @@ const Notification = () => {
       </header>
       <div className={styles.notificationList}>
       {isLoadingNotification ? (
-        <div className="text-center w-100">
-            <Spinner animation="border" role="status">
-                <span className="visually-hidden">Loading...</span>
-            </Spinner>
-        </div>
+        renderLoadingDataNotification()
       ) : (
         !isErrorNotification ? (
           renderDataNotification()

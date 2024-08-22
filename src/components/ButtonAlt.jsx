@@ -1,5 +1,4 @@
 import React from "react";
-import Spinner from "react-bootstrap/Spinner"
 import styles from "@/assets/css/ButtonAlt.module.css";
 
 const ButtonAlt = ({ label, onClick, variant, isLoading = false, isLoadingDownload = false }) => {
@@ -9,8 +8,7 @@ const ButtonAlt = ({ label, onClick, variant, isLoading = false, isLoadingDownlo
       <div className={styles.containerButtonAlt}>
         <button
           className={`${styles[variant]}`}
-          onClick={onClick}
-          aria-label={label}
+          aria-label="Loading..."
         >
           <span className="placeholder col-6" style={{height:'15px'}} aria-label="Loading..." />
         </button>

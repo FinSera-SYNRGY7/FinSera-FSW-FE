@@ -34,6 +34,10 @@ httpServer.interceptors.response.use(
         localStorage.removeItem('auth_token')
         localStorage.removeItem('auth_name')
         
+        if(error.response.data.message == 'Pin yang anda masukkan salah') {
+          throw new AxiosError((error))
+        }
+
         if(pinAppLock == null) {
           globalNavigate('/')
         } else {

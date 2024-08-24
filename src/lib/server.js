@@ -31,18 +31,19 @@ httpServer.interceptors.response.use(
     if(error.response) {
       if(error.response.status == 403 || error.response.status == 401) {
         const pinAppLock = localStorage.getItem('pin_app_lock')
-        localStorage.removeItem('auth_token')
-        localStorage.removeItem('auth_name')
         
         if(error.response.data.message == 'Pin yang anda masukkan salah') {
-          return Promise.reject(error)
+          throw new AxiosError((error))
         } else {
 
-        if(pinAppLock == null) {
-          globalNavigate('/')
-        } else {
-          globalNavigate('/relog')
-        }
+          localStorage.removeItem('auth_token')
+          localStorage.removeItem('auth_name')
+          
+          if(pinAppLock == null) {
+            globalNavigate('/')
+          } else {
+            globalNavigate('/relog')
+          }
         }
       } else {
         throw new AxiosError((error))

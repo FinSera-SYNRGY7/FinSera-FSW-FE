@@ -36,12 +36,13 @@ httpServer.interceptors.response.use(
         
         if(error.response.data.message == 'Pin yang anda masukkan salah') {
           throw new AxiosError((error))
-        }
+        } else {
 
         if(pinAppLock == null) {
           globalNavigate('/')
         } else {
           globalNavigate('/relog')
+        }
         }
       } else {
         throw new AxiosError((error))

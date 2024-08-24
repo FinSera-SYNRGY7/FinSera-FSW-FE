@@ -64,6 +64,7 @@ function TransferPIN() {
       });
     },
     onError: (error, data) => {
+      console.log("cek error", error)
       setErrorMessage(error.message.response.data.message);
     },
   });

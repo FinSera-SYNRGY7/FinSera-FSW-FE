@@ -73,33 +73,41 @@ const Notification = () => {
         <div className={styles.container}>
       <header className={styles.header}>
         <h1>Notifikasi</h1>
-        <Button
-                className="d-sm-none p-0"
-                type="button"
-                aria-label="kembali ke halaman sebelumnya">
-                <img src={backBlack} alt="Kembali ke halaman sebelumnya" className={styles.back} />
-            </Button>
-            <Link
-                to="/home"
-                className={styles.backButton}
-                style={{
-                    textDecoration: "none",
-                    color: "inherit",
-                }}
-                aria-label="kembali ke halaman sebelumnya"
-                role="button"
-                    >
-                <Button
-                    className={
-                    "d-none d-sm-block flex-grow-1 base-color w-100 text-sm-start d-flex shadow-hover"
-                    }
-                    type="button"
-                    aria-label="kembali ke halaman sebelumnya"
-                >
-                    <img src={back} alt="Kembali ke halaman sebelumnya" />
-                    <span className="ms-20">Beranda</span>
-                </Button>
-            </Link>      
+        <Link
+          to="/home"
+          className={styles.backButton}
+          style={{
+              textDecoration: "none",
+              color: "inherit",
+          }}
+          aria-label="kembali ke halaman sebelumnya"
+          role="button">
+          <Button
+              className="d-sm-none p-0"
+              type="button"
+              aria-label="kembali ke halaman sebelumnya">
+              <img src={backBlack} alt="Kembali ke halaman sebelumnya" className={styles.back} />
+          </Button>
+        </Link>
+        <Link
+          to="/home"
+          className={styles.backButton}
+          style={{
+              textDecoration: "none",
+              color: "inherit",
+          }}
+          aria-label="kembali ke halaman sebelumnya"
+          role="button">
+          <Button
+            className={
+            "d-none d-sm-block flex-grow-1 base-color w-100 text-sm-start d-flex shadow-hover"
+            }
+            type="button"
+            aria-label="kembali ke halaman sebelumnya">
+            <img src={back} alt="Kembali ke halaman sebelumnya" />
+            <span className="ms-20">Beranda</span>
+          </Button>
+        </Link>      
       </header>
       <div className={styles.notificationList}>
       {isLoadingNotification ? (

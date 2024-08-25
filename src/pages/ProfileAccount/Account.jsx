@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import { PopUp } from "@/components/PopUp";
+import { Link } from "react-router-dom";
 import styles from "@/assets/css/Account.module.css";
 import Layout from "@/layout/Layout";
 import ProfileAccount from "@/assets/img/photo.png";
@@ -13,7 +14,6 @@ import Terms from "@/assets/logo/terms.svg";
 import Help from "@/assets/logo/help.svg";
 import Logout from "@/assets/logo/logout.svg";
 import Click from "@/assets/logo/click.svg";
-import Nav from "react-bootstrap/Nav";
 import Spinner from "react-bootstrap/Spinner";
 
 const Account = () => {
@@ -87,13 +87,13 @@ const Account = () => {
 
                 <section className={styles.section}>
                     <h2 className={styles.sectionTitle}>Preferensi</h2>
-                    <Nav.Link href="/notification" className={styles.menuItem}>
+                    <Link to="/notification" className={styles.menuItem} role="button">
                         <div className={styles.menuItemText}>
                             <img src={Notification} alt="Notifikasi" className={styles.menuItemIcon} />
                             Notifikasi
                         </div>
                         <img src={Click} alt="click" className={styles.click} />
-                    </Nav.Link>
+                    </Link>
                     <a href="#" className={styles.menuItem}>
                         <div className={styles.menuItemText}>
                             <img src={Accessibility} alt="Aksesibilitas" className={styles.menuItemIcon} />

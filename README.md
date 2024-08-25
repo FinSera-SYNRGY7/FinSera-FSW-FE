@@ -1,8 +1,13 @@
-# React + Vite
+## Tech Stack Fullstack Web Javascript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1. React JS
+2. Node JS
+3. Bootstrap
+4. Fly.io
+5. Visual Studio Code
+6. Zed
+7. Vite
+8. Github
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Credential Login
+**Username:** `johndoe` **Password:** `password123`

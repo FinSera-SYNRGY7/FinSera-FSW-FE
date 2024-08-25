@@ -1,21 +1,39 @@
 import React from "react";
+import Spinner from "react-bootstrap/Spinner"
 import styles from "@/assets/css/ButtonAlt.module.css";
 
-const ButtonAlt = ({ label, onClick, variant }) => {
+const ButtonAlt = ({ label, onClick, variant, isLoading = false, isLoadingDownload = false }) => {
   return (
-    <div className={styles.containerButtonAlt}>
+    <>
+    {isLoading ?
+      <div className={styles.containerButtonAlt}>
+        <button
+          className={`${styles[variant]}`}
+          aria-label="Loading..."
+        >
+          <span className="placeholder col-6" style={{height:'15px'}} aria-label="Loading..." />
+        </button>
+      </div> :
+      <div className={styles.containerButtonAlt}>
       <button
         className={`${styles[variant]}`}
         onClick={onClick}
         aria-label={label}
       >
+        {isLoadingDownload ?
+      <>
+        <div className="spinner-border spinner-border-sm" role="status"></div>
+      </> :
+      <>
         <p>{label}</p>
+      </>}
       </button>
-    </div>
+    </div> }
+    </>
   );
 };
 
-const ButtonIcon = ({ label, onClick, variant }) => {
+const ButtonIcon = ({ label, onClick, variant, isLoading = false, isLoadingDownload = false }) => {
   const containerClassButton =
     variant === "btnAdd"
       ? `${styles.containerButton} ${styles.btnAdd}`
@@ -40,19 +58,36 @@ const ButtonIcon = ({ label, onClick, variant }) => {
   };
 
   return (
-    <div className={`d-flex ${containerClassButton}`}>
+    <>
+    {isLoading ?
+    <div className={`d-flex ${containerClassButton} placeholder-glow`}>
       <button
         className={`d-flex flex-row justify-content-center align-items-center ${styles[variant]}`}
-        onClick={onClick}
-        aria-label={label}
+        aria-label="Loading..."
       >
+       <span className="placeholder col-12" style={{height:'auto'}} aria-label="Loading..." />
+      </button>
+    </div> :
+    <div className={`d-flex ${containerClassButton}`}>
+    <button
+      className={`d-flex flex-row justify-content-center align-items-center ${styles[variant]}`}
+      onClick={onClick}
+      aria-label={label}
+    >
+      {isLoadingDownload ?
+      <>
+        <div className="spinner-border spinner-border-sm" role="status"></div>
+      </> :
+      <>
         <i
           className={`${getIconClass(variant)} ${styles.icon}`}
           aria-hidden="true"
         ></i>
-        <p className={styles.textLabel}>{label}</p>
-      </button>
-    </div>
+        <p className={styles.textLabel}>{label}</p> 
+      </>}
+    </button>
+    </div>}
+  </>
   );
 };
 

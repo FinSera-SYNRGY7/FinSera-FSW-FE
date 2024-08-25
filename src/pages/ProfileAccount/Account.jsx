@@ -1,4 +1,8 @@
-import React from 'react';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
+import { PopUp } from "@/components/PopUp";
+import { Link } from "react-router-dom";
 import styles from "@/assets/css/Account.module.css";
 import Layout from "@/layout/Layout";
 import ProfileAccount from "@/assets/img/photo.png";
@@ -10,11 +14,34 @@ import Terms from "@/assets/logo/terms.svg";
 import Help from "@/assets/logo/help.svg";
 import Logout from "@/assets/logo/logout.svg";
 import Click from "@/assets/logo/click.svg";
-import { useInfoAmount } from "@/features/infoAmount/useInfoAmount";
 import Spinner from "react-bootstrap/Spinner";
 
 const Account = () => {
+    const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+    const navigate = useNavigate();
+    
+    const name = localStorage.getItem('name') ?? 'User';
     const { data: dataAmount, isLoading: isLoadingAmount } = useInfoAmount()
+
+    const handleLogoutClick = (e) => {
+        e.preventDefault();
+        setShowLogoutPopup(true);
+    };
+
+    const handleClosePopup = () => {
+        setShowLogoutPopup(false);
+    };
+
+    const handleConfirmLogout = () => {
+        const pinAppLock = localStorage.getItem('pin_app_lock')
+        localStorage.removeItem("auth_token");
+        if (pinAppLock != null) { 
+        navigate('/relog')
+        } else {
+        navigate("/login");
+        }
+        setShowLogoutPopup(false);
+    };
 
     return (
         <Layout>
@@ -60,13 +87,13 @@ const Account = () => {
 
                 <section className={styles.section}>
                     <h2 className={styles.sectionTitle}>Preferensi</h2>
-                    <a href="#" className={styles.menuItem}>
+                    <Link to="/notification" className={styles.menuItem} role="button">
                         <div className={styles.menuItemText}>
                             <img src={Notification} alt="Notifikasi" className={styles.menuItemIcon} />
                             Notifikasi
                         </div>
                         <img src={Click} alt="click" className={styles.click} />
-                    </a>
+                    </Link>
                     <a href="#" className={styles.menuItem}>
                         <div className={styles.menuItemText}>
                             <img src={Accessibility} alt="Aksesibilitas" className={styles.menuItemIcon} />
@@ -87,6 +114,7 @@ const Account = () => {
                     </a>
 
                 </section>
+
                 <section className={styles.lastSection}>
                     <a href="#" className={styles.lastMenuItem}>
                         <div className={styles.menuItemText}>
@@ -96,10 +124,13 @@ const Account = () => {
                         <img src={Click} alt="click" className={styles.click} />
                     </a>
                 </section>
-                <button className={styles.logoutButton}>
+                <button className={styles.logoutButton} onClick={handleLogoutClick}>
                     <img src={Logout} alt="Logout" className={styles.logoutIcon} />
                     Logout
                 </button>
+                {showLogoutPopup && (
+                    <PopUp handleClosePopup={handleClosePopup} handleConfirmLogout={ handleConfirmLogout } />
+                )}
             </div>
         </Layout>
     );

@@ -114,6 +114,7 @@ function TransferCheck() {
             {...register("accountnum_recipient")}
           />
         </InputForm>
+        <div style={{marginBottom:"12rem"}}></div>
         <Button
           className={"btn base-color col-12 mb-5 shadow-hover"}
           aria-label="Lanjutkan"

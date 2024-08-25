@@ -82,7 +82,7 @@ function EwalletChoose() {
           onClick={() => {
             navigate('/e-wallet/check', {
               state:{
-                ewalletId:3
+                ewalletId:4
               }
             })
           }}
@@ -92,6 +92,13 @@ function EwalletChoose() {
           icon={logoPaypal} 
           label="PAYPAL" 
           role="button"
+          onClick={() => {
+            navigate('/e-wallet/check', {
+              state:{
+                ewalletId:5
+              }
+            })
+          }}
         />
         <ServiceMenu
           color="spay-color"
@@ -101,7 +108,7 @@ function EwalletChoose() {
           onClick={() => {
             navigate('/e-wallet/check', {
               state:{
-                ewalletId:4
+                ewalletId:3
               }
             })
           }}

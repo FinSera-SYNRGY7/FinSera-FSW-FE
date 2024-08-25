@@ -21,19 +21,7 @@ const VirtualAccountTfInput = () => {
 
   const { data: dataAmount, isLoading:isLoadingAmount } = useInfoAmount();
   
-  const schema = Joi.object({
-      nominal: Joi.number().min(10000).max(dataAmount == null ? 0 : dataAmount?.amount.amount).required().messages({
-        'any.empty': 'Nominal Harus Berupa Angka!',
-        'any.required': 'Nominal Wajib Isi!',
-        'any.min': 'Nominal Tidak Boleh Kurang Dari Rp. 10.000',
-        'any.max': 'Nominal Melebih Saldo!'
-      }),
-      note: Joi.allow()
-  });
-  
-  const { register, isPending, handleSubmit, setValue, formState: { errors: validationErrors }, } = useForm({
-      resolver: joiResolver(schema)
-  })
+  const { register, isPending, handleSubmit, setValue } = useForm()
 
   const saveContactAct = ({
     accountNum,
@@ -131,11 +119,6 @@ const VirtualAccountTfInput = () => {
           <span className="ms-20">Back</span>
         </Button>
       </Link>
-      {validationErrors?.nominal && (
-          <div className={`${styles.errorMessage} mt-4`}>
-              {validationErrors.nominal?.message}
-          </div>
-      )}
       {errorMessage != "" ? (
         <div
             className="alert alert-danger alert-dismissible"

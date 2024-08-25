@@ -2,7 +2,6 @@ import moment from 'moment'
 import Layout from "@/layout/Layout"
 import styles from "@/assets/css/AccountMutation.module.css"
 import DropdownSumberRekening from "@/components/dropdownSumberRekening/Dropdown"
-import Spinner from "react-bootstrap/Spinner"
 import imgEmptyData from "@/assets/img/No data-pana 1.png"
 import { useState } from "react"
 import { PopupDate } from "@/components/PopUp"
@@ -16,6 +15,7 @@ import { formatRupiah, formatDateIndo, formatTimeIndo, checkTypeTransaction, min
 
 const AccountMutation = () => {
   const [dataFilterDate, setDataFilterDate] = useState({})
+  const [isLoadingDownload, setIsLoadingDownload] = useState(false)
   const [showDateRangePopup, setShowDateRangePopup] = useState(false);
   const navigate = useNavigate();
 
@@ -64,6 +64,7 @@ const AccountMutation = () => {
 
   const handleDownload = async () => {
     try {
+      setIsLoadingDownload(true)
       const requestDownload = await httpServer.get('/api/v1/mutasi/download', {
         responseType: 'blob',
         params: dataFilterDate
@@ -78,6 +79,7 @@ const AccountMutation = () => {
   
       link.parentNode.removeChild(link);
       window.URL.revokeObjectURL(url);
+      setIsLoadingDownload(false)
     } catch (error) {
       console.error('Error downloading file:', error);
     }
@@ -89,6 +91,20 @@ const AccountMutation = () => {
     isLoading: isLoadingMutation, 
     isError: isErrorMutation, 
   } = useMutationBank(dataFilterDate)
+
+  const renderLoadingDataMutation = () => {
+    const loopDataLoading =  [1, 2, 3, 4, 5]
+    return loopDataLoading.map((item, index) => {
+      return (
+        <>
+          <CardMutation
+            key={index}
+            isLoading={isLoadingMutation}
+          />
+        </>
+      )
+    })
+  }
 
   const renderDataMutation = () => {          
     return dataAccountMutation?.map((row, key) => {
@@ -186,17 +202,12 @@ const AccountMutation = () => {
               variant="btnBack"
             />
           </div>
-          {isLoadingAmount ? (
-              <Spinner animation="border" role="status">
-                  <span className="visually-hidden">Loading...</span>
-              </Spinner>
-          ) : (
           <DropdownSumberRekening
             title="Sumber Rekening"
-            subtitle={dataAmount.accountNumber}
+            subtitle={dataAmount?.accountNumber}
             className="dropdownSumberRekening"
+            isLoading={isLoadingAmount}
           />
-          )}
         </div>
         <div
           className={`d-flex flex-row w-100 justify-content-between ${styles.containerFilter}`}
@@ -230,34 +241,27 @@ const AccountMutation = () => {
             />
           </div>
           <div className={`${styles.section2}`}>
-          {isLoadingMutation ? (
-            <div className="text-center w-100">
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            </div>
-          ) : (
-            !isErrorMutation ? (
-              <>
-                <ButtonIcon
-                  label="Download"
-                  onClick={() => handleDownload()}
-                  variant="btnDownload2nd"
-                />
-              </>
-            ) : (
-              ""
-            )
-          )}
+          <ButtonIcon
+            label="Download"
+            variant="btnDownload2nd"
+            onClick={() => handleDownload()}
+            isLoading={isLoadingMutation}
+            isLoadingDownload={isLoadingDownload}
+          />
           </div>
         </div>
         <div className={`d-flex flex-column w-100 align-items-center ${styles.containerCard}`}>
           {isLoadingMutation ? (
-            <div className="text-center w-100">
-                <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </Spinner>
-            </div>
+            <>
+            {renderLoadingDataMutation()}
+            <div className={styles.btnDownloadAndro}>
+                <ButtonAlt
+                  label="Download"
+                  variant="btnAltPrimary"
+                  isLoading={isLoadingMutation}
+                />
+              </div>
+            </>
           ) : (
             !isErrorMutation ? (
             <>
@@ -265,8 +269,10 @@ const AccountMutation = () => {
               <div className={styles.btnDownloadAndro}>
                 <ButtonAlt
                   label="Download"
-                  onClick={() => handleDownload()}
                   variant="btnAltPrimary"
+                  onClick={() => handleDownload()}
+                  isLoading={isLoadingMutation}
+                  isLoadingDownload={isLoadingDownload}
                 />
               </div>
             </>

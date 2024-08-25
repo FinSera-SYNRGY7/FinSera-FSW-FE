@@ -68,7 +68,7 @@ const CardTransaction = ({ titleTXN, typeTXN, priceTXN, isLoading = false, ...re
   );
 };
 
-const CardMutation = ({ color, dateTXN, noTXN, typeTXN, nominal, time }) => {
+const CardMutation = ({ color, dateTXN, noTXN, typeTXN, nominal, time, isLoading = false }) => {
   const cardMutationStyle = {
     price: {
       color: color,
@@ -77,49 +77,76 @@ const CardMutation = ({ color, dateTXN, noTXN, typeTXN, nominal, time }) => {
 
   return (
     <div className="w-100">
-      <div
-        className={`d-flex flex-column align-items-start m-0 ${styles.containerMutation}`}
-        role="region"
-        aria-labelledby={`transaksi-${noTXN}`}
-      >
-        <p id={`transaksi-${noTXN}`} className={styles.mutationTitle}>
-          {dateTXN}
-        </p>
+      {
+        isLoading ?
         <div
-          className={`${styles.containerCardMutation} d-flex flex-row justify-content-between w-100`}
-          role="group"
-          aria-labelledby={`transaksi-${noTXN}`}
+          className={`d-flex flex-column align-items-start m-0 ${styles.containerMutation}`}
+          role="region"
+          aria-labelledby={`transaksi-`}
         >
           <div
-            className={`${styles.content1} d-flex flex-column align-items-start`}
+            className={`${styles.containerCardMutation} d-flex flex-row justify-content-between w-100`}
+            role="group"
+            aria-labelledby={`transaksi-`}
           >
-            <p
-              className={`${styles.textTXN} m-0`}
-              aria-label={`No Transaksi: ${noTXN}`}
+            <div
+              className={`${styles.content1} d-flex flex-column align-items-start`}
             >
-              {noTXN}
-            </p>
-            <p aria-label={`Tipe Transaksi: ${typeTXN}`}>{typeTXN}</p>
+              <span className='placeholder col-12' aria-label='Loading...' style={{width:'100px'}} /> <br/>
+              <span className='placeholder col-12' aria-label='Loading...' style={{width:'100px'}} />
+            </div>
+            <div
+              className={`${styles.content2} d-flex flex-column align-items-end`}
+            >
+              <span className='placeholder col-12' aria-label='Loading...' style={{width:'100px'}} /> <br/>
+              <span className='placeholder col-12' aria-label='Loading...' style={{width:'100px'}} />
+            </div>
           </div>
+        </div> :
+        <div
+          className={`d-flex flex-column align-items-start m-0 ${styles.containerMutation}`}
+          role="region"
+          aria-labelledby={`transaksi-${noTXN}`}
+        >
+          <p id={`transaksi-${noTXN}`} className={styles.mutationTitle}>
+            {dateTXN}
+          </p>
           <div
-            className={`${styles.content2} d-flex flex-column align-items-end`}
+            className={`${styles.containerCardMutation} d-flex flex-row justify-content-between w-100`}
+            role="group"
+            aria-labelledby={`transaksi-${noTXN}`}
           >
-            <p
-              className={styles.textPrice}
-              style={cardMutationStyle.price}
-              aria-label={`Nominal Transaksi: ${nominal}`}
+            <div
+              className={`${styles.content1} d-flex flex-column align-items-start`}
             >
-              {nominal}
-            </p>
-            <p
-              style={cardMutationStyle.text}
-              aria-label={`Waktu Transaksi: ${time}`}
+              <p
+                className={`${styles.textTXN} m-0`}
+                aria-label={`No Transaksi: ${noTXN}`}
+              >
+                {noTXN}
+              </p>
+              <p aria-label={`Tipe Transaksi: ${typeTXN}`}>{typeTXN}</p>
+            </div>
+            <div
+              className={`${styles.content2} d-flex flex-column align-items-end`}
             >
-              {time}
-            </p>
+              <p
+                className={styles.textPrice}
+                style={cardMutationStyle.price}
+                aria-label={`Nominal Transaksi: ${nominal}`}
+              >
+                {nominal}
+              </p>
+              <p
+                style={cardMutationStyle.text}
+                aria-label={`Waktu Transaksi: ${time}`}
+              >
+                {time}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      }
     </div>
   );
 };

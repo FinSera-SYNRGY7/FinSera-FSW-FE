@@ -18,12 +18,19 @@ export default function QRIS() {
     <Layout>
       <div style={{ height: "auto", margin: "0 auto", maxWidth: "80%", width: "100%" }}>
         <div className={styles.header}>
-          <Button
-            className="d-sm-none p-0"
-            type="button"
-            aria-label="kembali ke halaman sebelumnya">
-            <img src={backBlack} alt="Kembali ke halaman sebelumnya" className={styles.back} />
-          </Button>
+
+          <Link
+            to="/home"
+            aria-label="kembali ke halaman sebelumnya"
+            role="button"
+          >
+            <Button
+              className="d-sm-none p-0"
+              type="button"
+              aria-label="kembali ke halaman sebelumnya">
+              <img src={backBlack} alt="Kembali ke halaman sebelumnya" className={styles.back} />
+            </Button>
+          </Link>
           <div className={styles.title}>
             <h1>QRIS</h1>
           </div>
